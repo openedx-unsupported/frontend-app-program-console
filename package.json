@@ -1,10 +1,10 @@
 {
-  "name": "@edx/frontend-app-account",
+  "name": "@edx/frontend-app-program-manager",
   "version": "0.1.0",
-  "description": "User account React app",
+  "description": "edX Program management React app",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edx/frontend-app-account.git"
+    "url": "git+https://github.com/edx/frontend-app-program-manager.git"
   },
   "scripts": {
     "build": "NODE_ENV=production BABEL_ENV=production webpack --config=webpack/webpack.prod.config.js",
@@ -19,7 +19,7 @@
   },
   "author": "edX",
   "license": "AGPL-3.0",
-  "homepage": "https://github.com/edx/frontend-app-account#readme",
+  "homepage": "https://github.com/edx/frontend-app-program-manager#readme",
   "publishConfig": {
     "access": "public"
   },
