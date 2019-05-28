@@ -135,6 +135,7 @@ module.exports = Merge.smart(commonConfig, {
       LMS_BASE_URL: null,
       CREDENTIALS_BASE_URL: null,
       ECOMMERCE_BASE_URL: null,
+      REGISTRAR_API_BASE_URL: null,
       LOGIN_URL: null,
       LOGOUT_URL: null,
       CSRF_TOKEN_API_PATH: null,

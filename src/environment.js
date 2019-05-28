@@ -31,6 +31,7 @@ export const configuration = {
   DATA_API_BASE_URL: process.env.DATA_API_BASE_URL,
   SECURE_COOKIES: process.env.NODE_ENV !== 'development',
   ENVIRONMENT: process.env.NODE_ENV,
+  REGISTRAR_API_BASE_URL: process.env.REGISTRAR_API_BASE_URL,
   ACCOUNTS_API_BASE_URL: `${process.env.LMS_BASE_URL}/api/user/v1/accounts`,
   PREFERENCES_API_BASE_URL: `${process.env.LMS_BASE_URL}/api/user/v1/preferences`,
   CERTIFICATES_API_BASE_URL: `${process.env.LMS_BASE_URL}/api/certificates/v0/certificates`,
