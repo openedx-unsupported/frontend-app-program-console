@@ -1,9 +1,7 @@
 import pick from 'lodash.pick';
 
 let config = {
-  ACCOUNTS_API_BASE_URL: null,
-  ECOMMERCE_API_BASE_URL: null,
-  LMS_BASE_URL: null,
+  REGISTRAR_API_BASE_URL: null,
 };
 
 let apiClient = null; // eslint-disable-line
@@ -22,11 +20,7 @@ export function configureApiService(newConfig, newApiClient) {
   apiClient = newApiClient;
 }
 
-export async function getData(data) {
-  // const { data } = await apiClient.get(`${config.API_BASE_URL}/example/`, {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(data);
-    }, 2000);
-  });
+export async function getWritablePrograms() {
+  const { data } = await apiClient.get(`${config.REGISTRAR_API_BASE_URL}/v1/programs/?user_has_perm=write`, {});
+  return data;
 }

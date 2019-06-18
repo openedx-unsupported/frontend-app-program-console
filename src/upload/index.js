@@ -1,4 +1,4 @@
-import ConnectedExamplePage from './ExamplePage';
+import ConnectedExamplePage from './UploadPage';
 import reducer from './reducers';
 import saga from './sagas';
 import { configureApiService } from './service';

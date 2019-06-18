@@ -1,8 +1,8 @@
 import { all } from 'redux-saga/effects';
-import { saga as exampleSaga } from './example';
+import { saga as uploadSaga } from './upload';
 
 export default function* rootSaga() {
   yield all([
-    exampleSaga(),
+    uploadSaga(),
   ]);
 }
