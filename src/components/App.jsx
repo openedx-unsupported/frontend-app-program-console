@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect, Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import { IntlProvider, injectIntl, intlShape } from 'react-intl';
-import { Route, Switch } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { sendTrackEvent } from '@edx/frontend-analytics';
 import SiteHeader from '@edx/frontend-component-site-header';
@@ -10,15 +9,12 @@ import SiteFooter from '@edx/frontend-component-footer';
 import { getLocale, getMessages } from '@edx/frontend-i18n'; // eslint-disable-line
 
 import { PageLoading, fetchUserAccount } from '../common';
-import { ConnectedExamplePage } from '../example';
 
 import FooterLogo from '../assets/edx-footer.png';
 import HeaderLogo from '../assets/logo.svg';
-import ErrorPage from './ErrorPage';
-import NotFoundPage from './NotFoundPage';
+import UploadPage from '../upload/UploadPage';
 
 import messages from './App.messages';
-import WelcomePage from './WelcomePage';
 
 
 function PageContent({
@@ -98,13 +94,7 @@ function PageContent({
         loggedOutItems={loggedOutItems}
       />
       <main>
-        <Switch>
-          <Route path="/example" component={ConnectedExamplePage} />
-          <Route path="/error" component={ErrorPage} />
-          <Route path="/notfound" component={NotFoundPage} />
-          <Route path="/" component={WelcomePage} />
-          <Route path="*" component={NotFoundPage} />
-        </Switch>
+        <UploadPage />
       </main>
       <SiteFooter
         siteName={configuration.SITE_NAME}

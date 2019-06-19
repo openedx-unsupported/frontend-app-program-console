@@ -9,7 +9,7 @@ import { configuration } from './environment';
 import { handleRtl } from './i18n/i18n-loader';
 import configureStore from './store';
 import { configureUserAccountApiService } from './common';
-import { configureApiService as configureExampleApiService } from './example';
+import { configureApiService as configureUploadApiService } from './upload';
 
 import './index.scss';
 import App from './components/App';
@@ -37,8 +37,8 @@ function createInitialState() {
 function configure() {
   const { store, history } = configureStore(createInitialState(), configuration.ENVIRONMENT);
 
-  configureExampleApiService(configuration, apiClient);
   configureUserAccountApiService(configuration, apiClient);
+  configureUploadApiService(configuration, apiClient);
   initializeSegment(configuration.SEGMENT_KEY);
   configureAnalytics({
     loggingService: LoggingService,

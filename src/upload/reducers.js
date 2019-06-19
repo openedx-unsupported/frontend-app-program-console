@@ -1,22 +1,22 @@
-import { FETCH_EXAMPLE_DATA } from './actions';
+import { FETCH_WRITABLE_PROGRAMS } from './actions';
 
 export const defaultState = {
   loading: false,
   loaded: false,
   loadingError: null,
-  data: null,
+  data: [],
 };
 
 const example = (state = defaultState, action) => {
   switch (action.type) {
-    case FETCH_EXAMPLE_DATA.BEGIN:
+    case FETCH_WRITABLE_PROGRAMS.BEGIN:
       return {
         ...state,
         loading: true,
         loaded: false,
         loadingError: null,
       };
-    case FETCH_EXAMPLE_DATA.SUCCESS:
+    case FETCH_WRITABLE_PROGRAMS.SUCCESS:
       return {
         ...state,
         data: action.payload.data,
@@ -24,14 +24,14 @@ const example = (state = defaultState, action) => {
         loaded: true,
         loadingError: null,
       };
-    case FETCH_EXAMPLE_DATA.FAILURE:
+    case FETCH_WRITABLE_PROGRAMS.FAILURE:
       return {
         ...state,
         loading: false,
         loaded: false,
         loadingError: action.payload.error,
       };
-    case FETCH_EXAMPLE_DATA.RESET:
+    case FETCH_WRITABLE_PROGRAMS.RESET:
       return {
         ...state,
         loading: false,

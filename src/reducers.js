@@ -2,9 +2,9 @@ import { combineReducers } from 'redux';
 import { userAccount } from '@edx/frontend-auth';
 import { connectRouter } from 'connected-react-router';
 import {
-  reducer as exampleReducer,
-  storeName as exampleStoreName,
-} from './example';
+  reducer as uploadReducer,
+  storeName as upladStoreName,
+} from './upload';
 
 const identityReducer = (state) => {
   const newState = { ...state };
@@ -18,7 +18,7 @@ const createRootReducer = history =>
     authentication: identityReducer,
     configuration: identityReducer,
     userAccount,
-    [exampleStoreName]: exampleReducer,
+    [upladStoreName]: uploadReducer,
     router: connectRouter(history),
   });
 
