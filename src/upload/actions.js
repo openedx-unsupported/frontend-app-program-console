@@ -2,7 +2,7 @@ import { utils } from '../common';
 
 const { AsyncActionType } = utils;
 
-export const FETCH_WRITABLE_PROGRAMS = new AsyncActionType('UPLOAD', 'FETCH_WRITABLE_PROGRAMS');
+export const FETCH_WRITABLE_PROGRAMS = new AsyncActionType('GET', 'FETCH_WRITABLE_PROGRAMS');
 
 export const fetchWritablePrograms = () => ({
   type: FETCH_WRITABLE_PROGRAMS.BASE,
@@ -24,6 +24,26 @@ export const fetchWritableProgramsFailure = error => ({
   payload: { error },
 });
 
-export const fetchWritableProgramsReset = () => ({
-  type: FETCH_WRITABLE_PROGRAMS.RESET,
+export const UPLOAD_PROGRAM_ENROLLMENTS = new AsyncActionType('UPLOAD', 'UPlOAD_PROGRAM_ENROLLMENTS');
+
+export const uploadProgramEnrollments = (programKey, file) => ({
+  type: UPLOAD_PROGRAM_ENROLLMENTS.BASE,
+  payload: {
+    programKey,
+    file,
+  },
+});
+
+export const uploadProgramEnrollmentsSuccess = data => ({
+  type: UPLOAD_PROGRAM_ENROLLMENTS.SUCCESS,
+  payload: {
+    data,
+  },
+});
+
+export const uploadProgramEnrollmentsFailue = error => ({
+  type: UPLOAD_PROGRAM_ENROLLMENTS.FAILURE,
+  payload: {
+    error,
+  },
 });

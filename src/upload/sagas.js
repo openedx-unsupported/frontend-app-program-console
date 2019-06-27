@@ -9,6 +9,9 @@ import {
   fetchWritableProgramsBegin,
   fetchWritableProgramsSuccess,
   fetchWritableProgramsFailure,
+  UPLOAD_PROGRAM_ENROLLMENTS,
+  uploadProgramEnrollmentsSuccess,
+  uploadProgramEnrollmentsFailue,
 } from './actions';
 
 // Services
@@ -27,6 +30,21 @@ export function* handleFetchWritablePrograms() {
   }
 }
 
+export function* handleUploadProgramEnrollments({ payload: { programKey, file } }) {
+  console.log(programKey);
+  console.log(file);
+  console.log(ApiService);
+  try {
+    const data = yield call(ApiService.uploadProgramEnrollments(programKey, file));
+    yield put(uploadProgramEnrollmentsSuccess(data));
+  } catch (e) {
+    LoggingService.logAPIErrorResponse(e);
+    yield put(uploadProgramEnrollmentsFailue(e.message));
+    // yield put(push('/error'));
+  }
+}
+
 export default function* saga() {
   yield takeEvery(FETCH_WRITABLE_PROGRAMS.BASE, handleFetchWritablePrograms);
+  yield takeEvery(UPLOAD_PROGRAM_ENROLLMENTS.BASE, handleUploadProgramEnrollments);
 }

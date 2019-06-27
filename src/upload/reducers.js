@@ -1,9 +1,10 @@
-import { FETCH_WRITABLE_PROGRAMS } from './actions';
+import { FETCH_WRITABLE_PROGRAMS, UPLOAD_PROGRAM_ENROLLMENTS } from './actions';
 
 export const defaultState = {
   loading: false,
   loaded: false,
   loadingError: null,
+  broken: false,
   data: [],
 };
 
@@ -37,6 +38,16 @@ const example = (state = defaultState, action) => {
         loading: false,
         loaded: false,
         loadingError: null,
+      };
+    case UPLOAD_PROGRAM_ENROLLMENTS.SUCCESS:
+      return {
+        ...state,
+        broken: false,
+      };
+    case UPLOAD_PROGRAM_ENROLLMENTS.FAILURE:
+      return {
+        ...state,
+        broken: true,
       };
     default:
       return state;
