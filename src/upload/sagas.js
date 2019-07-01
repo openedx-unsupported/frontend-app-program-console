@@ -12,6 +12,7 @@ import {
   UPLOAD_PROGRAM_ENROLLMENTS,
   uploadProgramEnrollmentsSuccess,
   uploadProgramEnrollmentsFailue,
+  broken,
 } from './actions';
 
 // Services
@@ -31,16 +32,17 @@ export function* handleFetchWritablePrograms() {
 }
 
 export function* handleUploadProgramEnrollments({ payload: { programKey, file } }) {
-  console.log(programKey);
-  console.log(file);
-  console.log(ApiService);
   try {
-    const data = yield call(ApiService.uploadProgramEnrollments(programKey, file));
+    const data = yield call(ApiService.uploadProgramEnrollments, programKey, file);
     yield put(uploadProgramEnrollmentsSuccess(data));
   } catch (e) {
+    console.log(e);
+    const { response: { status } } = e;
     LoggingService.logAPIErrorResponse(e);
+    if (status == 500) {
+      yield put(broken());
+    }
     yield put(uploadProgramEnrollmentsFailue(e.message));
-    // yield put(push('/error'));
   }
 }
 

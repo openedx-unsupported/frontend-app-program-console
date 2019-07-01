@@ -4,12 +4,18 @@ export const defaultState = {
   loading: false,
   loaded: false,
   loadingError: null,
+  authorized: true,
   broken: false,
   data: [],
 };
 
 const example = (state = defaultState, action) => {
   switch (action.type) {
+    case 'BROKEN':
+      return {
+        ...state,
+        broken: true,
+      };
     case FETCH_WRITABLE_PROGRAMS.BEGIN:
       return {
         ...state,
@@ -20,6 +26,7 @@ const example = (state = defaultState, action) => {
     case FETCH_WRITABLE_PROGRAMS.SUCCESS:
       return {
         ...state,
+        authorized: true,
         data: action.payload.data,
         loading: false,
         loaded: true,
@@ -28,6 +35,7 @@ const example = (state = defaultState, action) => {
     case FETCH_WRITABLE_PROGRAMS.FAILURE:
       return {
         ...state,
+        authorized: false,
         loading: false,
         loaded: false,
         loadingError: action.payload.error,
@@ -48,6 +56,11 @@ const example = (state = defaultState, action) => {
       return {
         ...state,
         broken: true,
+      };
+    case 'NOT_AUTHENTICATED':
+      return {
+        ...state,
+        authorized: false,
       };
     default:
       return state;

@@ -28,11 +28,12 @@ class UploadPage extends React.Component {
               Please reach out to <a href="mailto:partner-support@edx.org">partner-support@edx.org</a> requesting access to the Registrar service.
             </p>
           )}
-          open={this.props.data.length === 0}
+          open={!this.props.authorized}
         />
         {this.props.data.length > 0 && this.props.data.map(program => (
           <div className="container" key={program.program_key}>
             <h2>{program.program_title}</h2>
+
             <StatusAlert
               dismissible={false}
               dialog={(
@@ -86,14 +87,15 @@ class UploadPage extends React.Component {
 }
 
 UploadPage.propTypes = {
-  fetchWritablePrograms: PropTypes.func.isRequired,
-  uploadProgramEnrollments: PropTypes.func.isRequired,
+  authorized: PropTypes.bool.isRequired,
+  broken: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({
     program_key: PropTypes.string,
     program_title: PropTypes.string,
     program_url: PropTypes.string,
   })).isRequired,
-  broken: PropTypes.bool.isRequired,
+  fetchWritablePrograms: PropTypes.func.isRequired,
+  uploadProgramEnrollments: PropTypes.func.isRequired,
 };
 
 export default connect(uploadSelector, {

@@ -47,3 +47,11 @@ export const uploadProgramEnrollmentsFailue = error => ({
     error,
   },
 });
+
+export const notAuthenticated = () => ({
+  type: 'NOT_AUTHENTICATED',
+});
+
+export const broken = () => ({
+  type: 'BROKEN',
+});
