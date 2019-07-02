@@ -12,6 +12,7 @@ import {
   UPLOAD_PROGRAM_ENROLLMENTS,
   uploadProgramEnrollmentsSuccess,
   uploadProgramEnrollmentsFailue,
+  POLL_JOB,
   pollJob,
   pollJobSuccess,
   removeBanner,
@@ -76,6 +77,10 @@ export function* handleUploadProgramEnrollments({ payload: { programKey, file } 
   }
 }
 
+async function wait(miliseconds) {
+  return new Promise(resolve => setTimeout(resolve, miliseconds));
+}
+
 export function* handlePollJobs({ payload: { programKey, jobData, bannerId } }) {
   try {
     const responseData = yield call(ApiService.get, jobData.job_url);
@@ -93,6 +98,9 @@ export function* handlePollJobs({ payload: { programKey, jobData, bannerId } }) 
           },
         )),
       ]);
+    } else if (responseData.state === 'Pending' || responseData.state === 'In Progress' || responseData.state === 'Retrying') {
+      yield call(wait, 1000);
+      yield put(pollJob(programKey, jobData, bannerId));
     }
   } catch (e) {
     LoggingService.logAPIErrorResponse(e);
@@ -102,5 +110,5 @@ export function* handlePollJobs({ payload: { programKey, jobData, bannerId } }) 
 export default function* saga() {
   yield takeEvery(FETCH_WRITABLE_PROGRAMS.BASE, handleFetchWritablePrograms);
   yield takeEvery(UPLOAD_PROGRAM_ENROLLMENTS.BASE, handleUploadProgramEnrollments);
-  yield takeEvery(POLL_JOBS.BASE, handlePollJobs);
+  yield takeEvery(POLL_JOB.BASE, handlePollJobs);
 }

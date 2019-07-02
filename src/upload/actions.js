@@ -73,18 +73,19 @@ export const pollJob = (programKey, jobData, bannerId) => ({
   },
 });
 
-export const pollJobsBegin = () => ({
+export const pollJobBegin = () => ({
   type: POLL_JOB.BEGIN,
 });
 
-export const pollJobsSuccess = data => ({
+export const pollJobSuccess = (programKey, bannerObj) => ({
   type: POLL_JOB.SUCCESS,
   payload: {
-    data,
+    programKey,
+    bannerObj,
   },
 });
 
-export const pollJobsFailure = error => ({
+export const pollJobFailure = error => ({
   type: POLL_JOB.FAILURE,
   payload: { error },
 });

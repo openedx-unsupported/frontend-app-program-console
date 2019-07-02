@@ -1,4 +1,4 @@
-import { FETCH_WRITABLE_PROGRAMS, UPLOAD_PROGRAM_ENROLLMENTS } from './actions';
+import { FETCH_WRITABLE_PROGRAMS, UPLOAD_PROGRAM_ENROLLMENTS, POLL_JOB } from './actions';
 
 export const defaultState = {
   loading: false,
@@ -84,6 +84,17 @@ const example = (state = defaultState, action) => {
       return {
         ...state,
         authorized: false,
+      };
+    case POLL_JOB.SUCCESS:
+      return {
+        ...state,
+        programBanners: {
+          ...programBanners,
+          [action.payload.programKey]: [
+            ...programBanners[action.payload.programKey],
+            action.payload.bannerObj,
+          ],
+        },
       };
     default:
       return state;
