@@ -48,6 +48,16 @@ const example = (state = defaultState, action) => {
         loaded: false,
         loadingError: null,
       };
+    case 'REMOVE_BANNER':
+      return {
+        ...state,
+        programBanners: {
+          ...programBanners,
+          [action.payload.programKey]:
+            programBanners[action.payload.programKey]
+              .filter(banner => banner.id !== action.payload.bannerId),
+        },
+      };
     case UPLOAD_PROGRAM_ENROLLMENTS.SUCCESS:
       return {
         ...state,
@@ -55,10 +65,7 @@ const example = (state = defaultState, action) => {
           ...programBanners,
           [action.payload.programKey]: [
             ...programBanners[action.payload.programKey],
-            {
-              bannerType: action.payload.bannerType,
-              message: 'You have achieved success!',
-            },
+            action.payload.bannerObj,
           ],
         },
       };
@@ -69,10 +76,7 @@ const example = (state = defaultState, action) => {
           ...programBanners,
           [action.payload.programKey]: [
             ...programBanners[action.payload.programKey],
-            {
-              bannerType: action.payload.bannerType,
-              message: 'faaaaaaaaaaaaiiiiiiiiiiillllll!',
-            },
+            action.payload.bannerObj,
           ],
         },
       };

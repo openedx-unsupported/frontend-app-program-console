@@ -34,18 +34,20 @@ export const uploadProgramEnrollments = (programKey, file) => ({
   },
 });
 
-export const uploadProgramEnrollmentsSuccess = data => ({
+export const uploadProgramEnrollmentsSuccess = (programKey, data, bannerObj) => ({
   type: UPLOAD_PROGRAM_ENROLLMENTS.SUCCESS,
   payload: {
+    programKey,
     data,
+    bannerObj,
   },
 });
 
-export const uploadProgramEnrollmentsFailue = (programKey, bannerType) => ({
+export const uploadProgramEnrollmentsFailue = (programKey, bannerObj) => ({
   type: UPLOAD_PROGRAM_ENROLLMENTS.FAILURE,
   payload: {
     programKey,
-    bannerType,
+    bannerObj,
   },
 });
 
@@ -53,6 +55,10 @@ export const notAuthenticated = () => ({
   type: 'NOT_AUTHENTICATED',
 });
 
-export const broken = () => ({
-  type: 'BROKEN',
+export const removeBanner = (programKey, bannerId) => ({
+  type: 'REMOVE_BANNER',
+  payload: {
+    programKey,
+    bannerId,
+  },
 });

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { StatusAlert } from '@edx/paragon';
 
-import { fetchWritablePrograms, uploadProgramEnrollments } from './actions';
+import { fetchWritablePrograms, uploadProgramEnrollments, removeBanner } from './actions';
 import { uploadSelector } from './selectors';
 
 class UploadPage extends React.Component {
@@ -38,9 +38,11 @@ class UploadPage extends React.Component {
               this.props.programBanners[program.programKey].map(banner => (
                 <StatusAlert
                   dismissible
+                  key={banner.id}
                   dialog={banner.message}
                   alertType={banner.bannerType}
-                  open={true}
+                  open
+                  onClose={() => this.props.removeBanner(program.programKey, banner.id)}
                 />
             ))}
             <div className="btn-group" role="group">
@@ -96,9 +98,11 @@ UploadPage.propTypes = {
   fetchWritablePrograms: PropTypes.func.isRequired,
   programBanners: PropTypes.shape().isRequired,
   uploadProgramEnrollments: PropTypes.func.isRequired,
+  removeBanner: PropTypes.func.isRequired,
 };
 
 export default connect(uploadSelector, {
   fetchWritablePrograms,
   uploadProgramEnrollments,
+  removeBanner,
 })(injectIntl(UploadPage));
