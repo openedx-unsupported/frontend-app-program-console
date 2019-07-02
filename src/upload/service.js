@@ -62,3 +62,8 @@ export async function uploadProgramEnrollments(programKey, file) {
   return data;
 }
 
+export async function get(url) {
+  const { data } = await apiClient.get(url);
+  return data;
+}
+

@@ -34,7 +34,7 @@ class UploadPage extends React.Component {
           <div className="container" key={program.programKey}>
             <h2>{program.programTitle}</h2>
             {this.props.programBanners[program.programKey] &&
-              this.props.programBanners[program.programKey].length &&
+              !!this.props.programBanners[program.programKey].length &&
               this.props.programBanners[program.programKey].map(banner => (
                 <StatusAlert
                   dismissible
