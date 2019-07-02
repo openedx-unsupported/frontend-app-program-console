@@ -40,9 +40,10 @@ export function* handleUploadProgramEnrollments({ payload: { programKey, file } 
     const { response: { status } } = e;
     LoggingService.logAPIErrorResponse(e);
     if (status == 500) {
-      yield put(broken());
+      yield put(uploadProgramEnrollmentsFailue(programKey, 'danger'));
+    } else if (status == 400) {
+      yield put(uploadProgramEnrollmentsFailue(programKey, 'warning'));
     }
-    yield put(uploadProgramEnrollmentsFailue(e.message));
   }
 }
 

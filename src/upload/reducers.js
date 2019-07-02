@@ -7,6 +7,7 @@ export const defaultState = {
   authorized: true,
   broken: false,
   data: [],
+  programBanners: {},
 };
 
 const example = (state = defaultState, action) => {
@@ -28,6 +29,10 @@ const example = (state = defaultState, action) => {
         ...state,
         authorized: true,
         data: action.payload.data,
+        programBanners: action.payload.data.reduce((acc, curVal) => {
+          acc[curVal.program_key] = [];
+          return acc;
+        }, {}),
         loading: false,
         loaded: true,
         loadingError: null,

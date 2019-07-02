@@ -33,17 +33,14 @@ class UploadPage extends React.Component {
         {this.props.data.length > 0 && this.props.data.map(program => (
           <div className="container" key={program.program_key}>
             <h2>{program.program_title}</h2>
-
-            <StatusAlert
-              dismissible={false}
-              dialog={(
-                <p>
-                  It appears your application is broken
-                </p>
-              )}
-              open={this.props.broken}
-              alertType="danger"
-            />
+            {this.props.programBanners[program.programKey].length &&
+              this.props.programBanners[program.programKey].map(banner => (
+                <StatusAlert
+                  dismissible
+                  dialog={banner.message}
+                  alertType={banner.type}
+                />
+            ))}
             <div className="btn-group" role="group">
               <button className="btn btn-outline-primary">
                 <input
@@ -95,6 +92,7 @@ UploadPage.propTypes = {
     program_url: PropTypes.string,
   })).isRequired,
   fetchWritablePrograms: PropTypes.func.isRequired,
+  programBanners: PropTypes.shape.isRequired,
   uploadProgramEnrollments: PropTypes.func.isRequired,
 };
 
