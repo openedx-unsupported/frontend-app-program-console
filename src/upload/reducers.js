@@ -20,7 +20,6 @@ const example = (state = defaultState, action) => {
         loaded: false,
         loadingError: null,
       };
-      break;
     case FETCH_WRITABLE_PROGRAMS.SUCCESS:
       return {
         ...state,
@@ -34,7 +33,6 @@ const example = (state = defaultState, action) => {
         loaded: true,
         loadingError: null,
       };
-      break;
     case FETCH_WRITABLE_PROGRAMS.FAILURE:
       return {
         ...state,
@@ -43,7 +41,6 @@ const example = (state = defaultState, action) => {
         loaded: false,
         loadingError: action.payload.error,
       };
-      break;
     case FETCH_WRITABLE_PROGRAMS.RESET:
       return {
         ...state,
@@ -51,7 +48,6 @@ const example = (state = defaultState, action) => {
         loaded: false,
         loadingError: null,
       };
-      break;
     case UPLOAD_PROGRAM_ENROLLMENTS.SUCCESS:
       return {
         ...state,
@@ -66,7 +62,6 @@ const example = (state = defaultState, action) => {
           ],
         },
       };
-      break;
     case UPLOAD_PROGRAM_ENROLLMENTS.FAILURE:
       return {
         ...state,
@@ -81,13 +76,11 @@ const example = (state = defaultState, action) => {
           ],
         },
       };
-      break;
     case 'NOT_AUTHENTICATED':
       return {
         ...state,
         authorized: false,
       };
-      break;
     default:
       return state;
   }
