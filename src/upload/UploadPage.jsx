@@ -31,14 +31,16 @@ class UploadPage extends React.Component {
           open={!this.props.authorized}
         />
         {this.props.data.length > 0 && this.props.data.map(program => (
-          <div className="container" key={program.program_key}>
-            <h2>{program.program_title}</h2>
-            {this.props.programBanners[program.programKey].length &&
+          <div className="container" key={program.programKey}>
+            <h2>{program.programTitle}</h2>
+            {this.props.programBanners[program.programKey] &&
+              this.props.programBanners[program.programKey].length &&
               this.props.programBanners[program.programKey].map(banner => (
                 <StatusAlert
                   dismissible
                   dialog={banner.message}
-                  alertType={banner.type}
+                  alertType={banner.bannerType}
+                  open={true}
                 />
             ))}
             <div className="btn-group" role="group">
@@ -54,7 +56,7 @@ class UploadPage extends React.Component {
                     top: '0',
                     left: '0',
                   }}
-                  onChange={e => this.handleUploadProgramEnrollments(program.program_key, e)}
+                  onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
                 />Upload Program Enrollments
               </button>
               <button className="btn btn-outline-primary">Download Program Enrollments</button>
@@ -87,12 +89,12 @@ UploadPage.propTypes = {
   authorized: PropTypes.bool.isRequired,
   broken: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({
-    program_key: PropTypes.string,
-    program_title: PropTypes.string,
-    program_url: PropTypes.string,
+    programKey: PropTypes.string,
+    programTitle: PropTypes.string,
+    programUrl: PropTypes.string,
   })).isRequired,
   fetchWritablePrograms: PropTypes.func.isRequired,
-  programBanners: PropTypes.shape.isRequired,
+  programBanners: PropTypes.shape().isRequired,
   uploadProgramEnrollments: PropTypes.func.isRequired,
 };
 

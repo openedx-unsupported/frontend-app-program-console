@@ -11,12 +11,8 @@ export const defaultState = {
 };
 
 const example = (state = defaultState, action) => {
+  const { programBanners } = state;
   switch (action.type) {
-    case 'BROKEN':
-      return {
-        ...state,
-        broken: true,
-      };
     case FETCH_WRITABLE_PROGRAMS.BEGIN:
       return {
         ...state,
@@ -24,19 +20,21 @@ const example = (state = defaultState, action) => {
         loaded: false,
         loadingError: null,
       };
+      break;
     case FETCH_WRITABLE_PROGRAMS.SUCCESS:
       return {
         ...state,
         authorized: true,
         data: action.payload.data,
         programBanners: action.payload.data.reduce((acc, curVal) => {
-          acc[curVal.program_key] = [];
+          acc[curVal.programKey] = [];
           return acc;
         }, {}),
         loading: false,
         loaded: true,
         loadingError: null,
       };
+      break;
     case FETCH_WRITABLE_PROGRAMS.FAILURE:
       return {
         ...state,
@@ -45,6 +43,7 @@ const example = (state = defaultState, action) => {
         loaded: false,
         loadingError: action.payload.error,
       };
+      break;
     case FETCH_WRITABLE_PROGRAMS.RESET:
       return {
         ...state,
@@ -52,21 +51,43 @@ const example = (state = defaultState, action) => {
         loaded: false,
         loadingError: null,
       };
+      break;
     case UPLOAD_PROGRAM_ENROLLMENTS.SUCCESS:
       return {
         ...state,
-        broken: false,
+        programBanners: {
+          ...programBanners,
+          [action.payload.programKey]: [
+            ...programBanners[action.payload.programKey],
+            {
+              bannerType: action.payload.bannerType,
+              message: 'You have achieved success!',
+            },
+          ],
+        },
       };
+      break;
     case UPLOAD_PROGRAM_ENROLLMENTS.FAILURE:
       return {
         ...state,
-        broken: true,
+        programBanners: {
+          ...programBanners,
+          [action.payload.programKey]: [
+            ...programBanners[action.payload.programKey],
+            {
+              bannerType: action.payload.bannerType,
+              message: 'faaaaaaaaaaaaiiiiiiiiiiillllll!',
+            },
+          ],
+        },
       };
+      break;
     case 'NOT_AUTHENTICATED':
       return {
         ...state,
         authorized: false,
       };
+      break;
     default:
       return state;
   }

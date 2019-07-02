@@ -23,7 +23,15 @@ export function* handleFetchWritablePrograms() {
     yield put(fetchWritableProgramsBegin());
 
     const data = yield call(ApiService.getWritablePrograms);
-    yield put(fetchWritableProgramsSuccess(data));
+    yield put(fetchWritableProgramsSuccess(
+      data.map(({program_key, program_title, program_url}) => (
+        {
+          programKey: program_key,
+          programTitle: program_title,
+          programUrl: program_url,
+        }
+      ))
+    ));
   } catch (e) {
     LoggingService.logAPIErrorResponse(e);
     yield put(fetchWritableProgramsFailure(e.message));

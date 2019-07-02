@@ -41,10 +41,11 @@ export const uploadProgramEnrollmentsSuccess = data => ({
   },
 });
 
-export const uploadProgramEnrollmentsFailue = error => ({
+export const uploadProgramEnrollmentsFailue = (programKey, bannerType) => ({
   type: UPLOAD_PROGRAM_ENROLLMENTS.FAILURE,
   payload: {
-    error,
+    programKey,
+    bannerType,
   },
 });
 
