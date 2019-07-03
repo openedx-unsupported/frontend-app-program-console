@@ -42,12 +42,12 @@ class UploadPage extends React.Component {
                   key={banner.id}
                   alertType={banner.bannerType}
                   onClose={() => this.props.removeBanner(program.programKey, banner.id)}
-                  dialog={
+                  dialog={(
                     <div className="modal-alert">
                         {banner.message}
                         {banner.linkMessage && <a href={banner.linkHref}>{banner.linkMessage}</a>}
                     </div>
-                  }
+                  )}
                 />
             ))}
             <div className="btn-group" role="group">
