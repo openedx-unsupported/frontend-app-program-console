@@ -38,11 +38,16 @@ class UploadPage extends React.Component {
               this.props.programBanners[program.programKey].map(banner => (
                 <StatusAlert
                   dismissible
-                  key={banner.id}
-                  dialog={banner.message}
-                  alertType={banner.bannerType}
                   open
+                  key={banner.id}
+                  alertType={banner.bannerType}
                   onClose={() => this.props.removeBanner(program.programKey, banner.id)}
+                  dialog={
+                    <div className="modal-alert">
+                        {banner.message}
+                        {banner.linkMessage && <a href={banner.linkHref}>{banner.linkMessage}</a>}
+                    </div>
+                  }
                 />
             ))}
             <div className="btn-group" role="group">
