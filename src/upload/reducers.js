@@ -1,4 +1,4 @@
-import { FETCH_WRITABLE_PROGRAMS, UPLOAD_PROGRAM_ENROLLMENTS, POLL_JOB } from './actions';
+import { FETCH_WRITABLE_PROGRAMS, UPLOAD_ENROLLMENTS, DOWNLOAD_ENROLLMENTS, POLL_JOB, FETCH_JOBS } from './actions';
 
 export const defaultState = {
   loading: false,
@@ -29,8 +29,8 @@ const example = (state = defaultState, action) => {
           acc[curVal.programKey] = [];
           return acc;
         }, {}),
-        loading: false,
-        loaded: true,
+        loading: true,
+        loaded: false,
         loadingError: null,
       };
     case FETCH_WRITABLE_PROGRAMS.FAILURE:
@@ -48,6 +48,43 @@ const example = (state = defaultState, action) => {
         loaded: false,
         loadingError: null,
       };
+    case FETCH_JOBS.BEGIN:
+      return {
+        ...state,
+        loading: true,
+        loaded: false,
+      };
+    case FETCH_JOBS.SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+      };
+    case FETCH_JOBS.FAILURE:
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        loadingError: action.payload.error,
+      };
+    case FETCH_JOBS.RESET:
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        loadingError: null,
+      };
+    case 'ADD_BANNER':
+      return {
+        ...state,
+        programBanners: {
+          ...programBanners,
+          [action.payload.programKey]: [
+            ...programBanners[action.payload.programKey],
+            action.payload.bannerObj,
+          ],
+        },
+      };
     case 'REMOVE_BANNER':
       return {
         ...state,
@@ -58,7 +95,7 @@ const example = (state = defaultState, action) => {
               .filter(banner => banner.id !== action.payload.bannerId),
         },
       };
-    case UPLOAD_PROGRAM_ENROLLMENTS.SUCCESS:
+    case UPLOAD_ENROLLMENTS.SUCCESS:
       return {
         ...state,
         programBanners: {
@@ -69,7 +106,7 @@ const example = (state = defaultState, action) => {
           ],
         },
       };
-    case UPLOAD_PROGRAM_ENROLLMENTS.FAILURE:
+    case UPLOAD_ENROLLMENTS.FAILURE:
       return {
         ...state,
         programBanners: {
@@ -80,6 +117,29 @@ const example = (state = defaultState, action) => {
           ],
         },
       };
+    case DOWNLOAD_ENROLLMENTS.SUCCESS:
+      return {
+        ...state,
+        programBanners: {
+          ...programBanners,
+          [action.payload.programKey]: [
+            ...programBanners[action.payload.programKey],
+            action.payload.bannerObj,
+          ],
+        },
+      };
+    case DOWNLOAD_ENROLLMENTS.FAILURE:
+      return {
+        ...state,
+        programBanners: {
+          ...programBanners,
+          [action.payload.programKey]: [
+            ...programBanners[action.payload.programKey],
+            action.payload.bannerObj,
+          ],
+        },
+      };
+
     case 'NOT_AUTHENTICATED':
       return {
         ...state,

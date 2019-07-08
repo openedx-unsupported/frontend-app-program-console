@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { StatusAlert } from '@edx/paragon';
 
-import { fetchWritablePrograms, uploadProgramEnrollments, removeBanner } from './actions';
+import { fetchWritablePrograms, uploadEnrollments, downloadEnrollments, removeBanner } from './actions';
 import { uploadSelector } from './selectors';
 
 class UploadPage extends React.Component {
@@ -13,7 +13,19 @@ class UploadPage extends React.Component {
   }
 
   handleUploadProgramEnrollments(programKey, e) {
-    this.props.uploadProgramEnrollments(programKey, e.target.files[0]);
+    this.props.uploadEnrollments(programKey, false, e.target.files[0]);
+  }
+
+  handleDownloadProgramEnrollments(programKey) {
+    this.props.downloadEnrollments(programKey, false);
+  }
+
+  handleUploadCourseEnrollments(programKey, e) {
+    this.props.uploadEnrollments(programKey, true, e.target.files[0]);
+  }
+
+  handleDownloadCourseEnrollments(programKey) {
+    this.props.downloadEnrollments(programKey, true);
   }
 
   render() {
@@ -44,8 +56,8 @@ class UploadPage extends React.Component {
                   onClose={() => this.props.removeBanner(program.programKey, banner.id)}
                   dialog={(
                     <div className="modal-alert">
-                        {banner.message}
-                        {banner.linkMessage && <a href={banner.linkHref}>{banner.linkMessage}</a>}
+                      {`${banner.message} `}
+                      {banner.linkMessage && <a href={banner.linkHref} target="_blank">{banner.linkMessage}</a>}
                     </div>
                   )}
                 />
@@ -66,7 +78,11 @@ class UploadPage extends React.Component {
                   onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
                 />Upload Program Enrollments
               </button>
-              <button className="btn btn-outline-primary">Download Program Enrollments</button>
+              <button
+                className="btn btn-outline-primary"
+                onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
+              >Download Program Enrollments
+              </button>
             </div>
             <div className="btn-group" role="group">
               <button className="btn btn-outline-primary">
@@ -81,9 +97,14 @@ class UploadPage extends React.Component {
                     top: '0',
                     left: '0',
                   }}
+                  onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
                 />Upload Course Enrollments
               </button>
-              <button className="btn btn-outline-primary">Download Course Enrollments</button>
+              <button
+                className="btn btn-outline-primary"
+                onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
+              >Download Course Enrollments
+              </button>
             </div>
           </div>
         ))}
@@ -102,12 +123,14 @@ UploadPage.propTypes = {
   })).isRequired,
   fetchWritablePrograms: PropTypes.func.isRequired,
   programBanners: PropTypes.shape().isRequired,
-  uploadProgramEnrollments: PropTypes.func.isRequired,
+  uploadEnrollments: PropTypes.func.isRequired,
+  downloadEnrollments: PropTypes.func.isRequired,
   removeBanner: PropTypes.func.isRequired,
 };
 
 export default connect(uploadSelector, {
   fetchWritablePrograms,
-  uploadProgramEnrollments,
+  uploadEnrollments,
+  downloadEnrollments,
   removeBanner,
 })(injectIntl(UploadPage));

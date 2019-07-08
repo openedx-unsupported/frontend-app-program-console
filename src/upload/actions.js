@@ -24,34 +24,71 @@ export const fetchWritableProgramsFailure = error => ({
   payload: { error },
 });
 
-export const UPLOAD_PROGRAM_ENROLLMENTS = new AsyncActionType('UPLOAD', 'UPlOAD_PROGRAM_ENROLLMENTS');
+export const UPLOAD_ENROLLMENTS = new AsyncActionType('UPLOAD', 'UPlOAD_PROGRAM_ENROLLMENTS');
 
-export const uploadProgramEnrollments = (programKey, file) => ({
-  type: UPLOAD_PROGRAM_ENROLLMENTS.BASE,
+
+export const uploadEnrollments = (programKey, isCourses, file) => ({
+  type: UPLOAD_ENROLLMENTS.BASE,
   payload: {
     programKey,
+    isCourses,
     file,
   },
 });
 
-export const uploadProgramEnrollmentsSuccess = (programKey, bannerObj) => ({
-  type: UPLOAD_PROGRAM_ENROLLMENTS.SUCCESS,
+export const uploadEnrollmentsSuccess = (programKey, bannerObj) => ({
+  type: UPLOAD_ENROLLMENTS.SUCCESS,
   payload: {
     programKey,
     bannerObj,
   },
 });
 
-export const uploadProgramEnrollmentsFailue = (programKey, bannerObj) => ({
-  type: UPLOAD_PROGRAM_ENROLLMENTS.FAILURE,
+export const uploadEnrollmentsFailue = (programKey, bannerObj) => ({
+  type: UPLOAD_ENROLLMENTS.FAILURE,
   payload: {
     programKey,
     bannerObj,
   },
 });
+
+export const DOWNLOAD_ENROLLMENTS = new AsyncActionType('DOWNLOAD', 'DOWNLOAD_PROGRAM_ENROLLMENTS');
+
+export const downloadEnrollments = (programKey, isCourses) => ({
+  type: DOWNLOAD_ENROLLMENTS.BASE,
+  payload: {
+    programKey,
+    isCourses,
+  },
+});
+
+export const downloadEnrollmentsSuccess = (programKey, bannerObj) => ({
+  type: DOWNLOAD_ENROLLMENTS.SUCCESS,
+  payload: {
+    programKey,
+    bannerObj,
+  },
+});
+
+export const downloadEnrollmentsFailue = (programKey, bannerObj) => ({
+  type: DOWNLOAD_ENROLLMENTS.FAILURE,
+  payload: {
+    programKey,
+    bannerObj,
+  },
+});
+
 
 export const notAuthenticated = () => ({
   type: 'NOT_AUTHENTICATED',
+});
+
+export const addBanner = (programKey, bannerObj) => ({
+  type: 'ADD_BANNER',
+  payload: {
+    programKey,
+    bannerObj,
+  },
 });
 
 export const removeBanner = (programKey, bannerId) => ({
@@ -62,13 +99,32 @@ export const removeBanner = (programKey, bannerId) => ({
   },
 });
 
+export const FETCH_JOBS = new AsyncActionType('GET', 'FETCH_JOBS');
+
+export const fetchJobs = () => ({
+  type: FETCH_JOBS.BASE,
+});
+
+export const fetchJobsBegin = () => ({
+  type: FETCH_JOBS.BEGIN,
+});
+
+export const fetchJobsSuccess = () => ({
+  type: FETCH_JOBS.SUCCESS,
+});
+
+export const fetchJobsFailure = error => ({
+  type: FETCH_JOBS.FAILURE,
+  payload: { error },
+});
+
 export const POLL_JOB = new AsyncActionType('GET', 'POLL_JOB');
 
-export const pollJob = (programKey, jobData, bannerId) => ({
+export const pollJob = (programKey, jobId, bannerId) => ({
   type: POLL_JOB.BASE,
   payload: {
     programKey,
-    jobData,
+    jobId,
     bannerId,
   },
 });

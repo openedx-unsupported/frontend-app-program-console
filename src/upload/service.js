@@ -27,6 +27,16 @@ export async function getWritablePrograms() {
   return data;
 }
 
+export async function getJobs() {
+  const { data } = await apiClient.get(`${config.REGISTRAR_API_BASE_URL}/v1/jobs/`, {});
+  return data;
+}
+
+export async function getJob(jobId) {
+  const { data } = await apiClient.get(`${config.REGISTRAR_API_BASE_URL}/v1/jobs/${jobId}`, {});
+  return data;
+}
+
 function handleErrorResponses(error) {
   const response = error && error.response;
   const errorStatus = response && response.status;
@@ -41,7 +51,7 @@ function handleErrorResponses(error) {
   return Promise.reject(error);
 }
 
-export async function uploadProgramEnrollments(programKey, file) {
+export async function uploadEnrollments(programKey, isCourseEnrollments, file) {
   const headers = {
     'Content-Type': 'multipart/form-data ',
   };
@@ -53,10 +63,28 @@ export async function uploadProgramEnrollments(programKey, file) {
     handleErrorResponses,
   );
 
-
+  const enrollmentType = isCourseEnrollments ? 'course_enrollments' : 'enrollments';
   const { data } = await apiClient.post(
-    `${config.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/enrollments/upload/`,
+    `${config.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/${enrollmentType}/upload/`,
     formData,
+    { headers },
+  );
+  return data;
+}
+
+export async function downloadEnrollments(programKey, isCourseEnrollments) {
+  const headers = {
+    'Content-Type': 'multipart/form-data ',
+  };
+
+  apiClient.interceptors.response.use(
+    response => response,
+    handleErrorResponses,
+  );
+
+  const enrollmentType = isCourseEnrollments ? 'course_enrollments' : 'enrollments';
+  const { data } = await apiClient.get(
+    `${config.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/${enrollmentType}/?fmt=csv`,
     { headers },
   );
   return data;
