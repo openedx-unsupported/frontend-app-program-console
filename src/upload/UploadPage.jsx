@@ -4,13 +4,30 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { StatusAlert } from '@edx/paragon';
 
-import { fetchWritablePrograms } from './actions';
+import { fetchWritablePrograms, uploadEnrollments, downloadEnrollments, removeBanner } from './actions';
 import { uploadSelector } from './selectors';
 
 class UploadPage extends React.Component {
   componentDidMount() {
     this.props.fetchWritablePrograms();
   }
+
+  handleUploadProgramEnrollments(programKey, e) {
+    this.props.uploadEnrollments(programKey, false, e.target.files[0]);
+  }
+
+  handleDownloadProgramEnrollments(programKey) {
+    this.props.downloadEnrollments(programKey, false);
+  }
+
+  handleUploadCourseEnrollments(programKey, e) {
+    this.props.uploadEnrollments(programKey, true, e.target.files[0]);
+  }
+
+  handleDownloadCourseEnrollments(programKey) {
+    this.props.downloadEnrollments(programKey, true);
+  }
+
   render() {
     return (
       <div className="container py-5 align-items-start">
@@ -23,16 +40,71 @@ class UploadPage extends React.Component {
               Please reach out to <a href="mailto:partner-support@edx.org">partner-support@edx.org</a> requesting access to the Registrar service.
             </p>
           )}
-          open={this.props.data.length === 0}
+          open={!this.props.authorized}
         />
         {this.props.data.length > 0 && this.props.data.map(program => (
-          <div className="container" key={program.program_key}>
-            <h2>{program.program_title}</h2>
+          <div className="container" key={program.programKey}>
+            <h2>{program.programTitle}</h2>
+            {this.props.programBanners[program.programKey] &&
+              !!this.props.programBanners[program.programKey].length &&
+              this.props.programBanners[program.programKey].map(banner => (
+                <StatusAlert
+                  dismissible
+                  open
+                  key={banner.id}
+                  alertType={banner.bannerType}
+                  onClose={() => this.props.removeBanner(program.programKey, banner.id)}
+                  dialog={(
+                    <div className="modal-alert">
+                      {`${banner.message} `}
+                      {banner.linkMessage && <a href={banner.linkHref} target="_blank">{banner.linkMessage}</a>}
+                    </div>
+                  )}
+                />
+            ))}
             <div className="btn-group" role="group">
-              <button className="btn btn-outline-primary">Upload Program Enrollments</button>
-              <button className="btn btn-outline-primary">Upload Course Enrollments</button>
-              <button className="btn btn-outline-primary">Download Program Enrollments</button>
-              <button className="btn btn-outline-primary">Download Course Enrollments</button>
+              <button className="btn btn-outline-primary">
+                <input
+                  type="file"
+                  visability="hidden"
+                  style={{
+                    position: 'absolute',
+                    height: '100%',
+                    width: '100%',
+                    opacity: '0',
+                    top: '0',
+                    left: '0',
+                  }}
+                  onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
+                />Upload Program Enrollments
+              </button>
+              <button
+                className="btn btn-outline-primary"
+                onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
+              >Download Program Enrollments
+              </button>
+            </div>
+            <div className="btn-group" role="group">
+              <button className="btn btn-outline-primary">
+                <input
+                  type="file"
+                  visability="hidden"
+                  style={{
+                    position: 'absolute',
+                    height: '100%',
+                    width: '100%',
+                    opacity: '0',
+                    top: '0',
+                    left: '0',
+                  }}
+                  onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
+                />Upload Course Enrollments
+              </button>
+              <button
+                className="btn btn-outline-primary"
+                onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
+              >Download Course Enrollments
+              </button>
             </div>
           </div>
         ))}
@@ -42,14 +114,23 @@ class UploadPage extends React.Component {
 }
 
 UploadPage.propTypes = {
-  fetchWritablePrograms: PropTypes.func.isRequired,
+  authorized: PropTypes.bool.isRequired,
+  broken: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({
-    program_key: PropTypes.string,
-    program_title: PropTypes.string,
-    program_url: PropTypes.string,
+    programKey: PropTypes.string,
+    programTitle: PropTypes.string,
+    programUrl: PropTypes.string,
   })).isRequired,
+  fetchWritablePrograms: PropTypes.func.isRequired,
+  programBanners: PropTypes.shape().isRequired,
+  uploadEnrollments: PropTypes.func.isRequired,
+  downloadEnrollments: PropTypes.func.isRequired,
+  removeBanner: PropTypes.func.isRequired,
 };
 
 export default connect(uploadSelector, {
   fetchWritablePrograms,
+  uploadEnrollments,
+  downloadEnrollments,
+  removeBanner,
 })(injectIntl(UploadPage));
