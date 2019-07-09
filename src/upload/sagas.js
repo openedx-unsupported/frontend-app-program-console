@@ -115,6 +115,15 @@ export function* handleUploadEnrollments({ payload: { programKey, isCourses, fil
           message: 'Invalid CSV',
         },
       ));
+    } else if (status === 409) {
+      yield put(uploadEnrollmentsFailue(
+        programKey,
+        {
+          id: programKey + Date.now(),
+          bannerType: 'warning',
+          message: 'There is already a processing enrollment job for this program.',
+        },
+      ));
     }
   }
 }
