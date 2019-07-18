@@ -38,6 +38,8 @@ export async function getJob(jobId) {
 }
 
 function handleErrorResponses(error) {
+  console.log('handling error');
+  console.log(error);
   const response = error && error.response;
   const errorStatus = response && response.status;
 
@@ -52,6 +54,7 @@ function handleErrorResponses(error) {
 }
 
 export async function uploadEnrollments(programKey, isCourseEnrollments, file) {
+  console.log('in herr');
   const headers = {
     'Content-Type': 'multipart/form-data ',
   };
@@ -63,12 +66,15 @@ export async function uploadEnrollments(programKey, isCourseEnrollments, file) {
     handleErrorResponses,
   );
 
+  console.log('about to make request');
   const enrollmentType = isCourseEnrollments ? 'course_enrollments' : 'enrollments';
   const { data } = await apiClient.post(
     `${config.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/${enrollmentType}/upload/`,
     formData,
     { headers },
   );
+  console.log('did it?');
+  console.log(data);
   return data;
 }
 

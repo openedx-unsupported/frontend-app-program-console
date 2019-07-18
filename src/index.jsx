@@ -3,28 +3,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { identifyAuthenticatedUser, sendPageEvent, configureAnalytics, initializeSegment } from '@edx/frontend-analytics';
 import LoggingService from '@edx/frontend-logging';
-import { getAuthenticatedAPIClient } from '@edx/frontend-auth';
 
 import { configuration } from './environment';
 import { handleRtl } from './i18n/i18n-loader';
 import configureStore from './store';
 import { configureUserAccountApiService } from './common';
 import { configureApiService as configureUploadApiService } from './upload';
+import apiClient from './upload/apiClient';
 
 import './index.scss';
 import App from './components/App';
 
-const apiClient = getAuthenticatedAPIClient({
-  appBaseUrl: configuration.BASE_URL,
-  authBaseUrl: configuration.LMS_BASE_URL,
-  loginUrl: configuration.LOGIN_URL,
-  logoutUrl: configuration.LOGOUT_URL,
-  csrfTokenApiPath: configuration.CSRF_TOKEN_API_PATH,
-  refreshAccessTokenEndpoint: configuration.REFRESH_ACCESS_TOKEN_ENDPOINT,
-  accessTokenCookieName: configuration.ACCESS_TOKEN_COOKIE_NAME,
-  userInfoCookieName: configuration.USER_INFO_COOKIE_NAME,
-  csrfCookieName: configuration.CSRF_COOKIE_NAME,
-});
 
 /**
  * We need to merge the application configuration with the authentication state
