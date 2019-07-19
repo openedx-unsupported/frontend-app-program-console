@@ -63,10 +63,10 @@ class UploadPage extends React.Component {
                 />
             ))}
             <div className="btn-group" role="group">
-              <button className="btn btn-outline-primary">
+              <div className="btn btn-outline-primary">
                 <input
                   type="file"
-                  visability="hidden"
+                  className="sr"
                   style={{
                     position: 'absolute',
                     height: '100%',
@@ -74,10 +74,11 @@ class UploadPage extends React.Component {
                     opacity: '0',
                     top: '0',
                     left: '0',
+                    cursor: 'pointer',
                   }}
                   onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
                 />Upload Program Enrollments
-              </button>
+              </div>
               <button
                 className="btn btn-outline-primary"
                 onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
@@ -85,10 +86,10 @@ class UploadPage extends React.Component {
               </button>
             </div>
             <div className="btn-group" role="group">
-              <button className="btn btn-outline-primary">
+              <div className="btn btn-outline-primary">
                 <input
                   type="file"
-                  visability="hidden"
+                  className="sr"
                   style={{
                     position: 'absolute',
                     height: '100%',
@@ -96,10 +97,11 @@ class UploadPage extends React.Component {
                     opacity: '0',
                     top: '0',
                     left: '0',
+                    cursor: 'pointer',
                   }}
                   onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
                 />Upload Course Enrollments
-              </button>
+              </div>
               <button
                 className="btn btn-outline-primary"
                 onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
