@@ -1,31 +1,31 @@
 
 import { all, call, delay, put, takeEvery } from 'redux-saga/effects';
-import { push } from 'connected-react-router';
 import LoggingService from '@edx/frontend-logging';
 import parseRegistrarJobName from './utils';
 
 // Actions
 import {
-  FETCH_WRITABLE_PROGRAMS,
-  fetchWritableProgramsBegin,
-  fetchWritableProgramsSuccess,
-  fetchWritableProgramsFailure,
+  addBanner,
   FETCH_JOBS,
   fetchJobs,
   fetchJobsBegin,
-  fetchJobsSuccess,
   fetchJobsFailure,
-  UPLOAD_ENROLLMENTS,
-  uploadEnrollmentsSuccess,
-  uploadEnrollmentsFailure,
+  fetchJobsSuccess,
+  FETCH_WRITABLE_PROGRAMS,
+  fetchWritableProgramsBegin,
+  fetchWritableProgramsFailure,
+  fetchWritableProgramsSuccess,
   DOWNLOAD_ENROLLMENTS,
-  downloadEnrollmentsSuccess,
   downloadEnrollmentsFailue,
+  downloadEnrollmentsSuccess,
+  notAuthenticated,
   POLL_JOB,
   pollJob,
   pollJobSuccess,
-  addBanner,
   removeBanner,
+  UPLOAD_ENROLLMENTS,
+  uploadEnrollmentsFailure,
+  uploadEnrollmentsSuccess,
 
 } from './actions';
 
@@ -37,19 +37,23 @@ export function* handleFetchWritablePrograms() {
     yield put(fetchWritableProgramsBegin());
 
     const data = yield call(ApiService.getWritablePrograms);
-    yield put(fetchWritableProgramsSuccess(data
-      .map(({ program_key, program_title, program_url }) => // eslint-disable-line camelcase
-        (
-          {
-            programKey: program_key,
-            programTitle: program_title,
-            programUrl: program_url,
-          }
-        ))));
+
+    if (data.length > 0) {
+      yield put(fetchWritableProgramsSuccess(data
+        .map(({ program_key, program_title, program_url }) => // eslint-disable-line camelcase
+          (
+            {
+              programKey: program_key,
+              programTitle: program_title,
+              programUrl: program_url,
+            }
+          ))));
+    } else {
+      yield put(notAuthenticated());
+    }
   } catch (e) {
     LoggingService.logAPIErrorResponse(e);
     yield put(fetchWritableProgramsFailure(e.message));
-    yield put(push('/error'));
   }
   yield put(fetchJobs());
 }
@@ -77,7 +81,6 @@ export function* handleFetchJobs() {
   } catch (e) {
     LoggingService.logAPIErrorResponse(e);
     yield put(fetchJobsFailure(e.message));
-    yield put(push('/error'));
   }
 }
 

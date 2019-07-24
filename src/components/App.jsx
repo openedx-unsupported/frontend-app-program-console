@@ -12,7 +12,7 @@ import { PageLoading, fetchUserAccount } from '../common';
 
 import FooterLogo from '../assets/edx-footer.png';
 import HeaderLogo from '../assets/logo.svg';
-import UploadPage from '../upload/UploadPage';
+import ConnectedUploadPage from '../upload/UploadPage';
 
 import messages from './App.messages';
 
@@ -94,7 +94,7 @@ function PageContent({
         loggedOutItems={loggedOutItems}
       />
       <main>
-        <UploadPage />
+        <ConnectedUploadPage />
       </main>
       <SiteFooter
         siteName={configuration.SITE_NAME}
