@@ -16,7 +16,7 @@ import {
   fetchWritableProgramsFailure,
   fetchWritableProgramsSuccess,
   DOWNLOAD_ENROLLMENTS,
-  downloadEnrollmentsFailue,
+  downloadEnrollmentsFailure,
   downloadEnrollmentsSuccess,
   notAuthenticated,
   POLL_JOB,
@@ -138,7 +138,7 @@ export function* handleDownloadEnrollments({ payload: { programKey, isCourses } 
     ]);
   } catch (e) {
     LoggingService.logAPIErrorResponse(e);
-    yield put(downloadEnrollmentsFailue(
+    yield put(downloadEnrollmentsFailure(
       programKey,
       {
         id: programKey + Date.now(),

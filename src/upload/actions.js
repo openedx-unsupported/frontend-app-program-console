@@ -70,7 +70,7 @@ export const downloadEnrollmentsSuccess = (programKey, bannerObj) => ({
   },
 });
 
-export const downloadEnrollmentsFailue = (programKey, bannerObj) => ({
+export const downloadEnrollmentsFailure = (programKey, bannerObj) => ({
   type: DOWNLOAD_ENROLLMENTS.FAILURE,
   payload: {
     programKey,
@@ -127,10 +127,6 @@ export const pollJob = (programKey, jobId, bannerId) => ({
     jobId,
     bannerId,
   },
-});
-
-export const pollJobBegin = () => ({
-  type: POLL_JOB.BEGIN,
 });
 
 export const pollJobSuccess = (programKey, bannerObj) => ({
