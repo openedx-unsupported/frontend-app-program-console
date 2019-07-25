@@ -1,8 +1,6 @@
 import {
   addBanner,
   downloadEnrollments,
-  downloadEnrollmentsFailure,
-  downloadEnrollmentsSuccess,
   fetchJobs,
   fetchJobsBegin,
   fetchJobsFailure,
@@ -13,12 +11,9 @@ import {
   fetchWritableProgramsSuccess,
   notAuthenticated,
   pollJob,
-  pollJobSuccess,
   pollJobFailure,
   removeBanner,
   uploadEnrollments,
-  uploadEnrollmentsFailure,
-  uploadEnrollmentsSuccess,
 } from './actions';
 
 describe('!Adding and removing banners', () => {
@@ -64,40 +59,6 @@ describe('#DOWNLOAD_ENROLLMENTS', () => {
       payload: {
         programKey: '123',
         isCourses: true,
-      },
-    });
-  });
-
-  it('...has a success action creator', () => {
-    const testBannerObj = {
-      id: `123${Date.now()}`,
-      bannerType: 'success',
-      message: 'Yay! You did it!',
-    };
-
-    expect(downloadEnrollmentsSuccess).toBeInstanceOf(Function);
-    expect(downloadEnrollmentsSuccess('123', testBannerObj)).toEqual({
-      type: 'DOWNLOAD__DOWNLOAD_PROGRAM_ENROLLMENTS__SUCCESS',
-      payload: {
-        programKey: '123',
-        bannerObj: testBannerObj,
-      },
-    });
-  });
-
-  it('...has a failure action creator', () => {
-    const testBannerObj = {
-      id: `123${Date.now()}`,
-      bannerType: 'success',
-      message: 'Yay! You did it!',
-    };
-
-    expect(downloadEnrollmentsFailure).toBeInstanceOf(Function);
-    expect(downloadEnrollmentsFailure('123', testBannerObj)).toEqual({
-      type: 'DOWNLOAD__DOWNLOAD_PROGRAM_ENROLLMENTS__FAILURE',
-      payload: {
-        programKey: '123',
-        bannerObj: testBannerObj,
       },
     });
   });
@@ -186,22 +147,6 @@ describe('#POLL_JOB', () => {
     });
   });
 
-  it('...has a success action creator', () => {
-    const testBannerObj = {
-      id: `123${Date.now()}`,
-      bannerType: 'success',
-      message: 'Yay! You did it!',
-    };
-    expect(pollJobSuccess).toBeInstanceOf(Function);
-    expect(pollJobSuccess('123', testBannerObj)).toEqual({
-      type: 'GET__POLL_JOB__SUCCESS',
-      payload: {
-        programKey: '123',
-        bannerObj: testBannerObj,
-      },
-    });
-  });
-
   it('..has a failure action creator', () => {
     const testErrorObj = new Error('It failed!');
     expect(pollJobFailure).toBeInstanceOf(Function);
@@ -224,40 +169,6 @@ describe('#UPLOAD_ENROLLMENTS', () => {
         programKey: '123',
         isCourses: true,
         file: testFile,
-      },
-    });
-  });
-
-  it('...has a success action creator', () => {
-    const testBannerObj = {
-      id: `123${Date.now()}`,
-      bannerType: 'success',
-      message: 'Yay! You did it!',
-    };
-
-    expect(uploadEnrollmentsSuccess).toBeInstanceOf(Function);
-    expect(uploadEnrollmentsSuccess('123', testBannerObj)).toEqual({
-      type: 'UPLOAD__UPlOAD_PROGRAM_ENROLLMENTS__SUCCESS',
-      payload: {
-        programKey: '123',
-        bannerObj: testBannerObj,
-      },
-    });
-  });
-
-  it('...has a failure action creator', () => {
-    const testBannerObj = {
-      id: `123${Date.now()}`,
-      bannerType: 'success',
-      message: 'Yay! You did it!',
-    };
-
-    expect(uploadEnrollmentsFailure).toBeInstanceOf(Function);
-    expect(uploadEnrollmentsFailure('123', testBannerObj)).toEqual({
-      type: 'UPLOAD__UPlOAD_PROGRAM_ENROLLMENTS__FAILURE',
-      payload: {
-        programKey: '123',
-        bannerObj: testBannerObj,
       },
     });
   });

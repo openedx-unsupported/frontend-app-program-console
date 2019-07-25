@@ -1,11 +1,12 @@
-import { shallow, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
+import renderer from 'react-test-renderer';
 import { UploadPage } from './UploadPage';
 
 
 describe('UploadPage...', () => {
   it('...renders with the most basic props passed to it', () => {
-    const wrapper = shallow(<UploadPage
+    const tree = renderer.create((<UploadPage
       authorized
       data={[]}
       downloadEnrollments={() => {}}
@@ -13,12 +14,12 @@ describe('UploadPage...', () => {
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
-    />);
-    expect(wrapper).toMatchSnapshot();
+    />)).toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('...renders an error banner if there is not an authorized user', () => {
-    const wrapper = mount(<UploadPage
+    const uploadPageComponent = (<UploadPage
       authorized={false}
       data={[]}
       downloadEnrollments={() => {}}
@@ -27,8 +28,10 @@ describe('UploadPage...', () => {
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
     />);
+    const wrapper = mount(uploadPageComponent);
+    const tree = renderer.create(uploadPageComponent);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
     expect(wrapper.exists('.alert.alert-warning.show')).toEqual(true);
     wrapper.unmount();
   });
@@ -43,8 +46,7 @@ describe('UploadPage...', () => {
       programTitle: 'b masters',
       programUrl: 'https://bmasters.com',
     }];
-
-    const wrapper = mount(<UploadPage
+    const uploadPageComponent = (<UploadPage
       authorized
       data={apiData}
       downloadEnrollments={() => {}}
@@ -53,8 +55,11 @@ describe('UploadPage...', () => {
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
     />);
+    const wrapper = mount(uploadPageComponent);
+    const tree = renderer.create(uploadPageComponent).toJSON();
 
-    expect(wrapper).toMatchSnapshot();
+
+    expect(tree).toMatchSnapshot();
     apiData.forEach((program, idx) => {
       expect(wrapper.find('h2').at(idx).text()).toEqual(program.programTitle);
     });
@@ -89,8 +94,7 @@ describe('UploadPage...', () => {
         message: 'You did it!',
       }],
     };
-
-    const wrapper = mount(<UploadPage
+    const uploadPageComponent = (<UploadPage
       authorized
       data={apiData}
       downloadEnrollments={() => {}}
@@ -99,10 +103,10 @@ describe('UploadPage...', () => {
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
     />);
+    const wrapper = mount(uploadPageComponent);
+    const tree = renderer.create(uploadPageComponent).toJSON();
 
-    // TODO: For some reason snapshot testing this makes js run out of memory...
-    // Not sure why, going to forgo it for now, but probably should figure this out at some point.
-    // expect(wrapper).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
     expect(wrapper.find('.alert-danger .alert-dialog').at(0).text()).toEqual('Sorry something went wrong ');
     expect(wrapper.find('.alert-success .alert-dialog').at(0).text()).toEqual('You did it! ');
 
@@ -150,14 +154,24 @@ describe('UploadPage...', () => {
       removeBanner={() => {}}
     />);
 
-    expect(mock).not.toHaveBeenCalled();
-    wrapper.find('button.btn.btn-outline-primary').at(0).simulate('click');
+    const programADownloadProgramButton = wrapper.find('button.btn.btn-outline-primary').at(0);
+    expect(programADownloadProgramButton.text()).toEqual('Download Program Enrollments');
+    programADownloadProgramButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('a', false);
-    wrapper.find('button.btn.btn-outline-primary').at(1).simulate('click');
+
+    const programADownloadCourseButton = wrapper.find('button.btn.btn-outline-primary').at(1);
+    expect(programADownloadCourseButton.text()).toEqual('Download Course Enrollments');
+    programADownloadCourseButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('a', true);
-    wrapper.find('button.btn.btn-outline-primary').at(2).simulate('click');
+
+    const programBDownloadProgramButton = wrapper.find('button.btn.btn-outline-primary').at(2);
+    expect(programBDownloadProgramButton.text()).toEqual('Download Program Enrollments');
+    programBDownloadProgramButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('b', false);
-    wrapper.find('button.btn.btn-outline-primary').at(3).simulate('click');
+
+    const programBDownloadCourseButton = wrapper.find('button.btn.btn-outline-primary').at(3);
+    expect(programBDownloadCourseButton.text()).toEqual('Download Course Enrollments');
+    programBDownloadCourseButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('b', true);
   });
 

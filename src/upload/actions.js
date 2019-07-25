@@ -36,22 +36,6 @@ export const uploadEnrollments = (programKey, isCourses, file) => ({
   },
 });
 
-export const uploadEnrollmentsSuccess = (programKey, bannerObj) => ({
-  type: UPLOAD_ENROLLMENTS.SUCCESS,
-  payload: {
-    programKey,
-    bannerObj,
-  },
-});
-
-export const uploadEnrollmentsFailure = (programKey, bannerObj) => ({
-  type: UPLOAD_ENROLLMENTS.FAILURE,
-  payload: {
-    programKey,
-    bannerObj,
-  },
-});
-
 export const DOWNLOAD_ENROLLMENTS = new AsyncActionType('DOWNLOAD', 'DOWNLOAD_PROGRAM_ENROLLMENTS');
 
 export const downloadEnrollments = (programKey, isCourses) => ({
@@ -61,23 +45,6 @@ export const downloadEnrollments = (programKey, isCourses) => ({
     isCourses,
   },
 });
-
-export const downloadEnrollmentsSuccess = (programKey, bannerObj) => ({
-  type: DOWNLOAD_ENROLLMENTS.SUCCESS,
-  payload: {
-    programKey,
-    bannerObj,
-  },
-});
-
-export const downloadEnrollmentsFailure = (programKey, bannerObj) => ({
-  type: DOWNLOAD_ENROLLMENTS.FAILURE,
-  payload: {
-    programKey,
-    bannerObj,
-  },
-});
-
 
 export const notAuthenticated = () => ({
   type: 'NOT_AUTHENTICATED',
@@ -126,14 +93,6 @@ export const pollJob = (programKey, jobId, bannerId) => ({
     programKey,
     jobId,
     bannerId,
-  },
-});
-
-export const pollJobSuccess = (programKey, bannerObj) => ({
-  type: POLL_JOB.SUCCESS,
-  payload: {
-    programKey,
-    bannerObj,
   },
 });
 

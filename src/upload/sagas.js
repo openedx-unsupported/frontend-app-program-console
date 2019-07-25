@@ -16,16 +16,11 @@ import {
   fetchWritableProgramsFailure,
   fetchWritableProgramsSuccess,
   DOWNLOAD_ENROLLMENTS,
-  downloadEnrollmentsFailure,
-  downloadEnrollmentsSuccess,
   notAuthenticated,
   POLL_JOB,
   pollJob,
-  pollJobSuccess,
   removeBanner,
   UPLOAD_ENROLLMENTS,
-  uploadEnrollmentsFailure,
-  uploadEnrollmentsSuccess,
 
 } from './actions';
 
@@ -62,6 +57,7 @@ export function* handleFetchJobs() {
   try {
     yield put(fetchJobsBegin());
     const data = yield call(ApiService.getJobs);
+    // TODO: Refactor this to a filter followed by some other iterator to make it more readable
     for (let i = 0; i < data.length; i += 1) {
       const job = data[i];
       const jobNameInfo = parseRegistrarJobName(job.name);
@@ -96,14 +92,14 @@ export function* handleUploadEnrollments({ payload: { programKey, isCourses, fil
       message: 'Your enrollment file has been accepted and is being processed. Please wait.',
     };
     yield all([
-      put(uploadEnrollmentsSuccess(programKey, bannerObj)),
+      put(addBanner(programKey, bannerObj)),
       put(pollJob(programKey, data.job_id, bannerObj.id)),
     ]);
   } catch (e) {
     const { response: { status } } = e;
     LoggingService.logAPIErrorResponse(e);
     if (status === 500) {
-      yield put(uploadEnrollmentsFailure(
+      yield put(addBanner(
         programKey,
         {
           id: programKey + Date.now(),
@@ -112,7 +108,7 @@ export function* handleUploadEnrollments({ payload: { programKey, isCourses, fil
         },
       ));
     } else if (status === 400) {
-      yield put(uploadEnrollmentsFailure(
+      yield put(addBanner(
         programKey,
         {
           id: programKey + Date.now(),
@@ -133,12 +129,12 @@ export function* handleDownloadEnrollments({ payload: { programKey, isCourses } 
       message: 'Your enrollment csv is being built. Please wait.',
     };
     yield all([
-      put(downloadEnrollmentsSuccess(programKey, bannerObj)),
+      put(addBanner(programKey, bannerObj)),
       put(pollJob(programKey, data.job_id, bannerObj.id)),
     ]);
   } catch (e) {
     LoggingService.logAPIErrorResponse(e);
-    yield put(downloadEnrollmentsFailure(
+    yield put(addBanner(
       programKey,
       {
         id: programKey + Date.now(),
@@ -156,7 +152,7 @@ export function* handlePollJobs({ payload: { programKey, jobId, bannerId } }) {
       const jobNameInfo = parseRegistrarJobName(responseData.name);
       yield all([
         put(removeBanner(programKey, bannerId)),
-        put(pollJobSuccess(
+        put(addBanner(
           programKey,
           {
             id: programKey + Date.now(),
@@ -174,7 +170,7 @@ export function* handlePollJobs({ payload: { programKey, jobId, bannerId } }) {
       const jobNameInfo = parseRegistrarJobName(responseData.name);
       yield all([
         put(removeBanner(programKey, bannerId)),
-        put(pollJobSuccess(
+        put(addBanner(
           programKey,
           {
             id: programKey + Date.now(),
