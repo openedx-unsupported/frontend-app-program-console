@@ -7,7 +7,7 @@ import { StatusAlert } from '@edx/paragon';
 import { fetchWritablePrograms, uploadEnrollments, downloadEnrollments, removeBanner } from './actions';
 import { uploadSelector } from './selectors';
 
-class UploadPage extends React.Component {
+export class UploadPage extends React.Component {
   componentDidMount() {
     this.props.fetchWritablePrograms();
   }
@@ -66,16 +66,7 @@ class UploadPage extends React.Component {
               <div className="btn btn-outline-primary">
                 <input
                   type="file"
-                  className="sr"
-                  style={{
-                    position: 'absolute',
-                    height: '100%',
-                    width: '100%',
-                    opacity: '0',
-                    top: '0',
-                    left: '0',
-                    cursor: 'pointer',
-                  }}
+                  className="sr input-overlay-hack"
                   onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
                 />Upload Program Enrollments
               </div>
@@ -89,16 +80,7 @@ class UploadPage extends React.Component {
               <div className="btn btn-outline-primary">
                 <input
                   type="file"
-                  className="sr"
-                  style={{
-                    position: 'absolute',
-                    height: '100%',
-                    width: '100%',
-                    opacity: '0',
-                    top: '0',
-                    left: '0',
-                    cursor: 'pointer',
-                  }}
+                  className="sr input-overlay-hack"
                   onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
                 />Upload Course Enrollments
               </div>

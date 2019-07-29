@@ -1,0 +1,371 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UploadPage... ...renders an error banner if there is not an authorized user 1`] = `
+<div
+  className="container py-5 align-items-start"
+>
+  <h1>
+    Program Manager
+  </h1>
+  <div
+    className="alert fade alert-warning show"
+    hidden={false}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <p>
+        It appears you do not have proper permissions to access this application. Please reach out to 
+        <a
+          href="mailto:partner-support@edx.org"
+        >
+          partner-support@edx.org
+        </a>
+         requesting access to the Registrar service.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`UploadPage... ...renders program banners when they are included 1`] = `
+<div
+  className="container py-5 align-items-start"
+>
+  <h1>
+    Program Manager
+  </h1>
+  <div
+    className="alert fade alert-warning"
+    hidden={true}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <p>
+        It appears you do not have proper permissions to access this application. Please reach out to 
+        <a
+          href="mailto:partner-support@edx.org"
+        >
+          partner-support@edx.org
+        </a>
+         requesting access to the Registrar service.
+      </p>
+    </div>
+  </div>
+  <div
+    className="container"
+  >
+    <h2>
+      a masters
+    </h2>
+    <div
+      className="alert fade alert-dismissible alert-danger show"
+      hidden={false}
+      role="alert"
+    >
+      <button
+        aria-label="Close"
+        className="btn close"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ×
+        </span>
+      </button>
+      <div
+        className="alert-dialog"
+      >
+        <div
+          className="modal-alert"
+        >
+          Sorry something went wrong 
+        </div>
+      </div>
+    </div>
+    <div
+      className="btn-group"
+      role="group"
+    >
+      <div
+        className="btn btn-outline-primary"
+      >
+        <input
+          className="sr input-overlay-hack"
+          onChange={[Function]}
+          type="file"
+        />
+        Upload Program Enrollments
+      </div>
+      <button
+        className="btn btn-outline-primary"
+        onClick={[Function]}
+      >
+        Download Program Enrollments
+      </button>
+    </div>
+    <div
+      className="btn-group"
+      role="group"
+    >
+      <div
+        className="btn btn-outline-primary"
+      >
+        <input
+          className="sr input-overlay-hack"
+          onChange={[Function]}
+          type="file"
+        />
+        Upload Course Enrollments
+      </div>
+      <button
+        className="btn btn-outline-primary"
+        onClick={[Function]}
+      >
+        Download Course Enrollments
+      </button>
+    </div>
+  </div>
+  <div
+    className="container"
+  >
+    <h2>
+      b masters
+    </h2>
+    <div
+      className="alert fade alert-dismissible alert-success show"
+      hidden={false}
+      role="alert"
+    >
+      <button
+        aria-label="Close"
+        className="btn close"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ×
+        </span>
+      </button>
+      <div
+        className="alert-dialog"
+      >
+        <div
+          className="modal-alert"
+        >
+          You did it! 
+        </div>
+      </div>
+    </div>
+    <div
+      className="btn-group"
+      role="group"
+    >
+      <div
+        className="btn btn-outline-primary"
+      >
+        <input
+          className="sr input-overlay-hack"
+          onChange={[Function]}
+          type="file"
+        />
+        Upload Program Enrollments
+      </div>
+      <button
+        className="btn btn-outline-primary"
+        onClick={[Function]}
+      >
+        Download Program Enrollments
+      </button>
+    </div>
+    <div
+      className="btn-group"
+      role="group"
+    >
+      <div
+        className="btn btn-outline-primary"
+      >
+        <input
+          className="sr input-overlay-hack"
+          onChange={[Function]}
+          type="file"
+        />
+        Upload Course Enrollments
+      </div>
+      <button
+        className="btn btn-outline-primary"
+        onClick={[Function]}
+      >
+        Download Course Enrollments
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
+<div
+  className="container py-5 align-items-start"
+>
+  <h1>
+    Program Manager
+  </h1>
+  <div
+    className="alert fade alert-warning"
+    hidden={true}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <p>
+        It appears you do not have proper permissions to access this application. Please reach out to 
+        <a
+          href="mailto:partner-support@edx.org"
+        >
+          partner-support@edx.org
+        </a>
+         requesting access to the Registrar service.
+      </p>
+    </div>
+  </div>
+  <div
+    className="container"
+  >
+    <h2>
+      a masters
+    </h2>
+    <div
+      className="btn-group"
+      role="group"
+    >
+      <div
+        className="btn btn-outline-primary"
+      >
+        <input
+          className="sr input-overlay-hack"
+          onChange={[Function]}
+          type="file"
+        />
+        Upload Program Enrollments
+      </div>
+      <button
+        className="btn btn-outline-primary"
+        onClick={[Function]}
+      >
+        Download Program Enrollments
+      </button>
+    </div>
+    <div
+      className="btn-group"
+      role="group"
+    >
+      <div
+        className="btn btn-outline-primary"
+      >
+        <input
+          className="sr input-overlay-hack"
+          onChange={[Function]}
+          type="file"
+        />
+        Upload Course Enrollments
+      </div>
+      <button
+        className="btn btn-outline-primary"
+        onClick={[Function]}
+      >
+        Download Course Enrollments
+      </button>
+    </div>
+  </div>
+  <div
+    className="container"
+  >
+    <h2>
+      b masters
+    </h2>
+    <div
+      className="btn-group"
+      role="group"
+    >
+      <div
+        className="btn btn-outline-primary"
+      >
+        <input
+          className="sr input-overlay-hack"
+          onChange={[Function]}
+          type="file"
+        />
+        Upload Program Enrollments
+      </div>
+      <button
+        className="btn btn-outline-primary"
+        onClick={[Function]}
+      >
+        Download Program Enrollments
+      </button>
+    </div>
+    <div
+      className="btn-group"
+      role="group"
+    >
+      <div
+        className="btn btn-outline-primary"
+      >
+        <input
+          className="sr input-overlay-hack"
+          onChange={[Function]}
+          type="file"
+        />
+        Upload Course Enrollments
+      </div>
+      <button
+        className="btn btn-outline-primary"
+        onClick={[Function]}
+      >
+        Download Course Enrollments
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`UploadPage... ...renders with the most basic props passed to it 1`] = `
+<div
+  className="container py-5 align-items-start"
+>
+  <h1>
+    Program Manager
+  </h1>
+  <div
+    className="alert fade alert-warning"
+    hidden={true}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <p>
+        It appears you do not have proper permissions to access this application. Please reach out to 
+        <a
+          href="mailto:partner-support@edx.org"
+        >
+          partner-support@edx.org
+        </a>
+         requesting access to the Registrar service.
+      </p>
+    </div>
+  </div>
+</div>
+`;
