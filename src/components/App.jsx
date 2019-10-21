@@ -7,14 +7,56 @@ import { sendTrackEvent } from '@edx/frontend-analytics';
 import SiteHeader from '@edx/frontend-component-site-header';
 import SiteFooter from '@edx/frontend-component-footer';
 import { getLocale, getMessages } from '@edx/frontend-i18n'; // eslint-disable-line
+import {
+  faFacebookSquare,
+  faTwitterSquare,
+  faLinkedin,
+  faGooglePlusSquare,
+  faRedditSquare,
+} from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { PageLoading, fetchUserAccount } from '../common';
 
-import FooterLogo from '../assets/edx-footer.png';
 import HeaderLogo from '../assets/logo.svg';
 import UploadPage from '../upload/UploadPage';
 
 import messages from './App.messages';
+
+const FooterLogo = HeaderLogo;
+
+const socialLinks = [
+  {
+    title: 'Facebook',
+    url: 'https://www.facebook.com',
+    icon: <FontAwesomeIcon icon={faFacebookSquare} className="social-icon" size="2x" />,
+    screenReaderText: 'Like edX on Facebook',
+  },
+  {
+    title: 'Twitter',
+    url: 'https://www.twitter.com',
+    icon: <FontAwesomeIcon icon={faTwitterSquare} className="social-icon" size="2x" />,
+    screenReaderText: 'Follow edX on Twitter',
+  },
+  {
+    title: 'LinkedIn',
+    url: 'https://www.linkedin.com',
+    icon: <FontAwesomeIcon icon={faLinkedin} className="social-icon" size="2x" />,
+    screenReaderText: 'Follow edX on LinkedIn',
+  },
+  {
+    title: 'Google+',
+    url: 'https://plus.google.com',
+    icon: <FontAwesomeIcon icon={faGooglePlusSquare} className="social-icon" size="2x" />,
+    screenReaderText: 'Follow edX on Google+',
+  },
+  {
+    title: 'Reddit',
+    url: 'https://reddit.com',
+    icon: <FontAwesomeIcon icon={faRedditSquare} className="social-icon" size="2x" />,
+    screenReaderText: 'Subscribe to the edX subreddit',
+  },
+];
 
 
 function PageContent({
@@ -97,23 +139,58 @@ function PageContent({
         <UploadPage />
       </main>
       <SiteFooter
-        siteName={configuration.SITE_NAME}
-        siteLogo={FooterLogo}
         marketingSiteBaseUrl={configuration.MARKETING_SITE_BASE_URL}
-        supportUrl={configuration.SUPPORT_URL}
-        contactUrl={configuration.CONTACT_URL}
-        openSourceUrl={configuration.OPEN_SOURCE_URL}
-        termsOfServiceUrl={configuration.TERMS_OF_SERVICE_URL}
-        privacyPolicyUrl={configuration.PRIVACY_POLICY_URL}
-        facebookUrl={configuration.FACEBOOK_URL}
-        twitterUrl={configuration.TWITTER_URL}
-        youTubeUrl={configuration.YOU_TUBE_URL}
-        linkedInUrl={configuration.LINKED_IN_URL}
-        googlePlusUrl={configuration.GOOGLE_PLUS_URL}
-        redditUrl={configuration.REDDIT_URL}
-        appleAppStoreUrl={configuration.APPLE_APP_STORE_URL}
-        googlePlayUrl={configuration.GOOGLE_PLAY_URL}
+        ariaLabel="Page Footer"
+        siteLogo={{
+          src: FooterLogo,
+          altText: configuration.SITE_NAME,
+          ariaLabel: configuration.SITE_NAME,
+        }}
+        appleAppStore={{
+          url: configuration.APPLE_APP_STORE_URL,
+          altText: 'Apple App Store',
+        }}
+        googlePlay={{
+          url: configuration.GOOGLE_PLAY_URL,
+          altText: 'Google Play',
+        }}
         handleAllTrackEvents={sendTrackEvent}
+        socialLinks={socialLinks}
+        linkSectionOne={{
+          title: 'edX',
+          linkList: [
+            { title: 'About', url: 'https://www.edx.org/about-us' },
+            { title: 'edX for Business', url: 'https://business.edx.org/?utm_campaign=edX.org+Referral&utm_medium=Footer&utm_source=edX.org' },
+            { title: 'Affiliates', url: 'https://www.edx.org/affiliate-program' },
+            { title: 'Open edX', url: configuration.OPEN_SOURCE_URL },
+            { title: 'Careers', url: 'https://www.edx.org/careers' },
+            { title: 'News', url: 'https://www.edx.org/news-announcements' },
+          ],
+        }}
+        linkSectionTwo={{
+          title: 'Legal',
+          linkList: [
+            { title: 'Terms of Service & Honor Code', url: configuration.TERMS_OF_SERVICE_URL },
+            { title: 'Privacy Policy', url: configuration.PRIVACY_POLICY_URL },
+            { title: 'Accessibility Policy', url: 'https://www.edx.org/accessibility' },
+            { title: 'Trademark Policy', url: 'https://www.edx.org/trademarks' },
+            { title: 'Sitemap', url: 'https://www.edx.org/sitemap' },
+          ],
+        }}
+        linkSectionThree={{
+          title: 'Connect',
+          linkList: [
+            { title: 'Blog', url: 'https://www.edx.org/blog' },
+            { title: 'Contact Us', url: configuration.CONTACT_URL },
+            { title: 'Help Center', url: configuration.SUPPORT_URL },
+            { title: 'Media Kit', url: 'https://www.edx.org/media-kit' },
+            { title: 'Donate', url: 'https://www.edx.org/donate' },
+          ],
+        }}
+        copyright="© 2012–2019 edX Inc."
+        trademark={(
+          <React.Fragment>EdX, Open edX, and MicroMasters are registered trademarks of edX Inc. | 深圳市恒宇博科技有限公司 <a href="http://www.beian.miit.gov.cn">粤ICP备17044299号-2</a></React.Fragment>
+        )}
       />
     </div>
   );
@@ -133,7 +210,6 @@ PageContent.propTypes = {
     PRIVACY_POLICY_URL: PropTypes.string.isRequired,
     FACEBOOK_URL: PropTypes.string.isRequired,
     TWITTER_URL: PropTypes.string.isRequired,
-    YOU_TUBE_URL: PropTypes.string.isRequired,
     LINKED_IN_URL: PropTypes.string.isRequired,
     GOOGLE_PLUS_URL: PropTypes.string.isRequired,
     REDDIT_URL: PropTypes.string.isRequired,
@@ -191,7 +267,6 @@ App.propTypes = {
     PRIVACY_POLICY_URL: PropTypes.string.isRequired,
     FACEBOOK_URL: PropTypes.string.isRequired,
     TWITTER_URL: PropTypes.string.isRequired,
-    YOU_TUBE_URL: PropTypes.string.isRequired,
     LINKED_IN_URL: PropTypes.string.isRequired,
     GOOGLE_PLUS_URL: PropTypes.string.isRequired,
     REDDIT_URL: PropTypes.string.isRequired,

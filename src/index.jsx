@@ -4,9 +4,10 @@ import ReactDOM from 'react-dom';
 import { identifyAuthenticatedUser, sendPageEvent, configureAnalytics, initializeSegment } from '@edx/frontend-analytics';
 import LoggingService from '@edx/frontend-logging';
 import { getAuthenticatedAPIClient } from '@edx/frontend-auth';
+import { handleRtl, configure as configureI18n } from '@edx/frontend-i18n';
 
 import { configuration } from './environment';
-import { handleRtl } from './i18n/i18n-loader';
+import messages from './i18n';
 import configureStore from './store';
 import { configureUserAccountApiService } from './common';
 import { configureApiService as configureUploadApiService } from './upload';
@@ -37,6 +38,7 @@ function createInitialState() {
 function configure() {
   const { store, history } = configureStore(createInitialState(), configuration.ENVIRONMENT);
 
+  configureI18n(configuration, messages);
   configureUserAccountApiService(configuration, apiClient);
   configureUploadApiService(configuration, apiClient);
   initializeSegment(configuration.SEGMENT_KEY);
