@@ -45,16 +45,16 @@ export class UploadPage extends React.Component {
         <div className="container" key='foo'>
           <h2>Master's Degree in Analytics</h2>
           <div className="btn-group" role="group">
-            <div className="btn btn-outline-primary">
+            <div className="btn open-btn btn-outline-primary">
                   Manage Enrollments
             </div>
           </div>
-          {/* <div className="expanded">
+          <div className="expanded">
             <div className="inner-btn">Upload Program Enrollments</div>
             <div className="inner-btn">Download Program Enrollments</div>
             <div className="inner-btn">Upload Course Enrollments</div>
             <div className="inner-btn">Download Course Enrollments</div>
-          </div> */}
+          </div>
           <div className="btn-group" role="group" style={{'margin-top':'10px'}}>
             <div className="btn my-btn btn-outline-primary">
                 <input
@@ -72,12 +72,21 @@ export class UploadPage extends React.Component {
             </div>
           </div>
           <div className="btn-group" role="group" style={{'margin-top':'10px'}}>
-            <div className="btn my-btn btn-outline-primary">
+            <div className="btn open-btn btn-outline-primary">
                 <input
                   type="file"
                   className="sr input-overlay-hack"
                 />Download Reports
             </div>
+          </div>
+          <div className="expanded">
+            <div className="head" style={{width:'80%'}}>Report</div>
+            <div className="head">Generated</div>
+            <div style={{clear: 'both'}}></div>
+            <div className="report-name"><a href="">Individual Learner Report</a></div>
+            <div className="report-date">12/23/2019</div>
+            <div className="report-name"><a href="">Aggregate Cohort Enrollment</a></div>
+            <div className="report-date">12/23/2019</div>
           </div>
         </div>
       </div>
