@@ -42,47 +42,44 @@ export class UploadPage extends React.Component {
           )}
           open={!this.props.authorized}
         />
-        {this.props.data.length > 0 && this.props.data.map(program => (
-          <div className="container" key={program.programKey}>
-            <h2>{program.programTitle}</h2>
-            {this.props.programBanners[program.programKey] &&
-              !!this.props.programBanners[program.programKey].length &&
-              this.props.programBanners[program.programKey].map(banner => (
-                <StatusAlert
-                  dismissible
-                  open
-                  key={banner.id}
-                  alertType={banner.bannerType}
-                  onClose={() => this.props.removeBanner(program.programKey, banner.id)}
-                  dialog={(
-                    <div className="modal-alert">
-                      {`${banner.message} `}
-                      {banner.linkMessage && <a href={banner.linkHref} target="_blank" rel="noopener noreferrer">{banner.linkMessage}</a>}
-                    </div>
-                  )}
-                />
-            ))}
-            <div className="btn-group" role="group">
-              <div className="btn open-btn btn-outline-primary">
-                    Manage Enrollments
-              </div>
-            </div>
-            <div className="expanded">
-              <div className="inner-btn">Upload Program Enrollments</div>
-              <div className="inner-btn">Download Program Enrollments</div>
-              <div className="inner-btn">Upload Course Enrollments</div>
-              <div className="inner-btn">Download Course Enrollments</div>
-            </div>
-            <div className="btn-group" role="group" style={{'margin-top':'10px'}}>
-              <div className="btn my-btn btn-outline-primary">
-                  <input
-                    type="file"
-                    className="sr input-overlay-hack"
-                  />Download Reports
-              </div>
+        <div className="container" key='foo'>
+          <h2>Master's Degree in Analytics</h2>
+          <div className="btn-group" role="group">
+            <div className="btn btn-outline-primary">
+                  Manage Enrollments
             </div>
           </div>
-        ))}
+          {/* <div className="expanded">
+            <div className="inner-btn">Upload Program Enrollments</div>
+            <div className="inner-btn">Download Program Enrollments</div>
+            <div className="inner-btn">Upload Course Enrollments</div>
+            <div className="inner-btn">Download Course Enrollments</div>
+          </div> */}
+          <div className="btn-group" role="group" style={{'margin-top':'10px'}}>
+            <div className="btn my-btn btn-outline-primary">
+                <input
+                  type="file"
+                  className="sr input-overlay-hack"
+                />Download Reports
+            </div>
+          </div>
+        </div>
+        <div className="container" key='foo'>
+          <h2>Master's of Everything</h2>
+          <div className="btn-group" role="group">
+            <div className="btn btn-outline-primary">
+                  Manage Enrollments
+            </div>
+          </div>
+          <div className="btn-group" role="group" style={{'margin-top':'10px'}}>
+            <div className="btn my-btn btn-outline-primary">
+                <input
+                  type="file"
+                  className="sr input-overlay-hack"
+                />Download Reports
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
