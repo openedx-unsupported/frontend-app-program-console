@@ -63,32 +63,23 @@ export class UploadPage extends React.Component {
                 />
             ))}
             <div className="btn-group" role="group">
-              <div className="btn btn-outline-primary">
-                <input
-                  type="file"
-                  className="sr input-overlay-hack"
-                  onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
-                />Upload Program Enrollments
+              <div className="btn open-btn btn-outline-primary">
+                    Manage Enrollments
               </div>
-              <button
-                className="btn btn-outline-primary"
-                onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
-              >Download Program Enrollments
-              </button>
             </div>
-            <div className="btn-group" role="group">
-              <div className="btn btn-outline-primary">
-                <input
-                  type="file"
-                  className="sr input-overlay-hack"
-                  onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
-                />Upload Course Enrollments
+            <div className="expanded">
+              <div className="inner-btn">Upload Program Enrollments</div>
+              <div className="inner-btn">Download Program Enrollments</div>
+              <div className="inner-btn">Upload Course Enrollments</div>
+              <div className="inner-btn">Download Course Enrollments</div>
+            </div>
+            <div className="btn-group" role="group" style={{'margin-top':'10px'}}>
+              <div className="btn my-btn btn-outline-primary">
+                  <input
+                    type="file"
+                    className="sr input-overlay-hack"
+                  />Download Reports
               </div>
-              <button
-                className="btn btn-outline-primary"
-                onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
-              >Download Course Enrollments
-              </button>
             </div>
           </div>
         ))}

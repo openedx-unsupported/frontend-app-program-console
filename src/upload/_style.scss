@@ -7,3 +7,41 @@
     left: 0;
     cursor: pointer;
   }
+
+.open-btn {
+  background-color: #f4f7ff;
+  border-radius: 20px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+}
+
+.btn-group {
+  width: 100%;
+  // margin-bottom: 10px;
+}
+
+.expanded {
+  height: 100px;
+  padding: 10px;
+  border: 2px solid #23419f;
+  border-radius: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: none;
+}
+
+.inner-btn {
+  float: left;
+  width: 45%;
+  height: 30px;
+  margin: 5px 2%;
+  // margin-bottom: 10px;
+  // margin-right: 30px;
+  font-size: 18px;
+  text-align: center;
+  // border: 2px solid #23419f;
+  background-color: #23419f;
+  color: white;
+  border-radius: 15px;
+}
