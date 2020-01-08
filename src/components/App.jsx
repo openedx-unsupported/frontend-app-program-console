@@ -286,7 +286,7 @@ const mapStateToProps = state => ({
   // which also means we're ready to display something.
   ready: state.userAccount.loaded || state.userAccount.error != null,
   configuration: state.configuration,
-  avatar: state.userAccount.profileImage.hasImage
+  avatar: state.userAccount.profileImage && state.userAccount.profileImage.hasImage
     ? state.userAccount.profileImage.imageUrlMedium
     : null,
 });
