@@ -5,10 +5,10 @@ import {
   fetchJobsBegin,
   fetchJobsFailure,
   fetchJobsSuccess,
-  fetchWritablePrograms,
-  fetchWritableProgramsBegin,
-  fetchWritableProgramsFailure,
-  fetchWritableProgramsSuccess,
+  fetchPrograms,
+  fetchProgramsBegin,
+  fetchProgramsFailure,
+  fetchProgramsSuccess,
   notAuthenticated,
   pollJob,
   pollJobFailure,
@@ -64,25 +64,25 @@ describe('#DOWNLOAD_ENROLLMENTS', () => {
   });
 });
 
-describe('#FETCH_WRITABLE_PROGRAMS', () => {
+describe('#FETCH_PROGRAMS', () => {
   it('...has a base action creator', () => {
-    expect(fetchWritablePrograms).toBeInstanceOf(Function);
-    expect(fetchWritablePrograms()).toEqual({
-      type: 'GET__FETCH_WRITABLE_PROGRAMS',
+    expect(fetchPrograms).toBeInstanceOf(Function);
+    expect(fetchPrograms()).toEqual({
+      type: 'GET__FETCH_PROGRAMS',
     });
   });
 
   it('...has a begin action creator', () => {
-    expect(fetchWritableProgramsBegin).toBeInstanceOf(Function);
-    expect(fetchWritableProgramsBegin()).toEqual({
-      type: 'GET__FETCH_WRITABLE_PROGRAMS__BEGIN',
+    expect(fetchProgramsBegin).toBeInstanceOf(Function);
+    expect(fetchProgramsBegin()).toEqual({
+      type: 'GET__FETCH_PROGRAMS__BEGIN',
     });
   });
 
   it('...has a success action creator', () => {
-    expect(fetchWritableProgramsSuccess).toBeInstanceOf(Function);
-    expect(fetchWritableProgramsSuccess({ foo: 'bar' })).toEqual({
-      type: 'GET__FETCH_WRITABLE_PROGRAMS__SUCCESS',
+    expect(fetchProgramsSuccess).toBeInstanceOf(Function);
+    expect(fetchProgramsSuccess({ foo: 'bar' })).toEqual({
+      type: 'GET__FETCH_PROGRAMS__SUCCESS',
       payload: {
         data: { foo: 'bar' },
       },
@@ -90,9 +90,9 @@ describe('#FETCH_WRITABLE_PROGRAMS', () => {
   });
 
   it('...has a failure action creator', () => {
-    expect(fetchWritableProgramsFailure).toBeInstanceOf(Function);
-    expect(fetchWritableProgramsFailure({ foo: 'bar' })).toEqual({
-      type: 'GET__FETCH_WRITABLE_PROGRAMS__FAILURE',
+    expect(fetchProgramsFailure).toBeInstanceOf(Function);
+    expect(fetchProgramsFailure({ foo: 'bar' })).toEqual({
+      type: 'GET__FETCH_PROGRAMS__FAILURE',
       payload: {
         error: { foo: 'bar' },
       },

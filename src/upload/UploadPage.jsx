@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { StatusAlert } from '@edx/paragon';
 
-import { fetchWritablePrograms, uploadEnrollments, downloadEnrollments, removeBanner } from './actions';
+import { fetchPrograms, uploadEnrollments, downloadEnrollments, removeBanner } from './actions';
 import { uploadSelector } from './selectors';
 
 export class UploadPage extends React.Component {
   componentDidMount() {
-    this.props.fetchWritablePrograms();
+    this.props.fetchPrograms();
   }
 
   handleUploadProgramEnrollments(programKey, e) {
@@ -104,7 +104,7 @@ UploadPage.propTypes = {
     programTitle: PropTypes.string,
     programUrl: PropTypes.string,
   })).isRequired,
-  fetchWritablePrograms: PropTypes.func.isRequired,
+  fetchPrograms: PropTypes.func.isRequired,
   programBanners: PropTypes.shape().isRequired,
   uploadEnrollments: PropTypes.func.isRequired,
   downloadEnrollments: PropTypes.func.isRequired,
@@ -112,7 +112,7 @@ UploadPage.propTypes = {
 };
 
 export default connect(uploadSelector, {
-  fetchWritablePrograms,
+  fetchPrograms,
   uploadEnrollments,
   downloadEnrollments,
   removeBanner,

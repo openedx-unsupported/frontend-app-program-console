@@ -1,6 +1,7 @@
 import pick from 'lodash.pick';
 import { put } from 'redux-saga/effects';
 import { notAuthenticated } from './actions';
+import { PERMISSIONS } from './constants';
 
 let config = {
   REGISTRAR_API_BASE_URL: null,
@@ -22,8 +23,11 @@ export function configureApiService(newConfig, newApiClient) {
   apiClient = newApiClient;
 }
 
-export async function getWritablePrograms() {
-  const { data } = await apiClient.get(`${config.REGISTRAR_API_BASE_URL}/v1/programs/?user_has_perm=write`, {});
+export async function getAccessiblePrograms() {
+  const { data } = await apiClient.get(
+    `${config.REGISTRAR_API_BASE_URL}/v1/programs/?user_has_perm=${PERMISSIONS.readMetadata}`,
+    {},
+  );
   return data;
 }
 
