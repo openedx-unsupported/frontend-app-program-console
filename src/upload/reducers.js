@@ -1,4 +1,5 @@
-import { FETCH_WRITABLE_PROGRAMS } from './actions';
+import { FETCH_PROGRAMS } from './actions';
+import { shouldProgramBeDisplayed } from './utils';
 
 export const defaultState = {
   loading: false,
@@ -12,19 +13,20 @@ export const defaultState = {
 const upload = (state = defaultState, action) => {
   const { programBanners } = state;
   switch (action.type) {
-    case FETCH_WRITABLE_PROGRAMS.BEGIN:
+    case FETCH_PROGRAMS.BEGIN:
       return {
         ...state,
         loading: true,
         loaded: false,
         loadingError: null,
       };
-    case FETCH_WRITABLE_PROGRAMS.SUCCESS:
+    case FETCH_PROGRAMS.SUCCESS: {
+      const filteredData = action.payload.data.filter(shouldProgramBeDisplayed);
       return {
         ...state,
-        authorized: true,
-        data: action.payload.data,
-        programBanners: action.payload.data.reduce((acc, curVal) => {
+        authorized: filteredData.length > 0,
+        data: filteredData,
+        programBanners: filteredData.reduce((acc, curVal) => {
           acc[curVal.programKey] = [];
           return acc;
         }, {}),
@@ -32,7 +34,8 @@ const upload = (state = defaultState, action) => {
         loaded: false,
         loadingError: null,
       };
-    case FETCH_WRITABLE_PROGRAMS.FAILURE:
+    }
+    case FETCH_PROGRAMS.FAILURE:
       return {
         ...state,
         authorized: false,

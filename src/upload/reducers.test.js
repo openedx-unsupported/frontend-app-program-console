@@ -1,5 +1,5 @@
 import uploadReducer from './reducers';
-import { FETCH_WRITABLE_PROGRAMS } from './actions';
+import { FETCH_PROGRAMS } from './actions';
 
 describe('!upload reducer', () => {
   it('returns the initial state', () => {
@@ -13,9 +13,9 @@ describe('!upload reducer', () => {
     });
   });
 
-  describe('#FETCH_WRITABLE_PROGRAMS', () => {
-    it('...handles the GET__FETCH_WRITABLE_PROGRAMS__BEGIN action', () => {
-      expect(uploadReducer(undefined, { type: FETCH_WRITABLE_PROGRAMS.BEGIN })).toEqual({
+  describe('#FETCH_PROGRAMS', () => {
+    it('...handles the GET__FETCH_PROGRAMS__BEGIN action', () => {
+      expect(uploadReducer(undefined, { type: FETCH_PROGRAMS.BEGIN })).toEqual({
         loading: true,
         loaded: false,
         loadingError: null,
@@ -25,27 +25,49 @@ describe('!upload reducer', () => {
       });
     });
 
-    it('...handles the GET__FETCH_WRITABLE_PROGRAMS__SUCCESS action', () => {
-      const fetchWritableProgramSuccess = {
-        type: FETCH_WRITABLE_PROGRAMS.SUCCESS,
+    it('...handles the GET__FETCH_PROGRAMS__SUCCESS action with displayable programs', () => {
+      const fetchProgramSuccess = {
+        type: FETCH_PROGRAMS.SUCCESS,
         payload: {
           data: [
-            { programKey: '123' },
+            { programKey: '123', areEnrollmentsWritable: true },
+            { programKey: '456', areEnrollmentsWritable: false },
           ],
         },
       };
-      expect(uploadReducer(undefined, fetchWritableProgramSuccess)).toEqual({
+      expect(uploadReducer(undefined, fetchProgramSuccess)).toEqual({
         loading: true,
         loaded: false,
         loadingError: null,
         authorized: true,
-        data: [{ programKey: '123' }],
+        data: [
+          { programKey: '123', areEnrollmentsWritable: true },
+        ],
         programBanners: { 123: [] },
       });
     });
 
-    it('...handles the GET__FETCH_WRITABLE_PROGRAMS__FAILURE action', () => {
-      expect(uploadReducer(undefined, { type: FETCH_WRITABLE_PROGRAMS.FAILURE, payload: { error: 'oops!' } })).toEqual({
+    it('...handles the GET__FETCH_PROGRAMS__SUCCESS action without displayable programs', () => {
+      const fetchProgramSuccess = {
+        type: FETCH_PROGRAMS.SUCCESS,
+        payload: {
+          data: [
+            { programKey: '123', areEnrollmentsWritable: false },
+          ],
+        },
+      };
+      expect(uploadReducer(undefined, fetchProgramSuccess)).toEqual({
+        loading: true,
+        loaded: false,
+        loadingError: null,
+        authorized: false,
+        data: [],
+        programBanners: {},
+      });
+    });
+
+    it('...handles the GET__FETCH_PROGRAMS__FAILURE action', () => {
+      expect(uploadReducer(undefined, { type: FETCH_PROGRAMS.FAILURE, payload: { error: 'oops!' } })).toEqual({
         loading: false,
         loaded: false,
         loadingError: 'oops!',

@@ -10,7 +10,7 @@ describe('UploadPage...', () => {
       authorized
       data={[]}
       downloadEnrollments={() => {}}
-      fetchWritablePrograms={() => {}}
+      fetchPrograms={() => {}}
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
@@ -23,7 +23,7 @@ describe('UploadPage...', () => {
       authorized={false}
       data={[]}
       downloadEnrollments={() => {}}
-      fetchWritablePrograms={() => {}}
+      fetchPrograms={() => {}}
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
@@ -50,7 +50,7 @@ describe('UploadPage...', () => {
       authorized
       data={apiData}
       downloadEnrollments={() => {}}
-      fetchWritablePrograms={() => {}}
+      fetchPrograms={() => {}}
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
@@ -98,7 +98,7 @@ describe('UploadPage...', () => {
       authorized
       data={apiData}
       downloadEnrollments={() => {}}
-      fetchWritablePrograms={() => {}}
+      fetchPrograms={() => {}}
       programBanners={programBanners}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
@@ -113,7 +113,7 @@ describe('UploadPage...', () => {
     wrapper.unmount();
   });
 
-  it('...calls the fetchWritablePrograms function on pageload', () => {
+  it('...calls the fetchPrograms function on pageload', () => {
     const mock = jest.fn();
 
     expect(mock).not.toHaveBeenCalled();
@@ -122,7 +122,7 @@ describe('UploadPage...', () => {
       authorized
       data={[]}
       downloadEnrollments={() => {}}
-      fetchWritablePrograms={mock}
+      fetchPrograms={mock}
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
@@ -148,7 +148,7 @@ describe('UploadPage...', () => {
       authorized
       data={apiData}
       downloadEnrollments={mock}
-      fetchWritablePrograms={() => {}}
+      fetchPrograms={() => {}}
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
@@ -192,7 +192,7 @@ describe('UploadPage...', () => {
       authorized
       data={apiData}
       downloadEnrollments={() => {}}
-      fetchWritablePrograms={() => {}}
+      fetchPrograms={() => {}}
       programBanners={{}}
       uploadEnrollments={mock}
       removeBanner={() => {}}

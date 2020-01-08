@@ -2,25 +2,25 @@ import { utils } from '../common';
 
 const { AsyncActionType } = utils;
 
-export const FETCH_WRITABLE_PROGRAMS = new AsyncActionType('GET', 'FETCH_WRITABLE_PROGRAMS');
+export const FETCH_PROGRAMS = new AsyncActionType('GET', 'FETCH_PROGRAMS');
 
-export const fetchWritablePrograms = () => ({
-  type: FETCH_WRITABLE_PROGRAMS.BASE,
+export const fetchPrograms = () => ({
+  type: FETCH_PROGRAMS.BASE,
 });
 
-export const fetchWritableProgramsBegin = () => ({
-  type: FETCH_WRITABLE_PROGRAMS.BEGIN,
+export const fetchProgramsBegin = () => ({
+  type: FETCH_PROGRAMS.BEGIN,
 });
 
-export const fetchWritableProgramsSuccess = data => ({
-  type: FETCH_WRITABLE_PROGRAMS.SUCCESS,
+export const fetchProgramsSuccess = data => ({
+  type: FETCH_PROGRAMS.SUCCESS,
   payload: {
     data,
   },
 });
 
-export const fetchWritableProgramsFailure = error => ({
-  type: FETCH_WRITABLE_PROGRAMS.FAILURE,
+export const fetchProgramsFailure = error => ({
+  type: FETCH_PROGRAMS.FAILURE,
   payload: { error },
 });
 

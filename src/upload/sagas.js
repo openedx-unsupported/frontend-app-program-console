@@ -1,7 +1,7 @@
 
 import { all, call, delay, put, takeEvery } from 'redux-saga/effects';
 import LoggingService from '@edx/frontend-logging';
-import parseRegistrarJobName from './utils';
+import { parseRegistrarJobName } from './utils';
 
 // Actions
 import {
@@ -11,10 +11,10 @@ import {
   fetchJobsBegin,
   fetchJobsFailure,
   fetchJobsSuccess,
-  FETCH_WRITABLE_PROGRAMS,
-  fetchWritableProgramsBegin,
-  fetchWritableProgramsFailure,
-  fetchWritableProgramsSuccess,
+  FETCH_PROGRAMS,
+  fetchProgramsBegin,
+  fetchProgramsFailure,
+  fetchProgramsSuccess,
   DOWNLOAD_ENROLLMENTS,
   notAuthenticated,
   POLL_JOB,
@@ -24,23 +24,32 @@ import {
 
 } from './actions';
 
+// Constants
+import { PERMISSIONS } from './constants';
+
 // Services
 import * as ApiService from './service';
 
-export function* handleFetchWritablePrograms() {
-  try {
-    yield put(fetchWritableProgramsBegin());
 
-    const data = yield call(ApiService.getWritablePrograms);
+export function* handleFetchPrograms() {
+  try {
+    yield put(fetchProgramsBegin());
+
+    const data = yield call(ApiService.getAccessiblePrograms);
 
     if (data.length > 0) {
-      yield put(fetchWritableProgramsSuccess(data
-        .map(({ program_key, program_title, program_url }) => // eslint-disable-line camelcase
+      yield put(fetchProgramsSuccess(data
+        .map(({
+          program_key, program_title, program_url, permissions, // eslint-disable-line camelcase
+        }) =>
           (
             {
               programKey: program_key,
               programTitle: program_title,
               programUrl: program_url,
+              areEnrollmentsWritable: permissions.includes(PERMISSIONS.writeEnrollments),
+              areEnrollmentsReadable: permissions.includes(PERMISSIONS.readEnrollments),
+              areReportsReadable: permissions.includes(PERMISSIONS.readReports),
             }
           ))));
     } else {
@@ -48,7 +57,7 @@ export function* handleFetchWritablePrograms() {
     }
   } catch (e) {
     LoggingService.logAPIErrorResponse(e);
-    yield put(fetchWritableProgramsFailure(e.message));
+    yield put(fetchProgramsFailure(e.message));
   }
   yield put(fetchJobs());
 }
@@ -186,7 +195,7 @@ export function* handlePollJobs({ payload: { programKey, jobId, bannerId } }) {
 }
 
 export default function* saga() {
-  yield takeEvery(FETCH_WRITABLE_PROGRAMS.BASE, handleFetchWritablePrograms);
+  yield takeEvery(FETCH_PROGRAMS.BASE, handleFetchPrograms);
   yield takeEvery(FETCH_JOBS.BASE, handleFetchJobs);
   yield takeEvery(UPLOAD_ENROLLMENTS.BASE, handleUploadEnrollments);
   yield takeEvery(DOWNLOAD_ENROLLMENTS.BASE, handleDownloadEnrollments);
