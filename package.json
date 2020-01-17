@@ -15,7 +15,8 @@
     "precommit": "npm run lint",
     "start": "NODE_ENV=development BABEL_ENV=development webpack-dev-server --config=webpack/webpack.dev.config.js --progress",
     "test": "jest --coverage --passWithNoTests",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "update-snapshot": "jest --updateSnapshot"
   },
   "author": "edX",
   "license": "AGPL-3.0",

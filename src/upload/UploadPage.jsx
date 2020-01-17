@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import { StatusAlert } from '@edx/paragon';
+import { Collapsible, StatusAlert } from '@edx/paragon';
 
 import { fetchWritablePrograms, uploadEnrollments, downloadEnrollments, removeBanner } from './actions';
 import { uploadSelector } from './selectors';
@@ -27,6 +27,53 @@ export class UploadPage extends React.Component {
   handleDownloadCourseEnrollments(programKey) {
     this.props.downloadEnrollments(programKey, true);
   }
+
+  renderEnrollmentsCollapsible = program => (
+    <Collapsible
+      className="shadow"
+      title="Manage Enrollments"
+      defaultOpen
+    >
+      <div className="container">
+        <div className="row pb-2">
+          <div className="col-md">
+            <div className="btn btn-primary w-100">
+              <input
+                type="file"
+                className="sr input-overlay-hack"
+                onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
+              />Upload Program Enrollments
+            </div>
+          </div>
+          <div className="col-md">
+            <button
+              className="btn btn-primary w-100"
+              onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
+            >Download Program Enrollments
+            </button>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md">
+            <div className="btn btn-primary w-100">
+              <input
+                type="file"
+                className="sr input-overlay-hack"
+                onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
+              />Upload Course Enrollments
+            </div>
+          </div>
+          <div className="col-md">
+            <button
+              className="btn btn-primary w-100"
+              onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
+            >Download Course Enrollments
+            </button>
+          </div>
+        </div>
+      </div>
+    </Collapsible>
+  )
 
   render() {
     return (
@@ -61,35 +108,8 @@ export class UploadPage extends React.Component {
                     </div>
                   )}
                 />
-            ))}
-            <div className="btn-group" role="group">
-              <div className="btn btn-outline-primary">
-                <input
-                  type="file"
-                  className="sr input-overlay-hack"
-                  onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
-                />Upload Program Enrollments
-              </div>
-              <button
-                className="btn btn-outline-primary"
-                onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
-              >Download Program Enrollments
-              </button>
-            </div>
-            <div className="btn-group" role="group">
-              <div className="btn btn-outline-primary">
-                <input
-                  type="file"
-                  className="sr input-overlay-hack"
-                  onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
-                />Upload Course Enrollments
-              </div>
-              <button
-                className="btn btn-outline-primary"
-                onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
-              >Download Course Enrollments
-              </button>
-            </div>
+              ))}
+            {this.renderEnrollmentsCollapsible(program)}
           </div>
         ))}
       </div>
