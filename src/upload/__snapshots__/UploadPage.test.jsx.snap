@@ -91,46 +91,123 @@ exports[`UploadPage... ...renders program banners when they are included 1`] = `
       </div>
     </div>
     <div
-      className="btn-group"
-      role="group"
+      className="pgn_collapsible shadow collapsible-card is-open"
+      open={undefined}
     >
       <div
-        className="btn btn-outline-primary"
-      >
-        <input
-          className="sr input-overlay-hack"
-          onChange={[Function]}
-          type="file"
-        />
-        Upload Program Enrollments
-      </div>
-      <button
-        className="btn btn-outline-primary"
+        aria-expanded={true}
+        className="collapsible-trigger"
         onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex={0}
       >
-        Download Program Enrollments
-      </button>
-    </div>
-    <div
-      className="btn-group"
-      role="group"
-    >
+        <span>
+          Manage Enrollments
+        </span>
+        <span
+          className="ml-2"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-minus fa-w-14 "
+            data-icon="minus"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </span>
+      </div>
       <div
-        className="btn btn-outline-primary"
+        className="pgn-transition-replace-group position-relative"
+        style={
+          Object {
+            "height": null,
+          }
+        }
       >
-        <input
-          className="sr input-overlay-hack"
-          onChange={[Function]}
-          type="file"
-        />
-        Upload Course Enrollments
+        <div
+          style={
+            Object {
+              "padding": ".1px 0",
+            }
+          }
+        >
+          <div
+            className="collapsible-body"
+          >
+            <div
+              className="container"
+            >
+              <div
+                className="row pb-2"
+              >
+                <div
+                  className="col-md"
+                >
+                  <div
+                    className="btn btn-primary w-100"
+                  >
+                    <input
+                      className="sr input-overlay-hack"
+                      onChange={[Function]}
+                      type="file"
+                    />
+                    Upload Program Enrollments
+                  </div>
+                </div>
+                <div
+                  className="col-md"
+                >
+                  <button
+                    className="btn btn-primary w-100"
+                    onClick={[Function]}
+                  >
+                    Download Program Enrollments
+                  </button>
+                </div>
+              </div>
+              <div
+                className="row"
+              >
+                <div
+                  className="col-md"
+                >
+                  <div
+                    className="btn btn-primary w-100"
+                  >
+                    <input
+                      className="sr input-overlay-hack"
+                      onChange={[Function]}
+                      type="file"
+                    />
+                    Upload Course Enrollments
+                  </div>
+                </div>
+                <div
+                  className="col-md"
+                >
+                  <button
+                    className="btn btn-primary w-100"
+                    onClick={[Function]}
+                  >
+                    Download Course Enrollments
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <button
-        className="btn btn-outline-primary"
-        onClick={[Function]}
-      >
-        Download Course Enrollments
-      </button>
     </div>
   </div>
   <div
@@ -169,46 +246,123 @@ exports[`UploadPage... ...renders program banners when they are included 1`] = `
       </div>
     </div>
     <div
-      className="btn-group"
-      role="group"
+      className="pgn_collapsible shadow collapsible-card is-open"
+      open={undefined}
     >
       <div
-        className="btn btn-outline-primary"
-      >
-        <input
-          className="sr input-overlay-hack"
-          onChange={[Function]}
-          type="file"
-        />
-        Upload Program Enrollments
-      </div>
-      <button
-        className="btn btn-outline-primary"
+        aria-expanded={true}
+        className="collapsible-trigger"
         onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex={0}
       >
-        Download Program Enrollments
-      </button>
-    </div>
-    <div
-      className="btn-group"
-      role="group"
-    >
+        <span>
+          Manage Enrollments
+        </span>
+        <span
+          className="ml-2"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-minus fa-w-14 "
+            data-icon="minus"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </span>
+      </div>
       <div
-        className="btn btn-outline-primary"
+        className="pgn-transition-replace-group position-relative"
+        style={
+          Object {
+            "height": null,
+          }
+        }
       >
-        <input
-          className="sr input-overlay-hack"
-          onChange={[Function]}
-          type="file"
-        />
-        Upload Course Enrollments
+        <div
+          style={
+            Object {
+              "padding": ".1px 0",
+            }
+          }
+        >
+          <div
+            className="collapsible-body"
+          >
+            <div
+              className="container"
+            >
+              <div
+                className="row pb-2"
+              >
+                <div
+                  className="col-md"
+                >
+                  <div
+                    className="btn btn-primary w-100"
+                  >
+                    <input
+                      className="sr input-overlay-hack"
+                      onChange={[Function]}
+                      type="file"
+                    />
+                    Upload Program Enrollments
+                  </div>
+                </div>
+                <div
+                  className="col-md"
+                >
+                  <button
+                    className="btn btn-primary w-100"
+                    onClick={[Function]}
+                  >
+                    Download Program Enrollments
+                  </button>
+                </div>
+              </div>
+              <div
+                className="row"
+              >
+                <div
+                  className="col-md"
+                >
+                  <div
+                    className="btn btn-primary w-100"
+                  >
+                    <input
+                      className="sr input-overlay-hack"
+                      onChange={[Function]}
+                      type="file"
+                    />
+                    Upload Course Enrollments
+                  </div>
+                </div>
+                <div
+                  className="col-md"
+                >
+                  <button
+                    className="btn btn-primary w-100"
+                    onClick={[Function]}
+                  >
+                    Download Course Enrollments
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <button
-        className="btn btn-outline-primary"
-        onClick={[Function]}
-      >
-        Download Course Enrollments
-      </button>
     </div>
   </div>
 </div>
@@ -247,46 +401,123 @@ exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
       a masters
     </h2>
     <div
-      className="btn-group"
-      role="group"
+      className="pgn_collapsible shadow collapsible-card is-open"
+      open={undefined}
     >
       <div
-        className="btn btn-outline-primary"
-      >
-        <input
-          className="sr input-overlay-hack"
-          onChange={[Function]}
-          type="file"
-        />
-        Upload Program Enrollments
-      </div>
-      <button
-        className="btn btn-outline-primary"
+        aria-expanded={true}
+        className="collapsible-trigger"
         onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex={0}
       >
-        Download Program Enrollments
-      </button>
-    </div>
-    <div
-      className="btn-group"
-      role="group"
-    >
+        <span>
+          Manage Enrollments
+        </span>
+        <span
+          className="ml-2"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-minus fa-w-14 "
+            data-icon="minus"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </span>
+      </div>
       <div
-        className="btn btn-outline-primary"
+        className="pgn-transition-replace-group position-relative"
+        style={
+          Object {
+            "height": null,
+          }
+        }
       >
-        <input
-          className="sr input-overlay-hack"
-          onChange={[Function]}
-          type="file"
-        />
-        Upload Course Enrollments
+        <div
+          style={
+            Object {
+              "padding": ".1px 0",
+            }
+          }
+        >
+          <div
+            className="collapsible-body"
+          >
+            <div
+              className="container"
+            >
+              <div
+                className="row pb-2"
+              >
+                <div
+                  className="col-md"
+                >
+                  <div
+                    className="btn btn-primary w-100"
+                  >
+                    <input
+                      className="sr input-overlay-hack"
+                      onChange={[Function]}
+                      type="file"
+                    />
+                    Upload Program Enrollments
+                  </div>
+                </div>
+                <div
+                  className="col-md"
+                >
+                  <button
+                    className="btn btn-primary w-100"
+                    onClick={[Function]}
+                  >
+                    Download Program Enrollments
+                  </button>
+                </div>
+              </div>
+              <div
+                className="row"
+              >
+                <div
+                  className="col-md"
+                >
+                  <div
+                    className="btn btn-primary w-100"
+                  >
+                    <input
+                      className="sr input-overlay-hack"
+                      onChange={[Function]}
+                      type="file"
+                    />
+                    Upload Course Enrollments
+                  </div>
+                </div>
+                <div
+                  className="col-md"
+                >
+                  <button
+                    className="btn btn-primary w-100"
+                    onClick={[Function]}
+                  >
+                    Download Course Enrollments
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <button
-        className="btn btn-outline-primary"
-        onClick={[Function]}
-      >
-        Download Course Enrollments
-      </button>
     </div>
   </div>
   <div
@@ -296,46 +527,123 @@ exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
       b masters
     </h2>
     <div
-      className="btn-group"
-      role="group"
+      className="pgn_collapsible shadow collapsible-card is-open"
+      open={undefined}
     >
       <div
-        className="btn btn-outline-primary"
-      >
-        <input
-          className="sr input-overlay-hack"
-          onChange={[Function]}
-          type="file"
-        />
-        Upload Program Enrollments
-      </div>
-      <button
-        className="btn btn-outline-primary"
+        aria-expanded={true}
+        className="collapsible-trigger"
         onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        tabIndex={0}
       >
-        Download Program Enrollments
-      </button>
-    </div>
-    <div
-      className="btn-group"
-      role="group"
-    >
+        <span>
+          Manage Enrollments
+        </span>
+        <span
+          className="ml-2"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-minus fa-w-14 "
+            data-icon="minus"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+        </span>
+      </div>
       <div
-        className="btn btn-outline-primary"
+        className="pgn-transition-replace-group position-relative"
+        style={
+          Object {
+            "height": null,
+          }
+        }
       >
-        <input
-          className="sr input-overlay-hack"
-          onChange={[Function]}
-          type="file"
-        />
-        Upload Course Enrollments
+        <div
+          style={
+            Object {
+              "padding": ".1px 0",
+            }
+          }
+        >
+          <div
+            className="collapsible-body"
+          >
+            <div
+              className="container"
+            >
+              <div
+                className="row pb-2"
+              >
+                <div
+                  className="col-md"
+                >
+                  <div
+                    className="btn btn-primary w-100"
+                  >
+                    <input
+                      className="sr input-overlay-hack"
+                      onChange={[Function]}
+                      type="file"
+                    />
+                    Upload Program Enrollments
+                  </div>
+                </div>
+                <div
+                  className="col-md"
+                >
+                  <button
+                    className="btn btn-primary w-100"
+                    onClick={[Function]}
+                  >
+                    Download Program Enrollments
+                  </button>
+                </div>
+              </div>
+              <div
+                className="row"
+              >
+                <div
+                  className="col-md"
+                >
+                  <div
+                    className="btn btn-primary w-100"
+                  >
+                    <input
+                      className="sr input-overlay-hack"
+                      onChange={[Function]}
+                      type="file"
+                    />
+                    Upload Course Enrollments
+                  </div>
+                </div>
+                <div
+                  className="col-md"
+                >
+                  <button
+                    className="btn btn-primary w-100"
+                    onClick={[Function]}
+                  >
+                    Download Course Enrollments
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <button
-        className="btn btn-outline-primary"
-        onClick={[Function]}
-      >
-        Download Course Enrollments
-      </button>
     </div>
   </div>
 </div>

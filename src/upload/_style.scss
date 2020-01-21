@@ -7,3 +7,14 @@
     left: 0;
     cursor: pointer;
   }
+
+  @include media-breakpoint-up(md) {
+    .collapsible-card {
+      width: 50%;
+      min-width: 660px;
+    }
+  }
+
+  .collapsible-trigger {
+    background-color: rgb(244, 247, 255)
+  }

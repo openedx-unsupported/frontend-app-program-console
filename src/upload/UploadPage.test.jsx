@@ -1,4 +1,5 @@
 import { mount } from 'enzyme';
+import { Collapsible } from '@edx/paragon';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { UploadPage } from './UploadPage';
@@ -62,6 +63,7 @@ describe('UploadPage...', () => {
     expect(tree).toMatchSnapshot();
     apiData.forEach((program, idx) => {
       expect(wrapper.find('h2').at(idx).text()).toEqual(program.programTitle);
+      expect(wrapper.find(Collapsible).at(idx).prop('defaultOpen')).toEqual(true);
     });
 
     expect(wrapper.exists('.alert-danger')).toEqual(false);
@@ -154,22 +156,22 @@ describe('UploadPage...', () => {
       removeBanner={() => {}}
     />);
 
-    const programADownloadProgramButton = wrapper.find('button.btn.btn-outline-primary').at(0);
+    const programADownloadProgramButton = wrapper.find('button.btn.btn-primary').at(0);
     expect(programADownloadProgramButton.text()).toEqual('Download Program Enrollments');
     programADownloadProgramButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('a', false);
 
-    const programADownloadCourseButton = wrapper.find('button.btn.btn-outline-primary').at(1);
+    const programADownloadCourseButton = wrapper.find('button.btn.btn-primary').at(1);
     expect(programADownloadCourseButton.text()).toEqual('Download Course Enrollments');
     programADownloadCourseButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('a', true);
 
-    const programBDownloadProgramButton = wrapper.find('button.btn.btn-outline-primary').at(2);
+    const programBDownloadProgramButton = wrapper.find('button.btn.btn-primary').at(2);
     expect(programBDownloadProgramButton.text()).toEqual('Download Program Enrollments');
     programBDownloadProgramButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('b', false);
 
-    const programBDownloadCourseButton = wrapper.find('button.btn.btn-outline-primary').at(3);
+    const programBDownloadCourseButton = wrapper.find('button.btn.btn-primary').at(3);
     expect(programBDownloadCourseButton.text()).toEqual('Download Course Enrollments');
     programBDownloadCourseButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('b', true);
