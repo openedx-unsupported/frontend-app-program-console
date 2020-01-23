@@ -167,7 +167,7 @@ export function* handlePollJobs({ payload: { programKey, jobId, bannerId } }) {
             id: programKey + Date.now(),
             bannerType: 'success',
             message: `Your ${jobNameInfo.jobName} job has has successfully completed.`,
-            linkMessage: 'Click here for result',
+            linkMessage: 'Click here for result.',
             linkHref: responseData.result,
           },
         )),

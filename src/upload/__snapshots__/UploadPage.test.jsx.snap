@@ -2,7 +2,7 @@
 
 exports[`UploadPage... ...renders an error banner if there is not an authorized user 1`] = `
 <div
-  className="container py-5 align-items-start"
+  className="container half-width-element py-5 align-items-start"
 >
   <h1>
     Program Manager
@@ -31,7 +31,7 @@ exports[`UploadPage... ...renders an error banner if there is not an authorized 
 
 exports[`UploadPage... ...renders program banners when they are included 1`] = `
 <div
-  className="container py-5 align-items-start"
+  className="container half-width-element py-5 align-items-start"
 >
   <h1>
     Program Manager
@@ -56,7 +56,7 @@ exports[`UploadPage... ...renders program banners when they are included 1`] = `
     </div>
   </div>
   <div
-    className="container"
+    className="container mb-4"
   >
     <h2>
       a masters
@@ -149,13 +149,13 @@ exports[`UploadPage... ...renders program banners when they are included 1`] = `
               className="container"
             >
               <div
-                className="row pb-2"
+                className="row mb-3 mb-md-2 "
               >
                 <div
                   className="col-md"
                 >
                   <div
-                    className="btn btn-primary w-100"
+                    className="btn btn-primary w-100 mb-1"
                   >
                     <input
                       className="sr input-overlay-hack"
@@ -183,7 +183,7 @@ exports[`UploadPage... ...renders program banners when they are included 1`] = `
                   className="col-md"
                 >
                   <div
-                    className="btn btn-primary w-100"
+                    className="btn btn-primary w-100 mb-1"
                   >
                     <input
                       className="sr input-overlay-hack"
@@ -211,7 +211,7 @@ exports[`UploadPage... ...renders program banners when they are included 1`] = `
     </div>
   </div>
   <div
-    className="container"
+    className="container mb-4"
   >
     <h2>
       b masters
@@ -304,13 +304,13 @@ exports[`UploadPage... ...renders program banners when they are included 1`] = `
               className="container"
             >
               <div
-                className="row pb-2"
+                className="row mb-3 mb-md-2 "
               >
                 <div
                   className="col-md"
                 >
                   <div
-                    className="btn btn-primary w-100"
+                    className="btn btn-primary w-100 mb-1"
                   >
                     <input
                       className="sr input-overlay-hack"
@@ -338,7 +338,7 @@ exports[`UploadPage... ...renders program banners when they are included 1`] = `
                   className="col-md"
                 >
                   <div
-                    className="btn btn-primary w-100"
+                    className="btn btn-primary w-100 mb-1"
                   >
                     <input
                       className="sr input-overlay-hack"
@@ -370,7 +370,7 @@ exports[`UploadPage... ...renders program banners when they are included 1`] = `
 
 exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
 <div
-  className="container py-5 align-items-start"
+  className="container half-width-element py-5 align-items-start"
 >
   <h1>
     Program Manager
@@ -395,7 +395,7 @@ exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
     </div>
   </div>
   <div
-    className="container"
+    className="container mb-4"
   >
     <h2>
       a masters
@@ -459,13 +459,13 @@ exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
               className="container"
             >
               <div
-                className="row pb-2"
+                className="row mb-3 mb-md-2 "
               >
                 <div
                   className="col-md"
                 >
                   <div
-                    className="btn btn-primary w-100"
+                    className="btn btn-primary w-100 mb-1"
                   >
                     <input
                       className="sr input-overlay-hack"
@@ -493,7 +493,7 @@ exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
                   className="col-md"
                 >
                   <div
-                    className="btn btn-primary w-100"
+                    className="btn btn-primary w-100 mb-1"
                   >
                     <input
                       className="sr input-overlay-hack"
@@ -521,7 +521,7 @@ exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
     </div>
   </div>
   <div
-    className="container"
+    className="container mb-4"
   >
     <h2>
       b masters
@@ -585,13 +585,13 @@ exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
               className="container"
             >
               <div
-                className="row pb-2"
+                className="row mb-3 mb-md-2 "
               >
                 <div
                   className="col-md"
                 >
                   <div
-                    className="btn btn-primary w-100"
+                    className="btn btn-primary w-100 mb-1"
                   >
                     <input
                       className="sr input-overlay-hack"
@@ -619,7 +619,7 @@ exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
                   className="col-md"
                 >
                   <div
-                    className="btn btn-primary w-100"
+                    className="btn btn-primary w-100 mb-1"
                   >
                     <input
                       className="sr input-overlay-hack"
@@ -651,7 +651,7 @@ exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
 
 exports[`UploadPage... ...renders with the most basic props passed to it 1`] = `
 <div
-  className="container py-5 align-items-start"
+  className="container half-width-element py-5 align-items-start"
 >
   <h1>
     Program Manager

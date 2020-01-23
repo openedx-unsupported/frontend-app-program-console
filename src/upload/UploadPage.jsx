@@ -35,9 +35,9 @@ export class UploadPage extends React.Component {
       defaultOpen
     >
       <div className="container">
-        <div className="row pb-2">
+        <div className="row mb-3 mb-md-2 ">
           <div className="col-md">
-            <div className="btn btn-primary w-100">
+            <div className="btn btn-primary w-100 mb-1">
               <input
                 type="file"
                 className="sr input-overlay-hack"
@@ -55,7 +55,7 @@ export class UploadPage extends React.Component {
         </div>
         <div className="row">
           <div className="col-md">
-            <div className="btn btn-primary w-100">
+            <div className="btn btn-primary w-100 mb-1">
               <input
                 type="file"
                 className="sr input-overlay-hack"
@@ -77,7 +77,7 @@ export class UploadPage extends React.Component {
 
   render() {
     return (
-      <div className="container py-5 align-items-start">
+      <div className="container half-width-element py-5 align-items-start">
         <h1>Program Manager</h1>
         <StatusAlert
           dismissible={false}
@@ -90,7 +90,7 @@ export class UploadPage extends React.Component {
           open={!this.props.authorized}
         />
         {this.props.data.length > 0 && this.props.data.map(program => (
-          <div className="container" key={program.programKey}>
+          <div className="container mb-4" key={program.programKey}>
             <h2>{program.programTitle}</h2>
             {this.props.programBanners[program.programKey] &&
               !!this.props.programBanners[program.programKey].length &&

@@ -8,13 +8,15 @@
     cursor: pointer;
   }
 
-  @include media-breakpoint-up(md) {
-    .collapsible-card {
-      width: 50%;
-      min-width: 660px;
-    }
-  }
+.collapsible-trigger {
+  background-color: rgb(244, 247, 255)
+}
 
-  .collapsible-trigger {
-    background-color: rgb(244, 247, 255)
+@include media-breakpoint-up(md) {
+  .half-width-element {
+    display: inline-block;
+    left: 0;
+    min-width: 792px;
+    width: 55%;
   }
+}
