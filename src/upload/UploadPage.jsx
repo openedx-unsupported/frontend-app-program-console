@@ -6,6 +6,7 @@ import { Collapsible, StatusAlert } from '@edx/paragon';
 
 import { fetchPrograms, uploadEnrollments, downloadEnrollments, removeBanner } from './actions';
 import { uploadSelector } from './selectors';
+import ConnectedReportSection from '../components/ReportSection/index';
 
 export class UploadPage extends React.Component {
   componentDidMount() {
@@ -110,6 +111,7 @@ export class UploadPage extends React.Component {
                 />
               ))}
             {this.renderEnrollmentsCollapsible(program)}
+            {<ConnectedReportSection programKey = {program.programKey} />}
           </div>
         ))}
       </div>

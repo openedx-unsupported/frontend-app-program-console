@@ -98,4 +98,3 @@ export async function get(url) {
   const { data } = await apiClient.get(url);
   return data;
 }
-
