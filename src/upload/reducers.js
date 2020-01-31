@@ -1,4 +1,4 @@
-import { FETCH_PROGRAMS } from './actions';
+import { FETCH_PROGRAMS, FETCH_REPORTS } from './actions';
 import { shouldProgramBeDisplayed } from './utils';
 
 export const defaultState = {
@@ -69,6 +69,32 @@ const upload = (state = defaultState, action) => {
         ...state,
         authorized: false,
       };
+      case FETCH_REPORTS.BEGIN:
+        return {
+          ...state,
+          loading: true,
+          loaded: false,
+          loadingError: null,
+        };
+      case FETCH_REPORTS.SUCCESS: {
+        const data = action.payload.data;
+        return {
+          ...state,
+          authorized: data.length > 0,
+          data: data,
+          loading: true,
+          loaded: false,
+          loadingError: null,
+        };
+      }
+      case FETCH_REPORTS.FAILURE:
+        return {
+          ...state,
+          authorized: false,
+          loading: false,
+          loaded: false,
+          loadingError: action.payload.error,
+        };
     default:
       return state;
   }

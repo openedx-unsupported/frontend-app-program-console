@@ -31,6 +31,14 @@ export async function getAccessiblePrograms() {
   return data;
 }
 
+export async function getReportsByProgram(programKey) {
+  const { data } = await apiClient.get(
+    `${config.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/reports`,
+    {},
+  );
+  return data;
+}
+
 export async function getJobs() {
   const { data } = await apiClient.get(`${config.REGISTRAR_API_BASE_URL}/v1/jobs/`, {});
   return data;
@@ -98,4 +106,3 @@ export async function get(url) {
   const { data } = await apiClient.get(url);
   return data;
 }
-
