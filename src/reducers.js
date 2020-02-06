@@ -6,6 +6,11 @@ import {
   storeName as upladStoreName,
 } from './upload';
 
+import {
+  reducer as reportReducer,
+  storeName as reportStoreName,
+} from './report'
+
 const identityReducer = (state) => {
   const newState = { ...state };
   return newState;
@@ -19,6 +24,7 @@ const createRootReducer = history =>
     configuration: identityReducer,
     userAccount,
     [upladStoreName]: uploadReducer,
+    [reportStoreName]: reportReducer,
     router: connectRouter(history),
   });
 

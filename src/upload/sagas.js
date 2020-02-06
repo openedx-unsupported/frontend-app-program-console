@@ -16,10 +16,6 @@ import {
   fetchProgramsFailure,
   fetchProgramsSuccess,
   DOWNLOAD_ENROLLMENTS,
-  FETCH_REPORTS,
-  fetchReportsBegin,
-  fetchReportsFailure,
-  fetchReportsSuccess,
   notAuthenticated,
   POLL_JOB,
   pollJob,
@@ -64,22 +60,6 @@ export function* handleFetchPrograms() {
     yield put(fetchProgramsFailure(e.message));
   }
   yield put(fetchJobs());
-}
-
-export function* handleFetchReports({ payload: { programKey }}) {
-  try {
-    yield put(fetchReportsBegin());
-
-    const data = yield call(ApiService.getReportsByProgram, programKey);
-    if (data.length > 0) {
-      yield put(fetchReportsSuccess(data));
-    } else {
-      yield put(notAuthenticated());
-    }
-  } catch (e) {
-    LoggingService.logAPIErrorResponse(e);
-    yield put(fetchReportsFailure(e.message));
-  }
 }
 
 export function* handleFetchJobs() {
@@ -216,7 +196,6 @@ export function* handlePollJobs({ payload: { programKey, jobId, bannerId } }) {
 
 export default function* saga() {
   yield takeEvery(FETCH_PROGRAMS.BASE, handleFetchPrograms);
-  yield takeEvery(FETCH_REPORTS.BASE, handleFetchReports);
   yield takeEvery(FETCH_JOBS.BASE, handleFetchJobs);
   yield takeEvery(UPLOAD_ENROLLMENTS.BASE, handleUploadEnrollments);
   yield takeEvery(DOWNLOAD_ENROLLMENTS.BASE, handleDownloadEnrollments);

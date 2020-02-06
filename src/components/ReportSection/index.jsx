@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { Collapsible, StatusAlert } from '@edx/paragon';
 
-import { fetchReports } from '../../upload/actions';
-import { uploadSelector } from '../../upload/selectors';
+import { fetchReports } from '../../report/actions';
+import { reportSelector } from '../../report/selectors';
 
 
 export class ReportSection extends React.Component {
@@ -38,7 +38,7 @@ ReportSection.propTypes = {
   programKey: PropTypes.string.isRequired,
 };
 
-const ConnectedReportSection = connect(uploadSelector, {
+const ConnectedReportSection = connect(reportSelector, {
   fetchReports,
 })(injectIntl(ReportSection));
 

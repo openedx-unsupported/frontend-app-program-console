@@ -111,7 +111,7 @@ export class UploadPage extends React.Component {
                 />
               ))}
             {this.renderEnrollmentsCollapsible(program)}
-            {<ConnectedReportSection programKey = {program.programKey} />}
+            <ConnectedReportSection programKey = {program.programKey} />
           </div>
         ))}
       </div>
