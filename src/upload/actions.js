@@ -24,7 +24,6 @@ export const fetchProgramsFailure = error => ({
   payload: { error },
 });
 
-
 export const UPLOAD_ENROLLMENTS = new AsyncActionType('UPLOAD', 'UPlOAD_PROGRAM_ENROLLMENTS');
 
 
