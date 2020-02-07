@@ -21,7 +21,7 @@ export function* handleFetchReports({ payload: { programKey }}) {
 
     const data = yield call(ApiService.getReportsByProgram, programKey);
     if (data.length > 0) {
-      yield put(fetchReportsSuccess(data));
+      yield put(fetchReportsSuccess(programKey, data));
     } else {
       yield put(notAuthenticated());
     }

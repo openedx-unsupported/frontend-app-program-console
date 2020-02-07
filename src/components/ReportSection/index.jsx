@@ -22,7 +22,9 @@ export class ReportSection extends React.Component {
           title="Download Reports"
           defaultOpen>
           <div className="container">
-          {this.props.data.length > 0 && this.props.data.map(report => report.name)}
+          {this.props.reportData[this.props.programKey] && this.props.reportData[this.props.programKey].map(report => (
+            <a href={report.downloadUrl}>{report.name}</a>
+          ))}
           </div>
         </Collapsible>
       );
@@ -30,7 +32,7 @@ export class ReportSection extends React.Component {
 }
 
 ReportSection.propTypes = {
-  data: PropTypes.shape().isRequired,
+  reportData: PropTypes.shape().isRequired,
   fetchReports: PropTypes.func.isRequired,
   programKey: PropTypes.string.isRequired,
 };

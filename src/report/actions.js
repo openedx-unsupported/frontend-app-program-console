@@ -16,9 +16,10 @@ export const fetchReportsBegin = () => ({
 
 });
 
-export const fetchReportsSuccess = data => ({
+export const fetchReportsSuccess = (programKey, data) => ({
   type: FETCH_REPORTS.SUCCESS,
   payload: {
+    programKey,
     data,
   },
 });

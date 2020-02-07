@@ -5,10 +5,10 @@ export const defaultState = {
   loaded: false,
   loadingError: null,
   authorized: true,
-  data: [],
+  reportData: {},
 };
 
-const upload = (state = defaultState, action) => {
+const report = (state = defaultState, action) => {
   switch (action.type) {
     case FETCH_REPORTS.BEGIN:
       return {
@@ -19,12 +19,19 @@ const upload = (state = defaultState, action) => {
       };
     case FETCH_REPORTS.SUCCESS: {
       const report = action.payload.data;
+      const programKey = action.payload.programKey;
+      const newData = state.reportData;
+      newData[programKey] = [];
+      report.forEach(function(reportItem){
+        newData[programKey].push({
+         'name': reportItem.name,
+         'downloadUrl': reportItem.download_url,
+       });
+      });
       return {
         ...state,
         authorized: report.length > 0,
-        data: state.data.concat({
-          [action.payload.programKey]: report
-        }),
+        reportData: newData,
         loading: true,
         loaded: false,
         loadingError: null,
@@ -43,4 +50,4 @@ const upload = (state = defaultState, action) => {
   }
 };
 
-export default upload;
+export default report;
