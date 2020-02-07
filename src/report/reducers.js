@@ -18,11 +18,13 @@ const upload = (state = defaultState, action) => {
         loadingError: null,
       };
     case FETCH_REPORTS.SUCCESS: {
-      const data = action.payload.data;
+      const report = action.payload.data;
       return {
         ...state,
-        authorized: data.length > 0,
-        data: data,
+        authorized: report.length > 0,
+        data: state.data.concat({
+          [action.payload.programKey]: report
+        }),
         loading: true,
         loaded: false,
         loadingError: null,

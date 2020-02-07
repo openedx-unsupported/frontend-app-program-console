@@ -30,10 +30,7 @@ export class ReportSection extends React.Component {
 }
 
 ReportSection.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    downloadUrl: PropTypes.string,
-  })).isRequired,
+  data: PropTypes.shape().isRequired,
   fetchReports: PropTypes.func.isRequired,
   programKey: PropTypes.string.isRequired,
 };
