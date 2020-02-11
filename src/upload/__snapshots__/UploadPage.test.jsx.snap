@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UploadPage... ...renders an error banner if there is not an authorized user 1`] = `
+exports[`UploadPage renders an error banner if there is not an authorized user 1`] = `
 <div
   className="container half-width-element py-5 align-items-start"
 >
@@ -29,7 +29,7 @@ exports[`UploadPage... ...renders an error banner if there is not an authorized 
 </div>
 `;
 
-exports[`UploadPage... ...renders program banners when they are included 1`] = `
+exports[`UploadPage renders program banners when they are included 1`] = `
 <div
   className="container half-width-element py-5 align-items-start"
 >
@@ -368,7 +368,7 @@ exports[`UploadPage... ...renders program banners when they are included 1`] = `
 </div>
 `;
 
-exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
+exports[`UploadPage renders programs when there is data passed in 1`] = `
 <div
   className="container half-width-element py-5 align-items-start"
 >
@@ -649,7 +649,7 @@ exports[`UploadPage... ...renders programs when there is data passed in 1`] = `
 </div>
 `;
 
-exports[`UploadPage... ...renders with the most basic props passed to it 1`] = `
+exports[`UploadPage renders with the most basic props passed to it 1`] = `
 <div
   className="container half-width-element py-5 align-items-start"
 >

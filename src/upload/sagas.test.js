@@ -16,7 +16,6 @@ import {
 } from './actions';
 import { handleFetchPrograms } from './sagas';
 
-
 describe('handleFetchPrograms', () => {
   function expectSagaBegin() {
     const saga = handleFetchPrograms();
@@ -29,8 +28,8 @@ describe('handleFetchPrograms', () => {
     expect(saga.next().done).toBeTruthy();
   }
 
-  it('...correctly fetches multiple programs.', () => {
-    const fakeApiResonse = [
+  it('correctly fetches multiple programs.', () => {
+    const fakeApiResponse = [
       {
         program_key: 'a',
         program_url: 'http://example.edu/a',
@@ -64,22 +63,22 @@ describe('handleFetchPrograms', () => {
     ];
 
     const saga = expectSagaBegin();
-    expect(saga.next(fakeApiResonse).value)
+    expect(saga.next(fakeApiResponse).value)
       .toEqual(put(fetchProgramsSuccess(expectedResult)));
     expectSagaEnd(saga);
   });
 
-  it('...correctly handles empty API resonse.', () => {
+  it('correctly handles empty API response.', () => {
     const saga = expectSagaBegin();
     expect(saga.next([]).value)
       .toEqual(put(notAuthenticated()));
     expectSagaEnd(saga);
   });
 
-  it('...correctly handles an unprocessable API resonse.', () => {
+  it('correctly handles an unprocessable API response.', () => {
     const saga = expectSagaBegin();
-    const fakeApiResonse = 'this API response will cause an exception';
-    expect(saga.next(fakeApiResonse).value.payload.action.type)
+    const fakeApiResponse = 'this API response will cause an exception';
+    expect(saga.next(fakeApiResponse).value.payload.action.type)
       .toEqual('GET__FETCH_PROGRAMS__FAILURE');
     expectSagaEnd(saga);
   });
