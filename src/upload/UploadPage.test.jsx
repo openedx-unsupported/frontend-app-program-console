@@ -42,10 +42,14 @@ describe('UploadPage...', () => {
       programKey: 'a',
       programTitle: 'a masters',
       programUrl: 'https://amasters.com',
+      areEnrollmentsWritable: true,
+      areReportsReadable: false,
     }, {
       programKey: 'b',
       programTitle: 'b masters',
       programUrl: 'https://bmasters.com',
+      areEnrollmentsWritable: true,
+      areReportsReadable: false,
     }];
     const uploadPageComponent = (<UploadPage
       authorized
@@ -78,10 +82,14 @@ describe('UploadPage...', () => {
       programKey: 'a',
       programTitle: 'a masters',
       programUrl: 'https://amasters.com',
+      areEnrollmentsWritable: true,
+      areReportsReadable: false,
     }, {
       programKey: 'b',
       programTitle: 'b masters',
       programUrl: 'https://bmasters.com',
+      areEnrollmentsWritable: true,
+      areReportsReadable: false,
     }];
 
     const programBanners = {
@@ -140,10 +148,14 @@ describe('UploadPage...', () => {
       programKey: 'a',
       programTitle: 'a masters',
       programUrl: 'https://amasters.com',
+      areEnrollmentsWritable: true,
+      areReportsReadable: false,
     }, {
       programKey: 'b',
       programTitle: 'b masters',
       programUrl: 'https://bmasters.com',
+      areEnrollmentsWritable: true,
+      areReportsReadable: false,
     }];
 
     const wrapper = mount(<UploadPage
@@ -184,10 +196,14 @@ describe('UploadPage...', () => {
       programKey: 'a',
       programTitle: 'a masters',
       programUrl: 'https://amasters.com',
+      areEnrollmentsWritable: true,
+      areReportsReadable: false,
     }, {
       programKey: 'b',
       programTitle: 'b masters',
       programUrl: 'https://bmasters.com',
+      areEnrollmentsWritable: true,
+      areReportsReadable: false,
     }];
 
     const wrapper = mount(<UploadPage

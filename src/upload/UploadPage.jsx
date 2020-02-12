@@ -110,8 +110,12 @@ export class UploadPage extends React.Component {
                   )}
                 />
               ))}
-            {this.renderEnrollmentsCollapsible(program)}
-            {<ConnectedReportSection programKey = {program.programKey} />}
+            {program.areEnrollmentsWritable && this.renderEnrollmentsCollapsible(program)}
+            {program.areReportsReadable &&
+              <ConnectedReportSection
+                programKey={program.programKey}
+                isFirstSection={!program.areEnrollmentsWritable}
+              />}
           </div>
         ))}
       </div>
@@ -125,6 +129,8 @@ UploadPage.propTypes = {
     programKey: PropTypes.string,
     programTitle: PropTypes.string,
     programUrl: PropTypes.string,
+    areEnrollmentsWritable: PropTypes.bool,
+    areReportsReadable: PropTypes.bool,
   })).isRequired,
   fetchPrograms: PropTypes.func.isRequired,
   programBanners: PropTypes.shape().isRequired,

@@ -1,6 +1,4 @@
 import pick from 'lodash.pick';
-import { put } from 'redux-saga/effects';
-import { notAuthenticated } from './actions';
 
 let config = {
   REGISTRAR_API_BASE_URL: null,

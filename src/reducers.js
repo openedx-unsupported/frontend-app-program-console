@@ -9,7 +9,7 @@ import {
 import {
   reducer as reportReducer,
   storeName as reportStoreName,
-} from './report'
+} from './report';
 
 const identityReducer = (state) => {
   const newState = { ...state };

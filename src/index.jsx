@@ -71,3 +71,4 @@ apiClient.ensurePublicOrAuthenticationAndCookies(
     sendPageEvent();
   },
 );
+
