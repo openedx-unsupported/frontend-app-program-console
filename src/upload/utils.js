@@ -18,5 +18,5 @@ export function parseRegistrarJobName(registrarJobName) {
  * In the future, this criteria will likely change.
  */
 export function shouldProgramBeDisplayed(program) {
-  return program.areEnrollmentsWritable;
+  return program.areEnrollmentsWritable || program.areReportsReadable;
 }

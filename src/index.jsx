@@ -11,6 +11,7 @@ import messages from './i18n';
 import configureStore from './store';
 import { configureUserAccountApiService } from './common';
 import { configureApiService as configureUploadApiService } from './upload';
+import { configureApiService as configureReportApiService } from './report';
 
 import './index.scss';
 import App from './components/App';
@@ -41,6 +42,7 @@ function configure() {
   configureI18n(configuration, messages);
   configureUserAccountApiService(configuration, apiClient);
   configureUploadApiService(configuration, apiClient);
+  configureReportApiService(configuration, apiClient);
   initializeSegment(configuration.SEGMENT_KEY);
   configureAnalytics({
     loggingService: LoggingService,

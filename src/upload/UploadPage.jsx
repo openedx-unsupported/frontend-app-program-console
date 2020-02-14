@@ -6,6 +6,7 @@ import { Collapsible, StatusAlert } from '@edx/paragon';
 
 import { fetchPrograms, uploadEnrollments, downloadEnrollments, removeBanner } from './actions';
 import { uploadSelector } from './selectors';
+import ConnectedReportSection from '../components/ReportSection/index';
 
 export class UploadPage extends React.Component {
   componentDidMount() {
@@ -109,7 +110,12 @@ export class UploadPage extends React.Component {
                   )}
                 />
               ))}
-            {this.renderEnrollmentsCollapsible(program)}
+            {program.areEnrollmentsWritable && this.renderEnrollmentsCollapsible(program)}
+            {program.areReportsReadable &&
+              <ConnectedReportSection
+                programKey={program.programKey}
+                isFirstSection={!program.areEnrollmentsWritable}
+              />}
           </div>
         ))}
       </div>
@@ -123,6 +129,8 @@ UploadPage.propTypes = {
     programKey: PropTypes.string,
     programTitle: PropTypes.string,
     programUrl: PropTypes.string,
+    areEnrollmentsWritable: PropTypes.bool,
+    areReportsReadable: PropTypes.bool,
   })).isRequired,
   fetchPrograms: PropTypes.func.isRequired,
   programBanners: PropTypes.shape().isRequired,

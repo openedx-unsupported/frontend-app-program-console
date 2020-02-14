@@ -3,8 +3,13 @@ import { userAccount } from '@edx/frontend-auth';
 import { connectRouter } from 'connected-react-router';
 import {
   reducer as uploadReducer,
-  storeName as upladStoreName,
+  storeName as uploadStoreName,
 } from './upload';
+
+import {
+  reducer as reportReducer,
+  storeName as reportStoreName,
+} from './report';
 
 const identityReducer = (state) => {
   const newState = { ...state };
@@ -18,7 +23,8 @@ const createRootReducer = history =>
     authentication: identityReducer,
     configuration: identityReducer,
     userAccount,
-    [upladStoreName]: uploadReducer,
+    [uploadStoreName]: uploadReducer,
+    [reportStoreName]: reportReducer,
     router: connectRouter(history),
   });
 
