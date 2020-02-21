@@ -1,12 +1,13 @@
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { Collapsible } from '@edx/paragon';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { UploadPage } from './UploadPage';
+import ConnectedReportSection from '../components/ReportSection/index';
 
 
-describe('UploadPage...', () => {
-  it('...renders with the most basic props passed to it', () => {
+describe('UploadPage', () => {
+  it('renders with the most basic props passed to it', () => {
     const tree = renderer.create((<UploadPage
       authorized
       data={[]}
@@ -19,7 +20,7 @@ describe('UploadPage...', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('...renders an error banner if there is not an authorized user', () => {
+  it('renders an error banner if there is not an authorized user', () => {
     const uploadPageComponent = (<UploadPage
       authorized={false}
       data={[]}
@@ -37,7 +38,7 @@ describe('UploadPage...', () => {
     wrapper.unmount();
   });
 
-  it('...renders programs when there is data passed in', () => {
+  it('renders programs when there is data passed in', () => {
     const apiData = [{
       programKey: 'a',
       programTitle: 'a masters',
@@ -77,7 +78,82 @@ describe('UploadPage...', () => {
     wrapper.unmount();
   });
 
-  it('...renders program banners when they are included', () => {
+  it('passes isFirstSection=true to report section when there is no enrollment section', () => {
+    const apiData = [{
+      programKey: 'a',
+      programTitle: 'a masters',
+      programUrl: 'https://amasters.com',
+      areEnrollmentsWritable: false,
+      areReportsReadable: true,
+    }];
+    const uploadPageComponent = (<UploadPage
+      authorized
+      data={apiData}
+      downloadEnrollments={() => {}}
+      fetchPrograms={() => {}}
+      programBanners={{}}
+      uploadEnrollments={() => {}}
+      removeBanner={() => {}}
+    />);
+
+    // shallow render UploadPage to avoid fully rendering the ConnectedReportSection,
+    // which requires a Redux store
+    const wrapper = shallow(uploadPageComponent);
+
+    expect(wrapper.find('h2').text()).toEqual(apiData[0].programTitle);
+
+    // we don't expect to see the enrollment section
+    expect(wrapper.exists(Collapsible)).toEqual(false);
+
+    expect(wrapper.find(ConnectedReportSection).prop('isFirstSection')).toEqual(true);
+
+
+    expect(wrapper.exists('.alert-danger')).toEqual(false);
+    expect(wrapper.exists('.alert-info')).toEqual(false);
+    expect(wrapper.exists('.alert-warning.show')).toEqual(false);
+
+    wrapper.unmount();
+  });
+
+  it('passes isFirstSection=false to report section when there is an enrollment section', () => {
+    const apiData = [{
+      programKey: 'a',
+      programTitle: 'a masters',
+      programUrl: 'https://amasters.com',
+      areEnrollmentsWritable: true,
+      areReportsReadable: true,
+    }];
+    const uploadPageComponent = (<UploadPage
+      authorized
+      data={apiData}
+      downloadEnrollments={() => {}}
+      fetchPrograms={() => {}}
+      programBanners={{}}
+      uploadEnrollments={() => {}}
+      removeBanner={() => {}}
+    />);
+
+    // shallow render UploadPage to avoid fully rendering the ConnectedReportSection,
+    // which requires a Redux store
+    const wrapper = shallow(uploadPageComponent);
+
+    expect(wrapper.find('h2').text()).toEqual(apiData[0].programTitle);
+
+    const collapsible = wrapper.find(Collapsible);
+    expect(collapsible.prop('className')).toEqual('shadow');
+    expect(collapsible.prop('title')).toEqual('Manage Enrollments');
+    expect(collapsible.prop('defaultOpen')).toEqual(true);
+
+    expect(wrapper.find(ConnectedReportSection).prop('isFirstSection')).toEqual(false);
+
+    expect(wrapper.exists('.alert-danger')).toEqual(false);
+    expect(wrapper.exists('.alert-info')).toEqual(false);
+    expect(wrapper.exists('.alert-warning.show')).toEqual(false);
+
+    wrapper.unmount();
+  });
+
+  it('renders program banners when they are included', () => {
     const apiData = [{
       programKey: 'a',
       programTitle: 'a masters',
@@ -123,7 +199,7 @@ describe('UploadPage...', () => {
     wrapper.unmount();
   });
 
-  it('...calls the fetchPrograms function on pageload', () => {
+  it('calls the fetchPrograms function on pageload', () => {
     const mock = jest.fn();
 
     expect(mock).not.toHaveBeenCalled();
@@ -141,7 +217,7 @@ describe('UploadPage...', () => {
     expect(mock).toHaveBeenCalled();
   });
 
-  it('...calls the correct action with the correct program key on download button clicks', () => {
+  it('calls the correct action with the correct program key on download button clicks', () => {
     const mock = jest.fn();
 
     const apiData = [{
@@ -189,7 +265,7 @@ describe('UploadPage...', () => {
     expect(mock).toHaveBeenCalledWith('b', true);
   });
 
-  it('...calls the correct action with the correct program key onchange of the file inputs', () => {
+  it('calls the correct action with the correct program key onchange of the file inputs', () => {
     const mock = jest.fn();
 
     const apiData = [{

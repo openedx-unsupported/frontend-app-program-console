@@ -1,7 +1,7 @@
 import { uploadSelector } from './selectors';
 
-describe('#uploadSelector', () => {
-  it('...is a function that returns just the state from the `upload` namespace from our store', () => {
+describe('UploadSelector', () => {
+  it('is a function that returns just the state from the `upload` namespace from our store', () => {
     const state = {
       upload: { foo: 'bar' },
       otherThing: { fizz: 'bazz' },

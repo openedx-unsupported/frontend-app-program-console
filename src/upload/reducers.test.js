@@ -1,7 +1,7 @@
 import uploadReducer from './reducers';
 import { FETCH_PROGRAMS } from './actions';
 
-describe('!upload reducer', () => {
+describe('upload reducer', () => {
   it('returns the initial state', () => {
     expect(uploadReducer(undefined, {})).toEqual({
       loading: false,
@@ -13,8 +13,8 @@ describe('!upload reducer', () => {
     });
   });
 
-  describe('#FETCH_PROGRAMS', () => {
-    it('...handles the GET__FETCH_PROGRAMS__BEGIN action', () => {
+  describe('FETCH_PROGRAMS', () => {
+    it('handles the GET__FETCH_PROGRAMS__BEGIN action', () => {
       expect(uploadReducer(undefined, { type: FETCH_PROGRAMS.BEGIN })).toEqual({
         loading: true,
         loaded: false,
@@ -25,7 +25,7 @@ describe('!upload reducer', () => {
       });
     });
 
-    it('...handles the GET__FETCH_PROGRAMS__SUCCESS action with displayable programs', () => {
+    it('handles the GET__FETCH_PROGRAMS__SUCCESS action with displayable programs', () => {
       const fetchProgramSuccess = {
         type: FETCH_PROGRAMS.SUCCESS,
         payload: {
@@ -47,7 +47,7 @@ describe('!upload reducer', () => {
       });
     });
 
-    it('...handles the GET__FETCH_PROGRAMS__SUCCESS action without displayable programs', () => {
+    it('handles the GET__FETCH_PROGRAMS__SUCCESS action without displayable programs', () => {
       const fetchProgramSuccess = {
         type: FETCH_PROGRAMS.SUCCESS,
         payload: {
@@ -66,7 +66,7 @@ describe('!upload reducer', () => {
       });
     });
 
-    it('...handles the GET__FETCH_PROGRAMS__FAILURE action', () => {
+    it('handles the GET__FETCH_PROGRAMS__FAILURE action', () => {
       expect(uploadReducer(undefined, { type: FETCH_PROGRAMS.FAILURE, payload: { error: 'oops!' } })).toEqual({
         loading: false,
         loaded: false,
@@ -79,7 +79,7 @@ describe('!upload reducer', () => {
   });
 
   describe('#Adding and removing banners', () => {
-    it('...handles the ADD_BANNER action with a program that has an empty banner array', () => {
+    it('handles the ADD_BANNER action with a program that has an empty banner array', () => {
       const state = {
         loading: true,
         loaded: false,
@@ -108,7 +108,7 @@ describe('!upload reducer', () => {
       });
     });
 
-    it('...handles the ADD_BANNER action and persists old banners', () => {
+    it('handles the ADD_BANNER action and persists old banners', () => {
       const state = {
         loading: true,
         loaded: false,
@@ -152,7 +152,7 @@ describe('!upload reducer', () => {
       });
     });
 
-    it('...handles the REMOVE_BANNER action and persists all other banners', () => {
+    it('handles the REMOVE_BANNER action and persists all other banners', () => {
       const programKey = '123';
       const bannerToRemoveId = `${programKey}${Date.now()}`;
       const bannerObj = {
@@ -208,8 +208,8 @@ describe('!upload reducer', () => {
     });
   });
 
-  describe('#NOT_AUTHENTICATED', () => {
-    it('...sets authorized to false', () => {
+  describe('NOT_AUTHENTICATED', () => {
+    it('sets authorized to false', () => {
       expect(uploadReducer(undefined, { type: 'NOT_AUTHENTICATED' })).toEqual({
         loading: false,
         loaded: false,
