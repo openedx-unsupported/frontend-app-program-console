@@ -10,7 +10,7 @@ export const defaultState = {
   programBanners: {},
 };
 
-const upload = (state = defaultState, action) => {
+const console = (state = defaultState, action) => {
   const { programBanners } = state;
   switch (action.type) {
     case FETCH_PROGRAMS.BEGIN:
@@ -74,4 +74,4 @@ const upload = (state = defaultState, action) => {
   }
 };
 
-export default upload;
+export default console;

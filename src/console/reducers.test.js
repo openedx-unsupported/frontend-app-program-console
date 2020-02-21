@@ -1,9 +1,9 @@
-import uploadReducer from './reducers';
+import consoleReducer from './reducers';
 import { FETCH_PROGRAMS } from './actions';
 
 describe('upload reducer', () => {
   it('returns the initial state', () => {
-    expect(uploadReducer(undefined, {})).toEqual({
+    expect(consoleReducer(undefined, {})).toEqual({
       loading: false,
       loaded: false,
       loadingError: null,
@@ -15,7 +15,7 @@ describe('upload reducer', () => {
 
   describe('FETCH_PROGRAMS', () => {
     it('handles the GET__FETCH_PROGRAMS__BEGIN action', () => {
-      expect(uploadReducer(undefined, { type: FETCH_PROGRAMS.BEGIN })).toEqual({
+      expect(consoleReducer(undefined, { type: FETCH_PROGRAMS.BEGIN })).toEqual({
         loading: true,
         loaded: false,
         loadingError: null,
@@ -35,7 +35,7 @@ describe('upload reducer', () => {
           ],
         },
       };
-      expect(uploadReducer(undefined, fetchProgramSuccess)).toEqual({
+      expect(consoleReducer(undefined, fetchProgramSuccess)).toEqual({
         loading: true,
         loaded: false,
         loadingError: null,
@@ -56,7 +56,7 @@ describe('upload reducer', () => {
           ],
         },
       };
-      expect(uploadReducer(undefined, fetchProgramSuccess)).toEqual({
+      expect(consoleReducer(undefined, fetchProgramSuccess)).toEqual({
         loading: true,
         loaded: false,
         loadingError: null,
@@ -67,7 +67,7 @@ describe('upload reducer', () => {
     });
 
     it('handles the GET__FETCH_PROGRAMS__FAILURE action', () => {
-      expect(uploadReducer(undefined, { type: FETCH_PROGRAMS.FAILURE, payload: { error: 'oops!' } })).toEqual({
+      expect(consoleReducer(undefined, { type: FETCH_PROGRAMS.FAILURE, payload: { error: 'oops!' } })).toEqual({
         loading: false,
         loaded: false,
         loadingError: 'oops!',
@@ -95,7 +95,7 @@ describe('upload reducer', () => {
         message: 'Your enrollment csv is being built. Please wait.',
       };
 
-      expect(uploadReducer(state, {
+      expect(consoleReducer(state, {
         type: 'ADD_BANNER',
         payload: { bannerObj, programKey },
       })).toEqual({
@@ -130,7 +130,7 @@ describe('upload reducer', () => {
         message: 'Your enrollment csv is being built. Please wait.',
       };
 
-      expect(uploadReducer(state, {
+      expect(consoleReducer(state, {
         type: 'ADD_BANNER',
         payload: { bannerObj, programKey },
       })).toEqual({
@@ -183,7 +183,7 @@ describe('upload reducer', () => {
         },
       };
 
-      expect(uploadReducer(state, {
+      expect(consoleReducer(state, {
         type: 'REMOVE_BANNER',
         payload: { bannerId: bannerToRemoveId, programKey },
       })).toEqual({
@@ -210,7 +210,7 @@ describe('upload reducer', () => {
 
   describe('NOT_AUTHENTICATED', () => {
     it('sets authorized to false', () => {
-      expect(uploadReducer(undefined, { type: 'NOT_AUTHENTICATED' })).toEqual({
+      expect(consoleReducer(undefined, { type: 'NOT_AUTHENTICATED' })).toEqual({
         loading: false,
         loaded: false,
         loadingError: null,

@@ -5,10 +5,10 @@ import { injectIntl } from 'react-intl';
 import { Collapsible, StatusAlert } from '@edx/paragon';
 
 import { fetchPrograms, uploadEnrollments, downloadEnrollments, removeBanner } from './actions';
-import { uploadSelector } from './selectors';
-import ConnectedReportSection from '../components/ReportSection/index';
+import { consoleSelector } from './selectors';
+import ConnectedReportSection from '../report/reportSection';
 
-export class UploadPage extends React.Component {
+export class ConsolePage extends React.Component {
   componentDidMount() {
     this.props.fetchPrograms();
   }
@@ -123,7 +123,7 @@ export class UploadPage extends React.Component {
   }
 }
 
-UploadPage.propTypes = {
+ConsolePage.propTypes = {
   authorized: PropTypes.bool.isRequired,
   data: PropTypes.arrayOf(PropTypes.shape({
     programKey: PropTypes.string,
@@ -139,9 +139,9 @@ UploadPage.propTypes = {
   removeBanner: PropTypes.func.isRequired,
 };
 
-export default connect(uploadSelector, {
+export default connect(consoleSelector, {
   fetchPrograms,
   uploadEnrollments,
   downloadEnrollments,
   removeBanner,
-})(injectIntl(UploadPage));
+})(injectIntl(ConsolePage));
