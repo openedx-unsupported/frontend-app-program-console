@@ -2,13 +2,13 @@ import { mount, shallow } from 'enzyme';
 import { Collapsible } from '@edx/paragon';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { UploadPage } from './UploadPage';
-import ConnectedReportSection from '../components/ReportSection/index';
+import { ConsolePage } from './ConsolePage';
+import ConnectedReportSection from '../report/reportSection';
 
 
-describe('UploadPage', () => {
+describe('ConsolePage', () => {
   it('renders with the most basic props passed to it', () => {
-    const tree = renderer.create((<UploadPage
+    const tree = renderer.create((<ConsolePage
       authorized
       data={[]}
       downloadEnrollments={() => {}}
@@ -21,7 +21,7 @@ describe('UploadPage', () => {
   });
 
   it('renders an error banner if there is not an authorized user', () => {
-    const uploadPageComponent = (<UploadPage
+    const consolePageComponent = (<ConsolePage
       authorized={false}
       data={[]}
       downloadEnrollments={() => {}}
@@ -30,8 +30,8 @@ describe('UploadPage', () => {
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
     />);
-    const wrapper = mount(uploadPageComponent);
-    const tree = renderer.create(uploadPageComponent);
+    const wrapper = mount(consolePageComponent);
+    const tree = renderer.create(consolePageComponent);
 
     expect(tree).toMatchSnapshot();
     expect(wrapper.exists('.alert.alert-warning.show')).toEqual(true);
@@ -52,7 +52,7 @@ describe('UploadPage', () => {
       areEnrollmentsWritable: true,
       areReportsReadable: false,
     }];
-    const uploadPageComponent = (<UploadPage
+    const consolePageComponent = (<ConsolePage
       authorized
       data={apiData}
       downloadEnrollments={() => {}}
@@ -61,8 +61,8 @@ describe('UploadPage', () => {
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
     />);
-    const wrapper = mount(uploadPageComponent);
-    const tree = renderer.create(uploadPageComponent).toJSON();
+    const wrapper = mount(consolePageComponent);
+    const tree = renderer.create(consolePageComponent).toJSON();
 
 
     expect(tree).toMatchSnapshot();
@@ -86,7 +86,7 @@ describe('UploadPage', () => {
       areEnrollmentsWritable: false,
       areReportsReadable: true,
     }];
-    const uploadPageComponent = (<UploadPage
+    const consolePageComponent = (<ConsolePage
       authorized
       data={apiData}
       downloadEnrollments={() => {}}
@@ -96,9 +96,9 @@ describe('UploadPage', () => {
       removeBanner={() => {}}
     />);
 
-    // shallow render UploadPage to avoid fully rendering the ConnectedReportSection,
+    // shallow render ConsolePage to avoid fully rendering the ConnectedReportSection,
     // which requires a Redux store
-    const wrapper = shallow(uploadPageComponent);
+    const wrapper = shallow(consolePageComponent);
 
     expect(wrapper.find('h2').text()).toEqual(apiData[0].programTitle);
 
@@ -123,7 +123,7 @@ describe('UploadPage', () => {
       areEnrollmentsWritable: true,
       areReportsReadable: true,
     }];
-    const uploadPageComponent = (<UploadPage
+    const consolePageComponent = (<ConsolePage
       authorized
       data={apiData}
       downloadEnrollments={() => {}}
@@ -133,9 +133,9 @@ describe('UploadPage', () => {
       removeBanner={() => {}}
     />);
 
-    // shallow render UploadPage to avoid fully rendering the ConnectedReportSection,
+    // shallow render ConsolePage to avoid fully rendering the ConnectedReportSection,
     // which requires a Redux store
-    const wrapper = shallow(uploadPageComponent);
+    const wrapper = shallow(consolePageComponent);
 
     expect(wrapper.find('h2').text()).toEqual(apiData[0].programTitle);
 
@@ -180,7 +180,7 @@ describe('UploadPage', () => {
         message: 'You did it!',
       }],
     };
-    const uploadPageComponent = (<UploadPage
+    const consolePageComponent = (<ConsolePage
       authorized
       data={apiData}
       downloadEnrollments={() => {}}
@@ -189,8 +189,8 @@ describe('UploadPage', () => {
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
     />);
-    const wrapper = mount(uploadPageComponent);
-    const tree = renderer.create(uploadPageComponent).toJSON();
+    const wrapper = mount(consolePageComponent);
+    const tree = renderer.create(consolePageComponent).toJSON();
 
     expect(tree).toMatchSnapshot();
     expect(wrapper.find('.alert-danger .alert-dialog').at(0).text()).toEqual('Sorry something went wrong ');
@@ -204,7 +204,7 @@ describe('UploadPage', () => {
 
     expect(mock).not.toHaveBeenCalled();
 
-    mount(<UploadPage
+    mount(<ConsolePage
       authorized
       data={[]}
       downloadEnrollments={() => {}}
@@ -234,7 +234,7 @@ describe('UploadPage', () => {
       areReportsReadable: false,
     }];
 
-    const wrapper = mount(<UploadPage
+    const wrapper = mount(<ConsolePage
       authorized
       data={apiData}
       downloadEnrollments={mock}
@@ -282,7 +282,7 @@ describe('UploadPage', () => {
       areReportsReadable: false,
     }];
 
-    const wrapper = mount(<UploadPage
+    const wrapper = mount(<ConsolePage
       authorized
       data={apiData}
       downloadEnrollments={() => {}}

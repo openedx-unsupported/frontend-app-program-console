@@ -2,7 +2,7 @@ import { mount } from 'enzyme';
 import { Collapsible } from '@edx/paragon';
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { ReportSection } from './index';
+import { ReportSection } from './reportSection';
 
 const assertCollapsibleProps = (collapsible) => {
   expect(collapsible.prop('className')).toEqual(expect.stringContaining('shadow'));

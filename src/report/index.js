@@ -1,4 +1,4 @@
-import ConnectedReportSection from '../components/ReportSection/index';
+import ConnectedReportSection from './reportSection';
 import reducer from './reducers';
 import saga from './sagas';
 import { configureApiService } from './service';

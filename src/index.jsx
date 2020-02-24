@@ -10,11 +10,11 @@ import { configuration } from './environment';
 import messages from './i18n';
 import configureStore from './store';
 import { configureUserAccountApiService } from './common';
-import { configureApiService as configureUploadApiService } from './upload';
+import { configureApiService as configureConsoleApiService } from './console';
 import { configureApiService as configureReportApiService } from './report';
 
 import './index.scss';
-import App from './components/App';
+import App from './App';
 
 const apiClient = getAuthenticatedAPIClient({
   appBaseUrl: configuration.BASE_URL,
@@ -41,7 +41,7 @@ function configure() {
 
   configureI18n(configuration, messages);
   configureUserAccountApiService(configuration, apiClient);
-  configureUploadApiService(configuration, apiClient);
+  configureConsoleApiService(configuration, apiClient);
   configureReportApiService(configuration, apiClient);
   initializeSegment(configuration.SEGMENT_KEY);
   configureAnalytics({

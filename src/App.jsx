@@ -16,10 +16,10 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { PageLoading, fetchUserAccount } from '../common';
+import { PageLoading, fetchUserAccount } from './common';
 
-import HeaderLogo from '../assets/logo.svg';
-import ConnectedUploadPage from '../upload/UploadPage';
+import HeaderLogo from './assets/logo.svg';
+import ConnectedConsolePage from './console/ConsolePage';
 
 import messages from './App.messages';
 
@@ -136,7 +136,7 @@ function PageContent({
         loggedOutItems={loggedOutItems}
       />
       <main>
-        <ConnectedUploadPage />
+        <ConnectedConsolePage />
       </main>
       <SiteFooter
         marketingSiteBaseUrl={configuration.MARKETING_SITE_BASE_URL}

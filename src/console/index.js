@@ -1,11 +1,11 @@
-import ConnectedUploadPage from './UploadPage';
+import ConnectedConsolePage from './ConsolePage';
 import reducer from './reducers';
 import saga from './sagas';
 import { configureApiService } from './service';
 import { storeName } from './selectors';
 
 export {
-  ConnectedUploadPage,
+  ConnectedConsolePage,
   reducer,
   saga,
   configureApiService,
