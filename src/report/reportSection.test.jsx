@@ -21,11 +21,19 @@ describe('ReportSection component', () => {
   });
 
   describe('correctly passes isFirstSection prop to collapsible component as defaultOpen', () => {
+    const reportData = {
+      'program-key': [
+        {
+          name: 'one-report',
+          downloadUrl: 'example.com/one-report',
+        },
+      ],
+    };
     [true, false].forEach((isFirstSectionValue) => {
       it(`${isFirstSectionValue}`, () => {
         const reportSectionComponent = (
           <ReportSection
-            reportData={{}}
+            reportData={reportData}
             fetchReports={() => { }}
             programKey="program-key"
             isFirstSection={isFirstSectionValue}
@@ -97,9 +105,7 @@ describe('ReportSection component', () => {
 
     expect(tree).toMatchSnapshot();
     const collapsible = wrapper.find(Collapsible);
-    assertCollapsibleProps(collapsible);
-
-    expect(collapsible.find('div.container').children()).toHaveLength(0);
+    expect(collapsible).toHaveLength(0);
   });
 
   it('doesn\'t render contents when empty program key is passed in', () => {
@@ -115,9 +121,7 @@ describe('ReportSection component', () => {
 
     expect(tree).toMatchSnapshot();
     const collapsible = wrapper.find(Collapsible);
-    assertCollapsibleProps(collapsible);
-
-    expect(collapsible.find('div.container').children()).toHaveLength(0);
+    expect(collapsible).toHaveLength(0);
   });
 
   it('calls the fetchReports function on load if program key prop is passed in', () => {
