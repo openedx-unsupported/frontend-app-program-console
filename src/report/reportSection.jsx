@@ -19,20 +19,24 @@ export class ReportSection extends React.Component {
   }
 
   render() {
-    return (
-      <Collapsible
-        className="shadow"
-        title="Download Reports"
-        defaultOpen={this.props.isFirstSection}
-      >
-        <div className="container" key={`report-${this.props.programKey}`}>
-          {this.props.reportData[this.props.programKey] &&
-            this.props.reportData[this.props.programKey].map(report => (
-              <div key={report.name}><a href={report.downloadUrl}>{report.name}</a></div>
-          ))}
-        </div>
-      </Collapsible>
-    );
+    if (this.props.reportData[this.props.programKey] &&
+      this.props.reportData[this.props.programKey].length > 0) {
+      return (
+        <Collapsible
+          className="shadow"
+          title="Download Reports"
+          defaultOpen={this.props.isFirstSection}
+        >
+          <div className="container">
+            {
+              this.props.reportData[this.props.programKey].map(report => (
+                <div key={report.name}><a href={report.downloadUrl}>{report.name}</a></div>
+            ))}
+          </div>
+        </Collapsible>
+      );
+    }
+    return null;
   }
 }
 
