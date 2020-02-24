@@ -9,7 +9,7 @@ import {
 } from './actions';
 
 // Services
-import * as ApiService from './service';
+import * as ApiService from '../console/service';
 
 export function* handleFetchReports({ payload: { programKey } }) {
   try {

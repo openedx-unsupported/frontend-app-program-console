@@ -6,8 +6,6 @@ import { Collapsible } from '@edx/paragon';
 
 import { fetchReports } from './actions';
 import { consoleSelector } from '../console/selectors';
-import saga from './sagas';
-import { configureApiService } from './service';
 
 
 export class ReportSection extends React.Component {
@@ -47,9 +45,3 @@ ReportSection.propTypes = {
 };
 
 export default connect(consoleSelector, { fetchReports })(injectIntl(ReportSection));
-
-
-export {
-  saga,
-  configureApiService,
-};
