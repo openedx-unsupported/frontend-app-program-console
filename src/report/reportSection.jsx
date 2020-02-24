@@ -5,8 +5,7 @@ import { injectIntl } from 'react-intl';
 import { Collapsible } from '@edx/paragon';
 
 import { fetchReports } from './actions';
-import { reportSelector, storeName } from './selectors';
-import reducer from './reducers';
+import { consoleSelector } from '../console/selectors';
 import saga from './sagas';
 import { configureApiService } from './service';
 
@@ -47,12 +46,10 @@ ReportSection.propTypes = {
   isFirstSection: PropTypes.bool.isRequired,
 };
 
-export default connect(reportSelector, { fetchReports })(injectIntl(ReportSection));
+export default connect(consoleSelector, { fetchReports })(injectIntl(ReportSection));
 
 
 export {
-  reducer,
   saga,
   configureApiService,
-  storeName,
 };

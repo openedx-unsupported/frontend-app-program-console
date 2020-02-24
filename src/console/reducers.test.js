@@ -1,5 +1,6 @@
 import consoleReducer from './reducers';
 import { FETCH_PROGRAMS } from './actions';
+import { FETCH_REPORTS } from '../report/actions';
 
 describe('upload reducer', () => {
   it('returns the initial state', () => {
@@ -222,3 +223,77 @@ describe('upload reducer', () => {
   });
 });
 
+describe('report reducer', () => {
+  it('handles the GET__FETCH_REPORTS__SUCCESS action with report data', () => {
+    const action = {
+      type: FETCH_REPORTS.SUCCESS,
+      payload: {
+        programKey: 'test-program',
+        reportData: [
+          {
+            name: 'first-report',
+            download_url: 'example.com/first-report',
+          },
+          {
+            name: 'second-report',
+            download_url: 'example.com/second-report',
+          },
+        ],
+      },
+    };
+
+    expect(consoleReducer(defaultState, action)).toEqual({
+      loadingError: null,
+      reportData: {
+        'test-program': [
+          {
+            name: 'first-report',
+            downloadUrl: 'example.com/first-report',
+          },
+          {
+            name: 'second-report',
+            downloadUrl: 'example.com/second-report',
+          },
+        ],
+      },
+    });
+  });
+
+  it('handles the GET__FETCH_REPORTS__SUCCESS action without report data', () => {
+    const action = {
+      type: FETCH_REPORTS.SUCCESS,
+      payload: {
+        programKey: 'test-program',
+        reportData: [],
+      },
+    };
+
+    expect(consoleReducer(defaultState, action)).toEqual({
+      loadingError: null,
+      reportData: {
+        'test-program': [],
+      },
+    });
+  });
+
+  it('handles the GET__FETCH_REPORTS__FAILURE action', () => {
+    const action = {
+      type: FETCH_REPORTS.FAILURE,
+      payload: {
+        error: 'error',
+      },
+    };
+
+    expect(consoleReducer(defaultState, action)).toEqual({
+      loadingError: action.payload.error,
+      reportData: {},
+    });
+  });
+
+  it('handles the default case', () => {
+    expect(consoleReducer(undefined, {})).toEqual({
+      loadingError: null,
+      reportData: {},
+    });
+  });
+});

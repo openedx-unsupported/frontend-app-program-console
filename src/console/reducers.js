@@ -1,5 +1,6 @@
 import { FETCH_PROGRAMS } from './actions';
 import { shouldProgramBeDisplayed } from './utils';
+import { FETCH_REPORTS } from '../report/actions';
 
 export const defaultState = {
   loading: false,
@@ -8,6 +9,7 @@ export const defaultState = {
   authorized: true,
   data: [],
   programBanners: {},
+  reportData: {},
 };
 
 const console = (state = defaultState, action) => {
@@ -41,6 +43,26 @@ const console = (state = defaultState, action) => {
         authorized: false,
         loading: false,
         loaded: false,
+        loadingError: action.payload.error,
+      };
+    case FETCH_REPORTS.SUCCESS: {
+      const { programKey, reportData } = action.payload;
+      const newReportData = Object.assign({}, state.reportData);
+      newReportData[programKey] = [];
+      reportData.forEach(reportItem =>
+        newReportData[programKey].push({
+          name: reportItem.name,
+          downloadUrl: reportItem.download_url,
+        }));
+      return {
+        ...state,
+        reportData: newReportData,
+        loadingError: null,
+      };
+    }
+    case FETCH_REPORTS.FAILURE:
+      return {
+        ...state,
         loadingError: action.payload.error,
       };
     case 'ADD_BANNER':

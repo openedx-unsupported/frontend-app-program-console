@@ -6,10 +6,6 @@ import {
   storeName as consoleStoreName,
 } from './console';
 
-import {
-  reducer as reportReducer,
-  storeName as reportStoreName,
-} from './report';
 
 const identityReducer = (state) => {
   const newState = { ...state };
@@ -24,7 +20,6 @@ const createRootReducer = history =>
     configuration: identityReducer,
     userAccount,
     [consoleStoreName]: consoleReducer,
-    [reportStoreName]: reportReducer,
     router: connectRouter(history),
   });
 
