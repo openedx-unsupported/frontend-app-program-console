@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import { Collapsible } from '@edx/paragon';
+import { Collapsible, StatusAlert } from '@edx/paragon';
 
 import { fetchReports } from './actions';
 import { reportSelector, storeName } from './selectors';
@@ -18,6 +18,15 @@ export class ReportSection extends React.Component {
     }
   }
 
+  getDisclaimer = () => (
+    <StatusAlert
+      alertType="info"
+      dialog="The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation."
+      dismissible={false}
+      open
+    />
+  );
+
   render() {
     if (this.props.reportData[this.props.programKey] &&
       this.props.reportData[this.props.programKey].length > 0) {
@@ -28,10 +37,11 @@ export class ReportSection extends React.Component {
           defaultOpen={this.props.isFirstSection}
         >
           <div className="container">
+            {this.getDisclaimer()}
             {
               this.props.reportData[this.props.programKey].map(report => (
                 <div key={report.name}><a href={report.downloadUrl}>{report.name}</a></div>
-            ))}
+              ))}
           </div>
         </Collapsible>
       );

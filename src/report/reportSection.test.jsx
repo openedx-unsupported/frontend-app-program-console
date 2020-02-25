@@ -1,5 +1,5 @@
 import { mount } from 'enzyme';
-import { Collapsible } from '@edx/paragon';
+import { Collapsible, StatusAlert } from '@edx/paragon';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { ReportSection } from './reportSection';
@@ -88,6 +88,12 @@ describe('ReportSection component', () => {
       expect(link.prop('href')).toEqual(reportData['program-key'][index].downloadUrl);
       expect(link.text()).toEqual(reportData['program-key'][index].name);
     });
+
+    const statusAlert = collapsible.find('div.container').find(StatusAlert);
+    expect(statusAlert.prop('alertType')).toEqual('info');
+    expect(statusAlert.prop('dismissible')).toEqual(false);
+    expect(statusAlert.prop('dialog')).toEqual('The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.');
+    expect(statusAlert.prop('open')).toEqual(true);
   });
 
   it('doesn\'t render contents when no program data is passed in', () => {
