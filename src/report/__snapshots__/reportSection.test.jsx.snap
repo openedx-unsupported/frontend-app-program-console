@@ -118,6 +118,17 @@ exports[`ReportSection component correctly passes isFirstSection prop to collaps
         <div
           className="container"
         >
+          <div
+            className="alert fade alert-info show"
+            hidden={false}
+            role="alert"
+          >
+            <div
+              className="alert-dialog"
+            >
+              The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.
+            </div>
+          </div>
           <div>
             <a
               href="example.com/one-report"
@@ -195,6 +206,17 @@ exports[`ReportSection component renders contents when program data is passed in
         <div
           className="container"
         >
+          <div
+            className="alert fade alert-info show"
+            hidden={false}
+            role="alert"
+          >
+            <div
+              className="alert-dialog"
+            >
+              The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.
+            </div>
+          </div>
           <div>
             <a
               href="example.com/first-report"
