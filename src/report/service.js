@@ -1,4 +1,6 @@
 import pick from 'lodash.pick';
+import { getTodayWithDaysOffset, getISODateString } from '../common/utils';
+import { REPORT_DATE_OFFSET_DAYS } from '../console/constants';
 
 let config = {
   REGISTRAR_API_BASE_URL: null,
@@ -21,10 +23,13 @@ export function configureApiService(newConfig, newApiClient) {
 }
 
 export async function getReportsByProgram(programKey) {
-  const { data } = await apiClient.get(
-    `${config.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/reports`,
-    {},
-  );
+  let url = `${config.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/reports`;
+
+  const minCreatedDate = getISODateString(getTodayWithDaysOffset(REPORT_DATE_OFFSET_DAYS));
+  url += `?min_created_date=${minCreatedDate}`;
+
+  const { data } = await apiClient.get(url, {});
+
   return data;
 }
 
