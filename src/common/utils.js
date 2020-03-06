@@ -79,3 +79,16 @@ export class AsyncActionType {
     return `${this.topic}__${this.name}__RESET`;
   }
 }
+
+export function getTodayWithDaysOffset(days) {
+  const date = new Date();
+  date.setDate(date.getDate() - days);
+  return date;
+}
+
+export function getISODateString(date) {
+  const isoDate = date.toISOString();
+  // we only want the date, not the time
+  const isoDateParts = isoDate.split('T');
+  return isoDateParts[0];
+}

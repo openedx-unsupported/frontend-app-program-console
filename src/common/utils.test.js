@@ -1,4 +1,13 @@
-import { AsyncActionType, modifyObjectKeys, camelCaseObject, snakeCaseObject, convertKeyNames, keepKeys } from './utils';
+import {
+  AsyncActionType,
+  modifyObjectKeys,
+  camelCaseObject,
+  snakeCaseObject,
+  convertKeyNames,
+  keepKeys,
+  getTodayWithDaysOffset,
+  getISODateString,
+} from './utils';
 
 describe('modifyObjectKeys', () => {
   it('should use the provided modify function to change all keys in and object and its children', () => {
@@ -113,6 +122,49 @@ describe('keepKeys', () => {
       expect(actionType.SUCCESS).toBe('HOUSE_CATS__START_THE_RACE__SUCCESS');
       expect(actionType.FAILURE).toBe('HOUSE_CATS__START_THE_RACE__FAILURE');
       expect(actionType.RESET).toBe('HOUSE_CATS__START_THE_RACE__RESET');
+    });
+  });
+
+  describe('getDateWithDaysOffset', () => {
+    let date;
+
+    beforeEach(() => {
+    });
+    afterEach(() => {
+      jest.restoreAllMocks();
+    });
+
+    it('should return a correct date object for seven days ago', () => {
+      date = new Date(2020, 2, 15);
+      const sevenDaysAgo = new Date(2020, 2, 9);
+
+      jest.spyOn(global, 'Date').mockImplementationOnce(() => date);
+
+      expect(getTodayWithDaysOffset(6)).toEqual(sevenDaysAgo);
+    });
+
+    it('should return a correct date object for zero days ago', () => {
+      date = new Date(2020, 2, 15);
+      jest.spyOn(global, 'Date').mockImplementationOnce(() => date);
+
+      expect(getTodayWithDaysOffset(0)).toEqual(date);
+    });
+
+    it('should return a date with a correctly wrapped month and year', () => {
+      date = new Date(2020, 0, 1);
+      const sevenDaysAgo = new Date(2019, 11, 26);
+
+      jest.spyOn(global, 'Date').mockImplementationOnce(() => date);
+
+      expect(getTodayWithDaysOffset(6)).toEqual(sevenDaysAgo);
+    });
+  });
+
+  describe('getISODateString', () => {
+    it('should return an ISO Date string', () => {
+      const date = new Date(2020, 3, 5);
+      // months are zero-indexed
+      expect(getISODateString(date)).toEqual('2020-04-05');
     });
   });
 });
