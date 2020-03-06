@@ -79,7 +79,7 @@ export class ConsolePage extends React.Component {
   render() {
     return (
       <div className="container half-width-element py-5 align-items-start">
-        <h1>Program Manager</h1>
+        <h1>Program Console</h1>
         <StatusAlert
           dismissible={false}
           dialog={(
