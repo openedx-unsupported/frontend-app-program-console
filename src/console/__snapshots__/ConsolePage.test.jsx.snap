@@ -5,7 +5,7 @@ exports[`ConsolePage renders an error banner if there is not an authorized user 
   className="container half-width-element py-5 align-items-start"
 >
   <h1>
-    Program Manager
+    Program Console
   </h1>
   <div
     className="alert fade alert-warning show"
@@ -34,7 +34,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
   className="container half-width-element py-5 align-items-start"
 >
   <h1>
-    Program Manager
+    Program Console
   </h1>
   <div
     className="alert fade alert-warning"
@@ -373,7 +373,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
   className="container half-width-element py-5 align-items-start"
 >
   <h1>
-    Program Manager
+    Program Console
   </h1>
   <div
     className="alert fade alert-warning"
@@ -654,7 +654,7 @@ exports[`ConsolePage renders with the most basic props passed to it 1`] = `
   className="container half-width-element py-5 align-items-start"
 >
   <h1>
-    Program Manager
+    Program Console
   </h1>
   <div
     className="alert fade alert-warning"
