@@ -106,7 +106,7 @@ module.exports = Merge.smart(commonConfig, {
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
-      BASE_URL: 'localhost:1976',
+      BASE_URL: 'localhost:19000/program-console/',
       LMS_BASE_URL: 'http://localhost:18000',
       CREDENTIALS_BASE_URL: 'http://localhost:18150',
       ECOMMERCE_BASE_URL: 'http://localhost:18130',
