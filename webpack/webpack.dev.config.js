@@ -112,7 +112,7 @@ module.exports = Merge.smart(commonConfig, {
       ECOMMERCE_BASE_URL: 'http://localhost:18130',
       REGISTRAR_API_BASE_URL: 'http://localhost:18734/api',
       LOGIN_URL: 'http://localhost:18000/login',
-      LOGOUT_URL: 'http://localhost:18000/login',
+      LOGOUT_URL: 'http://localhost:18000/logout',
       CSRF_TOKEN_API_PATH: '/csrf/api/v1/token',
       REFRESH_ACCESS_TOKEN_ENDPOINT: 'http://localhost:18000/login_refresh',
       SEGMENT_KEY: null,
