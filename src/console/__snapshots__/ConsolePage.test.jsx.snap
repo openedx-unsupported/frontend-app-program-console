@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ConsolePage renders an error banner if there is not an authorized user 1`] = `
+exports[`ConsolePage renders a warning banner if there is not an authorized user 1`] = `
 <div
   className="container half-width-element py-5 align-items-start"
 >
@@ -8,8 +8,91 @@ exports[`ConsolePage renders an error banner if there is not an authorized user 
     Program Console
   </h1>
   <div
+    className="alert fade alert-danger"
+    hidden={true}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <div>
+        <p>
+          An error was encountered while loading your program list: 
+          <em>
+            null
+          </em>
+        </p>
+        <p>
+          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
+          <a
+            href="mailto:partner-support@edx.org"
+          >
+            partner-support@edx.org
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
     className="alert fade alert-warning show"
     hidden={false}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <p>
+        It appears you do not have proper permissions to access this application. Please reach out to 
+        <a
+          href="mailto:partner-support@edx.org"
+        >
+          partner-support@edx.org
+        </a>
+         requesting access to the Registrar service.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ConsolePage renders an error banner when there was an error loading programs 1`] = `
+<div
+  className="container half-width-element py-5 align-items-start"
+>
+  <h1>
+    Program Console
+  </h1>
+  <div
+    className="alert fade alert-danger show"
+    hidden={false}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <div>
+        <p>
+          An error was encountered while loading your program list: 
+          <em>
+            Request failed with HTTP 418
+          </em>
+        </p>
+        <p>
+          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
+          <a
+            href="mailto:partner-support@edx.org"
+          >
+            partner-support@edx.org
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="alert fade alert-warning"
+    hidden={true}
     role="alert"
   >
     <div
@@ -36,6 +119,33 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
   <h1>
     Program Console
   </h1>
+  <div
+    className="alert fade alert-danger"
+    hidden={true}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <div>
+        <p>
+          An error was encountered while loading your program list: 
+          <em>
+            null
+          </em>
+        </p>
+        <p>
+          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
+          <a
+            href="mailto:partner-support@edx.org"
+          >
+            partner-support@edx.org
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  </div>
   <div
     className="alert fade alert-warning"
     hidden={true}
@@ -376,6 +486,33 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
     Program Console
   </h1>
   <div
+    className="alert fade alert-danger"
+    hidden={true}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <div>
+        <p>
+          An error was encountered while loading your program list: 
+          <em>
+            null
+          </em>
+        </p>
+        <p>
+          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
+          <a
+            href="mailto:partner-support@edx.org"
+          >
+            partner-support@edx.org
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
     className="alert fade alert-warning"
     hidden={true}
     role="alert"
@@ -656,6 +793,33 @@ exports[`ConsolePage renders with the most basic props passed to it 1`] = `
   <h1>
     Program Console
   </h1>
+  <div
+    className="alert fade alert-danger"
+    hidden={true}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <div>
+        <p>
+          An error was encountered while loading your program list: 
+          <em>
+            null
+          </em>
+        </p>
+        <p>
+          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
+          <a
+            href="mailto:partner-support@edx.org"
+          >
+            partner-support@edx.org
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  </div>
   <div
     className="alert fade alert-warning"
     hidden={true}
