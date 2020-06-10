@@ -8,7 +8,7 @@ import ConnectedReportSection from '../report/reportSection';
 
 describe('ConsolePage', () => {
   it('renders with the most basic props passed to it', () => {
-    const tree = renderer.create((<ConsolePage
+    const consolePageComponent = (<ConsolePage
       authorized
       data={[]}
       downloadEnrollments={() => {}}
@@ -16,11 +16,17 @@ describe('ConsolePage', () => {
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
-    />)).toJSON();
+    />);
+    const wrapper = mount(consolePageComponent);
+    const tree = renderer.create(consolePageComponent);
+
     expect(tree).toMatchSnapshot();
+    expect(wrapper.exists('.alert.alert-warning.show')).toEqual(false);
+    expect(wrapper.exists('.alert.alert-danger.show')).toEqual(false);
+    wrapper.unmount();
   });
 
-  it('renders an error banner if there is not an authorized user', () => {
+  it('renders a warning banner if there is not an authorized user', () => {
     const consolePageComponent = (<ConsolePage
       authorized={false}
       data={[]}
@@ -35,6 +41,27 @@ describe('ConsolePage', () => {
 
     expect(tree).toMatchSnapshot();
     expect(wrapper.exists('.alert.alert-warning.show')).toEqual(true);
+    expect(wrapper.exists('.alert.alert-danger.show')).toEqual(false);
+    wrapper.unmount();
+  });
+
+  it('renders an error banner when there was an error loading programs', () => {
+    const consolePageComponent = (<ConsolePage
+      authorized={false}
+      loadingError="Request failed with HTTP 418"
+      data={[]}
+      downloadEnrollments={() => {}}
+      fetchPrograms={() => {}}
+      programBanners={{}}
+      uploadEnrollments={() => {}}
+      removeBanner={() => {}}
+    />);
+    const wrapper = mount(consolePageComponent);
+    const tree = renderer.create(consolePageComponent);
+
+    expect(tree).toMatchSnapshot();
+    expect(wrapper.exists('.alert.alert-warning.show')).toEqual(false);
+    expect(wrapper.exists('.alert.alert-danger.show')).toEqual(true);
     wrapper.unmount();
   });
 
@@ -71,8 +98,8 @@ describe('ConsolePage', () => {
       expect(wrapper.find(Collapsible).at(idx).prop('defaultOpen')).toEqual(true);
     });
 
-    expect(wrapper.exists('.alert-danger')).toEqual(false);
-    expect(wrapper.exists('.alert-info')).toEqual(false);
+    expect(wrapper.exists('.alert-danger.show')).toEqual(false);
+    expect(wrapper.exists('.alert-info.show')).toEqual(false);
     expect(wrapper.exists('.alert-warning.show')).toEqual(false);
 
     wrapper.unmount();
@@ -193,8 +220,8 @@ describe('ConsolePage', () => {
     const tree = renderer.create(consolePageComponent).toJSON();
 
     expect(tree).toMatchSnapshot();
-    expect(wrapper.find('.alert-danger .alert-dialog').at(0).text()).toEqual('Sorry something went wrong ');
-    expect(wrapper.find('.alert-success .alert-dialog').at(0).text()).toEqual('You did it! ');
+    expect(wrapper.find('.alert-danger.show .alert-dialog').at(0).text()).toEqual('Sorry something went wrong ');
+    expect(wrapper.find('.alert-success.show .alert-dialog').at(0).text()).toEqual('You did it! ');
 
     wrapper.unmount();
   });

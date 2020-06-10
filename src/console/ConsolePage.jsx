@@ -81,6 +81,22 @@ export class ConsolePage extends React.Component {
       <div className="container half-width-element py-5 align-items-start">
         <h1>Program Console</h1>
         <StatusAlert
+          alertType="danger"
+          dismissible={false}
+          dialog={(
+            <div>
+              <p>
+                An error was encountered while loading your program list: <em>{`${this.props.loadingError}`}</em>
+              </p>
+              <p>
+                Please try waiting a moment and then refreshing the page.
+                If the issue persists, please reach out to <a href="mailto:partner-support@edx.org">partner-support@edx.org</a>.
+              </p>
+            </div>
+          )}
+          open={!!this.props.loadingError}
+        />
+        <StatusAlert
           dismissible={false}
           dialog={(
             <p>
@@ -88,7 +104,7 @@ export class ConsolePage extends React.Component {
               Please reach out to <a href="mailto:partner-support@edx.org">partner-support@edx.org</a> requesting access to the Registrar service.
             </p>
           )}
-          open={!this.props.authorized}
+          open={!this.props.authorized && !this.props.loadingError}
         />
         {this.props.data.length > 0 && this.props.data.map(program => (
           <div className="container mb-4" key={program.programKey}>
@@ -125,6 +141,7 @@ export class ConsolePage extends React.Component {
 
 ConsolePage.propTypes = {
   authorized: PropTypes.bool.isRequired,
+  loadingError: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
     programKey: PropTypes.string,
     programTitle: PropTypes.string,
@@ -137,6 +154,10 @@ ConsolePage.propTypes = {
   uploadEnrollments: PropTypes.func.isRequired,
   downloadEnrollments: PropTypes.func.isRequired,
   removeBanner: PropTypes.func.isRequired,
+};
+
+ConsolePage.defaultProps = {
+  loadingError: null,
 };
 
 export default connect(consoleSelector, {
