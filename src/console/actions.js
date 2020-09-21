@@ -100,3 +100,8 @@ export const pollJobFailure = error => ({
   type: POLL_JOB.FAILURE,
   payload: { error },
 });
+
+export const switchPage = page => ({
+  type: 'SWITCH_PAGE',
+  payload: { page },
+});

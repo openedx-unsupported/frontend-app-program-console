@@ -331,4 +331,47 @@ describe('ConsolePage', () => {
     wrapper.find('.input-overlay-hack').at(3).simulate('change', { target: { name: 'pollName', files: [file] } });
     expect(mock).toHaveBeenCalledWith('b', true, file);
   });
+
+  it('renders the correct programs on page switch', () => {
+    const testData = [];
+    for (let i = 0; i < 11; i += 1) {
+      testData.push({
+        programKey: i,
+        programTitle: `program ${i}`,
+        programUrl: `https://program${i}.com`,
+        areEnrollmentsWritable: true,
+        areReportsReadable: false,
+      });
+    }
+
+    const consolePageComponentOne = (<ConsolePage
+      authorized
+      data={testData}
+      downloadEnrollments={() => {}}
+      fetchPrograms={() => {}}
+      programBanners={{}}
+      uploadEnrollments={() => {}}
+      removeBanner={() => {}}
+      currentPage={1}
+    />);
+    const wrapperOne = mount(consolePageComponentOne);
+    const programTitleZero = wrapperOne.find('h2').first();
+    expect(programTitleZero.text()).toEqual('program 0');
+    wrapperOne.unmount();
+
+    const consolePageComponentTwo = (<ConsolePage
+      authorized
+      data={testData}
+      downloadEnrollments={() => {}}
+      fetchPrograms={() => {}}
+      programBanners={{}}
+      uploadEnrollments={() => {}}
+      removeBanner={() => {}}
+      currentPage={2}
+    />);
+    const wrapperTwo = mount(consolePageComponentTwo);
+    const programTitleTen = wrapperTwo.find('h2').first();
+    expect(programTitleTen.text()).toEqual('program 10');
+    wrapperTwo.unmount();
+  });
 });
