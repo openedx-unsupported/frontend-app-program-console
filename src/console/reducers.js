@@ -8,6 +8,8 @@ export const defaultState = {
   authorized: true,
   data: [],
   programBanners: {},
+  currentPage: 1,
+  pageSize: 10,
 };
 
 const console = (state = defaultState, action) => {
@@ -68,6 +70,11 @@ const console = (state = defaultState, action) => {
       return {
         ...state,
         authorized: false,
+      };
+    case 'SWITCH_PAGE':
+      return {
+        ...state,
+        currentPage: action.payload.page,
       };
     default:
       return state;

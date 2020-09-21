@@ -10,6 +10,8 @@ describe('upload reducer', () => {
       authorized: true,
       data: [],
       programBanners: {},
+      currentPage: 1,
+      pageSize: 10,
     });
   });
 
@@ -22,6 +24,8 @@ describe('upload reducer', () => {
         authorized: true,
         data: [],
         programBanners: {},
+        currentPage: 1,
+        pageSize: 10,
       });
     });
 
@@ -44,6 +48,8 @@ describe('upload reducer', () => {
           { programKey: '123', areEnrollmentsWritable: true },
         ],
         programBanners: { 123: [] },
+        currentPage: 1,
+        pageSize: 10,
       });
     });
 
@@ -63,6 +69,8 @@ describe('upload reducer', () => {
         authorized: false,
         data: [],
         programBanners: {},
+        currentPage: 1,
+        pageSize: 10,
       });
     });
 
@@ -74,6 +82,8 @@ describe('upload reducer', () => {
         authorized: false,
         data: [],
         programBanners: {},
+        currentPage: 1,
+        pageSize: 10,
       });
     });
   });
@@ -87,6 +97,8 @@ describe('upload reducer', () => {
         authorized: true,
         data: [{ programKey: '123' }],
         programBanners: { 123: [] },
+        currentPage: 1,
+        pageSize: 10,
       };
       const programKey = '123';
       const bannerObj = {
@@ -105,6 +117,8 @@ describe('upload reducer', () => {
         authorized: true,
         data: [{ programKey: '123' }],
         programBanners: { 123: [bannerObj] },
+        currentPage: 1,
+        pageSize: 10,
       });
     });
 
@@ -122,6 +136,8 @@ describe('upload reducer', () => {
             message: 'Woohoo!',
           }],
         },
+        currentPage: 1,
+        pageSize: 10,
       };
       const programKey = '123';
       const bannerObj = {
@@ -149,6 +165,8 @@ describe('upload reducer', () => {
             bannerObj,
           ],
         },
+        currentPage: 1,
+        pageSize: 10,
       });
     });
 
@@ -181,6 +199,8 @@ describe('upload reducer', () => {
             message: 'BOO!',
           }],
         },
+        currentPage: 1,
+        pageSize: 10,
       };
 
       expect(consoleReducer(state, {
@@ -204,6 +224,8 @@ describe('upload reducer', () => {
             message: 'BOO!',
           }],
         },
+        currentPage: 1,
+        pageSize: 10,
       });
     });
   });
@@ -217,7 +239,37 @@ describe('upload reducer', () => {
         authorized: false,
         data: [],
         programBanners: {},
+        currentPage: 1,
+        pageSize: 10,
       });
+    });
+  });
+});
+
+describe('SWITCH_PAGE', () => {
+  it('sets page number', () => {
+    const state = {
+      loading: true,
+      loaded: false,
+      loadingError: null,
+      authorized: true,
+      data: [{ programKey: '123' }],
+      programBanners: { 123: [] },
+      currentPage: 1,
+      pageSize: 10,
+    };
+    expect(consoleReducer(state, {
+      type: 'SWITCH_PAGE',
+      payload: { page: 2 },
+    })).toEqual({
+      loading: true,
+      loaded: false,
+      loadingError: null,
+      authorized: true,
+      data: [{ programKey: '123' }],
+      programBanners: { 123: [] },
+      currentPage: 2,
+      pageSize: 10,
     });
   });
 });

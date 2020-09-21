@@ -165,153 +165,218 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
       </p>
     </div>
   </div>
-  <div
-    className="container mb-4"
-  >
-    <h2>
-      a masters
-    </h2>
-    <div
-      className="alert fade alert-dismissible alert-danger show"
-      hidden={false}
-      role="alert"
+  <div>
+    <nav
+      aria-label="pagination navigation"
+      className={undefined}
     >
-      <button
-        aria-label="Close"
-        className="btn close"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        type="button"
-      >
-        <span
-          aria-hidden="true"
-        >
-          ×
-        </span>
-      </button>
       <div
-        className="alert-dialog"
+        aria-atomic={true}
+        aria-live="polite"
+        aria-relevant="text"
+        className="sr-only"
       >
-        <div
-          className="modal-alert"
+        Page 1, Current Page, of 1
+      </div>
+      <ul
+        className="pagination"
+      >
+        <li
+          className="page-item disabled"
         >
-          Sorry something went wrong 
+          <button
+            aria-label="Previous"
+            className="btn previous page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-left mr-2"
+                id="pagination-13"
+              />
+              Previous
+            </div>
+          </button>
+        </li>
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Next"
+            className="btn next page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              Next
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-right ml-2"
+                id="pagination-14"
+              />
+            </div>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <div
+      className="container mb-4"
+    >
+      <h2>
+        a masters
+      </h2>
+      <div
+        className="alert fade alert-dismissible alert-danger show"
+        hidden={false}
+        role="alert"
+      >
+        <button
+          aria-label="Close"
+          className="btn close"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
+        <div
+          className="alert-dialog"
+        >
+          <div
+            className="modal-alert"
+          >
+            Sorry something went wrong 
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      className="pgn_collapsible shadow collapsible-card is-open"
-      open={undefined}
-    >
       <div
-        aria-expanded={true}
-        className="collapsible-trigger"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="button"
-        tabIndex={0}
-      >
-        <span>
-          Manage Enrollments
-        </span>
-        <span
-          className="ml-2"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-minus fa-w-14 "
-            data-icon="minus"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-              fill="currentColor"
-              style={Object {}}
-            />
-          </svg>
-        </span>
-      </div>
-      <div
-        className="pgn-transition-replace-group position-relative"
-        style={
-          Object {
-            "height": null,
-          }
-        }
+        className="pgn_collapsible shadow collapsible-card is-open"
+        open={undefined}
       >
         <div
+          aria-expanded={true}
+          className="collapsible-trigger"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          <span>
+            Manage Enrollments
+          </span>
+          <span
+            className="ml-2"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-minus fa-w-14 "
+              data-icon="minus"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative"
           style={
             Object {
-              "padding": ".1px 0",
+              "height": null,
             }
           }
         >
           <div
-            className="collapsible-body"
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
           >
             <div
-              className="container"
+              className="collapsible-body"
             >
               <div
-                className="row mb-3 mb-md-2 "
+                className="container"
               >
                 <div
-                  className="col-md"
+                  className="row mb-3 mb-md-2 "
                 >
                   <div
-                    className="btn btn-primary w-100 mb-1"
+                    className="col-md"
                   >
-                    <input
-                      className="sr input-overlay-hack"
-                      onChange={[Function]}
-                      type="file"
-                    />
-                    Upload Program Enrollments
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Program Enrollments
+                    </div>
+                  </div>
+                  <div
+                    className="col-md"
+                  >
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                    >
+                      Download Program Enrollments
+                    </button>
                   </div>
                 </div>
                 <div
-                  className="col-md"
-                >
-                  <button
-                    className="btn btn-primary w-100"
-                    onClick={[Function]}
-                  >
-                    Download Program Enrollments
-                  </button>
-                </div>
-              </div>
-              <div
-                className="row"
-              >
-                <div
-                  className="col-md"
+                  className="row"
                 >
                   <div
-                    className="btn btn-primary w-100 mb-1"
+                    className="col-md"
                   >
-                    <input
-                      className="sr input-overlay-hack"
-                      onChange={[Function]}
-                      type="file"
-                    />
-                    Upload Course Enrollments
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Course Enrollments
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="col-md"
-                >
-                  <button
-                    className="btn btn-primary w-100"
-                    onClick={[Function]}
+                  <div
+                    className="col-md"
                   >
-                    Download Course Enrollments
-                  </button>
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                    >
+                      Download Course Enrollments
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -319,154 +384,154 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="container mb-4"
-  >
-    <h2>
-      b masters
-    </h2>
     <div
-      className="alert fade alert-dismissible alert-success show"
-      hidden={false}
-      role="alert"
+      className="container mb-4"
     >
-      <button
-        aria-label="Close"
-        className="btn close"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        type="button"
-      >
-        <span
-          aria-hidden="true"
-        >
-          ×
-        </span>
-      </button>
+      <h2>
+        b masters
+      </h2>
       <div
-        className="alert-dialog"
+        className="alert fade alert-dismissible alert-success show"
+        hidden={false}
+        role="alert"
       >
-        <div
-          className="modal-alert"
+        <button
+          aria-label="Close"
+          className="btn close"
+          onBlur={[Function]}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          type="button"
         >
-          You did it! 
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </button>
+        <div
+          className="alert-dialog"
+        >
+          <div
+            className="modal-alert"
+          >
+            You did it! 
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      className="pgn_collapsible shadow collapsible-card is-open"
-      open={undefined}
-    >
       <div
-        aria-expanded={true}
-        className="collapsible-trigger"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="button"
-        tabIndex={0}
-      >
-        <span>
-          Manage Enrollments
-        </span>
-        <span
-          className="ml-2"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-minus fa-w-14 "
-            data-icon="minus"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-              fill="currentColor"
-              style={Object {}}
-            />
-          </svg>
-        </span>
-      </div>
-      <div
-        className="pgn-transition-replace-group position-relative"
-        style={
-          Object {
-            "height": null,
-          }
-        }
+        className="pgn_collapsible shadow collapsible-card is-open"
+        open={undefined}
       >
         <div
+          aria-expanded={true}
+          className="collapsible-trigger"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          <span>
+            Manage Enrollments
+          </span>
+          <span
+            className="ml-2"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-minus fa-w-14 "
+              data-icon="minus"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative"
           style={
             Object {
-              "padding": ".1px 0",
+              "height": null,
             }
           }
         >
           <div
-            className="collapsible-body"
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
           >
             <div
-              className="container"
+              className="collapsible-body"
             >
               <div
-                className="row mb-3 mb-md-2 "
+                className="container"
               >
                 <div
-                  className="col-md"
+                  className="row mb-3 mb-md-2 "
                 >
                   <div
-                    className="btn btn-primary w-100 mb-1"
+                    className="col-md"
                   >
-                    <input
-                      className="sr input-overlay-hack"
-                      onChange={[Function]}
-                      type="file"
-                    />
-                    Upload Program Enrollments
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Program Enrollments
+                    </div>
+                  </div>
+                  <div
+                    className="col-md"
+                  >
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                    >
+                      Download Program Enrollments
+                    </button>
                   </div>
                 </div>
                 <div
-                  className="col-md"
-                >
-                  <button
-                    className="btn btn-primary w-100"
-                    onClick={[Function]}
-                  >
-                    Download Program Enrollments
-                  </button>
-                </div>
-              </div>
-              <div
-                className="row"
-              >
-                <div
-                  className="col-md"
+                  className="row"
                 >
                   <div
-                    className="btn btn-primary w-100 mb-1"
+                    className="col-md"
                   >
-                    <input
-                      className="sr input-overlay-hack"
-                      onChange={[Function]}
-                      type="file"
-                    />
-                    Upload Course Enrollments
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Course Enrollments
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="col-md"
-                >
-                  <button
-                    className="btn btn-primary w-100"
-                    onClick={[Function]}
+                  <div
+                    className="col-md"
                   >
-                    Download Course Enrollments
-                  </button>
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                    >
+                      Download Course Enrollments
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -474,6 +539,69 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         </div>
       </div>
     </div>
+    <nav
+      aria-label="pagination navigation"
+      className={undefined}
+    >
+      <div
+        aria-atomic={true}
+        aria-live="polite"
+        aria-relevant="text"
+        className="sr-only"
+      >
+        Page 1, Current Page, of 1
+      </div>
+      <ul
+        className="pagination"
+      >
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Previous"
+            className="btn previous page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-left mr-2"
+                id="pagination-15"
+              />
+              Previous
+            </div>
+          </button>
+        </li>
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Next"
+            className="btn next page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              Next
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-right ml-2"
+                id="pagination-16"
+              />
+            </div>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
 `;
@@ -531,124 +659,189 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
       </p>
     </div>
   </div>
-  <div
-    className="container mb-4"
-  >
-    <h2>
-      a masters
-    </h2>
-    <div
-      className="pgn_collapsible shadow collapsible-card is-open"
-      open={undefined}
+  <div>
+    <nav
+      aria-label="pagination navigation"
+      className={undefined}
     >
       <div
-        aria-expanded={true}
-        className="collapsible-trigger"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="button"
-        tabIndex={0}
+        aria-atomic={true}
+        aria-live="polite"
+        aria-relevant="text"
+        className="sr-only"
       >
-        <span>
-          Manage Enrollments
-        </span>
-        <span
-          className="ml-2"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-minus fa-w-14 "
-            data-icon="minus"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-              fill="currentColor"
-              style={Object {}}
-            />
-          </svg>
-        </span>
+        Page 1, Current Page, of 1
       </div>
+      <ul
+        className="pagination"
+      >
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Previous"
+            className="btn previous page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-left mr-2"
+                id="pagination-5"
+              />
+              Previous
+            </div>
+          </button>
+        </li>
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Next"
+            className="btn next page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              Next
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-right ml-2"
+                id="pagination-6"
+              />
+            </div>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <div
+      className="container mb-4"
+    >
+      <h2>
+        a masters
+      </h2>
       <div
-        className="pgn-transition-replace-group position-relative"
-        style={
-          Object {
-            "height": null,
-          }
-        }
+        className="pgn_collapsible shadow collapsible-card is-open"
+        open={undefined}
       >
         <div
+          aria-expanded={true}
+          className="collapsible-trigger"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          <span>
+            Manage Enrollments
+          </span>
+          <span
+            className="ml-2"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-minus fa-w-14 "
+              data-icon="minus"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative"
           style={
             Object {
-              "padding": ".1px 0",
+              "height": null,
             }
           }
         >
           <div
-            className="collapsible-body"
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
           >
             <div
-              className="container"
+              className="collapsible-body"
             >
               <div
-                className="row mb-3 mb-md-2 "
+                className="container"
               >
                 <div
-                  className="col-md"
+                  className="row mb-3 mb-md-2 "
                 >
                   <div
-                    className="btn btn-primary w-100 mb-1"
+                    className="col-md"
                   >
-                    <input
-                      className="sr input-overlay-hack"
-                      onChange={[Function]}
-                      type="file"
-                    />
-                    Upload Program Enrollments
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Program Enrollments
+                    </div>
+                  </div>
+                  <div
+                    className="col-md"
+                  >
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                    >
+                      Download Program Enrollments
+                    </button>
                   </div>
                 </div>
                 <div
-                  className="col-md"
-                >
-                  <button
-                    className="btn btn-primary w-100"
-                    onClick={[Function]}
-                  >
-                    Download Program Enrollments
-                  </button>
-                </div>
-              </div>
-              <div
-                className="row"
-              >
-                <div
-                  className="col-md"
+                  className="row"
                 >
                   <div
-                    className="btn btn-primary w-100 mb-1"
+                    className="col-md"
                   >
-                    <input
-                      className="sr input-overlay-hack"
-                      onChange={[Function]}
-                      type="file"
-                    />
-                    Upload Course Enrollments
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Course Enrollments
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="col-md"
-                >
-                  <button
-                    className="btn btn-primary w-100"
-                    onClick={[Function]}
+                  <div
+                    className="col-md"
                   >
-                    Download Course Enrollments
-                  </button>
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                    >
+                      Download Course Enrollments
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -656,125 +849,125 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         </div>
       </div>
     </div>
-  </div>
-  <div
-    className="container mb-4"
-  >
-    <h2>
-      b masters
-    </h2>
     <div
-      className="pgn_collapsible shadow collapsible-card is-open"
-      open={undefined}
+      className="container mb-4"
     >
+      <h2>
+        b masters
+      </h2>
       <div
-        aria-expanded={true}
-        className="collapsible-trigger"
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        role="button"
-        tabIndex={0}
-      >
-        <span>
-          Manage Enrollments
-        </span>
-        <span
-          className="ml-2"
-        >
-          <svg
-            aria-hidden="true"
-            className="svg-inline--fa fa-minus fa-w-14 "
-            data-icon="minus"
-            data-prefix="fas"
-            focusable="false"
-            role="img"
-            style={Object {}}
-            viewBox="0 0 448 512"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-              fill="currentColor"
-              style={Object {}}
-            />
-          </svg>
-        </span>
-      </div>
-      <div
-        className="pgn-transition-replace-group position-relative"
-        style={
-          Object {
-            "height": null,
-          }
-        }
+        className="pgn_collapsible shadow collapsible-card is-open"
+        open={undefined}
       >
         <div
+          aria-expanded={true}
+          className="collapsible-trigger"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          <span>
+            Manage Enrollments
+          </span>
+          <span
+            className="ml-2"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-minus fa-w-14 "
+              data-icon="minus"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative"
           style={
             Object {
-              "padding": ".1px 0",
+              "height": null,
             }
           }
         >
           <div
-            className="collapsible-body"
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
           >
             <div
-              className="container"
+              className="collapsible-body"
             >
               <div
-                className="row mb-3 mb-md-2 "
+                className="container"
               >
                 <div
-                  className="col-md"
+                  className="row mb-3 mb-md-2 "
                 >
                   <div
-                    className="btn btn-primary w-100 mb-1"
+                    className="col-md"
                   >
-                    <input
-                      className="sr input-overlay-hack"
-                      onChange={[Function]}
-                      type="file"
-                    />
-                    Upload Program Enrollments
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Program Enrollments
+                    </div>
+                  </div>
+                  <div
+                    className="col-md"
+                  >
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                    >
+                      Download Program Enrollments
+                    </button>
                   </div>
                 </div>
                 <div
-                  className="col-md"
-                >
-                  <button
-                    className="btn btn-primary w-100"
-                    onClick={[Function]}
-                  >
-                    Download Program Enrollments
-                  </button>
-                </div>
-              </div>
-              <div
-                className="row"
-              >
-                <div
-                  className="col-md"
+                  className="row"
                 >
                   <div
-                    className="btn btn-primary w-100 mb-1"
+                    className="col-md"
                   >
-                    <input
-                      className="sr input-overlay-hack"
-                      onChange={[Function]}
-                      type="file"
-                    />
-                    Upload Course Enrollments
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Course Enrollments
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="col-md"
-                >
-                  <button
-                    className="btn btn-primary w-100"
-                    onClick={[Function]}
+                  <div
+                    className="col-md"
                   >
-                    Download Course Enrollments
-                  </button>
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                    >
+                      Download Course Enrollments
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -782,6 +975,69 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         </div>
       </div>
     </div>
+    <nav
+      aria-label="pagination navigation"
+      className={undefined}
+    >
+      <div
+        aria-atomic={true}
+        aria-live="polite"
+        aria-relevant="text"
+        className="sr-only"
+      >
+        Page 1, Current Page, of 1
+      </div>
+      <ul
+        className="pagination"
+      >
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Previous"
+            className="btn previous page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-left mr-2"
+                id="pagination-7"
+              />
+              Previous
+            </div>
+          </button>
+        </li>
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Next"
+            className="btn next page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              Next
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-right ml-2"
+                id="pagination-8"
+              />
+            </div>
+          </button>
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
 `;

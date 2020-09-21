@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import { Collapsible, StatusAlert } from '@edx/paragon';
+import { Collapsible, StatusAlert, Pagination } from '@edx/paragon';
 
-import { fetchPrograms, uploadEnrollments, downloadEnrollments, removeBanner } from './actions';
+import { fetchPrograms, uploadEnrollments, downloadEnrollments, removeBanner, switchPage } from './actions';
 import { consoleSelector } from './selectors';
 import ConnectedReportSection from '../report/reportSection';
 
@@ -27,6 +27,17 @@ export class ConsolePage extends React.Component {
 
   handleDownloadCourseEnrollments(programKey) {
     this.props.downloadEnrollments(programKey, true);
+  }
+
+  handleCurrentPrograms() {
+    const startIndex = (this.props.currentPage - 1) * this.props.pageSize;
+    const endIndex = Math.min(startIndex + this.props.pageSize, this.props.data.length);
+    return this.props.data.slice(startIndex, endIndex);
+  }
+
+  handlePageSelect(pageNumber) {
+    this.props.switchPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   renderEnrollmentsCollapsible = program => (
@@ -106,34 +117,50 @@ export class ConsolePage extends React.Component {
           )}
           open={!this.props.authorized && !this.props.loadingError}
         />
-        {this.props.data.length > 0 && this.props.data.map(program => (
-          <div className="container mb-4" key={program.programKey}>
-            <h2>{program.programTitle}</h2>
-            {this.props.programBanners[program.programKey] &&
-              !!this.props.programBanners[program.programKey].length &&
-              this.props.programBanners[program.programKey].map(banner => (
-                <StatusAlert
-                  dismissible
-                  open
-                  key={banner.id}
-                  alertType={banner.bannerType}
-                  onClose={() => this.props.removeBanner(program.programKey, banner.id)}
-                  dialog={(
-                    <div className="modal-alert">
-                      {`${banner.message} `}
-                      {banner.linkMessage && <a href={banner.linkHref} target="_blank" rel="noopener noreferrer">{banner.linkMessage}</a>}
-                    </div>
-                  )}
-                />
-              ))}
-            {program.areEnrollmentsWritable && this.renderEnrollmentsCollapsible(program)}
-            {program.areReportsReadable &&
-              <ConnectedReportSection
-                programKey={program.programKey}
-                isFirstSection={!program.areEnrollmentsWritable}
-              />}
+        {this.props.data.length > 0 && (
+          <div>
+            <Pagination
+              paginationLabel="pagination navigation"
+              pageCount={Math.ceil(this.props.data.length / this.props.pageSize)}
+              currentPage={this.props.currentPage}
+              onPageSelect={pageNumber => this.handlePageSelect(pageNumber)}
+            />
+            {this.handleCurrentPrograms().map(program => (
+              <div className="container mb-4" key={program.programKey}>
+                <h2>{program.programTitle}</h2>
+                {this.props.programBanners[program.programKey] &&
+                  !!this.props.programBanners[program.programKey].length &&
+                  this.props.programBanners[program.programKey].map(banner => (
+                    <StatusAlert
+                      dismissible
+                      open
+                      key={banner.id}
+                      alertType={banner.bannerType}
+                      onClose={() => this.props.removeBanner(program.programKey, banner.id)}
+                      dialog={(
+                        <div className="modal-alert">
+                          {`${banner.message} `}
+                          {banner.linkMessage && <a href={banner.linkHref} target="_blank" rel="noopener noreferrer">{banner.linkMessage}</a>}
+                        </div>
+                      )}
+                    />
+                  ))}
+                {program.areEnrollmentsWritable && this.renderEnrollmentsCollapsible(program)}
+                {program.areReportsReadable &&
+                  <ConnectedReportSection
+                    programKey={program.programKey}
+                    isFirstSection={!program.areEnrollmentsWritable}
+                  />}
+              </div>
+            ))}
+            <Pagination
+              paginationLabel="pagination navigation"
+              pageCount={Math.ceil(this.props.data.length / this.props.pageSize)}
+              currentPage={this.props.currentPage}
+              onPageSelect={pageNumber => this.handlePageSelect(pageNumber)}
+            />
           </div>
-        ))}
+        )}
       </div>
     );
   }
@@ -154,10 +181,15 @@ ConsolePage.propTypes = {
   uploadEnrollments: PropTypes.func.isRequired,
   downloadEnrollments: PropTypes.func.isRequired,
   removeBanner: PropTypes.func.isRequired,
+  currentPage: PropTypes.number,
+  pageSize: PropTypes.number,
+  switchPage: PropTypes.func.isRequired,
 };
 
 ConsolePage.defaultProps = {
   loadingError: null,
+  currentPage: 1,
+  pageSize: 10,
 };
 
 export default connect(consoleSelector, {
@@ -165,4 +197,5 @@ export default connect(consoleSelector, {
   uploadEnrollments,
   downloadEnrollments,
   removeBanner,
+  switchPage,
 })(injectIntl(ConsolePage));
