@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
 import { Collapsible, StatusAlert } from '@edx/paragon';
+import { sendTrackEvent } from '@edx/frontend-analytics';
 
 import { fetchReports } from './actions';
 import { reportSelector, storeName } from './selectors';
@@ -40,7 +41,21 @@ export class ReportSection extends React.Component {
             {this.getDisclaimer()}
             {
               this.props.reportData[this.props.programKey].map(report => (
-                <div key={report.name}><a href={report.downloadUrl}>{report.name}</a></div>
+                <div key={report.name}>
+                  <a
+                    id="console-report"
+                    href={report.downloadUrl}
+                    onClick={() => sendTrackEvent(
+                      'edx.program.console.report.download',
+                      {
+                        programKey: this.props.programKey,
+                        reportName: report.name,
+                      },
+                    )}
+                  >
+                    {report.name}
+                  </a>
+                </div>
               ))}
           </div>
         </Collapsible>
