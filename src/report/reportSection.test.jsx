@@ -1,6 +1,7 @@
 import { mount } from 'enzyme';
 import { Collapsible, StatusAlert } from '@edx/paragon';
 import React from 'react';
+import * as analytics from '@edx/frontend-analytics';
 import renderer from 'react-test-renderer';
 import { ReportSection } from './reportSection';
 
@@ -154,5 +155,33 @@ describe('ReportSection component', () => {
     />);
 
     expect(mock).not.toHaveBeenCalled();
+  });
+
+  it('calls sendTrackEvent when report download link is clicked', () => {
+    jest.mock('@edx/frontend-analytics');
+    analytics.sendTrackEvent = jest.fn();
+
+    const reportData = {
+      'program-key': [
+        {
+          name: 'first-report',
+          downloadUrl: 'example.com/first-report',
+        },
+      ],
+    };
+
+    const reportSectionComponent = (
+      <ReportSection
+        reportData={reportData}
+        fetchReports={() => { }}
+        programKey="program-key"
+        isFirstSection
+      />
+    );
+
+    const wrapper = mount(reportSectionComponent);
+    const link = wrapper.find('#console-report');
+    link.simulate('click');
+    expect(analytics.sendTrackEvent).toHaveBeenCalled();
   });
 });

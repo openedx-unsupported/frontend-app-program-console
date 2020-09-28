@@ -132,6 +132,8 @@ exports[`ReportSection component correctly passes isFirstSection prop to collaps
           <div>
             <a
               href="example.com/one-report"
+              id="console-report"
+              onClick={[Function]}
             >
               one-report
             </a>
@@ -220,6 +222,8 @@ exports[`ReportSection component renders contents when program data is passed in
           <div>
             <a
               href="example.com/first-report"
+              id="console-report"
+              onClick={[Function]}
             >
               first-report
             </a>
@@ -227,6 +231,8 @@ exports[`ReportSection component renders contents when program data is passed in
           <div>
             <a
               href="example.com/second-report"
+              id="console-report"
+              onClick={[Function]}
             >
               second-report
             </a>
