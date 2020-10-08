@@ -1,6 +1,11 @@
-
-import { all, call, delay, put, takeEvery } from 'redux-saga/effects';
-import LoggingService from '@edx/frontend-logging';
+import {
+  all,
+  call,
+  delay,
+  put,
+  takeEvery,
+} from 'redux-saga/effects';
+import { logError } from '@edx/frontend-platform/logging';
 import { parseRegistrarJobName } from './utils';
 
 // Actions
@@ -30,7 +35,6 @@ import { PERMISSIONS } from './constants';
 // Services
 import * as ApiService from './service';
 
-
 export function* handleFetchPrograms() {
   try {
     yield put(fetchProgramsBegin());
@@ -41,22 +45,21 @@ export function* handleFetchPrograms() {
       yield put(fetchProgramsSuccess(data
         .map(({
           program_key, program_title, program_url, permissions, // eslint-disable-line camelcase
-        }) =>
-          (
-            {
-              programKey: program_key,
-              programTitle: program_title,
-              programUrl: program_url,
-              areEnrollmentsWritable: permissions.includes(PERMISSIONS.writeEnrollments),
-              areEnrollmentsReadable: permissions.includes(PERMISSIONS.readEnrollments),
-              areReportsReadable: permissions.includes(PERMISSIONS.readReports),
-            }
-          ))));
+        }) => (
+          {
+            programKey: program_key,
+            programTitle: program_title,
+            programUrl: program_url,
+            areEnrollmentsWritable: permissions.includes(PERMISSIONS.writeEnrollments),
+            areEnrollmentsReadable: permissions.includes(PERMISSIONS.readEnrollments),
+            areReportsReadable: permissions.includes(PERMISSIONS.readReports),
+          }
+        ))));
     } else {
       yield put(notAuthenticated());
     }
   } catch (e) {
-    LoggingService.logAPIErrorResponse(e);
+    logError(e);
     yield put(fetchProgramsFailure(e.message));
   }
   yield put(fetchJobs());
@@ -84,7 +87,7 @@ export function* handleFetchJobs() {
     }
     yield put(fetchJobsSuccess());
   } catch (e) {
-    LoggingService.logAPIErrorResponse(e);
+    logError(e);
     yield put(fetchJobsFailure(e.message));
   }
 }
@@ -106,7 +109,7 @@ export function* handleUploadEnrollments({ payload: { programKey, isCourses, fil
     ]);
   } catch (e) {
     const { response: { status } } = e;
-    LoggingService.logAPIErrorResponse(e);
+    logError(e);
     if (status === 500) {
       yield put(addBanner(
         programKey,
@@ -142,7 +145,7 @@ export function* handleDownloadEnrollments({ payload: { programKey, isCourses } 
       put(pollJob(programKey, data.job_id, bannerObj.id)),
     ]);
   } catch (e) {
-    LoggingService.logAPIErrorResponse(e);
+    logError(e);
     yield put(addBanner(
       programKey,
       {
@@ -190,7 +193,7 @@ export function* handlePollJobs({ payload: { programKey, jobId, bannerId } }) {
       ]);
     }
   } catch (e) {
-    LoggingService.logAPIErrorResponse(e);
+    logError(e);
   }
 }
 

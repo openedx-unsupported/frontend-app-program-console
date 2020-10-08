@@ -5,18 +5,20 @@ import renderer from 'react-test-renderer';
 import { ConsolePage } from './ConsolePage';
 import ConnectedReportSection from '../report/reportSection';
 
-
 describe('ConsolePage', () => {
   it('renders with the most basic props passed to it', () => {
-    const consolePageComponent = (<ConsolePage
-      authorized
-      data={[]}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-    />);
+    const consolePageComponent = (
+      <ConsolePage
+        authorized
+        data={[]}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        programBanners={{}}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        switchPage={jest.fn()}
+      />
+    );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
 
@@ -27,15 +29,18 @@ describe('ConsolePage', () => {
   });
 
   it('renders a warning banner if there is not an authorized user', () => {
-    const consolePageComponent = (<ConsolePage
-      authorized={false}
-      data={[]}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-    />);
+    const consolePageComponent = (
+      <ConsolePage
+        authorized={false}
+        data={[]}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        programBanners={{}}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        switchPage={jest.fn()}
+      />
+    );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
 
@@ -46,16 +51,19 @@ describe('ConsolePage', () => {
   });
 
   it('renders an error banner when there was an error loading programs', () => {
-    const consolePageComponent = (<ConsolePage
-      authorized={false}
-      loadingError="Request failed with HTTP 418"
-      data={[]}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-    />);
+    const consolePageComponent = (
+      <ConsolePage
+        authorized={false}
+        loadingError="Request failed with HTTP 418"
+        data={[]}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        programBanners={{}}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        switchPage={jest.fn()}
+      />
+    );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
 
@@ -79,18 +87,20 @@ describe('ConsolePage', () => {
       areEnrollmentsWritable: true,
       areReportsReadable: false,
     }];
-    const consolePageComponent = (<ConsolePage
-      authorized
-      data={apiData}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-    />);
+    const consolePageComponent = (
+      <ConsolePage
+        authorized
+        data={apiData}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        programBanners={{}}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        switchPage={jest.fn()}
+      />
+    );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent).toJSON();
-
 
     expect(tree).toMatchSnapshot();
     apiData.forEach((program, idx) => {
@@ -113,15 +123,18 @@ describe('ConsolePage', () => {
       areEnrollmentsWritable: false,
       areReportsReadable: true,
     }];
-    const consolePageComponent = (<ConsolePage
-      authorized
-      data={apiData}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-    />);
+    const consolePageComponent = (
+      <ConsolePage
+        authorized
+        data={apiData}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        programBanners={{}}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        switchPage={jest.fn()}
+      />
+    );
 
     // shallow render ConsolePage to avoid fully rendering the ConnectedReportSection,
     // which requires a Redux store
@@ -133,7 +146,6 @@ describe('ConsolePage', () => {
     expect(wrapper.exists(Collapsible)).toEqual(false);
 
     expect(wrapper.find(ConnectedReportSection).prop('isFirstSection')).toEqual(true);
-
 
     expect(wrapper.exists('.alert-danger')).toEqual(false);
     expect(wrapper.exists('.alert-info')).toEqual(false);
@@ -150,15 +162,18 @@ describe('ConsolePage', () => {
       areEnrollmentsWritable: true,
       areReportsReadable: true,
     }];
-    const consolePageComponent = (<ConsolePage
-      authorized
-      data={apiData}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-    />);
+    const consolePageComponent = (
+      <ConsolePage
+        authorized
+        data={apiData}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        programBanners={{}}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        switchPage={jest.fn()}
+      />
+    );
 
     // shallow render ConsolePage to avoid fully rendering the ConnectedReportSection,
     // which requires a Redux store
@@ -207,15 +222,18 @@ describe('ConsolePage', () => {
         message: 'You did it!',
       }],
     };
-    const consolePageComponent = (<ConsolePage
-      authorized
-      data={apiData}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      programBanners={programBanners}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-    />);
+    const consolePageComponent = (
+      <ConsolePage
+        authorized
+        data={apiData}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        programBanners={programBanners}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        switchPage={jest.fn()}
+      />
+    );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent).toJSON();
 
@@ -239,6 +257,7 @@ describe('ConsolePage', () => {
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
+      switchPage={jest.fn()}
     />);
 
     expect(mock).toHaveBeenCalled();
@@ -269,6 +288,7 @@ describe('ConsolePage', () => {
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
+      switchPage={jest.fn()}
     />);
 
     const programADownloadProgramButton = wrapper.find('button.btn.btn-primary').at(0);
@@ -317,6 +337,7 @@ describe('ConsolePage', () => {
       programBanners={{}}
       uploadEnrollments={mock}
       removeBanner={() => {}}
+      switchPage={jest.fn()}
     />);
 
     const file = new File([], 'test');
@@ -336,7 +357,7 @@ describe('ConsolePage', () => {
     const testData = [];
     for (let i = 0; i < 11; i += 1) {
       testData.push({
-        programKey: i,
+        programKey: `${i}`,
         programTitle: `program ${i}`,
         programUrl: `https://program${i}.com`,
         areEnrollmentsWritable: true,
@@ -344,31 +365,37 @@ describe('ConsolePage', () => {
       });
     }
 
-    const consolePageComponentOne = (<ConsolePage
-      authorized
-      data={testData}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-      currentPage={1}
-    />);
+    const consolePageComponentOne = (
+      <ConsolePage
+        authorized
+        data={testData}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        programBanners={{}}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        currentPage={1}
+        switchPage={jest.fn()}
+      />
+    );
     const wrapperOne = mount(consolePageComponentOne);
     const programTitleZero = wrapperOne.find('h2').first();
     expect(programTitleZero.text()).toEqual('program 0');
     wrapperOne.unmount();
 
-    const consolePageComponentTwo = (<ConsolePage
-      authorized
-      data={testData}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-      currentPage={2}
-    />);
+    const consolePageComponentTwo = (
+      <ConsolePage
+        authorized
+        data={testData}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        programBanners={{}}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        currentPage={2}
+        switchPage={jest.fn()}
+      />
+    );
     const wrapperTwo = mount(consolePageComponentTwo);
     const programTitleTen = wrapperTwo.find('h2').first();
     expect(programTitleTen.text()).toEqual('program 10');

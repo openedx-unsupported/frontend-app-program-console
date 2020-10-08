@@ -16,6 +16,10 @@ import {
 } from './actions';
 import { handleFetchPrograms } from './sagas';
 
+jest.mock('@edx/frontend-platform/logging', () => ({
+  logError: () => {},
+}));
+
 describe('handleFetchPrograms', () => {
   function expectSagaBegin() {
     const saga = handleFetchPrograms();

@@ -112,7 +112,6 @@ describe('keepKeys', () => {
     });
   });
 
-
   describe('AsyncActionType', () => {
     it('should return well formatted action strings', () => {
       const actionType = new AsyncActionType('HOUSE_CATS', 'START_THE_RACE');

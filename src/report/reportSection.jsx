@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
+import { sendTrackEvent } from '@edx/frontend-platform/analytics';
+import { injectIntl } from '@edx/frontend-platform/i18n';
 import { Collapsible, StatusAlert } from '@edx/paragon';
-import { sendTrackEvent } from '@edx/frontend-analytics';
 
 import { fetchReports } from './actions';
 import { reportSelector, storeName } from './selectors';
 import reducer from './reducers';
 import saga from './sagas';
 import { configureApiService } from './service';
-
 
 export class ReportSection extends React.Component {
   componentDidMount() {
@@ -29,8 +28,8 @@ export class ReportSection extends React.Component {
   );
 
   render() {
-    if (this.props.reportData[this.props.programKey] &&
-      this.props.reportData[this.props.programKey].length > 0) {
+    if (this.props.reportData[this.props.programKey]
+      && this.props.reportData[this.props.programKey].length > 0) {
       return (
         <Collapsible
           className="shadow"
@@ -39,24 +38,23 @@ export class ReportSection extends React.Component {
         >
           <div className="container">
             {this.getDisclaimer()}
-            {
-              this.props.reportData[this.props.programKey].map(report => (
-                <div key={report.name}>
-                  <a
-                    id="console-report"
-                    href={report.downloadUrl}
-                    onClick={() => sendTrackEvent(
-                      'edx.program.console.report.download',
-                      {
-                        programKey: this.props.programKey,
-                        reportName: report.name,
-                      },
-                    )}
-                  >
-                    {report.name}
-                  </a>
-                </div>
-              ))}
+            {this.props.reportData[this.props.programKey].map(report => (
+              <div key={report.name}>
+                <a
+                  id="console-report"
+                  href={report.downloadUrl}
+                  onClick={() => sendTrackEvent(
+                    'edx.program.console.report.download',
+                    {
+                      programKey: this.props.programKey,
+                      reportName: report.name,
+                    },
+                  )}
+                >
+                  {report.name}
+                </a>
+              </div>
+            ))}
           </div>
         </Collapsible>
       );
@@ -73,7 +71,6 @@ ReportSection.propTypes = {
 };
 
 export default connect(reportSelector, { fetchReports })(injectIntl(ReportSection));
-
 
 export {
   reducer,

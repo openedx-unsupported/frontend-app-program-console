@@ -3,7 +3,6 @@
 exports[`ReportSection component correctly passes isFirstSection prop to collapsible component as defaultOpen false 1`] = `
 <div
   className="pgn_collapsible shadow collapsible-card"
-  open={undefined}
 >
   <div
     aria-expanded={false}
@@ -62,7 +61,6 @@ exports[`ReportSection component correctly passes isFirstSection prop to collaps
 exports[`ReportSection component correctly passes isFirstSection prop to collapsible component as defaultOpen true 1`] = `
 <div
   className="pgn_collapsible shadow collapsible-card is-open"
-  open={undefined}
 >
   <div
     aria-expanded={true}
@@ -152,7 +150,6 @@ exports[`ReportSection component doesn't render contents when no program data is
 exports[`ReportSection component renders contents when program data is passed in 1`] = `
 <div
   className="pgn_collapsible shadow collapsible-card is-open"
-  open={undefined}
 >
   <div
     aria-expanded={true}

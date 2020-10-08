@@ -1,13 +1,13 @@
-import LoggingService from '@edx/frontend-logging';
+import { logError } from '@edx/frontend-platform/logging';
 import { takeEvery } from 'redux-saga/effects';
 import { runSaga } from 'redux-saga';
 import * as ApiService from './service';
 import saga, { handleFetchReports } from './sagas';
 
-jest.mock('@edx/frontend-logging');
+jest.mock('@edx/frontend-platform/logging');
 
 beforeEach(() => {
-  LoggingService.mockClear();
+  logError.mockClear();
 });
 
 describe('handleFetchReports', () => {
@@ -92,7 +92,7 @@ describe('handleFetchReports', () => {
         },
       },
     ]);
-    expect(LoggingService.logAPIErrorResponse).toHaveBeenCalledWith(Error('Error!'));
+    expect(logError).toHaveBeenCalledWith(Error('Error!'));
   });
 
   describe('saga', () => {

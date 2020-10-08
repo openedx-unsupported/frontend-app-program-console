@@ -5,4 +5,3 @@ module.exports = {
     require('autoprefixer')({ grid: true, browsers: ['>1%'] }),
   ],
 };
-
