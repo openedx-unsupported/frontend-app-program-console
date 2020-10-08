@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import LoggingService from '@edx/frontend-logging';
+import { logError } from '@edx/frontend-platform/logging';
 
 // Actions
 import {
@@ -18,7 +18,7 @@ export function* handleFetchReports({ payload: { programKey } }) {
       yield put(fetchReportsSuccess(programKey, data));
     }
   } catch (e) {
-    LoggingService.logAPIErrorResponse(e);
+    logError(e);
     yield put(fetchReportsFailure(e.message));
   }
 }

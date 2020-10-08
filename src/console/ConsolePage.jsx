@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
+import { injectIntl } from '@edx/frontend-platform/i18n';
 import { Collapsible, StatusAlert, Pagination } from '@edx/paragon';
 
-import { fetchPrograms, uploadEnrollments, downloadEnrollments, removeBanner, switchPage } from './actions';
+import {
+  fetchPrograms,
+  uploadEnrollments,
+  downloadEnrollments,
+  removeBanner,
+  switchPage,
+} from './actions';
 import { consoleSelector } from './selectors';
 import ConnectedReportSection from '../report/reportSection';
 
@@ -59,6 +65,7 @@ export class ConsolePage extends React.Component {
           </div>
           <div className="col-md">
             <button
+              type="button"
               className="btn btn-primary w-100"
               onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
             >Download Program Enrollments
@@ -77,6 +84,7 @@ export class ConsolePage extends React.Component {
           </div>
           <div className="col-md">
             <button
+              type="button"
               className="btn btn-primary w-100"
               onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
             >Download Course Enrollments
@@ -128,9 +136,9 @@ export class ConsolePage extends React.Component {
             {this.handleCurrentPrograms().map(program => (
               <div className="container mb-4" key={program.programKey}>
                 <h2>{program.programTitle}</h2>
-                {this.props.programBanners[program.programKey] &&
-                  !!this.props.programBanners[program.programKey].length &&
-                  this.props.programBanners[program.programKey].map(banner => (
+                {this.props.programBanners[program.programKey]
+                  && !!this.props.programBanners[program.programKey].length
+                  && this.props.programBanners[program.programKey].map(banner => (
                     <StatusAlert
                       dismissible
                       open
@@ -146,11 +154,13 @@ export class ConsolePage extends React.Component {
                     />
                   ))}
                 {program.areEnrollmentsWritable && this.renderEnrollmentsCollapsible(program)}
-                {program.areReportsReadable &&
-                  <ConnectedReportSection
-                    programKey={program.programKey}
-                    isFirstSection={!program.areEnrollmentsWritable}
-                  />}
+                {program.areReportsReadable
+                  && (
+                    <ConnectedReportSection
+                      programKey={program.programKey}
+                      isFirstSection={!program.areEnrollmentsWritable}
+                    />
+                  )}
               </div>
             ))}
             <Pagination

@@ -1,9 +1,13 @@
 import { mount } from 'enzyme';
 import { Collapsible, StatusAlert } from '@edx/paragon';
 import React from 'react';
-import * as analytics from '@edx/frontend-analytics';
+import * as analytics from '@edx/frontend-platform/analytics';
 import renderer from 'react-test-renderer';
 import { ReportSection } from './reportSection';
+
+jest.mock('@edx/frontend-platform/analytics', () => ({
+  sendTrackEvent: jest.fn(),
+}));
 
 const assertCollapsibleProps = (collapsible) => {
   expect(collapsible.prop('className')).toEqual(expect.stringContaining('shadow'));
@@ -12,12 +16,14 @@ const assertCollapsibleProps = (collapsible) => {
 
 describe('ReportSection component', () => {
   it('renders with the most basic props passed to it', () => {
-    const tree = renderer.create((<ReportSection
-      reportData={{}}
-      fetchReports={() => { }}
-      programKey=""
-      isFirstSection
-    />)).toJSON();
+    const tree = renderer.create((
+      <ReportSection
+        reportData={{}}
+        fetchReports={() => { }}
+        programKey=""
+        isFirstSection
+      />
+    )).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
@@ -116,12 +122,14 @@ describe('ReportSection component', () => {
   });
 
   it('doesn\'t render contents when empty program key is passed in', () => {
-    const reportSectionComponent = (<ReportSection
-      reportData={{}}
-      fetchReports={() => { }}
-      programKey=""
-      isFirstSection
-    />);
+    const reportSectionComponent = (
+      <ReportSection
+        reportData={{}}
+        fetchReports={() => { }}
+        programKey=""
+        isFirstSection
+      />
+    );
 
     const wrapper = mount(reportSectionComponent);
     const tree = renderer.create(reportSectionComponent);
@@ -158,9 +166,6 @@ describe('ReportSection component', () => {
   });
 
   it('calls sendTrackEvent when report download link is clicked', () => {
-    jest.mock('@edx/frontend-analytics');
-    analytics.sendTrackEvent = jest.fn();
-
     const reportData = {
       'program-key': [
         {

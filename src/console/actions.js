@@ -26,7 +26,6 @@ export const fetchProgramsFailure = error => ({
 
 export const UPLOAD_ENROLLMENTS = new AsyncActionType('UPLOAD', 'UPlOAD_PROGRAM_ENROLLMENTS');
 
-
 export const uploadEnrollments = (programKey, isCourses, file) => ({
   type: UPLOAD_ENROLLMENTS.BASE,
   payload: {

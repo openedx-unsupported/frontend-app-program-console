@@ -7,14 +7,13 @@ import { routerMiddleware } from 'connected-react-router';
 import createRootReducer from '../reducers';
 import rootSaga from '../sagas';
 
-export default function configureStore(initialState = {}) {
+export default function configureStore() {
   const history = createBrowserHistory();
 
   const sagaMiddleware = createSagaMiddleware();
 
   const store = createStore(
     createRootReducer(history),
-    initialState,
     compose(applyMiddleware(thunkMiddleware, sagaMiddleware, routerMiddleware(history))),
   );
 

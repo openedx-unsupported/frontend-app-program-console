@@ -1,4 +1,5 @@
 import pick from 'lodash.pick';
+import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { getTodayWithDaysOffset, getISODateString } from '../common/utils';
 import { REPORT_DATE_OFFSET_DAYS } from '../console/constants';
 
@@ -23,17 +24,17 @@ export function configureApiService(newConfig, newApiClient) {
 }
 
 export async function getReportsByProgram(programKey) {
-  let url = `${config.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/reports`;
+  let url = `${process.env.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/reports`;
 
   const minCreatedDate = getISODateString(getTodayWithDaysOffset(REPORT_DATE_OFFSET_DAYS));
   url += `?min_created_date=${minCreatedDate}`;
 
-  const { data } = await apiClient.get(url, {});
+  const { data } = await getAuthenticatedHttpClient().get(url, {});
 
   return data;
 }
 
 export async function get(url) {
-  const { data } = await apiClient.get(url);
+  const { data } = await getAuthenticatedHttpClient().get(url);
   return data;
 }

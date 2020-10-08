@@ -1,5 +1,6 @@
 import pick from 'lodash.pick';
 import { put } from 'redux-saga/effects';
+import { getAuthenticatedHttpClient } from '@edx/frontend-platform/auth';
 import { notAuthenticated } from './actions';
 import { PERMISSIONS } from './constants';
 
@@ -24,20 +25,20 @@ export function configureApiService(newConfig, newApiClient) {
 }
 
 export async function getAccessiblePrograms() {
-  const { data } = await apiClient.get(
-    `${config.REGISTRAR_API_BASE_URL}/v1/programs/?user_has_perm=${PERMISSIONS.readMetadata}`,
+  const { data } = await getAuthenticatedHttpClient().get(
+    `${process.env.REGISTRAR_API_BASE_URL}/v1/programs/?user_has_perm=${PERMISSIONS.readMetadata}`,
     {},
   );
   return data;
 }
 
 export async function getJobs() {
-  const { data } = await apiClient.get(`${config.REGISTRAR_API_BASE_URL}/v1/jobs/`, {});
+  const { data } = await getAuthenticatedHttpClient().get(`${process.env.REGISTRAR_API_BASE_URL}/v1/jobs/`, {});
   return data;
 }
 
 export async function getJob(jobId) {
-  const { data } = await apiClient.get(`${config.REGISTRAR_API_BASE_URL}/v1/jobs/${jobId}`, {});
+  const { data } = await getAuthenticatedHttpClient().get(`${process.env.REGISTRAR_API_BASE_URL}/v1/jobs/${jobId}`, {});
   return data;
 }
 
@@ -62,14 +63,14 @@ export async function uploadEnrollments(programKey, isCourseEnrollments, file) {
   const formData = new FormData();
   formData.append('file', file);
 
-  apiClient.interceptors.response.use(
+  getAuthenticatedHttpClient().interceptors.response.use(
     response => response,
     handleErrorResponses,
   );
 
   const enrollmentType = isCourseEnrollments ? 'course_enrollments' : 'enrollments';
-  const { data } = await apiClient.post(
-    `${config.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/${enrollmentType}/upload/`,
+  const { data } = await getAuthenticatedHttpClient().post(
+    `${process.env.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/${enrollmentType}/upload/`,
     formData,
     { headers },
   );
@@ -81,21 +82,20 @@ export async function downloadEnrollments(programKey, isCourseEnrollments) {
     'Content-Type': 'multipart/form-data ',
   };
 
-  apiClient.interceptors.response.use(
+  getAuthenticatedHttpClient().interceptors.response.use(
     response => response,
     handleErrorResponses,
   );
 
   const enrollmentType = isCourseEnrollments ? 'course_enrollments' : 'enrollments';
-  const { data } = await apiClient.get(
-    `${config.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/${enrollmentType}/?fmt=csv`,
+  const { data } = await getAuthenticatedHttpClient().get(
+    `${process.env.REGISTRAR_API_BASE_URL}/v1/programs/${programKey}/${enrollmentType}/?fmt=csv`,
     { headers },
   );
   return data;
 }
 
 export async function get(url) {
-  const { data } = await apiClient.get(url);
+  const { data } = await getAuthenticatedHttpClient().get(url);
   return data;
 }
-

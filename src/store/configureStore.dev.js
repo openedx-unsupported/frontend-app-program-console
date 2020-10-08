@@ -9,7 +9,7 @@ import { createLogger } from 'redux-logger';
 import createRootReducer from '../reducers';
 import rootSaga from '../sagas';
 
-export default function configureStore(initialState = {}) {
+export default function configureStore() {
   const history = createBrowserHistory();
 
   const loggerMiddleware = createLogger({
@@ -19,7 +19,6 @@ export default function configureStore(initialState = {}) {
 
   const store = createStore(
     createRootReducer(history),
-    initialState,
     composeWithDevTools(applyMiddleware(thunkMiddleware, sagaMiddleware, routerMiddleware(history), loggerMiddleware)), // eslint-disable-line
   );
 
