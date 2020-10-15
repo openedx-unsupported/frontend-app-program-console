@@ -24,9 +24,9 @@ export function configureApiService(newConfig, newApiClient) {
   apiClient = newApiClient;
 }
 
-export async function getAccessiblePrograms() {
+export async function getAccessiblePrograms(programTitle = '') {
   const { data } = await getAuthenticatedHttpClient().get(
-    `${process.env.REGISTRAR_API_BASE_URL}/v1/programs/?user_has_perm=${PERMISSIONS.readMetadata}`,
+    `${process.env.REGISTRAR_API_BASE_URL}/v1/programs/?user_has_perm=${PERMISSIONS.readMetadata}&program_title=${programTitle}`,
     {},
   );
   return data;

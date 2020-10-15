@@ -9,6 +9,11 @@ import {
   fetchProgramsBegin,
   fetchProgramsFailure,
   fetchProgramsSuccess,
+  filterPrograms,
+  filterProgramsBegin,
+  filterProgramsSuccess,
+  filterProgramsFailure,
+  filterProgramsInvalid,
   notAuthenticated,
   pollJob,
   pollJobFailure,
@@ -100,7 +105,53 @@ describe('FETCH_PROGRAMS', () => {
   });
 });
 
-describe('#ETCH_JOBS', () => {
+describe('FILTER_PROGRAMS', () => {
+  it('has a base action creator', () => {
+    expect(filterPrograms).toBeInstanceOf(Function);
+    expect(filterPrograms('filter')).toEqual({
+      type: 'GET__FILTER_PROGRAMS',
+      payload: {
+        programTitle: 'filter',
+      },
+    });
+  });
+
+  it('has a begin action creator', () => {
+    expect(filterProgramsBegin).toBeInstanceOf(Function);
+    expect(filterProgramsBegin()).toEqual({
+      type: 'GET__FILTER_PROGRAMS__BEGIN',
+    });
+  });
+
+  it('has a success action creator', () => {
+    expect(filterProgramsSuccess).toBeInstanceOf(Function);
+    expect(filterProgramsSuccess({ foo: 'bar' })).toEqual({
+      type: 'GET__FILTER_PROGRAMS__SUCCESS',
+      payload: {
+        data: { foo: 'bar' },
+      },
+    });
+  });
+
+  it('has a failure action creator', () => {
+    expect(filterProgramsFailure).toBeInstanceOf(Function);
+    expect(filterProgramsFailure({ foo: 'bar' })).toEqual({
+      type: 'GET__FILTER_PROGRAMS__FAILURE',
+      payload: {
+        error: { foo: 'bar' },
+      },
+    });
+  });
+});
+
+describe('INVALID_FILTER', () => {
+  it('is an action creator', () => {
+    expect(filterProgramsInvalid).toBeInstanceOf(Function);
+    expect(filterProgramsInvalid()).toEqual({ type: 'INVALID_FILTER' });
+  });
+});
+
+describe('#FETCH_JOBS', () => {
   it('has a base action creator', () => {
     expect(fetchJobs).toBeInstanceOf(Function);
     expect(fetchJobs()).toEqual({ type: 'GET__FETCH_JOBS' });

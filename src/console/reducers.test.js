@@ -1,5 +1,5 @@
 import consoleReducer from './reducers';
-import { FETCH_PROGRAMS } from './actions';
+import { FETCH_PROGRAMS, FILTER_PROGRAMS } from './actions';
 
 describe('upload reducer', () => {
   it('returns the initial state', () => {
@@ -7,6 +7,7 @@ describe('upload reducer', () => {
       loading: false,
       loaded: false,
       loadingError: null,
+      filterError: false,
       authorized: true,
       data: [],
       programBanners: {},
@@ -21,6 +22,7 @@ describe('upload reducer', () => {
         loading: true,
         loaded: false,
         loadingError: null,
+        filterError: false,
         authorized: true,
         data: [],
         programBanners: {},
@@ -43,6 +45,7 @@ describe('upload reducer', () => {
         loading: true,
         loaded: false,
         loadingError: null,
+        filterError: false,
         authorized: true,
         data: [
           { programKey: '123', areEnrollmentsWritable: true },
@@ -66,6 +69,7 @@ describe('upload reducer', () => {
         loading: true,
         loaded: false,
         loadingError: null,
+        filterError: false,
         authorized: false,
         data: [],
         programBanners: {},
@@ -79,7 +83,78 @@ describe('upload reducer', () => {
         loading: false,
         loaded: false,
         loadingError: 'oops!',
+        filterError: false,
         authorized: false,
+        data: [],
+        programBanners: {},
+        currentPage: 1,
+        pageSize: 10,
+      });
+    });
+  });
+
+  describe('Filter programs', () => {
+    it('handles the GET__FILTER_PROGRAMS__BEGIN action', () => {
+      expect(consoleReducer(undefined, { type: FILTER_PROGRAMS.BEGIN, payload: 'test' })).toEqual({
+        loading: true,
+        loaded: false,
+        loadingError: null,
+        filterError: false,
+        authorized: true,
+        data: [],
+        programBanners: {},
+        currentPage: 1,
+        pageSize: 10,
+      });
+    });
+
+    it('handles the GET__FILTER_PROGRAMS__SUCCESS action', () => {
+      const filterProgramsSuccess = {
+        type: FILTER_PROGRAMS.SUCCESS,
+        payload: {
+          data: [
+            { programKey: '123', programTitle: 'Test', areEnrollmentsWritable: true },
+            { programKey: '456', programTitle: 'Another Test', areEnrollmentsWritable: true },
+          ],
+        },
+      };
+      expect(consoleReducer(undefined, filterProgramsSuccess)).toEqual({
+        loading: true,
+        loaded: false,
+        loadingError: null,
+        filterError: false,
+        authorized: true,
+        data: [
+          { programKey: '123', programTitle: 'Test', areEnrollmentsWritable: true },
+          { programKey: '456', programTitle: 'Another Test', areEnrollmentsWritable: true },
+        ],
+        programBanners: { 123: [], 456: [] },
+        currentPage: 1,
+        pageSize: 10,
+      });
+    });
+
+    it('handles the GET__FILTER_PROGRAMS__FAILURE action', () => {
+      expect(consoleReducer(undefined, { type: FILTER_PROGRAMS.FAILURE, payload: { error: 'oops!' } })).toEqual({
+        loading: false,
+        loaded: false,
+        loadingError: 'oops!',
+        filterError: false,
+        authorized: true,
+        data: [],
+        programBanners: {},
+        currentPage: 1,
+        pageSize: 10,
+      });
+    });
+
+    it('handles the "INVALID_FILTER" action', () => {
+      expect(consoleReducer(undefined, { type: 'INVALID_FILTER' })).toEqual({
+        loading: true,
+        loaded: false,
+        loadingError: null,
+        filterError: true,
+        authorized: true,
         data: [],
         programBanners: {},
         currentPage: 1,
@@ -94,6 +169,7 @@ describe('upload reducer', () => {
         loading: true,
         loaded: false,
         loadingError: null,
+        filterError: false,
         authorized: true,
         data: [{ programKey: '123' }],
         programBanners: { 123: [] },
@@ -114,6 +190,7 @@ describe('upload reducer', () => {
         loading: true,
         loaded: false,
         loadingError: null,
+        filterError: false,
         authorized: true,
         data: [{ programKey: '123' }],
         programBanners: { 123: [bannerObj] },
@@ -127,6 +204,7 @@ describe('upload reducer', () => {
         loading: true,
         loaded: false,
         loadingError: null,
+        filterError: false,
         authorized: true,
         data: [{ programKey: '123' }],
         programBanners: {
@@ -153,6 +231,7 @@ describe('upload reducer', () => {
         loading: true,
         loaded: false,
         loadingError: null,
+        filterError: false,
         authorized: true,
         data: [{ programKey: '123' }],
         programBanners: {
@@ -182,6 +261,7 @@ describe('upload reducer', () => {
         loading: true,
         loaded: false,
         loadingError: null,
+        filterError: false,
         authorized: true,
         data: [{ programKey: '123' }],
         programBanners: {
@@ -210,6 +290,7 @@ describe('upload reducer', () => {
         loading: true,
         loaded: false,
         loadingError: null,
+        filterError: false,
         authorized: true,
         data: [{ programKey: '123' }],
         programBanners: {
@@ -236,6 +317,7 @@ describe('upload reducer', () => {
         loading: false,
         loaded: false,
         loadingError: null,
+        filterError: false,
         authorized: false,
         data: [],
         programBanners: {},
@@ -252,6 +334,7 @@ describe('SWITCH_PAGE', () => {
       loading: true,
       loaded: false,
       loadingError: null,
+      filterError: false,
       authorized: true,
       data: [{ programKey: '123' }],
       programBanners: { 123: [] },
@@ -265,6 +348,7 @@ describe('SWITCH_PAGE', () => {
       loading: true,
       loaded: false,
       loadingError: null,
+      filterError: false,
       authorized: true,
       data: [{ programKey: '123' }],
       programBanners: { 123: [] },

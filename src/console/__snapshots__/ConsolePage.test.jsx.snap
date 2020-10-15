@@ -112,6 +112,528 @@ exports[`ConsolePage renders an error banner when there was an error loading pro
 </div>
 `;
 
+exports[`ConsolePage renders error when filter returns no programs 1`] = `
+<div
+  className="container half-width-element py-5 align-items-start"
+>
+  <h1>
+    Program Console
+  </h1>
+  <div
+    className="alert fade alert-danger"
+    hidden={true}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <div>
+        <p>
+          An error was encountered while loading your program list: 
+          <em>
+            null
+          </em>
+        </p>
+        <p>
+          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
+          <a
+            href="mailto:partner-support@edx.org"
+          >
+            partner-support@edx.org
+          </a>
+          .
+        </p>
+      </div>
+    </div>
+  </div>
+  <div
+    className="alert fade alert-warning"
+    hidden={true}
+    role="alert"
+  >
+    <div
+      className="alert-dialog"
+    >
+      <p>
+        It appears you do not have proper permissions to access this application. Please reach out to 
+        <a
+          href="mailto:partner-support@edx.org"
+        >
+          partner-support@edx.org
+        </a>
+         requesting access to the Registrar service.
+      </p>
+    </div>
+  </div>
+  <div>
+    <div
+      className="pgn__searchfield d-flex mt-3"
+    >
+      <form
+        className="d-flex align-items-center w-100"
+        onReset={[Function]}
+        onSubmit={[Function]}
+        role="search"
+      >
+        <label
+          className="m-0"
+          htmlFor="pgn-searchfield-input-31"
+        >
+          <span
+            className="sr-only"
+          >
+            search
+          </span>
+        </label>
+        <input
+          className="form-control"
+          id="pgn-searchfield-input-31"
+          name="searchfield-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Filter by Program Title"
+          role="searchbox"
+          type="text"
+          value=""
+        />
+        <button
+          className="btn"
+          type="submit"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-search fa-w-16 "
+            data-icon="search"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+          <span
+            className="sr-only"
+          >
+            submit search
+          </span>
+        </button>
+      </form>
+    </div>
+    <div
+      className="mt-2 alert fade alert-dismissible alert-danger show"
+      hidden={false}
+      role="alert"
+    >
+      <button
+        aria-label="Close"
+        className="btn close"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ×
+        </span>
+      </button>
+      <div
+        className="alert-dialog"
+      >
+        Invalid program title.
+      </div>
+    </div>
+    <nav
+      aria-label="pagination navigation"
+      className="mt-4"
+    >
+      <div
+        aria-atomic={true}
+        aria-live="polite"
+        aria-relevant="text"
+        className="sr-only"
+      >
+        Page 1, Current Page, of 1
+      </div>
+      <ul
+        className="pagination"
+      >
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Previous"
+            className="btn previous page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-left mr-2"
+                id="Icon32"
+              />
+              Previous
+            </div>
+          </button>
+        </li>
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Next"
+            className="btn next page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              Next
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-right ml-2"
+                id="Icon33"
+              />
+            </div>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <div
+      className="container mb-4"
+    >
+      <h2>
+        a masters
+      </h2>
+      <div
+        className="pgn_collapsible shadow collapsible-card is-open"
+      >
+        <div
+          aria-expanded={true}
+          className="collapsible-trigger"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          <span>
+            Manage Enrollments
+          </span>
+          <span
+            className="ml-2"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-minus fa-w-14 "
+              data-icon="minus"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="collapsible-body"
+            >
+              <div
+                className="container"
+              >
+                <div
+                  className="row mb-3 mb-md-2 "
+                >
+                  <div
+                    className="col-md"
+                  >
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Program Enrollments
+                    </div>
+                  </div>
+                  <div
+                    className="col-md"
+                  >
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      Download Program Enrollments
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className="row"
+                >
+                  <div
+                    className="col-md"
+                  >
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Course Enrollments
+                    </div>
+                  </div>
+                  <div
+                    className="col-md"
+                  >
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      Download Course Enrollments
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container mb-4"
+    >
+      <h2>
+        b masters
+      </h2>
+      <div
+        className="pgn_collapsible shadow collapsible-card is-open"
+      >
+        <div
+          aria-expanded={true}
+          className="collapsible-trigger"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          role="button"
+          tabIndex={0}
+        >
+          <span>
+            Manage Enrollments
+          </span>
+          <span
+            className="ml-2"
+          >
+            <svg
+              aria-hidden="true"
+              className="svg-inline--fa fa-minus fa-w-14 "
+              data-icon="minus"
+              data-prefix="fas"
+              focusable="false"
+              role="img"
+              style={Object {}}
+              viewBox="0 0 448 512"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+                fill="currentColor"
+                style={Object {}}
+              />
+            </svg>
+          </span>
+        </div>
+        <div
+          className="pgn-transition-replace-group position-relative"
+          style={
+            Object {
+              "height": null,
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "padding": ".1px 0",
+              }
+            }
+          >
+            <div
+              className="collapsible-body"
+            >
+              <div
+                className="container"
+              >
+                <div
+                  className="row mb-3 mb-md-2 "
+                >
+                  <div
+                    className="col-md"
+                  >
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Program Enrollments
+                    </div>
+                  </div>
+                  <div
+                    className="col-md"
+                  >
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      Download Program Enrollments
+                    </button>
+                  </div>
+                </div>
+                <div
+                  className="row"
+                >
+                  <div
+                    className="col-md"
+                  >
+                    <div
+                      className="btn btn-primary w-100 mb-1"
+                    >
+                      <input
+                        className="sr input-overlay-hack"
+                        onChange={[Function]}
+                        type="file"
+                      />
+                      Upload Course Enrollments
+                    </div>
+                  </div>
+                  <div
+                    className="col-md"
+                  >
+                    <button
+                      className="btn btn-primary w-100"
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      Download Course Enrollments
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav
+      aria-label="pagination navigation"
+    >
+      <div
+        aria-atomic={true}
+        aria-live="polite"
+        aria-relevant="text"
+        className="sr-only"
+      >
+        Page 1, Current Page, of 1
+      </div>
+      <ul
+        className="pagination"
+      >
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Previous"
+            className="btn previous page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-left mr-2"
+                id="Icon34"
+              />
+              Previous
+            </div>
+          </button>
+        </li>
+        <li
+          className="page-item disabled"
+        >
+          <button
+            aria-label="Next"
+            className="btn next page-link"
+            disabled={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            tabIndex="-1"
+            type="button"
+          >
+            <div>
+              Next
+              <span
+                aria-hidden={true}
+                className="fa fa-chevron-right ml-2"
+                id="Icon35"
+              />
+            </div>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+`;
+
 exports[`ConsolePage renders program banners when they are included 1`] = `
 <div
   className="container half-width-element py-5 align-items-start"
@@ -166,8 +688,94 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
     </div>
   </div>
   <div>
+    <div
+      className="pgn__searchfield d-flex mt-3"
+    >
+      <form
+        className="d-flex align-items-center w-100"
+        onReset={[Function]}
+        onSubmit={[Function]}
+        role="search"
+      >
+        <label
+          className="m-0"
+          htmlFor="pgn-searchfield-input-16"
+        >
+          <span
+            className="sr-only"
+          >
+            search
+          </span>
+        </label>
+        <input
+          className="form-control"
+          id="pgn-searchfield-input-16"
+          name="searchfield-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Filter by Program Title"
+          role="searchbox"
+          type="text"
+          value=""
+        />
+        <button
+          className="btn"
+          type="submit"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-search fa-w-16 "
+            data-icon="search"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+          <span
+            className="sr-only"
+          >
+            submit search
+          </span>
+        </button>
+      </form>
+    </div>
+    <div
+      className="mt-2 alert fade alert-dismissible alert-danger"
+      hidden={true}
+      role="alert"
+    >
+      <button
+        aria-label="Close"
+        className="btn close"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ×
+        </span>
+      </button>
+      <div
+        className="alert-dialog"
+      >
+        Invalid program title.
+      </div>
+    </div>
     <nav
       aria-label="pagination navigation"
+      className="mt-4"
     >
       <div
         aria-atomic={true}
@@ -197,7 +805,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
               <span
                 aria-hidden={true}
                 className="fa fa-chevron-left mr-2"
-                id="pagination-13"
+                id="Icon17"
               />
               Previous
             </div>
@@ -221,7 +829,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
               <span
                 aria-hidden={true}
                 className="fa fa-chevron-right ml-2"
-                id="pagination-14"
+                id="Icon18"
               />
             </div>
           </button>
@@ -571,7 +1179,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
               <span
                 aria-hidden={true}
                 className="fa fa-chevron-left mr-2"
-                id="pagination-15"
+                id="Icon19"
               />
               Previous
             </div>
@@ -595,7 +1203,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
               <span
                 aria-hidden={true}
                 className="fa fa-chevron-right ml-2"
-                id="pagination-16"
+                id="Icon20"
               />
             </div>
           </button>
@@ -660,8 +1268,94 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
     </div>
   </div>
   <div>
+    <div
+      className="pgn__searchfield d-flex mt-3"
+    >
+      <form
+        className="d-flex align-items-center w-100"
+        onReset={[Function]}
+        onSubmit={[Function]}
+        role="search"
+      >
+        <label
+          className="m-0"
+          htmlFor="pgn-searchfield-input-6"
+        >
+          <span
+            className="sr-only"
+          >
+            search
+          </span>
+        </label>
+        <input
+          className="form-control"
+          id="pgn-searchfield-input-6"
+          name="searchfield-input"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Filter by Program Title"
+          role="searchbox"
+          type="text"
+          value=""
+        />
+        <button
+          className="btn"
+          type="submit"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-search fa-w-16 "
+            data-icon="search"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+          <span
+            className="sr-only"
+          >
+            submit search
+          </span>
+        </button>
+      </form>
+    </div>
+    <div
+      className="mt-2 alert fade alert-dismissible alert-danger"
+      hidden={true}
+      role="alert"
+    >
+      <button
+        aria-label="Close"
+        className="btn close"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        type="button"
+      >
+        <span
+          aria-hidden="true"
+        >
+          ×
+        </span>
+      </button>
+      <div
+        className="alert-dialog"
+      >
+        Invalid program title.
+      </div>
+    </div>
     <nav
       aria-label="pagination navigation"
+      className="mt-4"
     >
       <div
         aria-atomic={true}
@@ -691,7 +1385,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
               <span
                 aria-hidden={true}
                 className="fa fa-chevron-left mr-2"
-                id="pagination-5"
+                id="Icon7"
               />
               Previous
             </div>
@@ -715,7 +1409,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
               <span
                 aria-hidden={true}
                 className="fa fa-chevron-right ml-2"
-                id="pagination-6"
+                id="Icon8"
               />
             </div>
           </button>
@@ -1007,7 +1701,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
               <span
                 aria-hidden={true}
                 className="fa fa-chevron-left mr-2"
-                id="pagination-7"
+                id="Icon9"
               />
               Previous
             </div>
@@ -1031,7 +1725,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
               <span
                 aria-hidden={true}
                 className="fa fa-chevron-right ml-2"
-                id="pagination-8"
+                id="Icon10"
               />
             </div>
           </button>
