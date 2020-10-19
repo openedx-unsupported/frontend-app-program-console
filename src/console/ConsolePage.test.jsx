@@ -5,6 +5,24 @@ import renderer from 'react-test-renderer';
 import { ConsolePage } from './ConsolePage';
 import ConnectedReportSection from '../report/reportSection';
 
+let apiData = [];
+
+beforeEach(() => {
+  apiData = [{
+    programKey: 'a',
+    programTitle: 'a masters',
+    programUrl: 'https://amasters.com',
+    areEnrollmentsWritable: true,
+    areReportsReadable: false,
+  }, {
+    programKey: 'b',
+    programTitle: 'b masters',
+    programUrl: 'https://bmasters.com',
+    areEnrollmentsWritable: true,
+    areReportsReadable: false,
+  }];
+});
+
 describe('ConsolePage', () => {
   it('renders with the most basic props passed to it', () => {
     const consolePageComponent = (
@@ -13,10 +31,11 @@ describe('ConsolePage', () => {
         data={[]}
         downloadEnrollments={() => {}}
         fetchPrograms={() => {}}
+        filterPrograms={() => {}}
         programBanners={{}}
         uploadEnrollments={() => {}}
         removeBanner={() => {}}
-        switchPage={jest.fn()}
+        switchPage={() => {}}
       />
     );
     const wrapper = mount(consolePageComponent);
@@ -35,10 +54,11 @@ describe('ConsolePage', () => {
         data={[]}
         downloadEnrollments={() => {}}
         fetchPrograms={() => {}}
+        filterPrograms={() => {}}
         programBanners={{}}
         uploadEnrollments={() => {}}
         removeBanner={() => {}}
-        switchPage={jest.fn()}
+        switchPage={() => {}}
       />
     );
     const wrapper = mount(consolePageComponent);
@@ -58,10 +78,11 @@ describe('ConsolePage', () => {
         data={[]}
         downloadEnrollments={() => {}}
         fetchPrograms={() => {}}
+        filterPrograms={() => {}}
         programBanners={{}}
         uploadEnrollments={() => {}}
         removeBanner={() => {}}
-        switchPage={jest.fn()}
+        switchPage={() => {}}
       />
     );
     const wrapper = mount(consolePageComponent);
@@ -74,29 +95,17 @@ describe('ConsolePage', () => {
   });
 
   it('renders programs when there is data passed in', () => {
-    const apiData = [{
-      programKey: 'a',
-      programTitle: 'a masters',
-      programUrl: 'https://amasters.com',
-      areEnrollmentsWritable: true,
-      areReportsReadable: false,
-    }, {
-      programKey: 'b',
-      programTitle: 'b masters',
-      programUrl: 'https://bmasters.com',
-      areEnrollmentsWritable: true,
-      areReportsReadable: false,
-    }];
     const consolePageComponent = (
       <ConsolePage
         authorized
         data={apiData}
         downloadEnrollments={() => {}}
         fetchPrograms={() => {}}
+        filterPrograms={() => {}}
         programBanners={{}}
         uploadEnrollments={() => {}}
         removeBanner={() => {}}
-        switchPage={jest.fn()}
+        switchPage={() => {}}
       />
     );
     const wrapper = mount(consolePageComponent);
@@ -116,7 +125,7 @@ describe('ConsolePage', () => {
   });
 
   it('passes isFirstSection=true to report section when there is no enrollment section', () => {
-    const apiData = [{
+    apiData = [{
       programKey: 'a',
       programTitle: 'a masters',
       programUrl: 'https://amasters.com',
@@ -129,10 +138,11 @@ describe('ConsolePage', () => {
         data={apiData}
         downloadEnrollments={() => {}}
         fetchPrograms={() => {}}
+        filterPrograms={() => {}}
         programBanners={{}}
         uploadEnrollments={() => {}}
         removeBanner={() => {}}
-        switchPage={jest.fn()}
+        switchPage={() => {}}
       />
     );
 
@@ -155,7 +165,7 @@ describe('ConsolePage', () => {
   });
 
   it('passes isFirstSection=false to report section when there is an enrollment section', () => {
-    const apiData = [{
+    apiData = [{
       programKey: 'a',
       programTitle: 'a masters',
       programUrl: 'https://amasters.com',
@@ -168,10 +178,11 @@ describe('ConsolePage', () => {
         data={apiData}
         downloadEnrollments={() => {}}
         fetchPrograms={() => {}}
+        filterPrograms={() => {}}
         programBanners={{}}
         uploadEnrollments={() => {}}
         removeBanner={() => {}}
-        switchPage={jest.fn()}
+        switchPage={() => {}}
       />
     );
 
@@ -196,20 +207,6 @@ describe('ConsolePage', () => {
   });
 
   it('renders program banners when they are included', () => {
-    const apiData = [{
-      programKey: 'a',
-      programTitle: 'a masters',
-      programUrl: 'https://amasters.com',
-      areEnrollmentsWritable: true,
-      areReportsReadable: false,
-    }, {
-      programKey: 'b',
-      programTitle: 'b masters',
-      programUrl: 'https://bmasters.com',
-      areEnrollmentsWritable: true,
-      areReportsReadable: false,
-    }];
-
     const programBanners = {
       a: [{
         id: `a${Date.now()}`,
@@ -228,10 +225,11 @@ describe('ConsolePage', () => {
         data={apiData}
         downloadEnrollments={() => {}}
         fetchPrograms={() => {}}
+        filterPrograms={() => {}}
         programBanners={programBanners}
         uploadEnrollments={() => {}}
         removeBanner={() => {}}
-        switchPage={jest.fn()}
+        switchPage={() => {}}
       />
     );
     const wrapper = mount(consolePageComponent);
@@ -254,41 +252,75 @@ describe('ConsolePage', () => {
       data={[]}
       downloadEnrollments={() => {}}
       fetchPrograms={mock}
+      filterPrograms={() => {}}
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
-      switchPage={jest.fn()}
+      switchPage={() => {}}
     />);
 
     expect(mock).toHaveBeenCalled();
   });
 
-  it('calls the correct action with the correct program key on download button clicks', () => {
+  it('calls the filterPrograms function on form submit', () => {
     const mock = jest.fn();
 
-    const apiData = [{
-      programKey: 'a',
-      programTitle: 'a masters',
-      programUrl: 'https://amasters.com',
-      areEnrollmentsWritable: true,
-      areReportsReadable: false,
-    }, {
-      programKey: 'b',
-      programTitle: 'b masters',
-      programUrl: 'https://bmasters.com',
-      areEnrollmentsWritable: true,
-      areReportsReadable: false,
-    }];
+    expect(mock).not.toHaveBeenCalled();
+
+    const wrapper = mount(<ConsolePage
+      authorized
+      data={apiData}
+      downloadEnrollments={() => {}}
+      fetchPrograms={() => {}}
+      filterPrograms={mock}
+      programBanners={{}}
+      uploadEnrollments={() => {}}
+      removeBanner={() => {}}
+      switchPage={() => {}}
+    />);
+
+    const filterForm = wrapper.find('form');
+    filterForm.simulate('submit');
+    expect(mock).toHaveBeenCalled();
+  });
+
+  it('renders error when filter returns no programs', () => {
+    const consolePageComponent = (
+      <ConsolePage
+        authorized
+        data={apiData}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        filterPrograms={() => {}}
+        filterError
+        programBanners={{}}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        switchPage={() => {}}
+      />
+    );
+    const wrapper = mount(consolePageComponent);
+    const tree = renderer.create(consolePageComponent);
+
+    expect(tree).toMatchSnapshot();
+    const alert = wrapper.find('[data-testid="filter-alert"]').first();
+    expect(alert.text()).toContain('Invalid');
+    wrapper.unmount();
+  });
+
+  it('calls the correct action with the correct program key on download button clicks', () => {
+    const mock = jest.fn();
 
     const wrapper = mount(<ConsolePage
       authorized
       data={apiData}
       downloadEnrollments={mock}
       fetchPrograms={() => {}}
+      filterPrograms={() => {}}
       programBanners={{}}
       uploadEnrollments={() => {}}
       removeBanner={() => {}}
-      switchPage={jest.fn()}
+      switchPage={() => {}}
     />);
 
     const programADownloadProgramButton = wrapper.find('button.btn.btn-primary').at(0);
@@ -315,29 +347,16 @@ describe('ConsolePage', () => {
   it('calls the correct action with the correct program key onchange of the file inputs', () => {
     const mock = jest.fn();
 
-    const apiData = [{
-      programKey: 'a',
-      programTitle: 'a masters',
-      programUrl: 'https://amasters.com',
-      areEnrollmentsWritable: true,
-      areReportsReadable: false,
-    }, {
-      programKey: 'b',
-      programTitle: 'b masters',
-      programUrl: 'https://bmasters.com',
-      areEnrollmentsWritable: true,
-      areReportsReadable: false,
-    }];
-
     const wrapper = mount(<ConsolePage
       authorized
       data={apiData}
       downloadEnrollments={() => {}}
       fetchPrograms={() => {}}
+      filterPrograms={() => {}}
       programBanners={{}}
       uploadEnrollments={mock}
       removeBanner={() => {}}
-      switchPage={jest.fn()}
+      switchPage={() => {}}
     />);
 
     const file = new File([], 'test');
@@ -371,11 +390,12 @@ describe('ConsolePage', () => {
         data={testData}
         downloadEnrollments={() => {}}
         fetchPrograms={() => {}}
+        filterPrograms={() => {}}
         programBanners={{}}
         uploadEnrollments={() => {}}
         removeBanner={() => {}}
         currentPage={1}
-        switchPage={jest.fn()}
+        switchPage={() => {}}
       />
     );
     const wrapperOne = mount(consolePageComponentOne);
@@ -389,11 +409,12 @@ describe('ConsolePage', () => {
         data={testData}
         downloadEnrollments={() => {}}
         fetchPrograms={() => {}}
+        filterPrograms={() => {}}
         programBanners={{}}
         uploadEnrollments={() => {}}
         removeBanner={() => {}}
         currentPage={2}
-        switchPage={jest.fn()}
+        switchPage={() => {}}
       />
     );
     const wrapperTwo = mount(consolePageComponentTwo);

@@ -20,6 +20,11 @@ import {
   fetchProgramsBegin,
   fetchProgramsFailure,
   fetchProgramsSuccess,
+  FILTER_PROGRAMS,
+  filterProgramsBegin,
+  filterProgramsInvalid,
+  filterProgramsFailure,
+  filterProgramsSuccess,
   DOWNLOAD_ENROLLMENTS,
   notAuthenticated,
   POLL_JOB,
@@ -61,6 +66,36 @@ export function* handleFetchPrograms() {
   } catch (e) {
     logError(e);
     yield put(fetchProgramsFailure(e.message));
+  }
+  yield put(fetchJobs());
+}
+
+export function* handleFilterPrograms({ payload: { programTitle } }) {
+  try {
+    yield put(filterProgramsBegin());
+
+    const data = yield call(ApiService.getAccessiblePrograms, programTitle);
+
+    if (data.length > 0) {
+      yield put(filterProgramsSuccess(data
+        .map(({
+          program_key, program_title, program_url, permissions, // eslint-disable-line camelcase
+        }) => (
+          {
+            programKey: program_key,
+            programTitle: program_title,
+            programUrl: program_url,
+            areEnrollmentsWritable: permissions.includes(PERMISSIONS.writeEnrollments),
+            areEnrollmentsReadable: permissions.includes(PERMISSIONS.readEnrollments),
+            areReportsReadable: permissions.includes(PERMISSIONS.readReports),
+          }
+        ))));
+    } else {
+      yield put(filterProgramsInvalid());
+    }
+  } catch (e) {
+    logError(e);
+    yield put(filterProgramsFailure(e.message));
   }
   yield put(fetchJobs());
 }
@@ -200,6 +235,7 @@ export function* handlePollJobs({ payload: { programKey, jobId, bannerId } }) {
 export default function* saga() {
   yield takeEvery(FETCH_PROGRAMS.BASE, handleFetchPrograms);
   yield takeEvery(FETCH_JOBS.BASE, handleFetchJobs);
+  yield takeEvery(FILTER_PROGRAMS.BASE, handleFilterPrograms);
   yield takeEvery(UPLOAD_ENROLLMENTS.BASE, handleUploadEnrollments);
   yield takeEvery(DOWNLOAD_ENROLLMENTS.BASE, handleDownloadEnrollments);
   yield takeEvery(POLL_JOB.BASE, handlePollJobs);

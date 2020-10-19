@@ -2,10 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { injectIntl } from '@edx/frontend-platform/i18n';
-import { Collapsible, StatusAlert, Pagination } from '@edx/paragon';
+import {
+  Collapsible,
+  Pagination,
+  SearchField,
+  StatusAlert,
+} from '@edx/paragon';
 
 import {
   fetchPrograms,
+  filterPrograms,
   uploadEnrollments,
   downloadEnrollments,
   removeBanner,
@@ -44,6 +50,11 @@ export class ConsolePage extends React.Component {
   handlePageSelect(pageNumber) {
     this.props.switchPage(pageNumber);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  handleFilter(value) {
+    this.props.filterPrograms(value);
+    this.props.switchPage(1);
   }
 
   renderEnrollmentsCollapsible = program => (
@@ -127,7 +138,22 @@ export class ConsolePage extends React.Component {
         />
         {this.props.data.length > 0 && (
           <div>
+            <SearchField
+              className="mt-3"
+              onSubmit={(value) => this.handleFilter(value)}
+              onClear={() => this.handleFilter('')}
+              placeholder="Filter by Program Title"
+            />
+            <StatusAlert
+              className="mt-2"
+              alertType="danger"
+              dismissible
+              dialog="Invalid program title."
+              open={!!this.props.filterError}
+              data-testid="filter-alert"
+            />
             <Pagination
+              className="mt-4"
               paginationLabel="pagination navigation"
               pageCount={Math.ceil(this.props.data.length / this.props.pageSize)}
               currentPage={this.props.currentPage}
@@ -179,6 +205,7 @@ export class ConsolePage extends React.Component {
 ConsolePage.propTypes = {
   authorized: PropTypes.bool.isRequired,
   loadingError: PropTypes.string,
+  filterError: PropTypes.bool,
   data: PropTypes.arrayOf(PropTypes.shape({
     programKey: PropTypes.string,
     programTitle: PropTypes.string,
@@ -187,6 +214,7 @@ ConsolePage.propTypes = {
     areReportsReadable: PropTypes.bool,
   })).isRequired,
   fetchPrograms: PropTypes.func.isRequired,
+  filterPrograms: PropTypes.func.isRequired,
   programBanners: PropTypes.shape().isRequired,
   uploadEnrollments: PropTypes.func.isRequired,
   downloadEnrollments: PropTypes.func.isRequired,
@@ -198,12 +226,14 @@ ConsolePage.propTypes = {
 
 ConsolePage.defaultProps = {
   loadingError: null,
+  filterError: false,
   currentPage: 1,
   pageSize: 10,
 };
 
 export default connect(consoleSelector, {
   fetchPrograms,
+  filterPrograms,
   uploadEnrollments,
   downloadEnrollments,
   removeBanner,

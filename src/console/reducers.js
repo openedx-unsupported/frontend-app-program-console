@@ -1,10 +1,11 @@
-import { FETCH_PROGRAMS } from './actions';
+import { FETCH_PROGRAMS, FILTER_PROGRAMS } from './actions';
 import { shouldProgramBeDisplayed } from './utils';
 
 export const defaultState = {
   loading: false,
   loaded: false,
   loadingError: null,
+  filterError: false,
   authorized: true,
   data: [],
   programBanners: {},
@@ -21,6 +22,7 @@ const console = (state = defaultState, action) => {
         loading: true,
         loaded: false,
         loadingError: null,
+        filterError: false,
       };
     case FETCH_PROGRAMS.SUCCESS: {
       const filteredData = action.payload.data.filter(shouldProgramBeDisplayed);
@@ -44,6 +46,43 @@ const console = (state = defaultState, action) => {
         loading: false,
         loaded: false,
         loadingError: action.payload.error,
+      };
+    case FILTER_PROGRAMS.BEGIN:
+      return {
+        ...state,
+        loading: true,
+        loaded: false,
+        loadingError: null,
+        filterError: false,
+      };
+    case FILTER_PROGRAMS.SUCCESS: {
+      const filteredData = action.payload.data.filter(shouldProgramBeDisplayed);
+      return {
+        ...state,
+        authorized: filteredData.length > 0,
+        data: filteredData,
+        programBanners: filteredData.reduce((acc, curVal) => {
+          acc[curVal.programKey] = [];
+          return acc;
+        }, {}),
+        loading: true,
+        loaded: false,
+        loadingError: null,
+      };
+    }
+    case FILTER_PROGRAMS.FAILURE:
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+        loadingError: action.payload.error,
+      };
+    case 'INVALID_FILTER':
+      return {
+        ...state,
+        loading: true,
+        loaded: false,
+        filterError: true,
       };
     case 'ADD_BANNER':
       return {
