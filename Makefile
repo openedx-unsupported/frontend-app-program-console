@@ -7,7 +7,7 @@ transifex_input = $(i18n)/transifex_input.json
 tx_url1 = https://www.transifex.com/api/2/project/edx-platform/resource/$(transifex_resource)/translation/en/strings/
 tx_url2 = https://www.transifex.com/api/2/project/edx-platform/resource/$(transifex_resource)/source/
 
-# This directory must match .babelrc .
+# This directory must match .babelrc a1
 transifex_temp = ./temp/babel-plugin-react-intl
 
 requirements:
