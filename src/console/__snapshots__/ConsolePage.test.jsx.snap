@@ -321,7 +321,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
         a masters
       </h2>
       <div
-        className="pgn_collapsible shadow collapsible-card is-open"
+        className="pgn_collapsible collapsible-card is-open"
       >
         <div
           aria-expanded={true}
@@ -375,16 +375,16 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
               className="collapsible-body"
             >
               <div
-                className="container"
+                className="container p-0"
               >
                 <div
-                  className="row mb-3 mb-md-2 "
+                  className="enrollment-row mt-2"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -395,10 +395,10 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -407,13 +407,13 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                   </div>
                 </div>
                 <div
-                  className="row"
+                  className="enrollment-row"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -424,10 +424,10 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -448,7 +448,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
         b masters
       </h2>
       <div
-        className="pgn_collapsible shadow collapsible-card is-open"
+        className="pgn_collapsible collapsible-card is-open"
       >
         <div
           aria-expanded={true}
@@ -502,16 +502,16 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
               className="collapsible-body"
             >
               <div
-                className="container"
+                className="container p-0"
               >
                 <div
-                  className="row mb-3 mb-md-2 "
+                  className="enrollment-row mt-2"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -522,10 +522,10 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -534,13 +534,13 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                   </div>
                 </div>
                 <div
-                  className="row"
+                  className="enrollment-row"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -551,10 +551,10 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -872,7 +872,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         </div>
       </div>
       <div
-        className="pgn_collapsible shadow collapsible-card is-open"
+        className="pgn_collapsible collapsible-card is-open"
       >
         <div
           aria-expanded={true}
@@ -926,16 +926,16 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
               className="collapsible-body"
             >
               <div
-                className="container"
+                className="container p-0"
               >
                 <div
-                  className="row mb-3 mb-md-2 "
+                  className="enrollment-row mt-2"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -946,10 +946,10 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -958,13 +958,13 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                   </div>
                 </div>
                 <div
-                  className="row"
+                  className="enrollment-row"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -975,10 +975,10 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1028,7 +1028,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         </div>
       </div>
       <div
-        className="pgn_collapsible shadow collapsible-card is-open"
+        className="pgn_collapsible collapsible-card is-open"
       >
         <div
           aria-expanded={true}
@@ -1082,16 +1082,16 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
               className="collapsible-body"
             >
               <div
-                className="container"
+                className="container p-0"
               >
                 <div
-                  className="row mb-3 mb-md-2 "
+                  className="enrollment-row mt-2"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1102,10 +1102,10 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1114,13 +1114,13 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                   </div>
                 </div>
                 <div
-                  className="row"
+                  className="enrollment-row"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1131,10 +1131,10 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1423,7 +1423,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         a masters
       </h2>
       <div
-        className="pgn_collapsible shadow collapsible-card is-open"
+        className="pgn_collapsible collapsible-card is-open"
       >
         <div
           aria-expanded={true}
@@ -1477,16 +1477,16 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
               className="collapsible-body"
             >
               <div
-                className="container"
+                className="container p-0"
               >
                 <div
-                  className="row mb-3 mb-md-2 "
+                  className="enrollment-row mt-2"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1497,10 +1497,10 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1509,13 +1509,13 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                   </div>
                 </div>
                 <div
-                  className="row"
+                  className="enrollment-row"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1526,10 +1526,10 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1550,7 +1550,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         b masters
       </h2>
       <div
-        className="pgn_collapsible shadow collapsible-card is-open"
+        className="pgn_collapsible collapsible-card is-open"
       >
         <div
           aria-expanded={true}
@@ -1604,16 +1604,16 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
               className="collapsible-body"
             >
               <div
-                className="container"
+                className="container p-0"
               >
                 <div
-                  className="row mb-3 mb-md-2 "
+                  className="enrollment-row mt-2"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1624,10 +1624,10 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1636,13 +1636,13 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                   </div>
                 </div>
                 <div
-                  className="row"
+                  className="enrollment-row"
                 >
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-primary w-100 mb-1"
+                      className="btn btn-outline-primary"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1653,10 +1653,10 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     </div>
                   </div>
                   <div
-                    className="col-md"
+                    className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-primary w-100"
+                      className="btn btn-outline-primary"
                       onClick={[Function]}
                       type="button"
                     >

@@ -59,14 +59,13 @@ export class ConsolePage extends React.Component {
 
   renderEnrollmentsCollapsible = program => (
     <Collapsible
-      className="shadow"
       title="Manage Enrollments"
       defaultOpen
     >
-      <div className="container">
-        <div className="row mb-3 mb-md-2 ">
-          <div className="col-md">
-            <div className="btn btn-primary w-100 mb-1">
+      <div className="container p-0">
+        <div className="enrollment-row mt-2">
+          <div className="col-md mb-2">
+            <div className="btn btn-outline-primary">
               <input
                 type="file"
                 className="sr input-overlay-hack"
@@ -74,18 +73,18 @@ export class ConsolePage extends React.Component {
               />Upload Program Enrollments
             </div>
           </div>
-          <div className="col-md">
+          <div className="col-md mb-2">
             <button
               type="button"
-              className="btn btn-primary w-100"
+              className="btn btn-outline-primary"
               onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
             >Download Program Enrollments
             </button>
           </div>
         </div>
-        <div className="row">
-          <div className="col-md">
-            <div className="btn btn-primary w-100 mb-1">
+        <div className="enrollment-row">
+          <div className="col-md mb-2">
+            <div className="btn btn-outline-primary">
               <input
                 type="file"
                 className="sr input-overlay-hack"
@@ -93,10 +92,10 @@ export class ConsolePage extends React.Component {
               />Upload Course Enrollments
             </div>
           </div>
-          <div className="col-md">
+          <div className="col-md mb-2">
             <button
               type="button"
-              className="btn btn-primary w-100"
+              className="btn btn-outline-primary"
               onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
             >Download Course Enrollments
             </button>
