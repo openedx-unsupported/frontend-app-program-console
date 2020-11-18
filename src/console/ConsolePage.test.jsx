@@ -193,7 +193,6 @@ describe('ConsolePage', () => {
     expect(wrapper.find('h2').text()).toEqual(apiData[0].programTitle);
 
     const collapsible = wrapper.find(Collapsible);
-    expect(collapsible.prop('className')).toEqual('shadow');
     expect(collapsible.prop('title')).toEqual('Manage Enrollments');
     expect(collapsible.prop('defaultOpen')).toEqual(true);
 
@@ -323,22 +322,22 @@ describe('ConsolePage', () => {
       switchPage={() => {}}
     />);
 
-    const programADownloadProgramButton = wrapper.find('button.btn.btn-primary').at(0);
+    const programADownloadProgramButton = wrapper.find('button.btn.btn-outline-primary').at(0);
     expect(programADownloadProgramButton.text()).toEqual('Download Program Enrollments');
     programADownloadProgramButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('a', false);
 
-    const programADownloadCourseButton = wrapper.find('button.btn.btn-primary').at(1);
+    const programADownloadCourseButton = wrapper.find('button.btn.btn-outline-primary').at(1);
     expect(programADownloadCourseButton.text()).toEqual('Download Course Enrollments');
     programADownloadCourseButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('a', true);
 
-    const programBDownloadProgramButton = wrapper.find('button.btn.btn-primary').at(2);
+    const programBDownloadProgramButton = wrapper.find('button.btn.btn-outline-primary').at(2);
     expect(programBDownloadProgramButton.text()).toEqual('Download Program Enrollments');
     programBDownloadProgramButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('b', false);
 
-    const programBDownloadCourseButton = wrapper.find('button.btn.btn-primary').at(3);
+    const programBDownloadCourseButton = wrapper.find('button.btn.btn-outline-primary').at(3);
     expect(programBDownloadCourseButton.text()).toEqual('Download Course Enrollments');
     programBDownloadCourseButton.simulate('click');
     expect(mock).toHaveBeenCalledWith('b', true);
