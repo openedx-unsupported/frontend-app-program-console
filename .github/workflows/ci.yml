@@ -1,10 +1,19 @@
 name: node_js CI
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+    - 'master'
+  pull_request:
+    branches:
+    - '**'
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [12, 14, 16]
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
@@ -20,6 +29,6 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload Coverage
-      uses: codecov/codecov-action@v1
+      uses: codecov/codecov-action@v2
       with:
         fail_ci_if_error: true
