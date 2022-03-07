@@ -7,5 +7,6 @@
   "siteheader.user.menu.account.settings": "Account",
   "siteheader.user.menu.logout": "Logout",
   "siteheader.user.menu.login": "Login",
-  "siteheader.user.menu.register": "Sign Up"
+  "siteheader.user.menu.register": "Sign Up",
+  "app.loading.message": "Loading"
 }
