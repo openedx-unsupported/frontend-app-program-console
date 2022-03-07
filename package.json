@@ -29,7 +29,7 @@
     "@edx/brand": "npm:@edx/brand-openedx@^1.1.0",
     "@edx/frontend-component-footer": "^10.1.0",
     "@edx/frontend-component-header": "^2.2.1",
-    "@edx/frontend-platform": "^1.8.1",
+    "@edx/frontend-platform": "^1.13.1",
     "@edx/paragon": "^12.0.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.14",
     "@fortawesome/free-brands-svg-icons": "^5.7.2",
@@ -70,6 +70,7 @@
   },
   "devDependencies": {
     "@edx/frontend-build": "^5.2.3",
+    "@edx/reactifex": "1.0.3",
     "autoprefixer": "^9.4.2",
     "axios-mock-adapter": "^1.15.0",
     "codecov": "^3.0.0",
@@ -78,7 +79,6 @@
     "es-check": "^2.0.2",
     "husky": "^0.14.3",
     "react-test-renderer": "^16.8.6",
-    "reactifex": "1.1.1",
     "travis-deploy-once": "^5.0.9"
   }
 }
