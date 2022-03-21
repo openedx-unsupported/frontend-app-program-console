@@ -16,25 +16,27 @@ exports[`ReportSection component correctly passes isFirstSection prop to collaps
       Download Reports
     </span>
     <span
-      className="ml-2"
+      className="collapsible-icon"
     >
-      <svg
-        aria-hidden="true"
-        className="svg-inline--fa fa-plus fa-w-14 "
-        data-icon="plus"
-        data-prefix="fas"
-        focusable="false"
-        role="img"
-        style={Object {}}
-        viewBox="0 0 448 512"
-        xmlns="http://www.w3.org/2000/svg"
+      <span
+        className="pgn__icon"
       >
-        <path
-          d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-          fill="currentColor"
-          style={Object {}}
-        />
-      </svg>
+        <svg
+          aria-hidden={true}
+          fill="none"
+          focusable={false}
+          height={24}
+          role="img"
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6-1.41-1.41z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
     </span>
   </div>
   <div
@@ -74,25 +76,27 @@ exports[`ReportSection component correctly passes isFirstSection prop to collaps
       Download Reports
     </span>
     <span
-      className="ml-2"
+      className="collapsible-icon"
     >
-      <svg
-        aria-hidden="true"
-        className="svg-inline--fa fa-minus fa-w-14 "
-        data-icon="minus"
-        data-prefix="fas"
-        focusable="false"
-        role="img"
-        style={Object {}}
-        viewBox="0 0 448 512"
-        xmlns="http://www.w3.org/2000/svg"
+      <span
+        className="pgn__icon"
       >
-        <path
-          d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-          fill="currentColor"
-          style={Object {}}
-        />
-      </svg>
+        <svg
+          aria-hidden={true}
+          fill="none"
+          focusable={false}
+          height={24}
+          role="img"
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
     </span>
   </div>
   <div
@@ -163,25 +167,27 @@ exports[`ReportSection component renders contents when program data is passed in
       Download Reports
     </span>
     <span
-      className="ml-2"
+      className="collapsible-icon"
     >
-      <svg
-        aria-hidden="true"
-        className="svg-inline--fa fa-minus fa-w-14 "
-        data-icon="minus"
-        data-prefix="fas"
-        focusable="false"
-        role="img"
-        style={Object {}}
-        viewBox="0 0 448 512"
-        xmlns="http://www.w3.org/2000/svg"
+      <span
+        className="pgn__icon"
       >
-        <path
-          d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-          fill="currentColor"
-          style={Object {}}
-        />
-      </svg>
+        <svg
+          aria-hidden={true}
+          fill="none"
+          focusable={false}
+          height={24}
+          role="img"
+          viewBox="0 0 24 24"
+          width={24}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
     </span>
   </div>
   <div
