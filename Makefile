@@ -41,7 +41,7 @@ push_translations:
 
 # Pulls translations from Transifex.
 pull_translations:
-	tx pull -f --mode reviewed --language=$(transifex_langs)
+	tx pull -f --mode reviewed --languages=$(transifex_langs)
 
 validate-no-uncommitted-package-lock-changes: ## ensure package-lock.json is committed
 	git diff --exit-code package-lock.json
