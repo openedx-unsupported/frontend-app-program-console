@@ -177,7 +177,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
       >
         <label
           className="m-0"
-          htmlFor="pgn-searchfield-input-31"
+          htmlFor="pgn-searchfield-input-7"
         >
           <span
             className="sr-only"
@@ -187,7 +187,8 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
         </label>
         <input
           className="form-control"
-          id="pgn-searchfield-input-31"
+          disabled={false}
+          id="pgn-searchfield-input-7"
           name="searchfield-input"
           onBlur={[Function]}
           onChange={[Function]}
@@ -199,6 +200,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
         />
         <button
           className="btn"
+          disabled={false}
           type="submit"
         >
           <svg
@@ -253,7 +255,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
     </div>
     <nav
       aria-label="pagination navigation"
-      className="mt-4"
+      className="mt-4 pagination-default"
     >
       <div
         aria-atomic={true}
@@ -271,20 +273,32 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
         >
           <button
             aria-label="Previous"
-            className="btn previous page-link"
+            className="previous page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-left mr-2"
-                id="Icon32"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
               Previous
             </div>
           </button>
@@ -294,21 +308,33 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
         >
           <button
             aria-label="Next"
-            className="btn next page-link"
+            className="next page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               Next
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-right ml-2"
-                id="Icon33"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
             </div>
           </button>
         </li>
@@ -335,25 +361,27 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
             Manage Enrollments
           </span>
           <span
-            className="ml-2"
+            className="collapsible-icon"
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-minus fa-w-14 "
-              data-icon="minus"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <span
+              className="pgn__icon"
             >
-              <path
-                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                fill="currentColor"
-                style={Object {}}
-              />
-            </svg>
+              <svg
+                aria-hidden={true}
+                fill="none"
+                focusable={false}
+                height={24}
+                role="img"
+                viewBox="0 0 24 24"
+                width={24}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
           </span>
         </div>
         <div
@@ -462,25 +490,27 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
             Manage Enrollments
           </span>
           <span
-            className="ml-2"
+            className="collapsible-icon"
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-minus fa-w-14 "
-              data-icon="minus"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <span
+              className="pgn__icon"
             >
-              <path
-                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                fill="currentColor"
-                style={Object {}}
-              />
-            </svg>
+              <svg
+                aria-hidden={true}
+                fill="none"
+                focusable={false}
+                height={24}
+                role="img"
+                viewBox="0 0 24 24"
+                width={24}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
           </span>
         </div>
         <div
@@ -570,6 +600,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
     </div>
     <nav
       aria-label="pagination navigation"
+      className="pagination-default"
     >
       <div
         aria-atomic={true}
@@ -587,20 +618,32 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
         >
           <button
             aria-label="Previous"
-            className="btn previous page-link"
+            className="previous page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-left mr-2"
-                id="Icon34"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
               Previous
             </div>
           </button>
@@ -610,21 +653,33 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
         >
           <button
             aria-label="Next"
-            className="btn next page-link"
+            className="next page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               Next
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-right ml-2"
-                id="Icon35"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
             </div>
           </button>
         </li>
@@ -699,7 +754,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
       >
         <label
           className="m-0"
-          htmlFor="pgn-searchfield-input-16"
+          htmlFor="pgn-searchfield-input-4"
         >
           <span
             className="sr-only"
@@ -709,7 +764,8 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         </label>
         <input
           className="form-control"
-          id="pgn-searchfield-input-16"
+          disabled={false}
+          id="pgn-searchfield-input-4"
           name="searchfield-input"
           onBlur={[Function]}
           onChange={[Function]}
@@ -721,6 +777,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         />
         <button
           className="btn"
+          disabled={false}
           type="submit"
         >
           <svg
@@ -775,7 +832,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
     </div>
     <nav
       aria-label="pagination navigation"
-      className="mt-4"
+      className="mt-4 pagination-default"
     >
       <div
         aria-atomic={true}
@@ -793,20 +850,32 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         >
           <button
             aria-label="Previous"
-            className="btn previous page-link"
+            className="previous page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-left mr-2"
-                id="Icon17"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
               Previous
             </div>
           </button>
@@ -816,21 +885,33 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         >
           <button
             aria-label="Next"
-            className="btn next page-link"
+            className="next page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               Next
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-right ml-2"
-                id="Icon18"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
             </div>
           </button>
         </li>
@@ -886,25 +967,27 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
             Manage Enrollments
           </span>
           <span
-            className="ml-2"
+            className="collapsible-icon"
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-minus fa-w-14 "
-              data-icon="minus"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <span
+              className="pgn__icon"
             >
-              <path
-                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                fill="currentColor"
-                style={Object {}}
-              />
-            </svg>
+              <svg
+                aria-hidden={true}
+                fill="none"
+                focusable={false}
+                height={24}
+                role="img"
+                viewBox="0 0 24 24"
+                width={24}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
           </span>
         </div>
         <div
@@ -1042,25 +1125,27 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
             Manage Enrollments
           </span>
           <span
-            className="ml-2"
+            className="collapsible-icon"
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-minus fa-w-14 "
-              data-icon="minus"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <span
+              className="pgn__icon"
             >
-              <path
-                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                fill="currentColor"
-                style={Object {}}
-              />
-            </svg>
+              <svg
+                aria-hidden={true}
+                fill="none"
+                focusable={false}
+                height={24}
+                role="img"
+                viewBox="0 0 24 24"
+                width={24}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
           </span>
         </div>
         <div
@@ -1150,6 +1235,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
     </div>
     <nav
       aria-label="pagination navigation"
+      className="pagination-default"
     >
       <div
         aria-atomic={true}
@@ -1167,20 +1253,32 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         >
           <button
             aria-label="Previous"
-            className="btn previous page-link"
+            className="previous page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-left mr-2"
-                id="Icon19"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
               Previous
             </div>
           </button>
@@ -1190,21 +1288,33 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         >
           <button
             aria-label="Next"
-            className="btn next page-link"
+            className="next page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               Next
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-right ml-2"
-                id="Icon20"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
             </div>
           </button>
         </li>
@@ -1279,7 +1389,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
       >
         <label
           className="m-0"
-          htmlFor="pgn-searchfield-input-6"
+          htmlFor="pgn-searchfield-input-2"
         >
           <span
             className="sr-only"
@@ -1289,7 +1399,8 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         </label>
         <input
           className="form-control"
-          id="pgn-searchfield-input-6"
+          disabled={false}
+          id="pgn-searchfield-input-2"
           name="searchfield-input"
           onBlur={[Function]}
           onChange={[Function]}
@@ -1301,6 +1412,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         />
         <button
           className="btn"
+          disabled={false}
           type="submit"
         >
           <svg
@@ -1355,7 +1467,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
     </div>
     <nav
       aria-label="pagination navigation"
-      className="mt-4"
+      className="mt-4 pagination-default"
     >
       <div
         aria-atomic={true}
@@ -1373,20 +1485,32 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         >
           <button
             aria-label="Previous"
-            className="btn previous page-link"
+            className="previous page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-left mr-2"
-                id="Icon7"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
               Previous
             </div>
           </button>
@@ -1396,21 +1520,33 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         >
           <button
             aria-label="Next"
-            className="btn next page-link"
+            className="next page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               Next
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-right ml-2"
-                id="Icon8"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
             </div>
           </button>
         </li>
@@ -1437,25 +1573,27 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
             Manage Enrollments
           </span>
           <span
-            className="ml-2"
+            className="collapsible-icon"
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-minus fa-w-14 "
-              data-icon="minus"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <span
+              className="pgn__icon"
             >
-              <path
-                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                fill="currentColor"
-                style={Object {}}
-              />
-            </svg>
+              <svg
+                aria-hidden={true}
+                fill="none"
+                focusable={false}
+                height={24}
+                role="img"
+                viewBox="0 0 24 24"
+                width={24}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
           </span>
         </div>
         <div
@@ -1564,25 +1702,27 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
             Manage Enrollments
           </span>
           <span
-            className="ml-2"
+            className="collapsible-icon"
           >
-            <svg
-              aria-hidden="true"
-              className="svg-inline--fa fa-minus fa-w-14 "
-              data-icon="minus"
-              data-prefix="fas"
-              focusable="false"
-              role="img"
-              style={Object {}}
-              viewBox="0 0 448 512"
-              xmlns="http://www.w3.org/2000/svg"
+            <span
+              className="pgn__icon"
             >
-              <path
-                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
-                fill="currentColor"
-                style={Object {}}
-              />
-            </svg>
+              <svg
+                aria-hidden={true}
+                fill="none"
+                focusable={false}
+                height={24}
+                role="img"
+                viewBox="0 0 24 24"
+                width={24}
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14l-6-6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
           </span>
         </div>
         <div
@@ -1672,6 +1812,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
     </div>
     <nav
       aria-label="pagination navigation"
+      className="pagination-default"
     >
       <div
         aria-atomic={true}
@@ -1689,20 +1830,32 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         >
           <button
             aria-label="Previous"
-            className="btn previous page-link"
+            className="previous page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-left mr-2"
-                id="Icon9"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12l4.58-4.59z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
               Previous
             </div>
           </button>
@@ -1712,21 +1865,33 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         >
           <button
             aria-label="Next"
-            className="btn next page-link"
+            className="next page-link btn btn-primary"
             disabled={true}
-            onBlur={[Function]}
             onClick={[Function]}
-            onKeyDown={[Function]}
             tabIndex="-1"
             type="button"
           >
             <div>
               Next
               <span
-                aria-hidden={true}
-                className="fa fa-chevron-right ml-2"
-                id="Icon10"
-              />
+                className="pgn__icon"
+              >
+                <svg
+                  aria-hidden={true}
+                  fill="none"
+                  focusable={false}
+                  height={24}
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width={24}
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
             </div>
           </button>
         </li>
