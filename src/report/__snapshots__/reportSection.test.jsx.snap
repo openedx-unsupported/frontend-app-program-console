@@ -121,14 +121,17 @@ exports[`ReportSection component correctly passes isFirstSection prop to collaps
           className="container"
         >
           <div
-            className="alert fade alert-info show"
-            hidden={false}
+            className="fade alert-content alert alert-info show"
             role="alert"
           >
             <div
-              className="alert-dialog"
+              className="pgn__alert-message-wrapper"
             >
-              The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.
+              <div
+                className="alert-message-content"
+              >
+                The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.
+              </div>
             </div>
           </div>
           <div>
@@ -212,14 +215,17 @@ exports[`ReportSection component renders contents when program data is passed in
           className="container"
         >
           <div
-            className="alert fade alert-info show"
-            hidden={false}
+            className="fade alert-content alert alert-info show"
             role="alert"
           >
             <div
-              className="alert-dialog"
+              className="pgn__alert-message-wrapper"
             >
-              The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.
+              <div
+                className="alert-message-content"
+              >
+                The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.
+              </div>
             </div>
           </div>
           <div>
