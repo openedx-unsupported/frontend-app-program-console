@@ -1,5 +1,6 @@
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
+@import "../node_modules/bootstrap/scss/bootstrap";
 
 @import "~@edx/brand/paragon/fonts";
 @import "~@edx/brand/paragon/variables";
@@ -11,19 +12,24 @@ $fa-font-path: "~font-awesome/fonts";
 
 @import "./console/style";
 
+@import "../node_modules/bootstrap/scss/bootstrap";
+
 .word-break-all {
   word-break: break-all !important;
 }
 
+$vertical: vh-100;
+$flex: d-flex;
+$fc: flex-column;
+$flexgrow: flex-grow-1;
+$maxh: mh-50;
+
 #app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  & > main {
-    flex-grow: 1;
-  }
-}
+  max-height: $vertical;
+  display: $flex;
+  flex: $fc}
+  #app > main {
+    flex: $flexgrow }
 
 footer a img {
-  max-height: 50px;
-}
+  max-height:50px;}

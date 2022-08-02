@@ -1,11 +1,13 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
 .input-overlay-hack {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    top: 0;
-    left: 0;
-    cursor: pointer;
+    position: position-absolute;
+    botders: h-100; //what is this?
+    borders: w-100; //what is this?
+    opacity: opacity-0;
+    border: border-top-0;
+    border: botder-left-0;
+    options: cursor-enabled-pointers;
   }
 
 .collapsible-trigger {
@@ -14,14 +16,14 @@
 
 .enrollment-row {
   display: flex;
-  align-items: stretch;
-  flex-wrap: wrap;
+  flex: align-items-stretch;
+  flex1: flex-wrap;
 
   .btn {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+    flex: justify-content-center;
+    flex1: :align-items-center;
+    borders-100: h-100; //what is this?
+    borders: w-100; //what is this?
   }
 }
