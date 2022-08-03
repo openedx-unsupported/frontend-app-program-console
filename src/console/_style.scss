@@ -1,29 +1,43 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+$position: position-absolute;
+$max-height: h-100;
+$sizing-width: w-100;
+$opacity: opacity-0;
+$border-top: border-top-0;
+$border-left: border-left-0;
+$options: cursor-enabled-pointers;
+
+
 .input-overlay-hack {
-    position: position-absolute;
-    botders: h-100; //what is this?
-    borders: w-100; //what is this?
-    opacity: opacity-0;
-    border: border-top-0;
-    border: botder-left-0;
-    options: cursor-enabled-pointers;
+    position: $position;
+    sizing-height: $max-height;
+    sizing-width: $sizing-width;
+    $opacity: $opacity;
+    $border-top: $border-top;
+    $border-left: $border-left;
+    options: $options;
   }
 
 .collapsible-trigger {
   background-color: theme-color("primary", "background");
 }
 
-.enrollment-row {
-  display: flex;
-  flex: align-items-stretch;
-  flex1: flex-wrap;
+$align-items-stretch: align-items-stretch;
+$flex-wrap: flex-wrap;
+$display: flex;
 
+.enrollment-row {
+  display: $display;
+  flex: $align-items-stretch;
+  flex-wrap: $flex-wrap;
+  $justify-content-center: justify-content-center;
+  $align-items-center: align-items-center;
   .btn {
-    display: flex;
-    flex: justify-content-center;
-    flex1: :align-items-center;
-    borders-100: h-100; //what is this?
-    borders: w-100; //what is this?
+    display: $display;
+    justify-content-center: $justify-content-center;
+    align-items-center: $align-items-center;
+    sizing-height: $max-height;
+    sizing-width: $sizing-width;
   }
 }
