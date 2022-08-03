@@ -23,6 +23,11 @@ $flex: d-flex;
 $fc: flex-column;
 $flexgrow: flex-grow-1;
 $maxh: mh-50;
+$grid-breakpoints: (
+        sm: 50px,
+);
+
+$max-height: h-sm-auto;
 
 #app {
   max-height: $vertical;
@@ -32,4 +37,4 @@ $maxh: mh-50;
     flex: $flexgrow }
 
 footer a img {
-  max-height:50px;}
+  max-height:$max-height;}
