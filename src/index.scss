@@ -21,20 +21,15 @@ $fa-font-path: "~font-awesome/fonts";
 $vertical: vh-100;
 $flex: d-flex;
 $fc: flex-column;
-$flexgrow: flex-grow-1;
-$maxh: mh-50;
-$grid-breakpoints: (
-        sm: 50px,
-);
-
-$max-height: h-sm-auto;
+$flex-grow: flex-grow-1;
+$max-height: col-50;
 
 #app {
   max-height: $vertical;
   display: $flex;
   flex: $fc}
   #app > main {
-    flex: $flexgrow }
+    flex: $flex-grow }
 
 footer a img {
-  max-height:$max-height;}
+  max-height: $max-height;}
