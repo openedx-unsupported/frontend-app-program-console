@@ -63,12 +63,12 @@ export class ConsolePage extends React.Component {
       defaultOpen
     >
       <div className="container p-0">
-        <div className="enrollment-row mt-2">
+        <div className="align-items-stretch flex-wrap d-flex justify-content-center align-items-center h-100 w-100 mt-2">
           <div className="col-md mb-2">
             <div className="btn btn-outline-primary">
               <input
                 type="file"
-                className="sr input-overlay-hack"
+                className="sr position-absolute h-100 w-100 opacity-0 border-top-0 border-left-0 cursor-enabled-pointers"
                 onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
               />Upload Program Enrollments
             </div>
@@ -82,12 +82,12 @@ export class ConsolePage extends React.Component {
             </button>
           </div>
         </div>
-        <div className="enrollment-row">
+        <div className="align-items-stretch flex-wrap d-flex justify-content-center align-items-center h-100 w-100">
           <div className="col-md mb-2">
             <div className="btn btn-outline-primary">
               <input
                 type="file"
-                className="sr input-overlay-hack"
+                className="sr position-absolute h-100 w-100 opacity-0 border-top-0 border-left-0 cursor-enabled-pointers"
                 onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
               />Upload Course Enrollments
             </div>
