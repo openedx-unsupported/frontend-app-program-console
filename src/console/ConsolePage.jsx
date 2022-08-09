@@ -63,9 +63,9 @@ export class ConsolePage extends React.Component {
       defaultOpen
     >
       <div className="container p-0">
-        <div className="align-items-stretch flex-wrap d-flex justify-content-center align-items-center h-100 w-100 mt-2">
+        <div className="align-items-stretch flex-wrap d-flex mt-2">
           <div className="col-md mb-2">
-            <div className="btn btn-outline-primary">
+            <div className="btn btn-outline-primary d-flex justify-content-center align-items-center">
               <input
                 type="file"
                 className="sr position-absolute h-100 w-100 opacity-0 border-top-0 border-left-0 cursor-enabled-pointers"
@@ -82,9 +82,9 @@ export class ConsolePage extends React.Component {
             </button>
           </div>
         </div>
-        <div className="align-items-stretch flex-wrap d-flex justify-content-center align-items-center h-100 w-100">
+        <div className="align-items-stretch flex-wrap d-flex">
           <div className="col-md mb-2">
-            <div className="btn btn-outline-primary">
+            <div className="btn btn-outline-primary d-flex justify-content-center align-items-center">
               <input
                 type="file"
                 className="sr position-absolute h-100 w-100 opacity-0 border-top-0 border-left-0 cursor-enabled-pointers"

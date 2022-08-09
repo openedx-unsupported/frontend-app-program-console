@@ -15,6 +15,7 @@ import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
 import appMessages from './i18n';
 import configureStore from './store';
 
+import './index.scss';
 import App from './App';
 
 subscribe(APP_READY, () => {
