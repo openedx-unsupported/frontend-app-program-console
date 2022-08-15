@@ -1,12 +1,12 @@
 .input-overlay-hack {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    top: 0;
-    left: 0;
-    cursor: pointer;
-  }
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
 
 .collapsible-trigger {
   background-color: theme-color("primary", "background");
