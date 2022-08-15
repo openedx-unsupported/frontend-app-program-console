@@ -406,13 +406,13 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -426,7 +426,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -435,13 +435,13 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -455,7 +455,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -535,13 +535,13 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -555,7 +555,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -564,13 +564,13 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -584,7 +584,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1012,13 +1012,13 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1032,7 +1032,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1041,13 +1041,13 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1061,7 +1061,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1170,13 +1170,13 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1190,7 +1190,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1199,13 +1199,13 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1219,7 +1219,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1618,13 +1618,13 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1638,7 +1638,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1647,13 +1647,13 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1667,7 +1667,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1747,13 +1747,13 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1767,7 +1767,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1776,13 +1776,13 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1796,7 +1796,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
