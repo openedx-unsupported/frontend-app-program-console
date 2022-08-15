@@ -63,9 +63,9 @@ export class ConsolePage extends React.Component {
       defaultOpen
     >
       <div className="container p-0">
-        <div className="enrollment-row mt-2">
+        <div className="enrollment-row d-flex align-items-stretch flex-wrap mt-2">
           <div className="col-md mb-2">
-            <div className="btn btn-outline-primary">
+            <div className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100">
               <input
                 type="file"
                 className="sr input-overlay-hack"
@@ -76,15 +76,15 @@ export class ConsolePage extends React.Component {
           <div className="col-md mb-2">
             <button
               type="button"
-              className="btn btn-outline-primary"
+              className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
               onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
             >Download Program Enrollments
             </button>
           </div>
         </div>
-        <div className="enrollment-row">
+        <div className="enrollment-row d-flex align-items-stretch flex-wrap">
           <div className="col-md mb-2">
-            <div className="btn btn-outline-primary">
+            <div className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100">
               <input
                 type="file"
                 className="sr input-overlay-hack"
@@ -95,7 +95,7 @@ export class ConsolePage extends React.Component {
           <div className="col-md mb-2">
             <button
               type="button"
-              className="btn btn-outline-primary"
+              className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
               onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
             >Download Course Enrollments
             </button>
