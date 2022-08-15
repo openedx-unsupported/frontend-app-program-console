@@ -15,15 +15,6 @@ $fa-font-path: "~font-awesome/fonts";
   word-break: break-all !important;
 }
 
-#app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  & > main {
-    flex-grow: 1;
-  }
-}
-
 footer a img {
   max-height: 50px;
 }
