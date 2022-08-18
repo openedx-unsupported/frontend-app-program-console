@@ -57,53 +57,57 @@ export class ConsolePage extends React.Component {
     this.props.switchPage(1);
   }
 
-  renderEnrollmentsCollapsible = program => (
-    <Collapsible
-      title="Manage Enrollments"
-      defaultOpen
-    >
-      <div className="container p-0">
-        <div className="enrollment-row d-flex align-items-stretch flex-wrap mt-2">
-          <div className="col-md mb-2">
-            <div className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100">
-              <input
-                type="file"
-                className="sr input-overlay-hack"
-                onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
-              />Upload Program Enrollments
+  renderEnrollmentsCollapsible(program) {
+    const rowClasses = 'enrollment-row d-flex align-items-stretch flex-wrap';
+    const buttonClasses = 'btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100';
+    return (
+      <Collapsible
+        title="Manage Enrollments"
+        defaultOpen
+      >
+        <div className="container p-0">
+          <div className={`${rowClasses} mt-2`}>
+            <div className="col-md mb-2">
+              <div className={buttonClasses}>
+                <input
+                  type="file"
+                  className="sr input-overlay-hack"
+                  onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
+                />Upload Program Enrollments
+              </div>
+            </div>
+            <div className="col-md mb-2">
+              <button
+                type="button"
+                className={buttonClasses}
+                onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
+              >Download Program Enrollments
+              </button>
             </div>
           </div>
-          <div className="col-md mb-2">
-            <button
-              type="button"
-              className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
-              onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
-            >Download Program Enrollments
-            </button>
-          </div>
-        </div>
-        <div className="enrollment-row d-flex align-items-stretch flex-wrap">
-          <div className="col-md mb-2">
-            <div className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100">
-              <input
-                type="file"
-                className="sr input-overlay-hack"
-                onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
-              />Upload Course Enrollments
+          <div className={rowClasses}>
+            <div className="col-md mb-2">
+              <div className={buttonClasses}>
+                <input
+                  type="file"
+                  className="sr input-overlay-hack"
+                  onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
+                />Upload Course Enrollments
+              </div>
+            </div>
+            <div className="col-md mb-2">
+              <button
+                type="button"
+                className={buttonClasses}
+                onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
+              >Download Course Enrollments
+              </button>
             </div>
           </div>
-          <div className="col-md mb-2">
-            <button
-              type="button"
-              className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
-              onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
-            >Download Course Enrollments
-            </button>
-          </div>
         </div>
-      </div>
-    </Collapsible>
-  )
+      </Collapsible>
+    );
+  }
 
   render() {
     return (
