@@ -4,7 +4,7 @@
   "description": "edX Program management React app",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edx/frontend-app-program-console.git"
+    "url": "git+https://github.com/openedx/frontend-app-program-console.git"
   },
   "browserslist": [
     "last 2 versions",
@@ -25,7 +25,7 @@
   },
   "author": "edX",
   "license": "AGPL-3.0",
-  "homepage": "https://github.com/edx/frontend-app-program-console#readme",
+  "homepage": "https://github.com/openedx/frontend-app-program-console#readme",
   "publishConfig": {
     "access": "public"
   },
