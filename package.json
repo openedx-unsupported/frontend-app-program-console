@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@edx/reactifex": "1.0.3",
-    "@edx/frontend-build": "9.1.1",
+    "@edx/frontend-build": "9.2.2",
     "autoprefixer": "10.2.6",
     "axios-mock-adapter": "^1.15.0",
     "codecov": "^3.0.0",
