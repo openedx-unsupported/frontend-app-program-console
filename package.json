@@ -4,7 +4,7 @@
   "description": "edX Program management React app",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/edx/frontend-app-program-console.git"
+    "url": "git+https://github.com/openedx/frontend-app-program-console.git"
   },
   "browserslist": [
     "last 2 versions",
@@ -25,7 +25,7 @@
   },
   "author": "edX",
   "license": "AGPL-3.0",
-  "homepage": "https://github.com/edx/frontend-app-program-console#readme",
+  "homepage": "https://github.com/openedx/frontend-app-program-console#readme",
   "publishConfig": {
     "access": "public"
   },
@@ -55,7 +55,7 @@
     "lodash.get": "^4.4.2",
     "lodash.pick": "^4.4.0",
     "lodash.snakecase": "^4.1.1",
-    "newrelic": "^5.5.0",
+    "newrelic": "^9.7.0",
     "prop-types": "^15.5.10",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
@@ -74,14 +74,14 @@
     "universal-cookie": "^3.1.0"
   },
   "devDependencies": {
+    "@edx/frontend-build": "9.2.2",
     "@edx/reactifex": "1.0.3",
-    "@edx/frontend-build": "9.1.1",
     "autoprefixer": "10.2.6",
     "axios-mock-adapter": "^1.15.0",
     "codecov": "^3.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "es-check": "^2.0.2",
+    "es-check": "^7.0.1",
     "husky": "^0.14.3",
     "react-test-renderer": "^16.8.6",
     "travis-deploy-once": "^5.0.9"
