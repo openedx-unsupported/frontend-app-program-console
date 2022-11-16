@@ -75,7 +75,7 @@
     "universal-cookie": "^3.1.0"
   },
   "devDependencies": {
-    "@edx/frontend-build": "9.2.2",
+    "@edx/frontend-build": "12.3.0",
     "@edx/reactifex": "1.0.3",
     "autoprefixer": "10.2.6",
     "axios-mock-adapter": "^1.15.0",
