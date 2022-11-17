@@ -235,8 +235,8 @@ describe('ConsolePage', () => {
     const tree = renderer.create(consolePageComponent).toJSON();
 
     expect(tree).toMatchSnapshot();
-    expect(wrapper.find('.alert-danger.show .alert-dialog').at(0).text()).toEqual('Sorry something went wrong ');
-    expect(wrapper.find('.alert-success.show .alert-dialog').at(0).text()).toEqual('You did it! ');
+    expect(wrapper.find('.alert-danger.show .modal-alert').at(0).text()).toEqual('Sorry something went wrong ');
+    expect(wrapper.find('.alert-success.show .modal-alert').at(0).text()).toEqual('You did it! ');
 
     wrapper.unmount();
   });

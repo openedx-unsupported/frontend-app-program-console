@@ -1,5 +1,5 @@
 import { mount } from 'enzyme';
-import { Collapsible, StatusAlert } from '@edx/paragon';
+import { Collapsible, Alert } from '@edx/paragon';
 import React from 'react';
 import * as analytics from '@edx/frontend-platform/analytics';
 import renderer from 'react-test-renderer';
@@ -96,11 +96,11 @@ describe('ReportSection component', () => {
       expect(link.text()).toEqual(reportData['program-key'][index].name);
     });
 
-    const statusAlert = collapsible.find('div.container').find(StatusAlert);
-    expect(statusAlert.prop('alertType')).toEqual('info');
+    const statusAlert = collapsible.find('div.container').find(Alert);
+    expect(statusAlert.prop('variant')).toEqual('info');
     expect(statusAlert.prop('dismissible')).toEqual(false);
-    expect(statusAlert.prop('dialog')).toEqual('The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.');
-    expect(statusAlert.prop('open')).toEqual(true);
+    expect(statusAlert.prop('children')).toEqual('The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.');
+    expect(statusAlert.prop('show')).toEqual(true);
   });
 
   it('doesn\'t render contents when no program data is passed in', () => {
