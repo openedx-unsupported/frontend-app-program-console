@@ -9,9 +9,9 @@ import ConnectedConsolePage from './console/ConsolePage';
 
 function PageContent() {
   return (
-    <div id="app">
+    <div id="app" className="d-flex flex-column min-vh-100">
       <SiteHeader />
-      <main>
+      <main className="flex-grow-1">
         <ConnectedConsolePage />
       </main>
       <SiteFooter />

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { injectIntl } from '@edx/frontend-platform/i18n';
-import { Collapsible, StatusAlert } from '@edx/paragon';
+import { Collapsible, Alert } from '@edx/paragon';
 
 import { fetchReports } from './actions';
 import { reportSelector, storeName } from './selectors';
@@ -19,12 +19,14 @@ export class ReportSection extends React.Component {
   }
 
   getDisclaimer = () => (
-    <StatusAlert
-      alertType="info"
-      dialog="The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation."
+    <Alert
+      variant="info"
       dismissible={false}
-      open
-    />
+      show
+    >
+      The data contained in these reports reflect enrollments only and are not intended to be used for
+      financial reporting or reconciliation.
+    </Alert>
   );
 
   render() {

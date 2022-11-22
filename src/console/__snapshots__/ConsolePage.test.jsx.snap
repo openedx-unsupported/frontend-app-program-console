@@ -8,49 +8,25 @@ exports[`ConsolePage renders a warning banner if there is not an authorized user
     Program Console
   </h1>
   <div
-    className="alert fade alert-danger"
-    hidden={true}
+    className="fade alert-content alert alert-warning show"
     role="alert"
   >
     <div
-      className="alert-dialog"
+      className="pgn__alert-message-wrapper"
     >
-      <div>
+      <div
+        className="alert-message-content"
+      >
         <p>
-          An error was encountered while loading your program list: 
-          <em>
-            null
-          </em>
-        </p>
-        <p>
-          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
+          It appears you do not have proper permissions to access this application. Please reach out to 
           <a
             href="mailto:partner-support@edx.org"
           >
             partner-support@edx.org
           </a>
-          .
+           requesting access to the Registrar service.
         </p>
       </div>
-    </div>
-  </div>
-  <div
-    className="alert fade alert-warning show"
-    hidden={false}
-    role="alert"
-  >
-    <div
-      className="alert-dialog"
-    >
-      <p>
-        It appears you do not have proper permissions to access this application. Please reach out to 
-        <a
-          href="mailto:partner-support@edx.org"
-        >
-          partner-support@edx.org
-        </a>
-         requesting access to the Registrar service.
-      </p>
     </div>
   </div>
 </div>
@@ -64,49 +40,33 @@ exports[`ConsolePage renders an error banner when there was an error loading pro
     Program Console
   </h1>
   <div
-    className="alert fade alert-danger show"
-    hidden={false}
+    className="fade alert-content alert alert-danger show"
     role="alert"
   >
     <div
-      className="alert-dialog"
+      className="pgn__alert-message-wrapper"
     >
-      <div>
-        <p>
-          An error was encountered while loading your program list: 
-          <em>
-            Request failed with HTTP 418
-          </em>
-        </p>
-        <p>
-          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
-          <a
-            href="mailto:partner-support@edx.org"
-          >
-            partner-support@edx.org
-          </a>
-          .
-        </p>
+      <div
+        className="alert-message-content"
+      >
+        <div>
+          <p>
+            An error was encountered while loading your program list: 
+            <em>
+              Request failed with HTTP 418
+            </em>
+          </p>
+          <p>
+            Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
+            <a
+              href="mailto:partner-support@edx.org"
+            >
+              partner-support@edx.org
+            </a>
+            .
+          </p>
+        </div>
       </div>
-    </div>
-  </div>
-  <div
-    className="alert fade alert-warning"
-    hidden={true}
-    role="alert"
-  >
-    <div
-      className="alert-dialog"
-    >
-      <p>
-        It appears you do not have proper permissions to access this application. Please reach out to 
-        <a
-          href="mailto:partner-support@edx.org"
-        >
-          partner-support@edx.org
-        </a>
-         requesting access to the Registrar service.
-      </p>
     </div>
   </div>
 </div>
@@ -119,52 +79,6 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
   <h1>
     Program Console
   </h1>
-  <div
-    className="alert fade alert-danger"
-    hidden={true}
-    role="alert"
-  >
-    <div
-      className="alert-dialog"
-    >
-      <div>
-        <p>
-          An error was encountered while loading your program list: 
-          <em>
-            null
-          </em>
-        </p>
-        <p>
-          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
-          <a
-            href="mailto:partner-support@edx.org"
-          >
-            partner-support@edx.org
-          </a>
-          .
-        </p>
-      </div>
-    </div>
-  </div>
-  <div
-    className="alert fade alert-warning"
-    hidden={true}
-    role="alert"
-  >
-    <div
-      className="alert-dialog"
-    >
-      <p>
-        It appears you do not have proper permissions to access this application. Please reach out to 
-        <a
-          href="mailto:partner-support@edx.org"
-        >
-          partner-support@edx.org
-        </a>
-         requesting access to the Registrar service.
-      </p>
-    </div>
-  </div>
   <div>
     <div
       className="pgn__searchfield d-flex mt-3"
@@ -229,28 +143,35 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
       </form>
     </div>
     <div
-      className="mt-2 alert fade alert-dismissible alert-danger show"
-      hidden={false}
+      className="fade alert-content mt-2 alert alert-danger show"
+      data-testid="filter-alert"
       role="alert"
     >
-      <button
-        aria-label="Close"
-        className="btn close"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        type="button"
-      >
-        <span
-          aria-hidden="true"
-        >
-          ×
-        </span>
-      </button>
       <div
-        className="alert-dialog"
+        className="pgn__alert-message-wrapper"
       >
-        Invalid program title.
+        <div
+          className="alert-message-content"
+        >
+          <p>
+            Invalid program title.
+          </p>
+        </div>
+        <div
+          className="pgn__alert-actions pgn__action-row"
+        >
+          <span
+            className="pgn__action-row-spacer"
+          />
+          <button
+            className="btn btn-tertiary btn-sm"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            Dismiss
+          </button>
+        </div>
       </div>
     </div>
     <nav
@@ -406,13 +327,13 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -426,7 +347,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -435,13 +356,13 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -455,7 +376,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -535,13 +456,13 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -555,7 +476,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -564,13 +485,13 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -584,7 +505,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -696,52 +617,6 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
   <h1>
     Program Console
   </h1>
-  <div
-    className="alert fade alert-danger"
-    hidden={true}
-    role="alert"
-  >
-    <div
-      className="alert-dialog"
-    >
-      <div>
-        <p>
-          An error was encountered while loading your program list: 
-          <em>
-            null
-          </em>
-        </p>
-        <p>
-          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
-          <a
-            href="mailto:partner-support@edx.org"
-          >
-            partner-support@edx.org
-          </a>
-          .
-        </p>
-      </div>
-    </div>
-  </div>
-  <div
-    className="alert fade alert-warning"
-    hidden={true}
-    role="alert"
-  >
-    <div
-      className="alert-dialog"
-    >
-      <p>
-        It appears you do not have proper permissions to access this application. Please reach out to 
-        <a
-          href="mailto:partner-support@edx.org"
-        >
-          partner-support@edx.org
-        </a>
-         requesting access to the Registrar service.
-      </p>
-    </div>
-  </div>
   <div>
     <div
       className="pgn__searchfield d-flex mt-3"
@@ -804,31 +679,6 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
           </span>
         </button>
       </form>
-    </div>
-    <div
-      className="mt-2 alert fade alert-dismissible alert-danger"
-      hidden={true}
-      role="alert"
-    >
-      <button
-        aria-label="Close"
-        className="btn close"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        type="button"
-      >
-        <span
-          aria-hidden="true"
-        >
-          ×
-        </span>
-      </button>
-      <div
-        className="alert-dialog"
-      >
-        Invalid program title.
-      </div>
     </div>
     <nav
       aria-label="pagination navigation"
@@ -924,31 +774,35 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         a masters
       </h2>
       <div
-        className="alert fade alert-dismissible alert-danger show"
-        hidden={false}
+        className="fade alert-content alert alert-danger show"
         role="alert"
       >
-        <button
-          aria-label="Close"
-          className="btn close"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          type="button"
-        >
-          <span
-            aria-hidden="true"
-          >
-            ×
-          </span>
-        </button>
         <div
-          className="alert-dialog"
+          className="pgn__alert-message-wrapper"
         >
           <div
-            className="modal-alert"
+            className="alert-message-content"
           >
-            Sorry something went wrong 
+            <div
+              className="modal-alert"
+            >
+              Sorry something went wrong 
+            </div>
+          </div>
+          <div
+            className="pgn__alert-actions pgn__action-row"
+          >
+            <span
+              className="pgn__action-row-spacer"
+            />
+            <button
+              className="btn btn-tertiary btn-sm"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Dismiss
+            </button>
           </div>
         </div>
       </div>
@@ -1012,13 +866,13 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1032,7 +886,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1041,13 +895,13 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1061,7 +915,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1082,31 +936,35 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         b masters
       </h2>
       <div
-        className="alert fade alert-dismissible alert-success show"
-        hidden={false}
+        className="fade alert-content alert alert-success show"
         role="alert"
       >
-        <button
-          aria-label="Close"
-          className="btn close"
-          onBlur={[Function]}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          type="button"
-        >
-          <span
-            aria-hidden="true"
-          >
-            ×
-          </span>
-        </button>
         <div
-          className="alert-dialog"
+          className="pgn__alert-message-wrapper"
         >
           <div
-            className="modal-alert"
+            className="alert-message-content"
           >
-            You did it! 
+            <div
+              className="modal-alert"
+            >
+              You did it! 
+            </div>
+          </div>
+          <div
+            className="pgn__alert-actions pgn__action-row"
+          >
+            <span
+              className="pgn__action-row-spacer"
+            />
+            <button
+              className="btn btn-tertiary btn-sm"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              Dismiss
+            </button>
           </div>
         </div>
       </div>
@@ -1170,13 +1028,13 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1190,7 +1048,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1199,13 +1057,13 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1219,7 +1077,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1331,52 +1189,6 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
   <h1>
     Program Console
   </h1>
-  <div
-    className="alert fade alert-danger"
-    hidden={true}
-    role="alert"
-  >
-    <div
-      className="alert-dialog"
-    >
-      <div>
-        <p>
-          An error was encountered while loading your program list: 
-          <em>
-            null
-          </em>
-        </p>
-        <p>
-          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
-          <a
-            href="mailto:partner-support@edx.org"
-          >
-            partner-support@edx.org
-          </a>
-          .
-        </p>
-      </div>
-    </div>
-  </div>
-  <div
-    className="alert fade alert-warning"
-    hidden={true}
-    role="alert"
-  >
-    <div
-      className="alert-dialog"
-    >
-      <p>
-        It appears you do not have proper permissions to access this application. Please reach out to 
-        <a
-          href="mailto:partner-support@edx.org"
-        >
-          partner-support@edx.org
-        </a>
-         requesting access to the Registrar service.
-      </p>
-    </div>
-  </div>
   <div>
     <div
       className="pgn__searchfield d-flex mt-3"
@@ -1439,31 +1251,6 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
           </span>
         </button>
       </form>
-    </div>
-    <div
-      className="mt-2 alert fade alert-dismissible alert-danger"
-      hidden={true}
-      role="alert"
-    >
-      <button
-        aria-label="Close"
-        className="btn close"
-        onBlur={[Function]}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        type="button"
-      >
-        <span
-          aria-hidden="true"
-        >
-          ×
-        </span>
-      </button>
-      <div
-        className="alert-dialog"
-      >
-        Invalid program title.
-      </div>
     </div>
     <nav
       aria-label="pagination navigation"
@@ -1618,13 +1405,13 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1638,7 +1425,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1647,13 +1434,13 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1667,7 +1454,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1747,13 +1534,13 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                 className="container p-0"
               >
                 <div
-                  className="enrollment-row mt-2"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap mt-2"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1767,7 +1554,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1776,13 +1563,13 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                   </div>
                 </div>
                 <div
-                  className="enrollment-row"
+                  className="enrollment-row d-flex align-items-stretch flex-wrap"
                 >
                   <div
                     className="col-md mb-2"
                   >
                     <div
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                     >
                       <input
                         className="sr input-overlay-hack"
@@ -1796,7 +1583,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
                     className="col-md mb-2"
                   >
                     <button
-                      className="btn btn-outline-primary"
+                      className="btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100"
                       onClick={[Function]}
                       type="button"
                     >
@@ -1908,51 +1695,5 @@ exports[`ConsolePage renders with the most basic props passed to it 1`] = `
   <h1>
     Program Console
   </h1>
-  <div
-    className="alert fade alert-danger"
-    hidden={true}
-    role="alert"
-  >
-    <div
-      className="alert-dialog"
-    >
-      <div>
-        <p>
-          An error was encountered while loading your program list: 
-          <em>
-            null
-          </em>
-        </p>
-        <p>
-          Please try waiting a moment and then refreshing the page. If the issue persists, please reach out to 
-          <a
-            href="mailto:partner-support@edx.org"
-          >
-            partner-support@edx.org
-          </a>
-          .
-        </p>
-      </div>
-    </div>
-  </div>
-  <div
-    className="alert fade alert-warning"
-    hidden={true}
-    role="alert"
-  >
-    <div
-      className="alert-dialog"
-    >
-      <p>
-        It appears you do not have proper permissions to access this application. Please reach out to 
-        <a
-          href="mailto:partner-support@edx.org"
-        >
-          partner-support@edx.org
-        </a>
-         requesting access to the Registrar service.
-      </p>
-    </div>
-  </div>
 </div>
 `;

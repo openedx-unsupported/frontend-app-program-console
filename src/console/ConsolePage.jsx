@@ -6,7 +6,7 @@ import {
   Collapsible,
   Pagination,
   SearchField,
-  StatusAlert,
+  Alert,
 } from '@edx/paragon';
 
 import {
@@ -57,84 +57,87 @@ export class ConsolePage extends React.Component {
     this.props.switchPage(1);
   }
 
-  renderEnrollmentsCollapsible = program => (
-    <Collapsible
-      title="Manage Enrollments"
-      defaultOpen
-    >
-      <div className="container p-0">
-        <div className="enrollment-row mt-2">
-          <div className="col-md mb-2">
-            <div className="btn btn-outline-primary">
-              <input
-                type="file"
-                className="sr input-overlay-hack"
-                onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
-              />Upload Program Enrollments
+  renderEnrollmentsCollapsible(program) {
+    const rowClasses = 'enrollment-row d-flex align-items-stretch flex-wrap';
+    const buttonClasses = 'btn btn-outline-primary d-flex justify-content-center align-items-center h-100 w-100';
+    return (
+      <Collapsible
+        title="Manage Enrollments"
+        defaultOpen
+      >
+        <div className="container p-0">
+          <div className={`${rowClasses} mt-2`}>
+            <div className="col-md mb-2">
+              <div className={buttonClasses}>
+                <input
+                  type="file"
+                  className="sr input-overlay-hack"
+                  onChange={e => this.handleUploadProgramEnrollments(program.programKey, e)}
+                />Upload Program Enrollments
+              </div>
+            </div>
+            <div className="col-md mb-2">
+              <button
+                type="button"
+                className={buttonClasses}
+                onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
+              >Download Program Enrollments
+              </button>
             </div>
           </div>
-          <div className="col-md mb-2">
-            <button
-              type="button"
-              className="btn btn-outline-primary"
-              onClick={() => this.handleDownloadProgramEnrollments(program.programKey)}
-            >Download Program Enrollments
-            </button>
-          </div>
-        </div>
-        <div className="enrollment-row">
-          <div className="col-md mb-2">
-            <div className="btn btn-outline-primary">
-              <input
-                type="file"
-                className="sr input-overlay-hack"
-                onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
-              />Upload Course Enrollments
+          <div className={rowClasses}>
+            <div className="col-md mb-2">
+              <div className={buttonClasses}>
+                <input
+                  type="file"
+                  className="sr input-overlay-hack"
+                  onChange={e => this.handleUploadCourseEnrollments(program.programKey, e)}
+                />Upload Course Enrollments
+              </div>
+            </div>
+            <div className="col-md mb-2">
+              <button
+                type="button"
+                className={buttonClasses}
+                onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
+              >Download Course Enrollments
+              </button>
             </div>
           </div>
-          <div className="col-md mb-2">
-            <button
-              type="button"
-              className="btn btn-outline-primary"
-              onClick={() => this.handleDownloadCourseEnrollments(program.programKey)}
-            >Download Course Enrollments
-            </button>
-          </div>
         </div>
-      </div>
-    </Collapsible>
-  )
+      </Collapsible>
+    );
+  }
 
   render() {
     return (
       <div className="container half-width-element py-5 align-items-start">
         <h1>Program Console</h1>
-        <StatusAlert
-          alertType="danger"
+        <Alert
+          variant="danger"
           dismissible={false}
-          dialog={(
-            <div>
-              <p>
-                An error was encountered while loading your program list: <em>{`${this.props.loadingError}`}</em>
-              </p>
-              <p>
-                Please try waiting a moment and then refreshing the page.
-                If the issue persists, please reach out to <a href="mailto:partner-support@edx.org">partner-support@edx.org</a>.
-              </p>
-            </div>
-          )}
-          open={!!this.props.loadingError}
-        />
-        <StatusAlert
-          dismissible={false}
-          dialog={(
+          show={!!this.props.loadingError}
+        >
+          <div>
             <p>
-              It appears you do not have proper permissions to access this application.
-              Please reach out to <a href="mailto:partner-support@edx.org">partner-support@edx.org</a> requesting access to the Registrar service.
+              An error was encountered while loading your program list: <em>{`${this.props.loadingError}`}</em>
             </p>
-          )}
-          open={!this.props.authorized && !this.props.loadingError}
-        />
+            <p>
+              Please try waiting a moment and then refreshing the page.
+              If the issue persists, please reach out to <a href="mailto:partner-support@edx.org">partner-support@edx.org</a>.
+            </p>
+          </div>
+        </Alert>
+        <Alert
+          dismissible={false}
+          show={!this.props.authorized && !this.props.loadingError}
+          variant="warning"
+        >
+          <p>
+            It appears you do not have proper permissions to access this application.
+            Please reach out to <a href="mailto:partner-support@edx.org">partner-support@edx.org</a> requesting access to the Registrar service.
+          </p>
+        </Alert>
         {this.props.data.length > 0 && (
           <div>
             <SearchField
@@ -143,14 +146,15 @@ export class ConsolePage extends React.Component {
               onClear={() => this.handleFilter('')}
               placeholder="Filter by Program Title"
             />
-            <StatusAlert
+            <Alert
               className="mt-2"
-              alertType="danger"
+              variant="danger"
               dismissible
-              dialog="Invalid program title."
-              open={!!this.props.filterError}
+              show={!!this.props.filterError}
               data-testid="filter-alert"
-            />
+            >
+              <p>Invalid program title.</p>
+            </Alert>
             <Pagination
               className="mt-4"
               paginationLabel="pagination navigation"
@@ -164,19 +168,18 @@ export class ConsolePage extends React.Component {
                 {this.props.programBanners[program.programKey]
                   && !!this.props.programBanners[program.programKey].length
                   && this.props.programBanners[program.programKey].map(banner => (
-                    <StatusAlert
+                    <Alert
                       dismissible
-                      open
+                      show
                       key={banner.id}
-                      alertType={banner.bannerType}
+                      variant={banner.bannerType}
                       onClose={() => this.props.removeBanner(program.programKey, banner.id)}
-                      dialog={(
-                        <div className="modal-alert">
-                          {`${banner.message} `}
-                          {banner.linkMessage && <a href={banner.linkHref} target="_blank" rel="noopener noreferrer">{banner.linkMessage}</a>}
-                        </div>
-                      )}
-                    />
+                    >
+                      <div className="modal-alert">
+                        {`${banner.message} `}
+                        {banner.linkMessage && <a href={banner.linkHref} target="_blank" rel="noopener noreferrer">{banner.linkMessage}</a>}
+                      </div>
+                    </Alert>
                   ))}
                 {program.areEnrollmentsWritable && this.renderEnrollmentsCollapsible(program)}
                 {program.areReportsReadable
