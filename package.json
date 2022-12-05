@@ -6,7 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/openedx/frontend-app-program-console.git"
   },
-  "browserslist": ["extends @edx/browserslist-config"],
+  "browserslist": [
+    "extends @edx/browserslist-config"
+  ],
   "scripts": {
     "build": "fedx-scripts webpack",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
@@ -16,8 +18,7 @@
     "start": "fedx-scripts webpack-dev-server --progress",
     "test": "TZ=GMT fedx-scripts jest --coverage --passWithNoTests",
     "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "travis-deploy-once": "travis-deploy-once",
-    "snapshot": "fedx-scripts jest --updateSnapshot"
+    "travis-deploy-once": "travis-deploy-once"
   },
   "author": "edX",
   "license": "AGPL-3.0",
