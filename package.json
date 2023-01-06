@@ -17,7 +17,6 @@
     "snapshot": "fedx-scripts jest --updateSnapshot",
     "start": "fedx-scripts webpack-dev-server --progress",
     "test": "TZ=GMT fedx-scripts jest --coverage --passWithNoTests",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "travis-deploy-once": "travis-deploy-once"
   },
   "author": "edX",
@@ -76,7 +75,6 @@
     "@edx/reactifex": "1.0.3",
     "autoprefixer": "10.2.6",
     "axios-mock-adapter": "^1.15.0",
-    "codecov": "^3.0.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "husky": "^0.14.3",
