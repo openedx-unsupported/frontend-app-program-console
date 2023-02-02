@@ -71,7 +71,7 @@
   },
   "devDependencies": {
     "@edx/browserslist-config": "^1.1.0",
-    "@edx/frontend-build": "9.2.2",
+    "@edx/frontend-build": "12.5.1",
     "@edx/reactifex": "1.0.3",
     "autoprefixer": "10.2.6",
     "axios-mock-adapter": "^1.15.0",
