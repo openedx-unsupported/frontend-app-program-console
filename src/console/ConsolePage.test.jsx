@@ -2,6 +2,7 @@ import { mount, shallow } from 'enzyme';
 import { Collapsible } from '@edx/paragon';
 import React from 'react';
 import renderer from 'react-test-renderer';
+import { IntlProvider } from 'react-intl';
 import { ConsolePage } from './ConsolePage';
 import ConnectedReportSection from '../report/reportSection';
 
@@ -26,17 +27,19 @@ beforeEach(() => {
 describe('ConsolePage', () => {
   it('renders with the most basic props passed to it', () => {
     const consolePageComponent = (
-      <ConsolePage
-        authorized
-        data={[]}
-        downloadEnrollments={() => {}}
-        fetchPrograms={() => {}}
-        filterPrograms={() => {}}
-        programBanners={{}}
-        uploadEnrollments={() => {}}
-        removeBanner={() => {}}
-        switchPage={() => {}}
-      />
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized
+          data={[]}
+          downloadEnrollments={() => {}}
+          fetchPrograms={() => {}}
+          filterPrograms={() => {}}
+          programBanners={{}}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          switchPage={() => {}}
+        />
+      </IntlProvider>
     );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
@@ -49,17 +52,19 @@ describe('ConsolePage', () => {
 
   it('renders a warning banner if there is not an authorized user', () => {
     const consolePageComponent = (
-      <ConsolePage
-        authorized={false}
-        data={[]}
-        downloadEnrollments={() => {}}
-        fetchPrograms={() => {}}
-        filterPrograms={() => {}}
-        programBanners={{}}
-        uploadEnrollments={() => {}}
-        removeBanner={() => {}}
-        switchPage={() => {}}
-      />
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized={false}
+          data={[]}
+          downloadEnrollments={() => {}}
+          fetchPrograms={() => {}}
+          filterPrograms={() => {}}
+          programBanners={{}}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          switchPage={() => {}}
+        />
+      </IntlProvider>
     );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
@@ -72,18 +77,20 @@ describe('ConsolePage', () => {
 
   it('renders an error banner when there was an error loading programs', () => {
     const consolePageComponent = (
-      <ConsolePage
-        authorized={false}
-        loadingError="Request failed with HTTP 418"
-        data={[]}
-        downloadEnrollments={() => {}}
-        fetchPrograms={() => {}}
-        filterPrograms={() => {}}
-        programBanners={{}}
-        uploadEnrollments={() => {}}
-        removeBanner={() => {}}
-        switchPage={() => {}}
-      />
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized={false}
+          loadingError="Request failed with HTTP 418"
+          data={[]}
+          downloadEnrollments={() => {}}
+          fetchPrograms={() => {}}
+          filterPrograms={() => {}}
+          programBanners={{}}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          switchPage={() => {}}
+        />
+      </IntlProvider>
     );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
@@ -96,17 +103,19 @@ describe('ConsolePage', () => {
 
   it('renders programs when there is data passed in', () => {
     const consolePageComponent = (
-      <ConsolePage
-        authorized
-        data={apiData}
-        downloadEnrollments={() => {}}
-        fetchPrograms={() => {}}
-        filterPrograms={() => {}}
-        programBanners={{}}
-        uploadEnrollments={() => {}}
-        removeBanner={() => {}}
-        switchPage={() => {}}
-      />
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized
+          data={apiData}
+          downloadEnrollments={() => {}}
+          fetchPrograms={() => {}}
+          filterPrograms={() => {}}
+          programBanners={{}}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          switchPage={() => {}}
+        />
+      </IntlProvider>
     );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent).toJSON();
@@ -219,17 +228,19 @@ describe('ConsolePage', () => {
       }],
     };
     const consolePageComponent = (
-      <ConsolePage
-        authorized
-        data={apiData}
-        downloadEnrollments={() => {}}
-        fetchPrograms={() => {}}
-        filterPrograms={() => {}}
-        programBanners={programBanners}
-        uploadEnrollments={() => {}}
-        removeBanner={() => {}}
-        switchPage={() => {}}
-      />
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized
+          data={apiData}
+          downloadEnrollments={() => {}}
+          fetchPrograms={() => {}}
+          filterPrograms={() => {}}
+          programBanners={programBanners}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          switchPage={() => {}}
+        />
+      </IntlProvider>
     );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent).toJSON();
@@ -246,17 +257,21 @@ describe('ConsolePage', () => {
 
     expect(mock).not.toHaveBeenCalled();
 
-    mount(<ConsolePage
-      authorized
-      data={[]}
-      downloadEnrollments={() => {}}
-      fetchPrograms={mock}
-      filterPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-      switchPage={() => {}}
-    />);
+    mount(
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized
+          data={[]}
+          downloadEnrollments={() => {}}
+          fetchPrograms={mock}
+          filterPrograms={() => {}}
+          programBanners={{}}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          switchPage={() => {}}
+        />
+      </IntlProvider>,
+    );
 
     expect(mock).toHaveBeenCalled();
   });
@@ -266,17 +281,21 @@ describe('ConsolePage', () => {
 
     expect(mock).not.toHaveBeenCalled();
 
-    const wrapper = mount(<ConsolePage
-      authorized
-      data={apiData}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      filterPrograms={mock}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-      switchPage={() => {}}
-    />);
+    const wrapper = mount(
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized
+          data={apiData}
+          downloadEnrollments={() => {}}
+          fetchPrograms={() => {}}
+          filterPrograms={mock}
+          programBanners={{}}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          switchPage={() => {}}
+        />
+      </IntlProvider>,
+    );
 
     const filterForm = wrapper.find('form');
     filterForm.simulate('submit');
@@ -285,18 +304,20 @@ describe('ConsolePage', () => {
 
   it('renders error when filter returns no programs', () => {
     const consolePageComponent = (
-      <ConsolePage
-        authorized
-        data={apiData}
-        downloadEnrollments={() => {}}
-        fetchPrograms={() => {}}
-        filterPrograms={() => {}}
-        filterError
-        programBanners={{}}
-        uploadEnrollments={() => {}}
-        removeBanner={() => {}}
-        switchPage={() => {}}
-      />
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized
+          data={apiData}
+          downloadEnrollments={() => {}}
+          fetchPrograms={() => {}}
+          filterPrograms={() => {}}
+          filterError
+          programBanners={{}}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          switchPage={() => {}}
+        />
+      </IntlProvider>
     );
     const wrapper = mount(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
@@ -310,17 +331,21 @@ describe('ConsolePage', () => {
   it('calls the correct action with the correct program key on download button clicks', () => {
     const mock = jest.fn();
 
-    const wrapper = mount(<ConsolePage
-      authorized
-      data={apiData}
-      downloadEnrollments={mock}
-      fetchPrograms={() => {}}
-      filterPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={() => {}}
-      removeBanner={() => {}}
-      switchPage={() => {}}
-    />);
+    const wrapper = mount(
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized
+          data={apiData}
+          downloadEnrollments={mock}
+          fetchPrograms={() => {}}
+          filterPrograms={() => {}}
+          programBanners={{}}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          switchPage={() => {}}
+        />
+      </IntlProvider>,
+    );
 
     const programADownloadProgramButton = wrapper.find('button.btn.btn-outline-primary').at(0);
     expect(programADownloadProgramButton.text()).toEqual('Download Program Enrollments');
@@ -346,17 +371,21 @@ describe('ConsolePage', () => {
   it('calls the correct action with the correct program key onchange of the file inputs', () => {
     const mock = jest.fn();
 
-    const wrapper = mount(<ConsolePage
-      authorized
-      data={apiData}
-      downloadEnrollments={() => {}}
-      fetchPrograms={() => {}}
-      filterPrograms={() => {}}
-      programBanners={{}}
-      uploadEnrollments={mock}
-      removeBanner={() => {}}
-      switchPage={() => {}}
-    />);
+    const wrapper = mount(
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized
+          data={apiData}
+          downloadEnrollments={() => {}}
+          fetchPrograms={() => {}}
+          filterPrograms={() => {}}
+          programBanners={{}}
+          uploadEnrollments={mock}
+          removeBanner={() => {}}
+          switchPage={() => {}}
+        />
+      </IntlProvider>,
+    );
 
     const file = new File([], 'test');
 
@@ -384,18 +413,20 @@ describe('ConsolePage', () => {
     }
 
     const consolePageComponentOne = (
-      <ConsolePage
-        authorized
-        data={testData}
-        downloadEnrollments={() => {}}
-        fetchPrograms={() => {}}
-        filterPrograms={() => {}}
-        programBanners={{}}
-        uploadEnrollments={() => {}}
-        removeBanner={() => {}}
-        currentPage={1}
-        switchPage={() => {}}
-      />
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized
+          data={testData}
+          downloadEnrollments={() => {}}
+          fetchPrograms={() => {}}
+          filterPrograms={() => {}}
+          programBanners={{}}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          currentPage={1}
+          switchPage={() => {}}
+        />
+      </IntlProvider>
     );
     const wrapperOne = mount(consolePageComponentOne);
     const programTitleZero = wrapperOne.find('h2').first();
@@ -403,18 +434,20 @@ describe('ConsolePage', () => {
     wrapperOne.unmount();
 
     const consolePageComponentTwo = (
-      <ConsolePage
-        authorized
-        data={testData}
-        downloadEnrollments={() => {}}
-        fetchPrograms={() => {}}
-        filterPrograms={() => {}}
-        programBanners={{}}
-        uploadEnrollments={() => {}}
-        removeBanner={() => {}}
-        currentPage={2}
-        switchPage={() => {}}
-      />
+      <IntlProvider locale="en">
+        <ConsolePage
+          authorized
+          data={testData}
+          downloadEnrollments={() => {}}
+          fetchPrograms={() => {}}
+          filterPrograms={() => {}}
+          programBanners={{}}
+          uploadEnrollments={() => {}}
+          removeBanner={() => {}}
+          currentPage={2}
+          switchPage={() => {}}
+        />
+      </IntlProvider>
     );
     const wrapperTwo = mount(consolePageComponentTwo);
     const programTitleTen = wrapperTwo.find('h2').first();
