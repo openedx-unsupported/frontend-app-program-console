@@ -32,7 +32,7 @@ const appMessages = {
   uk: ukMessages,
   'de-de': dedeCAMessages,
   'it-it': ititCAMessages,
-  'pt-pt': ptptCAMessages
+  'pt-pt': ptptCAMessages,
 };
 
 export default [
