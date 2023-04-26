@@ -1,9 +1,7 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { messages as headerMessages } from '@edx/frontend-component-header';
-import { messages as footerMessages } from '@edx/frontend-component-footer';
-import { messages as paragonMessages } from '@edx/paragon';
+
 import {
   APP_INIT_ERROR,
   APP_READY,
@@ -13,7 +11,7 @@ import {
 import { sendPageEvent } from '@edx/frontend-platform/analytics';
 import { AppProvider, ErrorPage } from '@edx/frontend-platform/react';
 
-import appMessages from './i18n';
+import messages from './i18n';
 import configureStore from './store';
 
 import './index.scss';
@@ -37,12 +35,7 @@ subscribe(APP_INIT_ERROR, (error) => {
 });
 
 initialize({
-  messages: [
-    appMessages,
-    headerMessages,
-    footerMessages,
-    paragonMessages,
-  ],
+  messages,
   requireAuthenticatedUser: true,
   hydrateAuthenticatedUser: true,
 });
