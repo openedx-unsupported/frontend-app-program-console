@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { messages as headerMessages } from '@edx/frontend-component-header';
 import { messages as footerMessages } from '@edx/frontend-component-footer';
+import { messages as paragonMessages } from '@edx/paragon';
 import {
   APP_INIT_ERROR,
   APP_READY,
@@ -40,6 +41,7 @@ initialize({
     appMessages,
     headerMessages,
     footerMessages,
+    paragonMessages,
   ],
   requireAuthenticatedUser: true,
   hydrateAuthenticatedUser: true,
