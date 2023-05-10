@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import SiteHeader from '@edx/frontend-component-header';
 import SiteFooter from '@edx/frontend-component-footer';
 import { IntlProvider, injectIntl } from '@edx/frontend-platform/i18n';
-
 import ConnectedConsolePage from './console/ConsolePage';
 
 const PageContent = () => {
