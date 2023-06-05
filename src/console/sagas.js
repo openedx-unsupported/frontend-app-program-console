@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 import {
   all,
   call,

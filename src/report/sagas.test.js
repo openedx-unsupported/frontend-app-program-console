@@ -1,4 +1,3 @@
-/* eslint-disable no-import-assign */
 import { logError } from '@edx/frontend-platform/logging';
 import { takeEvery } from 'redux-saga/effects';
 import { runSaga } from 'redux-saga';
