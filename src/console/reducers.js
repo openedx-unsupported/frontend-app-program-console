@@ -1,4 +1,3 @@
-/* eslint-disable default-param-last */
 import { FETCH_PROGRAMS, FILTER_PROGRAMS } from './actions';
 import { shouldProgramBeDisplayed } from './utils';
 
