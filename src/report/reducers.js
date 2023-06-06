@@ -5,6 +5,7 @@ export const defaultState = {
   reportData: {},
 };
 
+// eslint-disable-next-line default-param-last
 const report = (state = defaultState, action) => {
   switch (action.type) {
     case FETCH_REPORTS.SUCCESS: {
