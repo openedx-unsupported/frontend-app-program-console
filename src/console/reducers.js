@@ -13,6 +13,7 @@ export const defaultState = {
   pageSize: 10,
 };
 
+// eslint-disable-next-line default-param-last
 const console = (state = defaultState, action) => {
   const { programBanners } = state;
   switch (action.type) {

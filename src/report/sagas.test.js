@@ -1,3 +1,5 @@
+/* eslint-disable no-import-assign */
+
 import { logError } from '@edx/frontend-platform/logging';
 import { takeEvery } from 'redux-saga/effects';
 import { runSaga } from 'redux-saga';
@@ -26,6 +28,7 @@ describe('handleFetchReports', () => {
       downloadUrl: 'www.example.com/test-program',
     }];
     mock.mockReturnValue(mockReportData);
+    // eslint-disable-next-line no-import-assign
     ApiService.getReportsByProgram = mock;
 
     const payload = {

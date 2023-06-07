@@ -1,3 +1,5 @@
+/* eslint-disable prefer-regex-literals */
+
 export function parseRegistrarJobName(registrarJobName) {
   const jobNameRe = new RegExp('^(.+?):(.+?):(.+?)$');
   const parsedJobName = jobNameRe.exec(registrarJobName);
