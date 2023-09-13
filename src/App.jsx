@@ -1,6 +1,4 @@
 import React from 'react';
-import { ConnectedRouter } from 'connected-react-router';
-import PropTypes from 'prop-types';
 import SiteHeader from '@edx/frontend-component-header';
 import SiteFooter from '@edx/frontend-component-footer';
 
@@ -16,14 +14,8 @@ const PageContent = () => (
   </div>
 );
 
-const App = ({ history }) => (
-  <ConnectedRouter history={history}>
-    <PageContent />
-  </ConnectedRouter>
+const App = () => (
+  <PageContent />
 );
-
-App.propTypes = {
-  history: PropTypes.object.isRequired, // eslint-disable-line
-};
 
 export default App;

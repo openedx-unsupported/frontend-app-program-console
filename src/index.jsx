@@ -18,11 +18,11 @@ import './index.scss';
 import App from './App';
 
 subscribe(APP_READY, () => {
-  const { store, history } = configureStore(process.env.NODE_ENV);
+  const { store } = configureStore(process.env.NODE_ENV);
 
   ReactDOM.render(
     <AppProvider store={store}>
-      <App history={history} />
+      <App />
     </AppProvider>,
     document.getElementById('root'),
   );
