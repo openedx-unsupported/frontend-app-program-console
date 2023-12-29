@@ -1,4 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { createConfig } = require('@edx/frontend-build');
+const { createConfig } = require('@openedx/frontend-build');
 
 module.exports = createConfig('eslint');

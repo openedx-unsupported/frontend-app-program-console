@@ -1,5 +1,5 @@
 import { mount } from 'enzyme';
-import { Collapsible, Alert } from '@edx/paragon';
+import { Collapsible, Alert } from '@openedx/paragon';
 import React from 'react';
 import * as analytics from '@edx/frontend-platform/analytics';
 import renderer from 'react-test-renderer';
