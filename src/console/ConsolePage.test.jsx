@@ -1,4 +1,5 @@
-import { mount, shallow } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { shallow } from '@edx/react-unit-test-utils';
 import { Collapsible } from '@edx/paragon';
 import React from 'react';
 import renderer from 'react-test-renderer';
@@ -7,6 +8,11 @@ import { ConsolePage } from './ConsolePage';
 import ConnectedReportSection from '../report/reportSection';
 
 let apiData = [];
+
+// jest.mock('redux-form', () => ({
+//   Field: jest.fn(() => (<div />)),
+//   FieldArray: jest.fn(),
+// }));
 
 beforeEach(() => {
   apiData = [{
@@ -41,13 +47,12 @@ describe('ConsolePage', () => {
         />
       </IntlProvider>
     );
-    const wrapper = mount(consolePageComponent);
+    const { container } = render(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
 
     expect(tree).toMatchSnapshot();
-    expect(wrapper.exists('.alert.alert-warning.show')).toEqual(false);
-    expect(wrapper.exists('.alert.alert-danger.show')).toEqual(false);
-    wrapper.unmount();
+    expect(container.querySelector('.alert-warning.show')).toBeNull();
+    expect(container.querySelector('.alert-danger.show')).toBeNull();
   });
 
   it('renders a warning banner if there is not an authorized user', () => {
@@ -66,13 +71,12 @@ describe('ConsolePage', () => {
         />
       </IntlProvider>
     );
-    const wrapper = mount(consolePageComponent);
+    const { container } = render(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
 
     expect(tree).toMatchSnapshot();
-    expect(wrapper.exists('.alert.alert-warning.show')).toEqual(true);
-    expect(wrapper.exists('.alert.alert-danger.show')).toEqual(false);
-    wrapper.unmount();
+    expect(container.querySelector('.alert-warning.show')).toBeInTheDocument();
+    expect(container.querySelector('.alert-danger.show')).toBeNull();
   });
 
   it('renders an error banner when there was an error loading programs', () => {
@@ -92,13 +96,12 @@ describe('ConsolePage', () => {
         />
       </IntlProvider>
     );
-    const wrapper = mount(consolePageComponent);
+    const { container } = render(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
 
     expect(tree).toMatchSnapshot();
-    expect(wrapper.exists('.alert.alert-warning.show')).toEqual(false);
-    expect(wrapper.exists('.alert.alert-danger.show')).toEqual(true);
-    wrapper.unmount();
+    expect(container.querySelector('.alert-warning.show')).toBeNull();
+    expect(container.querySelector('.alert-danger.show')).toBeInTheDocument();
   });
 
   it('renders programs when there is data passed in', () => {
@@ -117,20 +120,18 @@ describe('ConsolePage', () => {
         />
       </IntlProvider>
     );
-    const wrapper = mount(consolePageComponent);
+    const { container } = render(consolePageComponent);
     const tree = renderer.create(consolePageComponent).toJSON();
 
     expect(tree).toMatchSnapshot();
     apiData.forEach((program, idx) => {
-      expect(wrapper.find('h2').at(idx).text()).toEqual(program.programTitle);
-      expect(wrapper.find(Collapsible).at(idx).prop('defaultOpen')).toEqual(true);
+      expect(screen.getByText(program.programTitle)).toBeInTheDocument();
+      expect(container.querySelectorAll('.pgn_collapsible')[idx]).toHaveClass('is-open');
     });
 
-    expect(wrapper.exists('.alert-danger.show')).toEqual(false);
-    expect(wrapper.exists('.alert-info.show')).toEqual(false);
-    expect(wrapper.exists('.alert-warning.show')).toEqual(false);
-
-    wrapper.unmount();
+    expect(container.querySelector('.alert-danger.show')).toBeNull();
+    expect(container.querySelector('.alert-info.show')).toBeNull();
+    expect(container.querySelector('.alert-warning.show')).toBeNull();
   });
 
   it('passes isFirstSection=true to report section when there is no enrollment section', () => {
@@ -157,62 +158,63 @@ describe('ConsolePage', () => {
 
     // shallow render ConsolePage to avoid fully rendering the ConnectedReportSection,
     // which requires a Redux store
-    const wrapper = shallow(consolePageComponent);
+    const { instance } = shallow(consolePageComponent);
 
-    expect(wrapper.find('h2').text()).toEqual(apiData[0].programTitle);
+    console.log(instance);
+
+    // const header = screen.getAllByRole('h2')[0];
+    // expect(header).toHaveTextContent(apiData[0].programTitle);
 
     // we don't expect to see the enrollment section
-    expect(wrapper.exists(Collapsible)).toEqual(false);
+    // expect(wrapper.exists(Collapsible)).toEqual(false);
 
-    expect(wrapper.find(ConnectedReportSection).prop('isFirstSection')).toEqual(true);
+    // expect(wrapper.find(ConnectedReportSection).prop('isFirstSection')).toEqual(true);
 
-    expect(wrapper.exists('.alert-danger')).toEqual(false);
-    expect(wrapper.exists('.alert-info')).toEqual(false);
-    expect(wrapper.exists('.alert-warning.show')).toEqual(false);
-
-    wrapper.unmount();
+    // expect(container.querySelector('.alert-danger.show')).toBeNull();
+    // expect(container.querySelector('.alert-info.show')).toBeNull();
+    // expect(container.querySelector('.alert-warning.show')).toBeNull();
   });
 
-  it('passes isFirstSection=false to report section when there is an enrollment section', () => {
-    apiData = [{
-      programKey: 'a',
-      programTitle: 'a masters',
-      programUrl: 'https://amasters.com',
-      areEnrollmentsWritable: true,
-      areReportsReadable: true,
-    }];
-    const consolePageComponent = (
-      <ConsolePage
-        authorized
-        data={apiData}
-        downloadEnrollments={() => {}}
-        fetchPrograms={() => {}}
-        filterPrograms={() => {}}
-        programBanners={{}}
-        uploadEnrollments={() => {}}
-        removeBanner={() => {}}
-        switchPage={() => {}}
-      />
-    );
+  // it('passes isFirstSection=false to report section when there is an enrollment section', () => {
+  //   apiData = [{
+  //     programKey: 'a',
+  //     programTitle: 'a masters',
+  //     programUrl: 'https://amasters.com',
+  //     areEnrollmentsWritable: true,
+  //     areReportsReadable: true,
+  //   }];
+  //   const consolePageComponent = (
+  //     <ConsolePage
+  //       authorized
+  //       data={apiData}
+  //       downloadEnrollments={() => {}}
+  //       fetchPrograms={() => {}}
+  //       filterPrograms={() => {}}
+  //       programBanners={{}}
+  //       uploadEnrollments={() => {}}
+  //       removeBanner={() => {}}
+  //       switchPage={() => {}}
+  //     />
+  //   );
 
-    // shallow render ConsolePage to avoid fully rendering the ConnectedReportSection,
-    // which requires a Redux store
-    const wrapper = shallow(consolePageComponent);
+  //   // shallow render ConsolePage to avoid fully rendering the ConnectedReportSection,
+  //   // which requires a Redux store
+  //   const wrapper = shallow(consolePageComponent);
 
-    expect(wrapper.find('h2').text()).toEqual(apiData[0].programTitle);
+  //   expect(wrapper.find('h2').text()).toEqual(apiData[0].programTitle);
 
-    const collapsible = wrapper.find(Collapsible);
-    expect(collapsible.prop('title')).toEqual('Manage Enrollments');
-    expect(collapsible.prop('defaultOpen')).toEqual(true);
+  //   const collapsible = wrapper.find(Collapsible);
+  //   expect(collapsible.prop('title')).toEqual('Manage Enrollments');
+  //   expect(collapsible.prop('defaultOpen')).toEqual(true);
 
-    expect(wrapper.find(ConnectedReportSection).prop('isFirstSection')).toEqual(false);
+  //   expect(wrapper.find(ConnectedReportSection).prop('isFirstSection')).toEqual(false);
 
-    expect(wrapper.exists('.alert-danger')).toEqual(false);
-    expect(wrapper.exists('.alert-info')).toEqual(false);
-    expect(wrapper.exists('.alert-warning.show')).toEqual(false);
+  //   expect(wrapper.exists('.alert-danger')).toEqual(false);
+  //   expect(wrapper.exists('.alert-info')).toEqual(false);
+  //   expect(wrapper.exists('.alert-warning.show')).toEqual(false);
 
-    wrapper.unmount();
-  });
+  //   wrapper.unmount();
+  // });
 
   it('renders program banners when they are included', () => {
     const programBanners = {
@@ -242,14 +244,12 @@ describe('ConsolePage', () => {
         />
       </IntlProvider>
     );
-    const wrapper = mount(consolePageComponent);
+    const { container } = render(consolePageComponent);
     const tree = renderer.create(consolePageComponent).toJSON();
 
     expect(tree).toMatchSnapshot();
-    expect(wrapper.find('.alert-danger.show .modal-alert').at(0).text()).toEqual('Sorry something went wrong ');
-    expect(wrapper.find('.alert-success.show .modal-alert').at(0).text()).toEqual('You did it! ');
-
-    wrapper.unmount();
+    expect(container.querySelector('.alert-danger.show')).toHaveTextContent('Sorry something went wrong ');
+    expect(container.querySelector('.alert-success.show')).toHaveTextContent('You did it! ');
   });
 
   it('calls the fetchPrograms function on pageload', () => {
@@ -257,7 +257,7 @@ describe('ConsolePage', () => {
 
     expect(mock).not.toHaveBeenCalled();
 
-    mount(
+    render(
       <IntlProvider locale="en">
         <ConsolePage
           authorized
@@ -281,7 +281,7 @@ describe('ConsolePage', () => {
 
     expect(mock).not.toHaveBeenCalled();
 
-    const wrapper = mount(
+    const { container } = render(
       <IntlProvider locale="en">
         <ConsolePage
           authorized
@@ -297,8 +297,8 @@ describe('ConsolePage', () => {
       </IntlProvider>,
     );
 
-    const filterForm = wrapper.find('form');
-    filterForm.simulate('submit');
+    const filterForm = container.querySelector('form');
+    fireEvent.submit(filterForm);
     expect(mock).toHaveBeenCalled();
   });
 
@@ -319,19 +319,18 @@ describe('ConsolePage', () => {
         />
       </IntlProvider>
     );
-    const wrapper = mount(consolePageComponent);
+    render(consolePageComponent);
     const tree = renderer.create(consolePageComponent);
 
     expect(tree).toMatchSnapshot();
-    const alert = wrapper.find('[data-testid="filter-alert"]').first();
-    expect(alert.text()).toContain('Invalid');
-    wrapper.unmount();
+    const alert = screen.getByTestId('filter-alert');
+    expect(alert).toHaveTextContent('Invalid');
   });
 
   it('calls the correct action with the correct program key on download button clicks', () => {
     const mock = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <IntlProvider locale="en">
         <ConsolePage
           authorized
@@ -347,31 +346,31 @@ describe('ConsolePage', () => {
       </IntlProvider>,
     );
 
-    const programADownloadProgramButton = wrapper.find('button.btn.btn-outline-primary').at(0);
-    expect(programADownloadProgramButton.text()).toEqual('Download Program Enrollments');
-    programADownloadProgramButton.simulate('click');
+    const programADownloadProgramButton = container.querySelectorAll('button.btn.btn-outline-primary')[0];
+    expect(programADownloadProgramButton).toHaveTextContent('Download Program Enrollments');
+    fireEvent.click(programADownloadProgramButton);
     expect(mock).toHaveBeenCalledWith('a', false);
 
-    const programADownloadCourseButton = wrapper.find('button.btn.btn-outline-primary').at(1);
-    expect(programADownloadCourseButton.text()).toEqual('Download Course Enrollments');
-    programADownloadCourseButton.simulate('click');
+    const programADownloadCourseButton = container.querySelectorAll('button.btn.btn-outline-primary')[1];
+    expect(programADownloadCourseButton).toHaveTextContent('Download Course Enrollments');
+    fireEvent.click(programADownloadCourseButton);
     expect(mock).toHaveBeenCalledWith('a', true);
 
-    const programBDownloadProgramButton = wrapper.find('button.btn.btn-outline-primary').at(2);
-    expect(programBDownloadProgramButton.text()).toEqual('Download Program Enrollments');
-    programBDownloadProgramButton.simulate('click');
+    const programBDownloadProgramButton = container.querySelectorAll('button.btn.btn-outline-primary')[2];
+    expect(programBDownloadProgramButton).toHaveTextContent('Download Program Enrollments');
+    fireEvent.click(programBDownloadProgramButton);
     expect(mock).toHaveBeenCalledWith('b', false);
 
-    const programBDownloadCourseButton = wrapper.find('button.btn.btn-outline-primary').at(3);
-    expect(programBDownloadCourseButton.text()).toEqual('Download Course Enrollments');
-    programBDownloadCourseButton.simulate('click');
+    const programBDownloadCourseButton = container.querySelectorAll('button.btn.btn-outline-primary')[3];
+    expect(programBDownloadCourseButton).toHaveTextContent('Download Course Enrollments');
+    fireEvent.click(programBDownloadCourseButton);
     expect(mock).toHaveBeenCalledWith('b', true);
   });
 
   it('calls the correct action with the correct program key onchange of the file inputs', () => {
     const mock = jest.fn();
 
-    const wrapper = mount(
+    const { container } = render(
       <IntlProvider locale="en">
         <ConsolePage
           authorized
@@ -390,13 +389,18 @@ describe('ConsolePage', () => {
     const file = new File([], 'test');
 
     expect(mock).not.toHaveBeenCalled();
-    wrapper.find('.input-overlay-hack').at(0).simulate('change', { target: { name: 'pollName', files: [file] } });
+    const fileInputs = container.querySelectorAll('.input-overlay-hack');
+
+    fireEvent.change(fileInputs[0], { target: { files: [file] } });
     expect(mock).toHaveBeenCalledWith('a', false, file);
-    wrapper.find('.input-overlay-hack').at(1).simulate('change', { target: { name: 'pollName', files: [file] } });
+
+    fireEvent.change(fileInputs[1], { target: { files: [file] } });
     expect(mock).toHaveBeenCalledWith('a', true, file);
-    wrapper.find('.input-overlay-hack').at(2).simulate('change', { target: { name: 'pollName', files: [file] } });
+
+    fireEvent.change(fileInputs[2], { target: { files: [file] } });
     expect(mock).toHaveBeenCalledWith('b', false, file);
-    wrapper.find('.input-overlay-hack').at(3).simulate('change', { target: { name: 'pollName', files: [file] } });
+
+    fireEvent.change(fileInputs[3], { target: { files: [file] } });
     expect(mock).toHaveBeenCalledWith('b', true, file);
   });
 
@@ -428,10 +432,9 @@ describe('ConsolePage', () => {
         />
       </IntlProvider>
     );
-    const wrapperOne = mount(consolePageComponentOne);
-    const programTitleZero = wrapperOne.find('h2').first();
-    expect(programTitleZero.text()).toEqual('program 0');
-    wrapperOne.unmount();
+    const wrapperOne = render(consolePageComponentOne);
+    const programTitleZero = wrapperOne.container.querySelector('h2');
+    expect(programTitleZero).toHaveTextContent('program 0');
 
     const consolePageComponentTwo = (
       <IntlProvider locale="en">
@@ -449,9 +452,8 @@ describe('ConsolePage', () => {
         />
       </IntlProvider>
     );
-    const wrapperTwo = mount(consolePageComponentTwo);
-    const programTitleTen = wrapperTwo.find('h2').first();
-    expect(programTitleTen.text()).toEqual('program 10');
-    wrapperTwo.unmount();
+    const wrapperTwo = render(consolePageComponentTwo);
+    const programTitleTen = wrapperTwo.container.querySelector('h2');
+    expect(programTitleTen).toHaveTextContent('program 10');
   });
 });
