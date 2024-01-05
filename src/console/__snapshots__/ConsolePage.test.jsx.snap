@@ -9,6 +9,7 @@ exports[`ConsolePage renders a warning banner if there is not an authorized user
   </h1>
   <div
     className="fade alert-content alert alert-warning show"
+    data-testid="alert-warning"
     role="alert"
   >
     <div
@@ -41,6 +42,7 @@ exports[`ConsolePage renders an error banner when there was an error loading pro
   </h1>
   <div
     className="fade alert-content alert alert-danger show"
+    data-testid="alert-danger"
     role="alert"
   >
     <div
@@ -146,7 +148,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
     </div>
     <div
       className="fade alert-content mt-2 alert alert-danger show"
-      data-testid="filter-alert"
+      data-testid="error-alert"
       role="alert"
     >
       <div
@@ -271,6 +273,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
       </h2>
       <div
         className="pgn_collapsible collapsible-card is-open"
+        data-testid="collapsible"
       >
         <div
           aria-expanded={true}
@@ -400,6 +403,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
       </h2>
       <div
         className="pgn_collapsible collapsible-card is-open"
+        data-testid="collapsible"
       >
         <div
           aria-expanded={true}
@@ -779,6 +783,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
       </h2>
       <div
         className="fade alert-content alert alert-danger show"
+        data-testid="alert-info"
         role="alert"
       >
         <div
@@ -812,6 +817,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
       </div>
       <div
         className="pgn_collapsible collapsible-card is-open"
+        data-testid="collapsible"
       >
         <div
           aria-expanded={true}
@@ -941,6 +947,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
       </h2>
       <div
         className="fade alert-content alert alert-success show"
+        data-testid="alert-info"
         role="alert"
       >
         <div
@@ -974,6 +981,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
       </div>
       <div
         className="pgn_collapsible collapsible-card is-open"
+        data-testid="collapsible"
       >
         <div
           aria-expanded={true}
@@ -1353,6 +1361,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
       </h2>
       <div
         className="pgn_collapsible collapsible-card is-open"
+        data-testid="collapsible"
       >
         <div
           aria-expanded={true}
@@ -1482,6 +1491,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
       </h2>
       <div
         className="pgn_collapsible collapsible-card is-open"
+        data-testid="collapsible"
       >
         <div
           aria-expanded={true}

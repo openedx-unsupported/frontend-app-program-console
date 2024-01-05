@@ -1,18 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { fireEvent, render, screen } from '@testing-library/react';
 import { shallow } from '@edx/react-unit-test-utils';
-import { Collapsible } from '@edx/paragon';
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { IntlProvider } from 'react-intl';
 import { ConsolePage } from './ConsolePage';
-import ConnectedReportSection from '../report/reportSection';
 
 let apiData = [];
-
-// jest.mock('redux-form', () => ({
-//   Field: jest.fn(() => (<div />)),
-//   FieldArray: jest.fn(),
-// }));
 
 beforeEach(() => {
   apiData = [{
@@ -160,61 +154,56 @@ describe('ConsolePage', () => {
     // which requires a Redux store
     const { instance } = shallow(consolePageComponent);
 
-    console.log(instance);
-
-    // const header = screen.getAllByRole('h2')[0];
-    // expect(header).toHaveTextContent(apiData[0].programTitle);
+    expect(instance.findByType('h2')[0].el.children[0]).toEqual(apiData[0].programTitle);
 
     // we don't expect to see the enrollment section
-    // expect(wrapper.exists(Collapsible)).toEqual(false);
+    expect(instance.findByTestId('collapsible')).toEqual([]);
 
-    // expect(wrapper.find(ConnectedReportSection).prop('isFirstSection')).toEqual(true);
+    expect(instance.findByTestId('report-section')[0].props.isFirstSection).toEqual(true);
 
-    // expect(container.querySelector('.alert-danger.show')).toBeNull();
-    // expect(container.querySelector('.alert-info.show')).toBeNull();
-    // expect(container.querySelector('.alert-warning.show')).toBeNull();
+    expect(instance.findByTestId('alert-danger')[0].props.show).toEqual(false);
+    expect(instance.findByTestId('alert-info')).toEqual([]);
+    expect(instance.findByTestId('alert-warning')[0].props.show).toEqual(false);
   });
 
-  // it('passes isFirstSection=false to report section when there is an enrollment section', () => {
-  //   apiData = [{
-  //     programKey: 'a',
-  //     programTitle: 'a masters',
-  //     programUrl: 'https://amasters.com',
-  //     areEnrollmentsWritable: true,
-  //     areReportsReadable: true,
-  //   }];
-  //   const consolePageComponent = (
-  //     <ConsolePage
-  //       authorized
-  //       data={apiData}
-  //       downloadEnrollments={() => {}}
-  //       fetchPrograms={() => {}}
-  //       filterPrograms={() => {}}
-  //       programBanners={{}}
-  //       uploadEnrollments={() => {}}
-  //       removeBanner={() => {}}
-  //       switchPage={() => {}}
-  //     />
-  //   );
+  it('passes isFirstSection=false to report section when there is an enrollment section', () => {
+    apiData = [{
+      programKey: 'a',
+      programTitle: 'a masters',
+      programUrl: 'https://amasters.com',
+      areEnrollmentsWritable: true,
+      areReportsReadable: true,
+    }];
+    const consolePageComponent = (
+      <ConsolePage
+        authorized
+        data={apiData}
+        downloadEnrollments={() => {}}
+        fetchPrograms={() => {}}
+        filterPrograms={() => {}}
+        programBanners={{}}
+        uploadEnrollments={() => {}}
+        removeBanner={() => {}}
+        switchPage={() => {}}
+      />
+    );
 
-  //   // shallow render ConsolePage to avoid fully rendering the ConnectedReportSection,
-  //   // which requires a Redux store
-  //   const wrapper = shallow(consolePageComponent);
+    // shallow render ConsolePage to avoid fully rendering the ConnectedReportSection,
+    // which requires a Redux store
+    const { instance } = shallow(consolePageComponent);
 
-  //   expect(wrapper.find('h2').text()).toEqual(apiData[0].programTitle);
+    expect(instance.findByType('h2')[0].el.children[0]).toEqual(apiData[0].programTitle);
 
-  //   const collapsible = wrapper.find(Collapsible);
-  //   expect(collapsible.prop('title')).toEqual('Manage Enrollments');
-  //   expect(collapsible.prop('defaultOpen')).toEqual(true);
+    const collapsible = instance.findByTestId('collapsible');
+    expect(collapsible[0].props.title).toEqual('Manage Enrollments');
+    expect(collapsible[0].props.defaultOpen).toEqual(true);
 
-  //   expect(wrapper.find(ConnectedReportSection).prop('isFirstSection')).toEqual(false);
+    expect(instance.findByTestId('report-section')[0].props.isFirstSection).toEqual(false);
 
-  //   expect(wrapper.exists('.alert-danger')).toEqual(false);
-  //   expect(wrapper.exists('.alert-info')).toEqual(false);
-  //   expect(wrapper.exists('.alert-warning.show')).toEqual(false);
-
-  //   wrapper.unmount();
-  // });
+    expect(instance.findByTestId('alert-danger')[0].props.show).toEqual(false);
+    expect(instance.findByTestId('alert-info')).toEqual([]);
+    expect(instance.findByTestId('alert-warning')[0].props.show).toEqual(false);
+  });
 
   it('renders program banners when they are included', () => {
     const programBanners = {
@@ -323,7 +312,7 @@ describe('ConsolePage', () => {
     const tree = renderer.create(consolePageComponent);
 
     expect(tree).toMatchSnapshot();
-    const alert = screen.getByTestId('filter-alert');
+    const alert = screen.getByTestId('error-alert');
     expect(alert).toHaveTextContent('Invalid');
   });
 
