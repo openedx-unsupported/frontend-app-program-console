@@ -2,7 +2,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import { shallow } from '@edx/react-unit-test-utils';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { IntlProvider } from 'react-intl';
 import { ConsolePage } from './ConsolePage';
 
@@ -42,9 +41,8 @@ describe('ConsolePage', () => {
       </IntlProvider>
     );
     const { container } = render(consolePageComponent);
-    const tree = renderer.create(consolePageComponent);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
     expect(container.querySelector('.alert-warning.show')).toBeNull();
     expect(container.querySelector('.alert-danger.show')).toBeNull();
   });
@@ -66,9 +64,8 @@ describe('ConsolePage', () => {
       </IntlProvider>
     );
     const { container } = render(consolePageComponent);
-    const tree = renderer.create(consolePageComponent);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
     expect(container.querySelector('.alert-warning.show')).toBeInTheDocument();
     expect(container.querySelector('.alert-danger.show')).toBeNull();
   });
@@ -91,9 +88,8 @@ describe('ConsolePage', () => {
       </IntlProvider>
     );
     const { container } = render(consolePageComponent);
-    const tree = renderer.create(consolePageComponent);
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
     expect(container.querySelector('.alert-warning.show')).toBeNull();
     expect(container.querySelector('.alert-danger.show')).toBeInTheDocument();
   });
@@ -115,9 +111,8 @@ describe('ConsolePage', () => {
       </IntlProvider>
     );
     const { container } = render(consolePageComponent);
-    const tree = renderer.create(consolePageComponent).toJSON();
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
     apiData.forEach((program, idx) => {
       expect(screen.getByText(program.programTitle)).toBeInTheDocument();
       expect(container.querySelectorAll('.pgn_collapsible')[idx]).toHaveClass('is-open');
@@ -234,9 +229,8 @@ describe('ConsolePage', () => {
       </IntlProvider>
     );
     const { container } = render(consolePageComponent);
-    const tree = renderer.create(consolePageComponent).toJSON();
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
     expect(container.querySelector('.alert-danger.show')).toHaveTextContent('Sorry something went wrong ');
     expect(container.querySelector('.alert-success.show')).toHaveTextContent('You did it! ');
   });
@@ -308,8 +302,7 @@ describe('ConsolePage', () => {
         />
       </IntlProvider>
     );
-    render(consolePageComponent);
-    const tree = renderer.create(consolePageComponent);
+    const { container: tree } = render(consolePageComponent);
 
     expect(tree).toMatchSnapshot();
     const alert = screen.getByTestId('error-alert');

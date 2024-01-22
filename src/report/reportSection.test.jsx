@@ -1,7 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import * as analytics from '@edx/frontend-platform/analytics';
-import renderer from 'react-test-renderer';
 import { ReportSection } from './reportSection';
 
 jest.mock('@edx/frontend-platform/analytics', () => ({
@@ -10,14 +9,14 @@ jest.mock('@edx/frontend-platform/analytics', () => ({
 
 describe('ReportSection component', () => {
   it('renders with the most basic props passed to it', () => {
-    const tree = renderer.create((
+    const { container: tree } = render(
       <ReportSection
         reportData={{}}
         fetchReports={() => { }}
         programKey=""
         isFirstSection
-      />
-    )).toJSON();
+      />,
+    );
     expect(tree).toMatchSnapshot();
   });
 
@@ -72,11 +71,10 @@ describe('ReportSection component', () => {
     );
 
     const { container, debug } = render(reportSectionComponent);
-    const tree = renderer.create(reportSectionComponent);
 
     debug();
 
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
     const collapsible = container.querySelector('.pgn_collapsible');
     expect(collapsible).toHaveClass('shadow');
     expect(collapsible).toHaveTextContent('Download Reports');
