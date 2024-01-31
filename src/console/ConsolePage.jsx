@@ -64,6 +64,7 @@ export class ConsolePage extends React.Component {
       <Collapsible
         title="Manage Enrollments"
         defaultOpen
+        data-testid="collapsible"
       >
         <div className="container p-0">
           <div className={`${rowClasses} mt-2`}>
@@ -117,6 +118,7 @@ export class ConsolePage extends React.Component {
           variant="danger"
           dismissible={false}
           show={!!this.props.loadingError}
+          data-testid="alert-danger"
         >
           <div>
             <p>
@@ -132,6 +134,7 @@ export class ConsolePage extends React.Component {
           dismissible={false}
           show={!this.props.authorized && !this.props.loadingError}
           variant="warning"
+          data-testid="alert-warning"
         >
           <p>
             It appears you do not have proper permissions to access this application.
@@ -151,7 +154,7 @@ export class ConsolePage extends React.Component {
               variant="danger"
               dismissible
               show={!!this.props.filterError}
-              data-testid="filter-alert"
+              data-testid="error-alert"
             >
               <p>Invalid program title.</p>
             </Alert>
@@ -174,6 +177,7 @@ export class ConsolePage extends React.Component {
                       key={banner.id}
                       variant={banner.bannerType}
                       onClose={() => this.props.removeBanner(program.programKey, banner.id)}
+                      data-testid="alert-info"
                     >
                       <div className="modal-alert">
                         {`${banner.message} `}
@@ -187,6 +191,7 @@ export class ConsolePage extends React.Component {
                     <ConnectedReportSection
                       programKey={program.programKey}
                       isFirstSection={!program.areEnrollmentsWritable}
+                      data-testid="report-section"
                     />
                   )}
               </div>

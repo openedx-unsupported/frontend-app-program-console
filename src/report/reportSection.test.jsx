@@ -1,29 +1,22 @@
-import { mount } from 'enzyme';
-import { Collapsible, Alert } from '@edx/paragon';
+import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import * as analytics from '@edx/frontend-platform/analytics';
-import renderer from 'react-test-renderer';
 import { ReportSection } from './reportSection';
 
 jest.mock('@edx/frontend-platform/analytics', () => ({
   sendTrackEvent: jest.fn(),
 }));
 
-const assertCollapsibleProps = (collapsible) => {
-  expect(collapsible.prop('className')).toEqual(expect.stringContaining('shadow'));
-  expect(collapsible.prop('title')).toEqual('Download Reports');
-};
-
 describe('ReportSection component', () => {
   it('renders with the most basic props passed to it', () => {
-    const tree = renderer.create((
+    const { container: tree } = render(
       <ReportSection
         reportData={{}}
         fetchReports={() => { }}
         programKey=""
         isFirstSection
-      />
-    )).toJSON();
+      />,
+    );
     expect(tree).toMatchSnapshot();
   });
 
@@ -46,13 +39,10 @@ describe('ReportSection component', () => {
             isFirstSection={isFirstSectionValue}
           />
         );
-        const wrapper = mount(reportSectionComponent);
-        const tree = renderer.create(reportSectionComponent);
-
-        expect(tree).toMatchSnapshot();
-        const collapsible = wrapper.find(Collapsible);
-        assertCollapsibleProps(collapsible);
-        expect(collapsible.prop('defaultOpen')).toEqual(isFirstSectionValue);
+        render(reportSectionComponent);
+        const collapsible = screen.getByRole('button', { name: 'Download Reports' });
+        const isExpanded = collapsible.getAttribute('aria-expanded') === 'true';
+        expect(isExpanded).toBe(isFirstSectionValue);
       });
     });
   });
@@ -80,27 +70,28 @@ describe('ReportSection component', () => {
       />
     );
 
-    const wrapper = mount(reportSectionComponent);
-    const tree = renderer.create(reportSectionComponent);
+    const { container, debug } = render(reportSectionComponent);
 
-    expect(tree).toMatchSnapshot();
-    const collapsible = wrapper.find(Collapsible);
-    assertCollapsibleProps(collapsible);
+    debug();
 
-    // check contents of the Collapsible body
-    expect(collapsible.exists('div.container')).toEqual(true);
-    const links = collapsible.find('div.container div a');
+    expect(container).toMatchSnapshot();
+    const collapsible = container.querySelector('.pgn_collapsible');
+    expect(collapsible).toHaveClass('shadow');
+    expect(collapsible).toHaveTextContent('Download Reports');
+    expect(collapsible.querySelector('.container')).toBeInTheDocument();
+
+    const links = screen.getAllByRole('link');
     expect(links).toHaveLength(2);
     links.forEach((link, index) => {
-      expect(link.prop('href')).toEqual(reportData['program-key'][index].downloadUrl);
-      expect(link.text()).toEqual(reportData['program-key'][index].name);
+      expect(link).toHaveAttribute('href', reportData['program-key'][index].downloadUrl);
+      expect(link).toHaveTextContent(reportData['program-key'][index].name);
     });
 
-    const statusAlert = collapsible.find('div.container').find(Alert);
-    expect(statusAlert.prop('variant')).toEqual('info');
-    expect(statusAlert.prop('dismissible')).toEqual(false);
-    expect(statusAlert.prop('children')).toEqual('The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.');
-    expect(statusAlert.prop('show')).toEqual(true);
+    const statusAlert = screen.getByRole('alert');
+    expect(statusAlert).toHaveClass('alert-info');
+    expect(statusAlert).toHaveTextContent('The data contained in these reports reflect enrollments only and are not intended to be used for financial reporting or reconciliation.');
+    expect(statusAlert).toHaveClass('show');
+    expect(statusAlert).not.toHaveClass('dismissible');
   });
 
   it('doesn\'t render contents when no program data is passed in', () => {
@@ -113,12 +104,9 @@ describe('ReportSection component', () => {
       />
     );
 
-    const wrapper = mount(reportSectionComponent);
-    const tree = renderer.create(reportSectionComponent);
-
-    expect(tree).toMatchSnapshot();
-    const collapsible = wrapper.find(Collapsible);
-    expect(collapsible).toHaveLength(0);
+    render(reportSectionComponent);
+    const collapsible = screen.queryByRole('button', { name: 'Download Reports' });
+    expect(collapsible).not.toBeInTheDocument();
   });
 
   it('doesn\'t render contents when empty program key is passed in', () => {
@@ -131,18 +119,15 @@ describe('ReportSection component', () => {
       />
     );
 
-    const wrapper = mount(reportSectionComponent);
-    const tree = renderer.create(reportSectionComponent);
-
-    expect(tree).toMatchSnapshot();
-    const collapsible = wrapper.find(Collapsible);
-    expect(collapsible).toHaveLength(0);
+    render(reportSectionComponent);
+    const collapsible = screen.queryByRole('button', { name: 'Download Reports' });
+    expect(collapsible).not.toBeInTheDocument();
   });
 
   it('calls the fetchReports function on load if program key prop is passed in', () => {
     const mock = jest.fn();
 
-    mount(<ReportSection
+    render(<ReportSection
       reportData={{}}
       fetchReports={mock}
       programKey="program-key"
@@ -155,7 +140,7 @@ describe('ReportSection component', () => {
   it('doesn\'t call the fetchReports function on load if program key prop is not passed in', () => {
     const mock = jest.fn();
 
-    mount(<ReportSection
+    render(<ReportSection
       reportData={{}}
       fetchReports={mock}
       programKey=""
@@ -184,9 +169,9 @@ describe('ReportSection component', () => {
       />
     );
 
-    const wrapper = mount(reportSectionComponent);
-    const link = wrapper.find('#console-report');
-    link.simulate('click');
+    const { container } = render(reportSectionComponent);
+    const link = container.querySelector('#console-report');
+    fireEvent.click(link);
     expect(analytics.sendTrackEvent).toHaveBeenCalled();
   });
 });
