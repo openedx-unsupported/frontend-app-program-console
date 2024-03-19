@@ -1,12 +1,12 @@
 {
-  "siteheader.links.courses": "Courses",
-  "siteheader.links.programs": "Programs & Degrees",
-  "siteheader.links.schools": "Schools & Partners",
-  "siteheader.user.menu.dashboard": "Dashboard",
-  "siteheader.user.menu.profile": "Profile",
-  "siteheader.user.menu.account.settings": "Account",
-  "siteheader.user.menu.logout": "Logout",
-  "siteheader.user.menu.login": "Login",
-  "siteheader.user.menu.register": "Sign Up",
-  "app.loading.message": "Loading"
+  "siteheader.links.courses": "Курси",
+  "siteheader.links.programs": "Програми та Ступені",
+  "siteheader.links.schools": "Школи та партнери",
+  "siteheader.user.menu.dashboard": "Мої курси",
+  "siteheader.user.menu.profile": "Профіль",
+  "siteheader.user.menu.account.settings": "Налаштування",
+  "siteheader.user.menu.logout": "Вийти",
+  "siteheader.user.menu.login": "Увійти",
+  "siteheader.user.menu.register": "Зареєструватися",
+  "app.loading.message": "Завантаження"
 }

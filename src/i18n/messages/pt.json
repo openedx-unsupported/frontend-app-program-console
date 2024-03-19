@@ -1,12 +1,12 @@
 {
-  "siteheader.links.courses": "Courses",
-  "siteheader.links.programs": "Programs & Degrees",
-  "siteheader.links.schools": "Schools & Partners",
-  "siteheader.user.menu.dashboard": "Dashboard",
-  "siteheader.user.menu.profile": "Profile",
-  "siteheader.user.menu.account.settings": "Account",
-  "siteheader.user.menu.logout": "Logout",
+  "siteheader.links.courses": "",
+  "siteheader.links.programs": "",
+  "siteheader.links.schools": "",
+  "siteheader.user.menu.dashboard": "",
+  "siteheader.user.menu.profile": "",
+  "siteheader.user.menu.account.settings": "",
+  "siteheader.user.menu.logout": "",
   "siteheader.user.menu.login": "Login",
-  "siteheader.user.menu.register": "Sign Up",
-  "app.loading.message": "Loading"
+  "siteheader.user.menu.register": "",
+  "app.loading.message": ""
 }

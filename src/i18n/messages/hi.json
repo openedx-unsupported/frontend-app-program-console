@@ -1,12 +1,12 @@
 {
-  "siteheader.links.courses": "Courses",
-  "siteheader.links.programs": "Programs & Degrees",
-  "siteheader.links.schools": "Schools & Partners",
-  "siteheader.user.menu.dashboard": "Dashboard",
-  "siteheader.user.menu.profile": "Profile",
-  "siteheader.user.menu.account.settings": "Account",
-  "siteheader.user.menu.logout": "Logout",
-  "siteheader.user.menu.login": "Login",
-  "siteheader.user.menu.register": "Sign Up",
-  "app.loading.message": "Loading"
+  "siteheader.links.courses": "कौरसेस ",
+  "siteheader.links.programs": "",
+  "siteheader.links.schools": "स्कूलों और भागीदारों",
+  "siteheader.user.menu.dashboard": "डैशबोर्ड",
+  "siteheader.user.menu.profile": "प्रोफाइल:",
+  "siteheader.user.menu.account.settings": "लेखा",
+  "siteheader.user.menu.logout": "लॉग आउट",
+  "siteheader.user.menu.login": "लॉग इन करें",
+  "siteheader.user.menu.register": "साइन अप",
+  "app.loading.message": "लोड हो रहा है"
 }
