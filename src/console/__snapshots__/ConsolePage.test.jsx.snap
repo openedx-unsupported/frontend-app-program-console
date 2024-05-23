@@ -91,7 +91,7 @@ exports[`ConsolePage renders error when filter returns no programs 1`] = `
         class="pgn__searchfield d-flex mt-3"
       >
         <form
-          class="d-flex align-items-center w-100"
+          class="pgn__searchfield-form"
           role="search"
         >
           <label
@@ -592,7 +592,7 @@ exports[`ConsolePage renders program banners when they are included 1`] = `
         class="pgn__searchfield d-flex mt-3"
       >
         <form
-          class="d-flex align-items-center w-100"
+          class="pgn__searchfield-form"
           role="search"
         >
           <label
@@ -1127,7 +1127,7 @@ exports[`ConsolePage renders programs when there is data passed in 1`] = `
         class="pgn__searchfield d-flex mt-3"
       >
         <form
-          class="d-flex align-items-center w-100"
+          class="pgn__searchfield-form"
           role="search"
         >
           <label

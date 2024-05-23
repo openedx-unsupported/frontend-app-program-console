@@ -7,7 +7,7 @@ import {
   Pagination,
   SearchField,
   Alert,
-} from '@edx/paragon';
+} from '@openedx/paragon';
 
 import {
   fetchPrograms,
