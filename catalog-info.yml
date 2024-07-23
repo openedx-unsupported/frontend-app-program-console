@@ -1,0 +1,18 @@
+# This file records information about this repo. Its use is described in OEP-55:
+# https://open-edx-proposals.readthedocs.io/en/latest/processes/oep-0055-proc-project-maintainers.html
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: 'frontend-app-program-console'
+  description: "A micro-frontend for administering edX program membership and reporting."
+  links:
+    - url: "https://github.com/openedx/frontend-app-program-console"
+      title: "frontend-app-program-console GitHub Repository"
+      icon: "Web"
+spec:
+  owner: group:2u-cosmonauts
+  type: 'website'
+  lifecycle: 'production'
+dependsOn:
+  - 'registrar'
