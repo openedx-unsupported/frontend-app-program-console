@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { injectIntl } from '@edx/frontend-platform/i18n';
-import { Collapsible, Alert } from '@edx/paragon';
+import { Collapsible, Alert } from '@openedx/paragon';
 
 import { fetchReports } from './actions';
 import { reportSelector, storeName } from './selectors';
